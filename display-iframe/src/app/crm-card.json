@@ -1,0 +1,15 @@
+{
+  "type": "crm-card",
+  "version": 2,
+  "data": {
+    "title": "Display iframe",
+    "fetch": {
+      "targetFunction": "crm-card",
+      "objectTypes": [
+        {
+          "name": "contacts"
+        }
+      ]
+    }
+  }
+}
