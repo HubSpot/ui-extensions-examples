@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig to read more about this file */
+
+
+    "target": "esnext",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "module": "commonjs",                                /* Specify what module code is generated. */
+    "allowJs": true,
+    "rootDir": "./project",
+    "outDir": "dist",                                    /* Specify an output folder for all emitted files. */
+    "allowSyntheticDefaultImports": true,                /* Allow 'import x from y' when a module doesn't have a default export. */
+    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
+    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
+    "strict": false,                                      /* Enable all strict type-checking options. */
+    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "include": [
+    "./project/**/*.ts"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "App CRM Card Made with TS",
+    "fetch": {
+      "targetFunction": "crm-card",
+      "objectTypes": [
+        {
+          "name": "contacts",
+          "propertiesToSend": [],
+          "actions":[]
+        }
+      ]
+    },
+    "display": {
+      "properties": [
+        {
+          "name": "quote",
+          "label": "Quote",
+          "dataType": "STRING",
+          "options": []
+        },
+        {
+          "name": "desc",
+          "label": "What is this?",
+          "dataType": "STRING",
+          "options": []
+        },
+        {
+          "name": "author",
+          "label": "Author",
+          "dataType": "STRING",
+          "options": []
+        },
+        { "name": "firstname",
+          "label": "First name",
+          "dataType": "STRING",
+          "options":[]
+        }
+      ]
+    },
+    "actions": {
+      "baseUrls": []
+    }
+  }
+}

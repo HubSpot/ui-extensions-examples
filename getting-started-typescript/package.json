@@ -1,0 +1,19 @@
+{
+  "name": "getting-started-typescript",
+  "version": "1.0.0",
+  "description": "This project is an example how to use Typescript with HubSpot Projects.",
+  "author": "Mark Tripoli",
+  "scripts": {
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -u 1 project/**/*.json  dist/",
+    "build": "npm run clean && tsc && npm run copy-files",
+    "upload": "hs project upload ./dist --forceCreate --use-env"
+  },
+  "devDependencies": {
+    "@hubspot/cli": "^4.0.0",
+    "@types/node": "^18.6.5",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.4"
+  }
+}

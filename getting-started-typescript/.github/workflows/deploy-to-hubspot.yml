@@ -1,0 +1,28 @@
+name: Deploy to HubSpot Portal
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: npm install
+      - name: Build Project
+        run: npm run build
+      - name: HubSpot Project Upload Action
+        env:
+          HUBSPOT_PORTAL_ID: ${{ secrets.HUBSPOT_PORTAL_ID }}
+          HUBSPOT_PERSONAL_ACCESS_KEY: ${{ secrets.HUBSPOT_PERSONAL_ACCESS_KEY }}
+        run: npm run upload
+
+
