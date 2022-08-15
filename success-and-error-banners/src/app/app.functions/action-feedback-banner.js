@@ -1,7 +1,7 @@
 // For external API calls
 const axios = require('axios');
 
-exports.main = async (context = {}, sendResponse) => {
+exports.main = async (context, sendResponse) => {
   // Randomly choose between a valid and invalid URL to display for success and error demonstration purposes
   const isValidEndpoint = Math.round(Math.random());
   const endpoint = isValidEndpoint ? 'https://www.hubspot.com' : 'https://www.hubspot.com/doesnotexist';
