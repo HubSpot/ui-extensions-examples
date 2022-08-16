@@ -1,4 +1,4 @@
-exports.main = async (context = {}, sendResponse) => {
+exports.main = async (context, sendResponse) => {
   sendResponse({
     sections: [
       {

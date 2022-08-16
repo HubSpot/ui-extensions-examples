@@ -1,4 +1,4 @@
-exports.main = async (context = {}, sendResponse) => {
+exports.main = async (context, sendResponse) => {
   // Displays a button that will call the action-feedback-banner function when clicked
   sendResponse({
     sections: [
