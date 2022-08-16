@@ -7,6 +7,7 @@ Displays a button to open a modal dialog with an iframe that displays the conten
 ## How to use
 
 This project can be used as-is in a HubSpot account by:
+
 1. Cloning this repository
 2. `cd display-iframe`
 3. `hs project upload`

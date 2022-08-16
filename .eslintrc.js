@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: ["eslint:recommended", "prettier"],
+  extends: ['eslint:recommended', 'prettier'],
   env: {
     node: true,
     commonjs: true,
@@ -8,7 +8,7 @@ module.exports = {
   },
   overrides: [],
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaVersion: 'latest',
   },
   rules: {},
 };

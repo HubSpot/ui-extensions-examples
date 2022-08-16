@@ -9,6 +9,7 @@ For the purposes of this example, the GET request randomly succeeds or fails eac
 ## How to use
 
 This project can be used as-is in a HubSpot account by:
+
 1. Cloning this repository
 2. `cd success-and-error-banners`
 3. `hs project upload`

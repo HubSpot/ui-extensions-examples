@@ -15,4 +15,3 @@ ESLint is included in the root of this repository for ease of development. You c
 ```
 npx eslint .
 ```
-
