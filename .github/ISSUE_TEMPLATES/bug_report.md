@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Report a bug in one of the examples
-title: "[Bug]"
+title: '[Bug]'
 labels: new-bug
 ---
 

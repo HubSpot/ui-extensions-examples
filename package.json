@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/HubSpot/ui-extensions-examples#readme",
   "devDependencies": {
-    "eslint": "^8.22.0"
+    "eslint": "^8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "2.7.1"
   }
 }
