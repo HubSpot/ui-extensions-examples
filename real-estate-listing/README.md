@@ -9,14 +9,13 @@ was featured in the HubSpot.Extend() conference:
 > and help them _quickly find information_ that can help buyers make decisions faster.
 
 
-![simple-form-example](https://user-images.githubusercontent.com/5553591/185697570-f6308601-80b5-43c2-a8ab-0f252a9b4c4f.gif)
+![real-estate-listing-example](https://user-images.githubusercontent.com/30241/200099293-0d109d70-2b8a-4af0-8e9c-a06bf07318af.png)
 
 
 ## How to use
 
 This project can be used in a HubSpot account by:
 
-1. Optional (but encouraged):
 1. Generating API tokens for the following services:
   - [Google Maps' "Nearby Places" API](https://developers.google.com/maps/documentation/places/web-service/search-nearby)
   - ["Walkscore" API](https://developers.google.com/maps/documentation/places/web-service/search-nearby)
@@ -29,7 +28,6 @@ This project can be used in a HubSpot account by:
 1. `hs secrets add GOOGLE_MAPS_API_KEY    # enter API key`
 1. `hs secrets add WALKSCORE              # enter API key`
 1. `hs project upload`
-
 
 
 ## Prerequisites
