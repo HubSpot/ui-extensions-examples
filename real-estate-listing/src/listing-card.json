@@ -1,0 +1,24 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Location Highlights",
+    "location": "crm.record.tab",
+    "fetch": {
+      "targetFunction": "listing-highlights",
+      "objectTypes": [
+        {
+          "name": "p_listings",
+          "propertiesToSend": [
+            "latitude",
+            "longitude",
+            "address",
+            "city",
+            "state",
+            "country",
+            "hs_object_id"
+          ]
+        }
+      ]
+    }
+  }
+}

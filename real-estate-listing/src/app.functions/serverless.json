@@ -1,0 +1,10 @@
+{
+  "runtime": "nodejs16.x",
+  "version": "1.0",
+  "appFunctions": {
+    "listing-highlights": {
+      "file": "listing-highlights.js",
+      "secrets": ["GOOGLE_MAPS_API_KEY", "WALKSCORE"]
+    }
+  }
+}

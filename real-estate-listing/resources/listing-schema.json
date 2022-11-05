@@ -1,0 +1,116 @@
+{
+  "name": "listings",
+  "labels": {
+    "singular": "Listing",
+    "plural": "Listing"
+  },
+  "primaryDisplayProperty": "name",
+  "secondaryDisplayProperties": ["desc"],
+  "searchableProperties": ["desc", "address", "notes", "name"],
+  "requiredProperties": [
+    "address",
+    "state",
+    "postal_code",
+    "status",
+    "desc",
+    "name"
+  ],
+  "properties": [
+    {
+      "name": "name",
+      "label": "Name",
+      "type": "string",
+      "fieldType": "text"
+    },
+    {
+      "name": "desc",
+      "label": "Description",
+      "type": "string",
+      "fieldType": "textarea"
+    },
+    {
+      "name": "image",
+      "label": "Feature Image",
+      "type": "string",
+      "fieldType": "text"
+    },
+    {
+      "name": "status",
+      "label": "Status",
+      "type": "enumeration",
+      "fieldType": "select",
+      "options": [
+        {
+          "label": "For Sale",
+          "value": "for_sale"
+        },
+        {
+          "label": "Sold",
+          "value": "sold"
+        }
+      ]
+    },
+    {
+      "name": "date_received",
+      "label": "Date received",
+      "type": "date",
+      "fieldType": "date"
+    },
+    {
+      "name": "country",
+      "label": "Country",
+      "type": "string",
+      "fieldType": "text"
+    },
+    {
+      "name": "city",
+      "label": "City",
+      "type": "string",
+      "fieldType": "text"
+    },
+    {
+      "name": "state",
+      "label": "State",
+      "type": "string",
+      "fieldType": "text"
+    },
+    {
+      "name": "address",
+      "label": "Address",
+      "type": "string",
+      "hasUniqueValue": true,
+      "fieldType": "text"
+    },
+    {
+      "name": "postal_code",
+      "label": "Postal Code",
+      "type": "string",
+      "fieldType": "text"
+    },
+    {
+      "name": "latitude",
+      "label": "Latitude",
+      "type": "string",
+      "fieldType": "text"
+    },
+    {
+      "name": "longitude",
+      "label": "Longitude",
+      "type": "string",
+      "fieldType": "text"
+    },
+    {
+      "name": "notes",
+      "label": "Notes",
+      "type": "string",
+      "fieldType": "text"
+    },
+    {
+      "name": "mls_number",
+      "label": "MLS Number",
+      "type": "string",
+      "fieldType": "text"
+    }
+  ],
+  "associatedObjects": ["CONTACT", "COMPANY"]
+}
