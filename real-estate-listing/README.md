@@ -17,11 +17,11 @@ was featured in the HubSpot.Extend() conference:
 This project can be used in a HubSpot account by:
 
 1. Generating API tokens for the following services:
-  - [Google Maps' "Nearby Places" API](https://developers.google.com/maps/documentation/places/web-service/search-nearby)
-  - ["Walkscore" API](https://developers.google.com/maps/documentation/places/web-service/search-nearby)
+    - [Google Maps' "Nearby Places" API](https://developers.google.com/maps/documentation/places/web-service/search-nearby)
+    - ["Walkscore" API](https://www.walkscore.com/professional/walk-score-apis.php)
 1. Creating the Listing custom object schema in your portal:
-  - [Create the Listing Custom Object Schema](https://developers.hubspot.com/docs/api/crm/crm-custom-objects) in your portal using the schema included in [`./resources/listing-schema.json`](./resources/listing-schema.json)
-  - Optionally, import the included [`./resources/sample-data.csv`](`./resources/sample-data.csv`) to generate test Listings
+    - [Create the Listing Custom Object Schema](https://developers.hubspot.com/docs/api/crm/crm-custom-objects) in your portal using the schema included in [`./resources/listing-schema.json`](./resources/listing-schema.json)
+    - Optionally, import the included [`./resources/sample-data.csv`](`./resources/sample-data.csv`) to generate test Listings
 1. Cloning this repository
 1. `cd real-estate-listing`
 1. `hs sandbox create --name=listings     # optional`
