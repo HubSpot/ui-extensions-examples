@@ -1,0 +1,22 @@
+{
+  "name": "Real Estate Listing",
+  "description": "Real Estate listing CRM Card application.",
+  "scopes": [
+    "crm.objects.contacts.read",
+    "crm.objects.contacts.write",
+    "crm.objects.custom.read",
+    "crm.schemas.custom.read",
+    "crm.objects.custom.write",
+    "crm.schemas.custom.write"
+  ],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "./listing-card.json"
+        }
+      ]
+    }
+  }
+}

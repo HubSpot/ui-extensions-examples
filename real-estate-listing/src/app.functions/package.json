@@ -1,0 +1,12 @@
+{
+  "name": "real-estate-listing-functions",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Serverless functions for rendering CRM Card and handling user actions",
+  "license": "MIT",
+  "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.3.16",
+    "@hubspot/api-client": "^7.0.1",
+    "axios": "^0.27.2"
+  }
+}
