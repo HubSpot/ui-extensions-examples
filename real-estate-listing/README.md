@@ -16,6 +16,7 @@ was featured in the HubSpot.Extend() conference:
 
 This project can be used in a HubSpot account by:
 
+1. Use the schema file and sample data in `./resources` folder to create a custom object for Listing.
 1. Generating API tokens for the following services:
     - [Google Maps' "Nearby Places" API](https://developers.google.com/maps/documentation/places/web-service/search-nearby)
     - ["Walkscore" API](https://www.walkscore.com/professional/walk-score-apis.php)
@@ -32,6 +33,7 @@ This project can be used in a HubSpot account by:
 
 ## Prerequisites
 
+- You must have the Listings custom object created with all necessary sample data added to it. 
 - You must have an active HubSpot account.
 - You must be using the latest [HubSpot CLI](https://www.npmjs.com/package/@hubspot/cli).
 - You must have access to developer projects (developer projects are currently [in public beta under "CRM Development Tools"](https://app.hubspot.com/l/whats-new/betas)).
