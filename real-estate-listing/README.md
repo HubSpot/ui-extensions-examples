@@ -8,6 +8,7 @@ was featured in the HubSpot.Extend() conference:
 > Our goal is to keep agents productive, _preventing them from hopping between systems_...  \
 > and help them _quickly find information_ that can help buyers make decisions faster.
 
+**Checkout the [HubSpot.Extend() breakout session](https://youtu.be/LJRzMGKbjuI) for a full demo of this app and more.**
 
 ![real-estate-listing-example](https://user-images.githubusercontent.com/30241/200099293-0d109d70-2b8a-4af0-8e9c-a06bf07318af.png)
 
