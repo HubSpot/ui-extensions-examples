@@ -6,12 +6,7 @@ exports.main = async (context = {}, sendResponse) => {
 
   const coordinates = `${latitude},${longitude}`;
 
-  let header = [
-    {
-      type: 'heading',
-      text: 'Nearby Attractions',
-    },
-  ];
+  let header = [];
 
   const footer = [
     {

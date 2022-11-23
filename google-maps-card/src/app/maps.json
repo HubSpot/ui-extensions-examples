@@ -1,7 +1,7 @@
 {
   "type": "crm-card",
   "data": {
-    "title": "Nearbt locations of interest for this property",
+    "title": "Nearby restaurants for this location",
     "location": "crm.record.tab",
     "fetch": {
       "targetFunction": "maps",

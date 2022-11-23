@@ -5,10 +5,6 @@
     "maps": {
       "file": "maps.js",
       "secrets": ["GOOGLE_MAPS"]
-    },
-    "walkscore": {
-      "file": "walkscore.js",
-      "secrets": ["WALKSCORE"]
     }
   }
 }
