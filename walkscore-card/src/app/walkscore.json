@@ -1,7 +1,7 @@
 {
   "type": "crm-card",
   "data": {
-    "title": "Walkscore for this location",
+    "title": "Location walkscore",
     "location": "crm.record.tab",
     "fetch": {
       "targetFunction": "walkscore",

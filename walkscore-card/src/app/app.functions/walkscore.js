@@ -6,15 +6,13 @@ exports.main = async (context = {}, sendResponse) => {
 
   const fullAddress = [address, city, state, country].join(', ');
 
-  let header = [];
-
   try {
     const { modes, logo_url } = await getWalkScores(
       fullAddress,
       latitude,
       longitude
     );
-    header = [
+    const walkscoreSections = [
       {
         type: 'image',
         src: logo_url,
@@ -37,7 +35,7 @@ exports.main = async (context = {}, sendResponse) => {
     ];
 
     sendResponse({
-      sections: [...header],
+      sections: [...walkscoreSections],
     });
   } catch (error) {
     // "message" will create an error feedback banner when it catches an error
@@ -46,7 +44,7 @@ exports.main = async (context = {}, sendResponse) => {
         type: 'ERROR',
         body: `Error: ${error.message}`,
       },
-      sections: [...header],
+      sections: [],
     });
   }
 };

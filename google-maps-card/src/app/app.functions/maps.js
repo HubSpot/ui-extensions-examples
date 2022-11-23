@@ -6,8 +6,6 @@ exports.main = async (context = {}, sendResponse) => {
 
   const coordinates = `${latitude},${longitude}`;
 
-  let header = [];
-
   const footer = [
     {
       type: 'button',
@@ -53,7 +51,7 @@ exports.main = async (context = {}, sendResponse) => {
     });
 
     sendResponse({
-      sections: [...header, ...body, ...footer],
+      sections: [...body, ...footer],
     });
   } catch (error) {
     // "message" will create an error feedback banner when it catches an error
@@ -62,7 +60,7 @@ exports.main = async (context = {}, sendResponse) => {
         type: 'ERROR',
         body: `Error: ${error.message}`,
       },
-      sections: [...header],
+      sections: [],
     });
   }
 };
