@@ -7,7 +7,7 @@
       "secrets": ["GOOGLE_MAPS"]
     },
     "walkscore": {
-      "file": "maps.js",
+      "file": "walkscore.js",
       "secrets": ["WALKSCORE"]
     }
   }
