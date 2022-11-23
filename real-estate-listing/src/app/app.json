@@ -1,6 +1,6 @@
 {
   "name": "Real Estate Listing",
-  "description": "Real Estate listing CRM Card application.",
+  "description": "This app consists of custom cards that demonstrate integration with Google Maps and Walkscore APIs to display nearby properties and walk score based on location details",
   "scopes": [
     "crm.objects.contacts.read",
     "crm.objects.contacts.write",
@@ -14,7 +14,10 @@
     "crm": {
       "cards": [
         {
-          "file": "./listing-card.json"
+          "file": "./maps.json"
+        },
+        {
+          "file": "./walkscore.json"
         }
       ]
     }
