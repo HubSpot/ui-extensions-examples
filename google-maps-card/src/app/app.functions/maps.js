@@ -6,22 +6,44 @@ exports.main = async (context = {}, sendResponse) => {
 
   const coordinates = `${latitude},${longitude}`;
 
-  const footer = [
-    {
-      type: 'button',
-      variant: 'primary',
-      text: 'Explore local area',
-      onClick: {
-        type: 'IFRAME',
-        width: 800,
-        height: 400,
-        uri: getMapUrl(coordinates),
-      },
-    },
-  ];
-
   try {
     const places = await getNearbyPlaces(coordinates);
+
+    const markerList = places.map((place) => {
+      return (
+        place.geometry.location.lat.toString() +
+        ',' +
+        place.geometry.location.lng.toString()
+      );
+    });
+
+    const markers = markerList.join('|');
+
+    const mapImage = [
+      {
+        type: 'image',
+        src:
+          'https://maps.googleapis.com/maps/api/staticmap?center=' +
+          coordinates +
+          '&markers=color:0xfe7a59|' +
+          markers +
+          '&zoom=12&size=600x300&key=' +
+          GOOGLE_MAPS,
+        alt: 'Google map image',
+        onClick: {
+          type: 'IFRAME',
+          width: 800,
+          height: 400,
+          uri: getMapUrl(coordinates),
+        },
+      },
+      {
+        type: 'text',
+        format: 'markdown',
+        text: '_Click the image to explore the area_',
+      },
+    ];
+
     const body = places.map((place) => {
       return {
         type: 'tile',
@@ -51,7 +73,7 @@ exports.main = async (context = {}, sendResponse) => {
     });
 
     sendResponse({
-      sections: [...body, ...footer],
+      sections: [...mapImage, ...body],
     });
   } catch (error) {
     // "message" will create an error feedback banner when it catches an error
