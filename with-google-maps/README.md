@@ -2,6 +2,8 @@
 
 This example uses Google Maps Nearby Places API to render a custom card on the CRM custom object Record page, displaying nearby attractions for a Real Estate Listing custom object. This use case was featured in the HubSpot.Extend() conference.
 
+![gmaps](https://user-images.githubusercontent.com/20711270/208017760-339b9344-e3d0-4cac-947a-f08d263ae822.gif)
+
 > **Mid-sized real estate company** employing agents to help buyers find the right home. \
 > Our goal is to keep agents productive, _preventing them from hopping between systems_... \
 > and help them _quickly find information_ that can help buyers make decisions faster.
