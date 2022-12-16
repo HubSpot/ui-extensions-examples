@@ -1,10 +1,12 @@
 # With Walkscore API
 
-This example uses Google Maps Nearby Places API to render a custom card on the CRM custom object Record page, displaying transit statistics for a Real Estate Listing custom object. This use case was featured in the HubSpot.Extend() conference:
+This example uses Google Maps Nearby Places API to render a custom card on the CRM custom object Record page, displaying transit statistics for a Real Estate Listing custom object. This use case was featured in the HubSpot.Extend() conference
 
 > **Mid-sized real estate company** employing agents to help buyers find the right home. \
 > Our goal is to keep agents productive, _preventing them from hopping between systems_... \
 > and help them _quickly find information_ that can help buyers make decisions faster.
+
+<img width="704" alt="image" src="https://user-images.githubusercontent.com/20711270/208018173-498d9b5d-0d41-4996-ad69-0e54b7114880.png">
 
 Checkout the [HubSpot.Extend() breakout session](https://youtu.be/LJRzMGKbjuI) for a full demo of this app and more.
 
