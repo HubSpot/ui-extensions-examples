@@ -11,9 +11,9 @@ exports.main = async (context, sendResponse) => {
         onClick: {
           type: 'IFRAME',
           // Width and height of the iframe (in pixels)
-          width: 1000,
-          height: 800,
-          uri: 'https://product.hubspot.com/blog',
+          width: 700,
+          height: 400,
+          uri: 'https://www.youtube.com/embed/FDumsLFwyNM',
         },
       },
     ],
