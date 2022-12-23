@@ -1,10 +1,10 @@
 {
   "type": "crm-card",
   "data": {
-    "title": "Location Highlights",
+    "title": "Location walkscore",
     "location": "crm.record.tab",
     "fetch": {
-      "targetFunction": "listing-highlights",
+      "targetFunction": "walkscore",
       "objectTypes": [
         {
           "name": "p_listings",

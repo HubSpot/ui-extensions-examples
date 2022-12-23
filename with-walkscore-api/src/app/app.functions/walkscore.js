@@ -1,33 +1,10 @@
 const axios = require('axios');
-const { Client } = require('@googlemaps/google-maps-services-js');
 
 exports.main = async (context = {}, sendResponse) => {
   const { latitude, longitude, address, city, state, country } =
     context.propertiesToSend;
 
   const fullAddress = [address, city, state, country].join(', ');
-  const coordinates = `${latitude},${longitude}`;
-
-  let header = [
-    {
-      type: 'heading',
-      text: 'Nearby Attractions',
-    },
-  ];
-
-  const footer = [
-    {
-      type: 'button',
-      variant: 'primary',
-      text: 'Explore local area',
-      onClick: {
-        type: 'IFRAME',
-        width: 800,
-        height: 400,
-        uri: getMapUrl(coordinates),
-      },
-    },
-  ];
 
   try {
     const { modes, logo_url } = await getWalkScores(
@@ -35,7 +12,7 @@ exports.main = async (context = {}, sendResponse) => {
       latitude,
       longitude
     );
-    header = [
+    const walkscoreSections = [
       {
         type: 'image',
         src: logo_url,
@@ -55,40 +32,10 @@ exports.main = async (context = {}, sendResponse) => {
           };
         }),
       },
-      ...header,
     ];
 
-    const places = await getNearbyPlaces(coordinates);
-    const body = places.map((place) => {
-      return {
-        type: 'tile',
-        content: [
-          {
-            type: 'heading',
-            text: place.name,
-          },
-          {
-            type: 'stack',
-            distance: 'flush',
-            content: [
-              {
-                type: 'text',
-                format: 'markdown',
-                text: `**${place.rating} rating** | _${place.vicinity}_`,
-              },
-            ],
-          },
-          {
-            type: 'tag',
-            text: place.types[0],
-            variant: 'default',
-          },
-        ],
-      };
-    });
-
     sendResponse({
-      sections: [...header, ...body, ...footer],
+      sections: [...walkscoreSections],
     });
   } catch (error) {
     // "message" will create an error feedback banner when it catches an error
@@ -97,33 +44,13 @@ exports.main = async (context = {}, sendResponse) => {
         type: 'ERROR',
         body: `Error: ${error.message}`,
       },
-      sections: [...header],
+      sections: [],
     });
   }
 };
 
 // ================== vvvv  Helper functions  vvvv =====================
-
-const { GOOGLE_MAPS_API_KEY, WALKSCORE } = process.env;
-
-const googleMaps = new Client({});
-
-const defaultOptions = { type: 'restaurant', radius: 2500 /* meters */ };
-
-async function getNearbyPlaces(location, limit = 3, options = defaultOptions) {
-  const places = await googleMaps.placesNearby({
-    params: { location, key: GOOGLE_MAPS_API_KEY, ...options },
-  });
-
-  return places.data.results.slice(0, limit);
-}
-
-function getMapUrl(location) {
-  return `https://www.google.com/maps/embed/v1/place?key=${GOOGLE_MAPS_API_KEY}&q=${encodeURIComponent(
-    location
-  )}`;
-}
-
+const { WALKSCORE } = process.env;
 /**
  * Return Walking, Biking and Transit scores for a given location
  *

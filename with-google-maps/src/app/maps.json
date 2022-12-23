@@ -1,0 +1,24 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Nearby restaurants for this location",
+    "location": "crm.record.tab",
+    "fetch": {
+      "targetFunction": "maps",
+      "objectTypes": [
+        {
+          "name": "p_listings",
+          "propertiesToSend": [
+            "latitude",
+            "longitude",
+            "address",
+            "city",
+            "state",
+            "country",
+            "hs_object_id"
+          ]
+        }
+      ]
+    }
+  }
+}

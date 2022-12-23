@@ -1,0 +1,10 @@
+{
+  "runtime": "nodejs16.x",
+  "version": "1.0",
+  "appFunctions": {
+    "maps": {
+      "file": "maps.js",
+      "secrets": ["GOOGLE_MAPS"]
+    }
+  }
+}

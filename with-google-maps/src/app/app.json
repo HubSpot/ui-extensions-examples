@@ -1,0 +1,22 @@
+{
+  "name": "Google Maps API Integration",
+  "description": "This app consists of a custom card that demonstrate integration with Google Maps APIs to display nearby restaurants based on location details",
+  "scopes": [
+    "crm.objects.contacts.read",
+    "crm.objects.contacts.write",
+    "crm.objects.custom.read",
+    "crm.schemas.custom.read",
+    "crm.objects.custom.write",
+    "crm.schemas.custom.write"
+  ],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "./maps.json"
+        }
+      ]
+    }
+  }
+}
