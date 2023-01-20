@@ -1,0 +1,16 @@
+{
+  "type": "crm-card",
+  "version": "2",
+  "data": {
+    "title": "Asana Tasks",
+    "fetch": {
+      "targetFunction": "view-task-card",
+      "objectTypes": [
+        {
+          "name": "contacts",
+          "propertiesToSend": ["hs_object_id", "firstname", "lastname"]
+        }
+      ]
+    }
+  }
+}
