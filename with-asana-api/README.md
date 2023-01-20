@@ -2,7 +2,9 @@
 
 This sample app contains two custom cards on the contact record to
 1. Create a task for a given Asana team
-2. View tasks for a given Asana team
+2. View tasks for a given Asana team & HubSpot contact
+
+![asana](https://user-images.githubusercontent.com/20711270/213601795-4935f4ce-439f-4707-a28e-f39fd1c63597.gif)
 
 ## Prerequisites
 1. Get your Asana [personal access token](https://developers.asana.com/docs/personal-access-token).
