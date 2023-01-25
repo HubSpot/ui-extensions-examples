@@ -9,7 +9,7 @@ This sample app contains two custom cards on the contact record to
 
 ## Prerequisites
 1. Get your Asana [personal access token](https://developers.asana.com/docs/personal-access-token).
-2. Create a global custom field (available for the whole workspace) in your Asana project to capture HubSpot contact IDs. This field is used to search tasks for the contact. 
+2. Create a global custom field (available for the whole workspace) in your Asana project to capture HubSpot contact IDs. This field is used to search tasks for the contact. Add this field as a secret to your account using `hs secret add ASANA_CUSTOM_FIELD`.
 
 ## How to use
 1. Clone this repo

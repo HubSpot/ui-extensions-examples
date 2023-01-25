@@ -4,11 +4,11 @@
   "appFunctions": {
     "create-task-card": {
       "file": "create-task-card.js",
-      "secrets": ["ASANA_PAT", "ASANA_TEAM_GID"]
+      "secrets": ["ASANA_PAT", "ASANA_TEAM_GID", "ASANA_CUSTOM_FIELD"]
     },
     "view-task-card": {
       "file": "view-task-card.js",
-      "secrets": ["ASANA_PAT", "ASANA_TEAM_GID", "ASANA_WS_GID"]
+      "secrets": ["ASANA_PAT", "ASANA_WS_GID", "ASANA_CUSTOM_FIELD"]
     }
   }
 }

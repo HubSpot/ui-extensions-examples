@@ -2,7 +2,7 @@ const axios = require('axios');
 const asana = require('asana');
 
 // Make sure you have added these as secrets in your account using `hs secrets add`
-const { ASANA_PAT, ASANA_WS_GID } = process.env;
+const { ASANA_PAT, ASANA_WS_GID, ASANA_CUSTOM_FIELD } = process.env;
 const asanaClient = asana.Client.create().useAccessToken(ASANA_PAT);
 
 exports.main = async (context = {}, sendResponse) => {
@@ -49,12 +49,12 @@ exports.main = async (context = {}, sendResponse) => {
                     type: 'text',
                     format: 'markdown',
                     variant: 'microcopy',
-                    text: task.notes,
+                    text: task.notes == null ? '' : task.notes,
                   },
                 },
                 {
                   label: 'Assigned to',
-                  value: task.assignee.name,
+                  value: task.assignee.name == null ? '' : task.assignee.name,
                 },
                 {
                   label: 'Due on',
@@ -94,7 +94,7 @@ exports.main = async (context = {}, sendResponse) => {
 
 async function getTasks(hs_contact_id) {
   const tasks = asanaClient.tasks.searchTasksForWorkspace(ASANA_WS_GID, {
-    'custom_fields.1203668111866685.value': hs_contact_id,
+    [`custom_fields.${ASANA_CUSTOM_FIELD}.value`]: hs_contact_id,
     opt_fields: 'name,permalink_url,due_on,notes,assignee.name,completed',
   });
   return tasks;
