@@ -1,6 +1,7 @@
 const axios = require('axios');
 const asana = require('asana');
 
+// Make sure you have added these as secrets in your account using `hs secrets add`
 const { ASANA_PAT, ASANA_WS_GID } = process.env;
 const asanaClient = asana.Client.create().useAccessToken(ASANA_PAT);
 
@@ -13,7 +14,7 @@ exports.main = async (context = {}, sendResponse) => {
 
     let taskSections = [];
 
-    if (tasks.data.length == 0) {
+    if (tasks.data.length === 0) {
       taskSections = [
         {
           type: 'heading',
@@ -70,15 +71,6 @@ exports.main = async (context = {}, sendResponse) => {
       });
     }
 
-    // const taskSections = [
-    //   {
-    //     type: "text",
-    //     variant: "microcopy",
-    //     format: "markdown",
-    //     text: taskList,
-    //   },
-    // ];
-
     sendResponse({
       sections: [...taskSections],
     });
@@ -86,13 +78,12 @@ exports.main = async (context = {}, sendResponse) => {
     sendResponse({
       message: {
         type: 'ERROR',
-        // body: `Error: ${error.message}`,
-        body: JSON.stringify(error, null, 2),
+        body: `Error: ${error.message}`,
       },
       sections: [
         {
           type: 'text',
-          text: JSON.stringify(error, null, 2),
+          text: error.message,
         },
       ],
     });

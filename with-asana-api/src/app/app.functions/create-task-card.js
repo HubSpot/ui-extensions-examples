@@ -1,7 +1,8 @@
 const axios = require('axios');
 const asana = require('asana');
 
-const { ASANA_PAT, ASANA_TEAM_GID, ASANA_CUSTOM_FIELD } = process.env;
+// Make sure you have added these as secrets in your account using `hs secrets add`
+const { ASANA_PAT, ASANA_TEAM_GID } = process.env;
 const asanaClient = asana.Client.create().useAccessToken(ASANA_PAT);
 
 exports.main = async (context = {}, sendResponse) => {
@@ -18,7 +19,6 @@ exports.main = async (context = {}, sendResponse) => {
         type: 'text',
         variant: 'microcopy',
         format: 'markdown',
-        // text: JSON.stringify(teamData, null, 2),
         text:
           'Create a task for your Asana team: ' +
           teamData.name +
@@ -82,11 +82,13 @@ exports.main = async (context = {}, sendResponse) => {
     ];
 
     if (context.event && context.event.type === 'SUBMIT') {
+      const { taskName, taskNotes, taskProject, taskMember } =
+        context.event.payload.formState;
       await asanaClient.tasks.createTask({
-        name: context.event.payload.formState.taskName,
-        notes: context.event.payload.formState.taskNotes,
-        projects: [context.event.payload.formState.taskProject],
-        assignee: context.event.payload.formState.taskMember,
+        name: taskName,
+        notes: taskNotes,
+        projects: [taskProject],
+        assignee: taskMember,
         custom_fields: {
           1203668111866685: asanaTaskTag,
         },
@@ -105,7 +107,6 @@ exports.main = async (context = {}, sendResponse) => {
       message: {
         type: 'ERROR',
         body: `Error: ${error.message}`,
-        // body: JSON.stringify(error, null, 2),
       },
       sections: [
         {
