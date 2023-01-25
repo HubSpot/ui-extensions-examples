@@ -92,6 +92,7 @@ exports.main = async (context = {}, sendResponse) => {
 
 // ================== vvvv  Helper functions  vvvv =====================
 
+// Get Asana tasks for the workspace and the team. Make sure you created a global custom field, added to the project, as well as added ASANA_CUSTOM_FIELD in your secrets and
 async function getTasks(hs_contact_id) {
   const tasks = asanaClient.tasks.searchTasksForWorkspace(ASANA_WS_GID, {
     [`custom_fields.${ASANA_CUSTOM_FIELD}.value`]: hs_contact_id,

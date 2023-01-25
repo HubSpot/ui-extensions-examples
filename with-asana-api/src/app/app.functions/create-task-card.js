@@ -14,6 +14,7 @@ exports.main = async (context = {}, sendResponse) => {
     const teamUsers = await getTeamUsers();
     const teamProjects = await getTeamProjects();
 
+    // Create task sections with all the data
     const taskSections = [
       {
         type: 'text',
@@ -120,16 +121,19 @@ exports.main = async (context = {}, sendResponse) => {
 
 // ================== vvvv  Helper functions  vvvv =====================
 
+// Get Asana team data
 async function getTeamData() {
   const team = await asanaClient.teams.getTeam(ASANA_TEAM_GID);
   return team;
 }
 
+// Get users for the team
 async function getTeamUsers() {
   const users = await asanaClient.users.getUsersForTeam(ASANA_TEAM_GID);
   return users.data;
 }
 
+// Get projects for the team
 async function getTeamProjects() {
   const projects = await asanaClient.projects.getProjectsForTeam(
     ASANA_TEAM_GID
