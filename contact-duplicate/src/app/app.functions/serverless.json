@@ -1,0 +1,14 @@
+{
+  "runtime": "nodejs16.x",
+  "version": "1.0",
+  "appFunctions": {
+    "fetchAssociations": {
+      "file": "fetchAssociations.js",
+      "secrets": []
+    },
+    "duplicateContact": {
+      "file": "duplicateContact.js",
+      "secrets": []
+    }
+  }
+}

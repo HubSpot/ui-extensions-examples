@@ -1,0 +1,22 @@
+{
+  "name": "Contact Duplicate",
+  "description": "An example private app that contains a single card extension.",
+  "scopes": [
+    "crm.objects.contacts.read",
+    "crm.objects.deals.read",
+    "crm.objects.companies.read",
+    "collector.graphql_schema.read",
+    "collector.graphql_query.execute",
+    "crm.objects.contacts.write"
+  ],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/extension.json"
+        }
+      ]
+    }
+  }
+}
