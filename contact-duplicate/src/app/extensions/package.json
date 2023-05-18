@@ -1,0 +1,24 @@
+{
+  "name": "ui-extensibility-react-hello-world",
+  "version": "0.0.1",
+  "description": "",
+  "license": "MIT",
+  "main": "Extension.tsx",
+  "scripts": {
+    "bump": "npm install -s @hubspot/ui-extensions@next && npm install -D @hubspot/ui-extensions-dev-server@next",
+    "setup": "npm run bump && npm ci",
+    "dev": "hs-ui-extensions-dev-server dev",
+    "build": "hs-ui-extensions-remote-build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HubSpot/ui-extensibility-react-hello-world"
+  },
+  "dependencies": {
+    "@hubspot/ui-extensions": "^0.0.1-prealpha.7",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@hubspot/ui-extensions-dev-server": "^0.0.1-prealpha.8"
+  }
+}
