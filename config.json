@@ -5,6 +5,12 @@
       "label": "Get Started with UI Extensions",
       "path": "get-started",
       "insertPath": null
+    },
+    {
+      "name": "contact-duplicate",
+      "label": "Duplicate Contact",
+      "path": "contact-duplicate",
+      "insertPath": null
     }
   ]
 }
