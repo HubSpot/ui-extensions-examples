@@ -15,10 +15,10 @@
     "url": "https://github.com/HubSpot/ui-extensibility-react-hello-world"
   },
   "dependencies": {
-    "@hubspot/ui-extensions": "^0.0.1-prealpha.7",
+    "@hubspot/ui-extensions": "^0.0.1-beta.0",
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@hubspot/ui-extensions-dev-server": "^0.0.1-prealpha.8"
+    "@hubspot/ui-extensions-dev-server": "^0.0.1-beta.0"
   }
 }
