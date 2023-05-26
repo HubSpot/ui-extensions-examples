@@ -57,7 +57,9 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
       setLoading(false); // End loading state
       if (resp.status === 'SUCCESS') {
         // Set associations with response data
-        setAssocaitions(resp.response['data'].CRM.contact.associations);
+        setAssocaitions(
+          resp.response.data.CRM.contact.associations as AssociationsGQL
+        );
       } else {
         setError(resp.message); // Set error message from response
       }

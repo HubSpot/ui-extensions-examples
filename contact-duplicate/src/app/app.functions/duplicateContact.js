@@ -30,26 +30,27 @@ exports.main = async (context = {}, sendResponse) => {
       PRIVATE_APP_TOKEN
     );
 
-    const formattedAssociations = transformAssociations(
-      associations,
-      contact.data.id
-    );
+    if (associations.length) {
+      const formattedAssociations = transformAssociations(
+        associations,
+        contact.data.id
+      );
 
-    // Update the associations on HubSpot
-    await updateAssociations(
-      formattedAssociations.company_collection__primary,
-      '0-1',
-      '0-2',
-      PRIVATE_APP_TOKEN
-    );
+      // Update the associations on HubSpot
+      await updateAssociations(
+        formattedAssociations.company_collection__primary,
+        '0-1',
+        '0-2',
+        PRIVATE_APP_TOKEN
+      );
 
-    await updateAssociations(
-      formattedAssociations.deal_collection__contact_to_deal,
-      '0-1',
-      '0-3',
-      PRIVATE_APP_TOKEN
-    );
-
+      await updateAssociations(
+        formattedAssociations.deal_collection__contact_to_deal,
+        '0-1',
+        '0-3',
+        PRIVATE_APP_TOKEN
+      );
+    }
     // Send successful response
     sendResponse(contact.data);
   } catch (e) {
@@ -99,18 +100,16 @@ const updateAssociations = (
   toObjectType,
   token
 ) => {
-  if (associations.length) {
-    return axios.post(
-      `https://api.hubapi.com/crm/v4/associations/${fromObjectType}/${toObjectType}/batch/create`,
-      { inputs: associations },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-  }
+  return axios.post(
+    `https://api.hubapi.com/crm/v4/associations/${fromObjectType}/${toObjectType}/batch/create`,
+    { inputs: associations },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 };
 
 // Function to transform association data into required format
@@ -161,8 +160,6 @@ const query = `query data($id: String!) {
       phone
       photo
       lastname
-      leadsource
-      leadstatus
       mobilephone
       jobtitle
       industry
