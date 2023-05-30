@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "HubSpot",
+  "license": "MIT",
   "dependencies": {
     "@hubspot/api-client": "^7.0.1",
     "axios": "^0.27.2"

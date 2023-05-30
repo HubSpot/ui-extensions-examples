@@ -5,7 +5,7 @@
   "license": "MIT",
   "main": "OrderMeal.tsx",
   "scripts": {
-    "bump": "npm install -s @hubspot/ui-extensions@next && npm install -D @hubspot/ui-extensions-dev-server@next",
+    "bump": "npm install -s @hubspot/ui-extensions@latest && npm install -D @hubspot/ui-extensions-dev-server@latest",
     "setup": "npm run bump && npm ci",
     "dev": "hs-ui-extensions-dev-server dev",
     "build": "hs-ui-extensions-remote-build"
@@ -15,10 +15,10 @@
     "url": "https://github.com/HubSpot/ui-extensions-react-examples"
   },
   "dependencies": {
-    "@hubspot/ui-extensions": "^0.0.1-beta.1",
+    "@hubspot/ui-extensions": "latest",
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@hubspot/ui-extensions-dev-server": "^0.0.1-beta.1"
+    "@hubspot/ui-extensions-dev-server": "latest"
   }
 }

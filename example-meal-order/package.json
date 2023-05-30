@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/HubSpot/ui-extensions-react-examples#readme",
   "dependencies": {
-    "@hubspot/ui-extensions": "^0.0.1-beta.1"
+    "@hubspot/ui-extensions": "latest"
   }
 }
