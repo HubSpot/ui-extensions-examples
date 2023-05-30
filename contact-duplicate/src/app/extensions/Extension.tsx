@@ -89,7 +89,7 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
 
   if (loading) {
     // If loading, show a spinner
-    return <LoadingSpinner label="fetching object associations" grow={true} />;
+    return <LoadingSpinner label="fetching object associations" />;
   }
 
   if (error !== '') {
@@ -101,33 +101,31 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
     // If we have associations data but no URL, show the associations and a duplication form
     return (
       <>
-        <Stack direction="column" distance="flush">
-          <Text format={{ fontWeight: 'bold' }}>
-            Number of associations to be copied
-          </Text>
-          <DescriptionList>
-            <DescriptionListItem label={'Deals'}>
-              {associations.deal_collection__contact_to_deal.total}
-            </DescriptionListItem>
-            <DescriptionListItem label={'Companies'}>
-              {associations.company_collection__primary.total}
-            </DescriptionListItem>
-          </DescriptionList>
-          <Divider />
-          <Text format={{ fontWeight: 'bold' }}>
-            Enter a new email and duplicate the contact
-          </Text>
-          <Stack direction="column">
-            <Input
-              label="Email"
-              name="email"
-              onInput={(v) => setEmail(v)}
-              required={true}
-            />
-            <Button onClick={duplicateContact} disabled={email === ''}>
-              Duplicate Contact
-            </Button>
-          </Stack>
+        <Text format={{ fontWeight: 'bold' }}>
+          Number of associations to be copied
+        </Text>
+        <DescriptionList direction="row">
+          <DescriptionListItem label={'Deals'}>
+            {associations.deal_collection__contact_to_deal.total}
+          </DescriptionListItem>
+          <DescriptionListItem label={'Companies'}>
+            {associations.company_collection__primary.total}
+          </DescriptionListItem>
+        </DescriptionList>
+        <Divider />
+        <Text format={{ fontWeight: 'bold' }}>
+          Enter a new email and duplicate the contact
+        </Text>
+        <Stack direction="row" align="end">
+          <Input
+            label="Email"
+            name="email"
+            onInput={(v) => setEmail(v)}
+            required={true}
+          />
+          <Button onClick={duplicateContact} disabled={email === ''}>
+            Duplicate Contact
+          </Button>
         </Stack>
       </>
     );

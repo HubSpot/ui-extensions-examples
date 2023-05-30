@@ -12,13 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/HubSpot/ui-extensibility-react-hello-world"
+    "url": "https://github.com/HubSpot/ui-extensions-react-examples"
   },
   "dependencies": {
-    "@hubspot/ui-extensions": "^0.0.1-beta.0",
+    "@hubspot/ui-extensions": "^0.0.1-beta.1",
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@hubspot/ui-extensions-dev-server": "^0.0.1-beta.0"
+    "@hubspot/ui-extensions-dev-server": "^0.0.1-beta.1"
   }
 }

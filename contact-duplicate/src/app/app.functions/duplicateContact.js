@@ -30,12 +30,14 @@ exports.main = async (context = {}, sendResponse) => {
       PRIVATE_APP_TOKEN
     );
 
-    if (associations.length) {
-      const formattedAssociations = transformAssociations(
-        associations,
-        contact.data.id
-      );
+    const formattedAssociations = transformAssociations(
+      associations,
+      contact.data.id
+    );
 
+    if (
+      Object.values(formattedAssociations).some((value) => value.length > 1)
+    ) {
       // Update the associations on HubSpot
       await updateAssociations(
         formattedAssociations.company_collection__primary,
