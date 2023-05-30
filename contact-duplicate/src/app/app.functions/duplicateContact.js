@@ -35,17 +35,16 @@ exports.main = async (context = {}, sendResponse) => {
       contact.data.id
     );
 
-    if (
-      Object.values(formattedAssociations).some((value) => value.length > 1)
-    ) {
-      // Update the associations on HubSpot
+    if (formattedAssociations.company_collection__primary) {
       await updateAssociations(
         formattedAssociations.company_collection__primary,
         '0-1',
         '0-2',
         PRIVATE_APP_TOKEN
       );
+    }
 
+    if (formattedAssociations.deal_collection__contact_to_deal) {
       await updateAssociations(
         formattedAssociations.deal_collection__contact_to_deal,
         '0-1',
@@ -53,6 +52,7 @@ exports.main = async (context = {}, sendResponse) => {
         PRIVATE_APP_TOKEN
       );
     }
+
     // Send successful response
     sendResponse(contact.data);
   } catch (e) {
