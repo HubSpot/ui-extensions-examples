@@ -1,0 +1,19 @@
+{
+  "name": "ui-extensibility-contact-duplicate",
+  "version": "1.0.0",
+  "description": "A basic example of a UI Extension built with HubSpot's React developer tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HubSpot/ui-extensibility-react-hello-world.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HubSpot/ui-extensibility-react-hello-world/issues"
+  },
+  "homepage": "https://github.com/HubSpot/ui-extensibility-react-hello-world#readme"
+}

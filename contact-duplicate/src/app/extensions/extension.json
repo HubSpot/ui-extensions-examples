@@ -1,0 +1,11 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Duplicate Contact",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "Extension.tsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}
