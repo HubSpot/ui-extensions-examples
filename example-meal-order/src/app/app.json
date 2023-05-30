@@ -1,0 +1,15 @@
+{
+  "name": "Gift a meal",
+  "description": "Gift a meal to a contact.",
+  "scopes": ["crm.objects.contacts.read"],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/order-meal.json"
+        }
+      ]
+    }
+  }
+}
