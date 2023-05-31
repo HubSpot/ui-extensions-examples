@@ -6,7 +6,6 @@
   "main": "Extension.tsx",
   "scripts": {
     "bump": "npm install -s @hubspot/ui-extensions@latest && npm install -D @hubspot/ui-extensions-dev-server@latest",
-    "setup": "npm run bump && npm ci",
     "dev": "hs-ui-extensions-dev-server dev",
     "build": "hs-ui-extensions-remote-build"
   },
