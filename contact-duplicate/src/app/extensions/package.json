@@ -1,6 +1,6 @@
 {
-  "name": "ui-extensibility-react-hello-world",
-  "version": "0.0.1",
+  "name": "contact-duplicate-extension",
+  "version": "0.1.0",
   "description": "",
   "license": "MIT",
   "main": "Extension.tsx",

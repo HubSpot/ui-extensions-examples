@@ -1,9 +1,9 @@
 {
-  "name": "order-meal",
+  "name": "order-meal-extension",
   "version": "0.1.0",
   "description": "",
   "license": "MIT",
-  "main": "OrderMeal.tsx",
+  "main": "OrderMealExtension.tsx",
   "scripts": {
     "dev": "hs-ui-extensions-dev-server dev",
     "build": "hs-ui-extensions-dev-server build"

@@ -1,11 +1,8 @@
 {
-  "name": "resturant.functions",
+  "name": "resturants-functions",
   "version": "0.1.0",
   "description": "",
   "main": "resturant.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "HubSpot",
   "license": "MIT",
   "dependencies": {
