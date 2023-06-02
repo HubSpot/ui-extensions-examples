@@ -8,13 +8,13 @@
     },
     {
       "name": "contact-duplicate",
-      "label": "Duplicate Contact",
+      "label": "Duplicate a Contact",
       "path": "contact-duplicate",
       "insertPath": null
     },
     {
       "name": "example-meal-order",
-      "label": "Gift a meal",
+      "label": "Gift a Meal",
       "path": "example-meal-order",
       "insertPath": null
     }
