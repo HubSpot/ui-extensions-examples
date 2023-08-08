@@ -7,10 +7,11 @@ const ASSOCIATION_TYPE_IDS = {
   deal_collection__contact_to_deal: 4
 };
 
+const PRIVATE_APP_TOKEN = process.env['PRIVATE_APP_ACCESS_TOKEN'];
+
 // Entry function of this module, it prepares and sends request to HubSpot
 exports.main = async (context = {}, sendResponse) => {
   const { hs_object_id } = context.propertiesToSend;
-  const PRIVATE_APP_TOKEN = context.secrets.PRIVATE_APP_ACCESS_TOKEN;
   const { associations, email } = context.parameters;
 
   try {
