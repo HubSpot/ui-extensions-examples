@@ -4,13 +4,14 @@ const axios = require('axios');
 // Mapping association type to IDs
 const ASSOCIATION_TYPE_IDS = {
   company_collection__primary: 1,
-  deal_collection__contact_to_deal: 4,
+  deal_collection__contact_to_deal: 4
 };
+
+const PRIVATE_APP_TOKEN = process.env['PRIVATE_APP_ACCESS_TOKEN'];
 
 // Entry function of this module, it prepares and sends request to HubSpot
 exports.main = async (context = {}, sendResponse) => {
   const { hs_object_id } = context.propertiesToSend;
-  const PRIVATE_APP_TOKEN = context.secrets.PRIVATE_APP_ACCESS_TOKEN;
   const { associations, email } = context.parameters;
 
   try {
@@ -25,7 +26,7 @@ exports.main = async (context = {}, sendResponse) => {
     const contact = await createContact(
       filterProperties({
         ...data.data.CRM.contact,
-        email,
+        email
       }),
       PRIVATE_APP_TOKEN
     );
@@ -66,7 +67,7 @@ const fetchProperties = (query, token, id) => {
   const body = {
     operationName: 'data',
     query,
-    variables: { id: id },
+    variables: { id: id }
   };
 
   return axios.post(
@@ -75,8 +76,8 @@ const fetchProperties = (query, token, id) => {
     {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
+        Authorization: `Bearer ${token}`
+      }
     }
   );
 };
@@ -89,8 +90,8 @@ const createContact = (properties, token) => {
     {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
+        Authorization: `Bearer ${token}`
+      }
     }
   );
 };
@@ -108,8 +109,8 @@ const updateAssociations = (
     {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
+        Authorization: `Bearer ${token}`
+      }
     }
   );
 };
@@ -118,21 +119,21 @@ const updateAssociations = (
 const transformAssociations = (associationsGQL, id) => {
   let result = {
     company_collection__primary: [],
-    deal_collection__contact_to_deal: [],
+    deal_collection__contact_to_deal: []
   };
 
   // Loop through each association and transform its format
-  Object.keys(associationsGQL).forEach((key) => {
-    associationsGQL[key].items.forEach((item) => {
+  Object.keys(associationsGQL).forEach(key => {
+    associationsGQL[key].items.forEach(item => {
       result[key].push({
         from: { id },
         to: { id: item.hs_object_id.toString() },
         types: [
           {
             associationCategory: 'HUBSPOT_DEFINED',
-            associationTypeId: ASSOCIATION_TYPE_IDS[key],
-          },
-        ],
+            associationTypeId: ASSOCIATION_TYPE_IDS[key]
+          }
+        ]
       });
     });
   });
@@ -141,7 +142,7 @@ const transformAssociations = (associationsGQL, id) => {
 };
 
 // Function to filter the contact properties that we are interested in
-const filterProperties = (obj) => {
+const filterProperties = obj => {
   return Object.entries(obj).reduce((accumulator, [key, value]) => {
     if (key !== 'hs_object_id' && value !== null) {
       accumulator[key] = value;

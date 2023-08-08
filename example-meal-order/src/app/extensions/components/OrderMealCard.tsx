@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import {
-  Stack,
   Divider,
   LoadingSpinner,
   ErrorState,
   Text,
   Button,
+  Flex
 } from '@hubspot/ui-extensions';
 import { RestaurantMenu } from './RestaurantMenu';
 import { Cart } from './Cart';
@@ -17,7 +17,7 @@ export const OrderMealCard = ({
   fetchCrmObjectProperties,
   context,
   runServerless,
-  sendAlert,
+  sendAlert
 }: OrderMealProps) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -33,7 +33,7 @@ export const OrderMealCard = ({
     setError(false);
     // Fetch a list of restaurants and their menus from our serverless function
     runServerless({ name: 'restaurants' })
-      .then(async (result) => {
+      .then(async result => {
         if (result.status === 'SUCCESS') {
           // Make sure the response is the shape we expect (array of Restaurants)
           if (Array.isArray(result.response)) {
@@ -58,7 +58,7 @@ export const OrderMealCard = ({
 
         throw new Error(result.message);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error(error.message);
         setError(true);
       })
@@ -83,7 +83,7 @@ export const OrderMealCard = ({
 
   const handleRemoveClick = useCallback((id: number) => {
     updateCart((items: Array<CartItem>) =>
-      items.filter((item) => item.id !== id)
+      items.filter(item => item.id !== id)
     );
   }, []);
 
@@ -91,7 +91,7 @@ export const OrderMealCard = ({
     (message: string) => {
       sendAlert({
         type: 'success',
-        message: `Nicely done! The meal is on its way to ${contactName} with the message: "${message}"`,
+        message: `Nicely done! The meal is on its way to ${contactName} with the message: "${message}"`
       });
       updateCart([]);
       clearSelection();
@@ -116,10 +116,10 @@ export const OrderMealCard = ({
 
   // Small utility function for help below
   const getRestaurant = (id?: number) => {
-    return restaurants.find((r) => r.id === id);
+    return restaurants.find(r => r.id === id);
   };
 
-  const uniqueRestaurants = new Set(cart.map((item) => item.restaurantId));
+  const uniqueRestaurants = new Set(cart.map(item => item.restaurantId));
   const totalDeliveryCost = [...uniqueRestaurants].reduce((total, id) => {
     return total + (getRestaurant(id)?.deliveryCost ?? 0);
   }, 0);
@@ -128,7 +128,7 @@ export const OrderMealCard = ({
   const subtotal = cart.reduce((total, item) => total + item.price, 0);
 
   return (
-    <Stack>
+    <Flex direction="column" gap="md">
       <Text>
         {context.user.firstName}, you are crushing your deals with this contact.
         Gift them a meal to celebrate! 🍜
@@ -155,6 +155,6 @@ export const OrderMealCard = ({
           onCheckoutClick={handleCheckoutClick}
         />
       )}
-    </Stack>
+    </Flex>
   );
 };

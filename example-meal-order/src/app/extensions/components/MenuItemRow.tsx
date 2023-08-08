@@ -4,7 +4,7 @@ import {
   Button,
   Text,
   TableRow,
-  TableCell,
+  TableCell
 } from '@hubspot/ui-extensions';
 import { MenuItemRowProps } from '../types';
 import { formatPrice } from '../utils';

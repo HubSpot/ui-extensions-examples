@@ -10,7 +10,7 @@ export const RestaurantsTable = ({
   onClick,
   restaurants,
   pageNumber,
-  onPageChange,
+  onPageChange
 }: RestaurantsTableProps) => {
   const pageCount = Math.ceil(restaurants.length / PAGE_SIZE);
   const paginatedRestaurants = restaurants.slice(
@@ -33,7 +33,7 @@ export const RestaurantsTable = ({
       showFirstLastButtons={false}
     >
       <TableBody>
-        {paginatedRestaurants.map((restaurant) => (
+        {paginatedRestaurants.map(restaurant => (
           <RestaurantRow
             restaurant={restaurant}
             onClick={() => onClick(restaurant.id)}

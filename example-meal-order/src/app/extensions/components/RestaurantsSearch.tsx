@@ -1,12 +1,12 @@
 import React, { useCallback, useState } from 'react';
-import { Input, Stack } from '@hubspot/ui-extensions';
+import { Flex, Input } from '@hubspot/ui-extensions';
 import { RestaurantsTable } from './RestaurantsTable';
 import { RestaurantsSearchProps } from '../types';
 
 export const RestaurantsSearch = ({
   contactName,
   restaurants,
-  onRestaurantClick,
+  onRestaurantClick
 }: RestaurantsSearchProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
@@ -22,13 +22,13 @@ export const RestaurantsSearch = ({
   }, []);
 
   const searchResults = restaurants.filter(({ name, category }) => {
-    return [name, category].some((prop) => {
+    return [name, category].some(prop => {
       return prop.toLowerCase().includes(searchTerm.toLowerCase());
     });
   });
 
   return (
-    <Stack>
+    <Flex direction="column" gap="md">
       <Input
         name="search"
         label={`Search for restaurants near ${contactName}`}
@@ -43,6 +43,6 @@ export const RestaurantsSearch = ({
         restaurants={searchResults}
         onPageChange={setPageNumber}
       />
-    </Stack>
+    </Flex>
   );
 };

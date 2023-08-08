@@ -2,6 +2,7 @@
   "type": "crm-card",
   "data": {
     "title": "Gift a meal",
+    "uid": "gift_meal_card",
     "location": "crm.record.tab",
     "module": {
       "file": "OrderMealExtension.tsx"

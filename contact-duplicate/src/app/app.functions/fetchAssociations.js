@@ -1,8 +1,9 @@
 const axios = require('axios');
 
+const PRIVATE_APP_TOKEN = process.env['PRIVATE_APP_ACCESS_TOKEN'];
+
 exports.main = async (context = {}, sendResponse) => {
   const { hs_object_id } = context.propertiesToSend;
-  const PRIVATE_APP_TOKEN = context.secrets.PRIVATE_APP_ACCESS_TOKEN;
 
   try {
     // Fetch associations
@@ -23,7 +24,7 @@ const fetchAssociations = (query, token, id) => {
   const body = {
     operationName: 'data',
     query,
-    variables: { id: id },
+    variables: { id: id }
   };
 
   return axios.post(
@@ -32,8 +33,8 @@ const fetchAssociations = (query, token, id) => {
     {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
+        Authorization: `Bearer ${token}`
+      }
     }
   );
 };

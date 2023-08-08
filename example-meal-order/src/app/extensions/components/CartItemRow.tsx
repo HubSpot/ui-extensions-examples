@@ -1,9 +1,9 @@
 import {
   Button,
+  Flex,
   Heading,
-  Stack,
   TableCell,
-  TableRow,
+  TableRow
 } from '@hubspot/ui-extensions';
 import React from 'react';
 import { CartItemRowProps } from '../types';
@@ -14,9 +14,9 @@ export const CartItemRow = ({ item, onRemoveClick }: CartItemRowProps) => {
   return (
     <TableRow>
       <TableCell>
-        <Stack>
+        <Flex direction="column" gap="sm">
           <Heading inline={true}>{item.name}</Heading>
-          <Stack distance="extra-small">
+          <Flex gap="xs">
             <Addons label="Bases">{item.bases.join(', ')}</Addons>
             {item.toppings && item.toppings.length > 0 && (
               <Addons label="Toppings">{item.toppings.join(', ')}</Addons>
@@ -25,10 +25,12 @@ export const CartItemRow = ({ item, onRemoveClick }: CartItemRowProps) => {
               <Addons label="Premiums">{item.premiums.join(', ')}</Addons>
             )}
             <Addons label="Dressing">{item.dressing}</Addons>
-          </Stack>
-        </Stack>
+          </Flex>
+        </Flex>
       </TableCell>
-      <TableCell>{formatPrice(item.price)}</TableCell>
+      <TableCell align="right" width="min">
+        {formatPrice(item.price)}
+      </TableCell>
       <TableCell>
         <Button onClick={onRemoveClick}>Remove</Button>
       </TableCell>
