@@ -2,10 +2,10 @@ import {
   Button,
   ButtonRow,
   Divider,
+  Flex,
   Heading,
-  Stack,
   Text,
-  Textarea,
+  TextArea
 } from '@hubspot/ui-extensions';
 import React, { useState } from 'react';
 import { CheckoutProps } from '../types';
@@ -14,13 +14,13 @@ import { formatPrice } from '../utils';
 export const Checkout = ({
   deliveryCost,
   subtotal,
-  onCheckoutClick,
+  onCheckoutClick
 }: CheckoutProps) => {
   const [message, setMessage] = useState('');
   const delivery = deliveryCost || 0;
 
   return (
-    <Stack>
+    <Flex direction="column" gap="sm">
       <Heading>
         <Text format={{ fontWeight: 'demibold' }}>
           Subtotal: {formatPrice(subtotal)}
@@ -33,7 +33,7 @@ export const Checkout = ({
           Total: {formatPrice(subtotal + delivery)}
         </Text>
       </Heading>
-      <Textarea
+      <TextArea
         required={true}
         name="message"
         label="Message"
@@ -53,6 +53,6 @@ export const Checkout = ({
           Checkout
         </Button>
       </ButtonRow>
-    </Stack>
+    </Flex>
   );
 };

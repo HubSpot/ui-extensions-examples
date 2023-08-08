@@ -1,9 +1,9 @@
 import {
   EmptyState,
+  Flex,
   Heading,
-  Stack,
   Table,
-  TableBody,
+  TableBody
 } from '@hubspot/ui-extensions';
 import React from 'react';
 import { CartProps } from '../types';
@@ -12,22 +12,24 @@ import { CartItemRow } from './CartItemRow';
 export const Cart = ({ cart, onRemoveClick }: CartProps) => {
   if (!cart.length) {
     return (
-      <EmptyState
-        layout="vertical"
-        reverseOrder={true}
-        title="Nothing in the cart yet"
-      >
-        Add some food to send to your contact!
-      </EmptyState>
+      <Flex justify="center">
+        <EmptyState
+          layout="vertical"
+          reverseOrder={true}
+          title="Nothing in the cart yet"
+        >
+          Add some food to send to your contact!
+        </EmptyState>
+      </Flex>
     );
   }
 
   return (
-    <Stack align="stretch">
+    <Flex align="stretch" direction="column" gap="sm">
       <Heading>Cart</Heading>
       <Table>
         <TableBody>
-          {cart.map((item) => (
+          {cart.map(item => (
             <CartItemRow
               item={item}
               key={item.id}
@@ -36,6 +38,6 @@ export const Cart = ({ cart, onRemoveClick }: CartProps) => {
           ))}
         </TableBody>
       </Table>
-    </Stack>
+    </Flex>
   );
 };

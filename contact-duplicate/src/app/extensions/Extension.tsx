@@ -13,7 +13,7 @@ import {
   ServerlessFuncRunner,
   Stack,
   Text,
-  hubspot,
+  hubspot
 } from '@hubspot/ui-extensions';
 
 // Define the extension to be run within the Hubspot CRM
@@ -52,8 +52,8 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
     // Request association data from serverless function
     runServerless({
       name: 'fetchAssociations',
-      propertiesToSend: ['hs_object_id'],
-    }).then((resp) => {
+      propertiesToSend: ['hs_object_id']
+    }).then(resp => {
       setLoading(false); // End loading state
       if (resp.status === 'SUCCESS') {
         // Set associations with response data
@@ -72,8 +72,8 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
     runServerless({
       name: 'duplicateContact',
       propertiesToSend: ['hs_object_id'],
-      parameters: { associations, email }, // Send current associations and email as parameters
-    }).then((resp) => {
+      parameters: { associations, email } // Send current associations and email as parameters
+    }).then(resp => {
       setLoading(false);
       if (resp.status === 'SUCCESS') {
         const contact = resp.response;
@@ -120,7 +120,7 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
           <Input
             label="Email"
             name="email"
-            onInput={(v) => setEmail(v)}
+            onInput={v => setEmail(v)}
             required={true}
           />
           <Button onClick={duplicateContact} disabled={email === ''}>

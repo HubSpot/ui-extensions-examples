@@ -23,7 +23,7 @@ const fetchAssociations = (query, token, id) => {
   const body = {
     operationName: 'data',
     query,
-    variables: { id: id },
+    variables: { id: id }
   };
 
   return axios.post(
@@ -32,8 +32,8 @@ const fetchAssociations = (query, token, id) => {
     {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
+        Authorization: `Bearer ${token}`
+      }
     }
   );
 };

@@ -2,6 +2,7 @@
   "type": "crm-card",
   "data": {
     "title": "Duplicate Contact",
+    "uid": "contact_duplicate_extension",
     "location": "crm.record.tab",
     "module": {
       "file": "Extension.tsx"
