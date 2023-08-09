@@ -7,6 +7,7 @@ import {
   Accordion,
   Flex,
   Heading,
+  Alert,
 } from '@hubspot/ui-extensions';
 import {
   CrmStageTracker,
@@ -19,14 +20,21 @@ hubspot.extend(({ context, actions, runServerlessFunction }) => (
     context={context}
     runServerless={runServerlessFunction}
     fetchCrmObjectProperties={actions.fetchCrmObjectProperties}
+    addAlert={actions.addAlert}
   />
 ));
 
-const Extension = ({ context, runServerless, fetchCrmObjectProperties }) => {
+const Extension = ({
+  context,
+  runServerless,
+  fetchCrmObjectProperties,
+  addAlert,
+}) => {
   const [stage, setStage] = useState(null);
   const [showProperties, setShowProperties] = useState(true);
   const [dealId, setDealId] = useState(null);
   const [dealname, setDealname] = useState(null);
+  const [error, setError] = useState('');
 
   const stageToPropertiesMap = {
     appointmentscheduled: [
@@ -81,10 +89,21 @@ const Extension = ({ context, runServerless, fetchCrmObjectProperties }) => {
         dealStage: newStage,
       },
     }).then((resp) => {
-      console.log(resp);
-      setStage(newStage);
+      if (resp.status == 'SUCCESS') {
+        addAlert({
+          type: 'success',
+          message: 'Deal stage updated successfully',
+        });
+        setStage(newStage);
+      } else {
+        setError(resp.message);
+      }
     });
   };
+
+  if (error !== '') {
+    return <Alert title="Error">{error}</Alert>;
+  }
 
   return (
     <Flex direction="column" justify="start" gap="medium">

@@ -27,7 +27,6 @@ const updateDeal = async (dealId, stage, token) => {
         },
       }
     );
-    console.log(response.data);
     return response.data;
   } catch (error) {
     throw error;
