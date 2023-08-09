@@ -1,0 +1,11 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Association Table Card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "AssociationTableExtension.jsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}

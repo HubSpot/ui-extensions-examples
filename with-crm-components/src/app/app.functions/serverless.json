@@ -1,0 +1,10 @@
+{
+  "runtime": "nodejs16.x",
+  "version": "1.0",
+  "appFunctions": {
+    "update": {
+      "file": "updateDeal.js",
+      "secrets": ["PRIVATE_APP_ACCESS_TOKEN"]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Stage Tracker Card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "StageTrackerExtension.jsx"
+    },
+    "objectTypes": [{ "name": "deals" }]
+  }
+}
