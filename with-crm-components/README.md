@@ -1,6 +1,7 @@
 # CRM Components Extensions
 
 This React Project demonstrates the usage of HubSpot CRM Components through UIE. The project includes 2 extensions:
+
 1. Association Table display important deals associated with the current user (demonstates pre-filters, quick filters, and property projections)
 2. Stage tracker with high level properties, and property list filtered by pipeline
 
