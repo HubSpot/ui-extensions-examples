@@ -44,7 +44,6 @@ const Extension = ({ context, runServerless , fetchCrmObjectProperties}) => {
     { value: 'closedlost', label: 'Closed Lost' },
   ];
 
-  const pollingInterval = 1000;  // TODO: setup message bus to listen for changes
 
   useEffect(() => {
     const fetchProperties = () => {
@@ -55,8 +54,6 @@ const Extension = ({ context, runServerless , fetchCrmObjectProperties}) => {
       });
     };
     fetchProperties();
-    const intervalId = setInterval(fetchProperties, pollingInterval);
-    return () => clearInterval(intervalId);
   }, [stage]);
 
 
@@ -68,13 +65,8 @@ const Extension = ({ context, runServerless , fetchCrmObjectProperties}) => {
         dealStage: newStage
       }
     }).then((resp) => {
-      if (resp.status === 'success') {
-        console.log("success");
-        setStage(newStage);
-      } else {
-        console.log("error");
-        console.log(resp.message);
-      }
+      console.log(resp);
+      setStage(newStage);
     });
   };
 
