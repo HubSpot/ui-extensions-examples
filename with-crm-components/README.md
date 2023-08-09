@@ -10,10 +10,9 @@ These extensions demonstrate a number of interactions including:
 - Using new styling/layout components available through UIE
 - Making API calls to the HubSpot API using serverless functions
 - Fetching properties for the current object
-- Reflect changes in UI extensions based on changes to the object in the CRM
 
-![Example video of the Association Table](images/association-table.png)
-![Example video of the Stage Tracker](images/stage-tracker.mp4)
+![Example Image of the Association Table](images/association-table.png)
+![Example Video of the Stage Tracker](images/stage-tracker.gif)
 
 ## Getting started
 

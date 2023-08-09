@@ -1,6 +1,7 @@
 {
   "name": "CRM Components React App",
   "description": "This is an example of private app that shows 2 custom cards. It demonstrates usages of CRM Components",
+  "uid": "with_crm_components_app",
   "scopes": [
     "crm.objects.contacts.read",
     "crm.objects.contacts.write",

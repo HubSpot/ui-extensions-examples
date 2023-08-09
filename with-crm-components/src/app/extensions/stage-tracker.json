@@ -1,5 +1,6 @@
 {
   "type": "crm-card",
+  "uid": "stage_tracker_extension",
   "data": {
     "title": "Stage Tracker Card",
     "location": "crm.record.tab",
