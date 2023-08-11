@@ -6,7 +6,7 @@ import {
   TableRow,
   TableCell
 } from '@hubspot/ui-extensions';
-import { RestaurantRowProps } from '../types';
+import type { RestaurantRowProps } from '../types';
 import { Rating } from './Rating';
 
 const timeRange = (minutes: number) => `${minutes - 5}-${minutes + 5} min`;

@@ -1,6 +1,6 @@
 import { Text } from '@hubspot/ui-extensions';
 import React from 'react';
-import { AddonsProps } from '../types';
+import type { AddonsProps } from '../types';
 
 export const Addons = ({ label, children }: AddonsProps) => {
   return (

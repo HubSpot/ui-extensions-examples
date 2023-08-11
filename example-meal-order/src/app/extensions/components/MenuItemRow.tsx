@@ -6,7 +6,7 @@ import {
   TableRow,
   TableCell
 } from '@hubspot/ui-extensions';
-import { MenuItemRowProps } from '../types';
+import type { MenuItemRowProps } from '../types';
 import { formatPrice } from '../utils';
 
 export const MenuItemRow = ({ item, onClick }: MenuItemRowProps) => {

@@ -9,7 +9,7 @@ import {
 } from '@hubspot/ui-extensions';
 import { RestaurantMenu } from './RestaurantMenu';
 import { Cart } from './Cart';
-import { CartItem, OrderMealProps, Restaurant } from '../types';
+import type { CartItem, OrderMealProps, Restaurant } from '../types';
 import { RestaurantsSearch } from './RestaurantsSearch';
 import { Checkout } from './Checkout';
 

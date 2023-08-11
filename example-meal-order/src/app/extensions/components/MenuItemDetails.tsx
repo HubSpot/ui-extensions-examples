@@ -7,7 +7,7 @@ import {
   ButtonRow,
   Flex
 } from '@hubspot/ui-extensions';
-import { MenuItemDetailsProps } from '../types';
+import type { MenuItemDetailsProps } from '../types';
 
 const makeOption = (option: string) => ({ value: option, label: option });
 
