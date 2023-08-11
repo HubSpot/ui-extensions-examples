@@ -6,7 +6,7 @@ import {
   TableRow
 } from '@hubspot/ui-extensions';
 import React from 'react';
-import { CartItemRowProps } from '../types';
+import type { CartItemRowProps } from '../types';
 import { formatPrice } from '../utils';
 import { Addons } from './Addons';
 

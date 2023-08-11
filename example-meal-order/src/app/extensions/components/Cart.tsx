@@ -6,7 +6,7 @@ import {
   TableBody
 } from '@hubspot/ui-extensions';
 import React from 'react';
-import { CartProps } from '../types';
+import type { CartProps } from '../types';
 import { CartItemRow } from './CartItemRow';
 
 export const Cart = ({ cart, onRemoveClick }: CartProps) => {

@@ -8,7 +8,7 @@ import {
   TextArea
 } from '@hubspot/ui-extensions';
 import React, { useState } from 'react';
-import { CheckoutProps } from '../types';
+import type { CheckoutProps } from '../types';
 import { formatPrice } from '../utils';
 
 export const Checkout = ({

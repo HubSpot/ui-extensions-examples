@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { Flex, Input } from '@hubspot/ui-extensions';
 import { RestaurantsTable } from './RestaurantsTable';
-import { RestaurantsSearchProps } from '../types';
+import type { RestaurantsSearchProps } from '../types';
 
 export const RestaurantsSearch = ({
   contactName,

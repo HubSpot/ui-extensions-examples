@@ -7,7 +7,7 @@ import {
   Divider,
   Flex
 } from '@hubspot/ui-extensions';
-import { RestaurantMenuProps } from '../types';
+import type { RestaurantMenuProps } from '../types';
 import { MenuItemDetails } from './MenuItemDetails';
 import { MenuItemRow } from './MenuItemRow';
 

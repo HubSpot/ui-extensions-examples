@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, TableBody, Text } from '@hubspot/ui-extensions';
 import { RestaurantRow } from './RestaurantRow';
-import { RestaurantsTableProps } from '../types';
+import type { RestaurantsTableProps } from '../types';
 
 const PAGE_SIZE = 4;
 

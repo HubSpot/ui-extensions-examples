@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from '@hubspot/ui-extensions';
-import { RatingProps } from '../types';
+import type { RatingProps } from '../types';
 
 export const Rating = ({ value }: RatingProps) => {
   return (
