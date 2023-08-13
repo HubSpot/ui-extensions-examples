@@ -1,0 +1,22 @@
+{
+  "projects": [
+    {
+      "name": "get-started",
+      "label": "Get Started with UI Extensions",
+      "path": "get-started",
+      "insertPath": null
+    },
+    {
+      "name": "contact-duplicate",
+      "label": "Duplicate a Contact",
+      "path": "contact-duplicate",
+      "insertPath": null
+    },
+    {
+      "name": "example-meal-order",
+      "label": "Gift a Meal",
+      "path": "example-meal-order",
+      "insertPath": null
+    }
+  ]
+}

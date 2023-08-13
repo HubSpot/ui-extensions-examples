@@ -1,0 +1,11 @@
+{
+  "name": "resturants-functions",
+  "version": "0.1.0",
+  "description": "",
+  "main": "resturant.js",
+  "author": "HubSpot",
+  "license": "MIT",
+  "dependencies": {
+    "@hubspot/api-client": "^7.0.1"
+  }
+}
