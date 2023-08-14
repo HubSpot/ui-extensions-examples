@@ -8,7 +8,7 @@ hubspot.extend(({ context }) => <Extension context={context} />);
 const Extension = ({ context }) => {
   return (
     <>
-      <Text format={{ fontWeight: 'bold' }}>Important Deals</Text>
+      <Text format={{ fontWeight: 'bold' }}>Open Deals worth more than $1000 sorted by deal value</Text>
       <CrmAssociationTable
         objectTypeId="0-3"
         propertyColumns={[

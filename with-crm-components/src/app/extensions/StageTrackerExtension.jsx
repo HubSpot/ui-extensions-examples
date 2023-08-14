@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   hubspot,
   Button,
@@ -69,37 +69,41 @@ const Extension = ({
   ];
 
   useEffect(() => {
-    const fetchProperties = () => {
-      fetchCrmObjectProperties(['dealname', 'dealstage', 'hs_object_id']).then(
-        (properties) => {
-          setStage(properties.dealstage);
-          setDealId(properties.hs_object_id);
-          setDealname(properties.dealname);
-        }
-      );
-    };
-    fetchProperties();
+    fetchCrmObjectProperties(['dealname', 'dealstage', 'hs_object_id']).then(
+      (properties) => {
+        setStage(properties.dealstage);
+        setDealId(properties.hs_object_id);
+        setDealname(properties.dealname);
+      }
+    );
   }, [stage]);
 
-  const handleStageChange = (newStage) => {
-    runServerless({
-      name: 'update',
-      parameters: {
-        dealId: dealId,
-        dealStage: newStage,
-      },
-    }).then((resp) => {
-      if (resp.status == 'SUCCESS') {
-        addAlert({
-          type: 'success',
-          message: 'Deal stage updated successfully',
-        });
-        setStage(newStage);
-      } else {
-        setError(resp.message);
-      }
-    });
-  };
+  const handleStageChange = useCallback(
+    (newStage) => {
+      runServerless({
+        name: 'updateDeal',
+        parameters: {
+          dealId: dealId,
+          dealStage: newStage,
+        },
+      }).then((resp) => {
+        if (resp.status === 'SUCCESS') {
+          addAlert({
+            type: 'success',
+            message: 'Deal stage updated successfully',
+          });
+          setStage(newStage);
+        } else {
+          setError(resp.message);
+        }
+      });
+    },
+    [dealId, addAlert, setStage, setError, runServerless]
+  );
+
+  const handlePropertyToggle = useCallback(() => {
+    setShowProperties((current) => !current);
+  }, [setShowProperties]);
 
   if (error !== '') {
     return <Alert title="Error">{error}</Alert>;
@@ -107,21 +111,21 @@ const Extension = ({
 
   return (
     <Flex direction="column" justify="start" gap="medium">
-      <Heading>Deal status for : {dealname}</Heading>
-      <Flex direction={'row'} justify={'start'} align={'end'} gap={'medium'}>
+      <Heading>Deal status : {dealname}</Heading>
+      <Flex direction="row" justify="start" align="end" gap="medium">
         <Form>
           <Select
             label="Update Deal Stage"
             name="deal-stage"
             tooltip="Please choose"
             value={stage}
-            onChange={(value) => handleStageChange(value)}
+            onChange={handleStageChange}
             options={options}
           />
         </Form>
         <Button
           variant={showProperties ? 'primary' : 'secondary'}
-          onClick={() => setShowProperties(!showProperties)}
+          onClick={handlePropertyToggle}
         >
           {showProperties ? 'Hide' : 'Show'} Properties
         </Button>
