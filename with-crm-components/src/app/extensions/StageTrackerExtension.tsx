@@ -14,7 +14,6 @@ import {
   CrmAssociationPivot,
 } from '@hubspot/ui-extensions/crm';
 
-// Define the extension to be run within the Hubspot CRM
 hubspot.extend(({ context, actions, runServerlessFunction }) => (
   <Extension
     context={context}
@@ -30,13 +29,13 @@ const Extension = ({
   fetchCrmObjectProperties,
   addAlert,
 }) => {
-  const [stage, setStage] = useState(null);
+  const [stage, setStage] = useState<string | null>(null);
   const [showProperties, setShowProperties] = useState(true);
-  const [dealId, setDealId] = useState(null);
-  const [dealname, setDealname] = useState(null);
+  const [dealId, setDealId] = useState<string | null>(null);
+  const [dealname, setDealname] = useState<string | null>(null);
   const [error, setError] = useState('');
 
-  const stageToPropertiesMap = {
+  const stageToPropertiesMap: { [key: string]: string[] } = {
     appointmentscheduled: [
       'dealname',
       'engagements_last_meeting_booked',
@@ -58,19 +57,20 @@ const Extension = ({
     closedwon: ['closed_won_reason', 'closedate', 'amount'],
     closedlost: ['closedate', 'closed_lost_reason', 'amount'],
   };
-  const options = [
-    { value: 'appointmentscheduled', label: 'Appointment Scheduled' },
-    { value: 'qualifiedtobuy', label: 'Qualified to Buy' },
-    { value: 'presentationscheduled', label: 'Presentation Scheduled' },
-    { value: 'decisionmakerboughtin', label: 'Decision Maker Bought In' },
-    { value: 'contractsent', label: 'Contract Sent' },
-    { value: 'closedwon', label: 'Closed Won' },
-    { value: 'closedlost', label: 'Closed Lost' },
+
+  const options: Array<{ label: string; value: string }> = [
+    { label: 'Appointment Scheduled', value: 'appointmentscheduled' },
+    { label: 'Qualified to Buy', value: 'qualifiedtobuy' },
+    { label: 'Presentation Scheduled', value: 'presentationscheduled' },
+    { label: 'Decision Maker Bought In', value: 'decisionmakerboughtin' },
+    { label: 'Contract Sent', value: 'contractsent' },
+    { label: 'Closed Won', value: 'closedwon' },
+    { label: 'Closed Lost', value: 'closedlost' },
   ];
 
   useEffect(() => {
     fetchCrmObjectProperties(['dealname', 'dealstage', 'hs_object_id']).then(
-      (properties) => {
+      (properties: { [propertyName: string]: any }) => {
         setStage(properties.dealstage);
         setDealId(properties.hs_object_id);
         setDealname(properties.dealname);
@@ -79,14 +79,14 @@ const Extension = ({
   }, [stage]);
 
   const handleStageChange = useCallback(
-    (newStage) => {
+    (newStage: string) => {
       runServerless({
         name: 'updateDeal',
         parameters: {
-          dealId: dealId,
+          dealId: dealId!,
           dealStage: newStage,
         },
-      }).then((resp) => {
+      }).then((resp: { status: string; message?: string }) => {
         if (resp.status === 'SUCCESS') {
           addAlert({
             type: 'success',
@@ -94,16 +94,16 @@ const Extension = ({
           });
           setStage(newStage);
         } else {
-          setError(resp.message);
+          setError(resp.message || 'An error occurred');
         }
       });
     },
-    [dealId, addAlert, setStage, setError, runServerless]
+    [dealId, addAlert, runServerless]
   );
 
   const handlePropertyToggle = useCallback(() => {
     setShowProperties((current) => !current);
-  }, [setShowProperties]);
+  }, []);
 
   if (error !== '') {
     return <Alert title="Error">{error}</Alert>;
@@ -131,7 +131,7 @@ const Extension = ({
         </Button>
       </Flex>
       <CrmStageTracker
-        properties={stageToPropertiesMap[stage]}
+        properties={stageToPropertiesMap[stage || '']}
         showProperties={showProperties}
       />
       <Accordion title="Association Labels" size="small" defaultOpen={true}>

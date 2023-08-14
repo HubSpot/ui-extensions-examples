@@ -5,7 +5,7 @@
     "title": "Association Table Card",
     "location": "crm.record.tab",
     "module": {
-      "file": "AssociationTableExtension.jsx"
+      "file": "AssociationTableExtension.tsx"
     },
     "objectTypes": [{ "name": "contacts" }]
   }
