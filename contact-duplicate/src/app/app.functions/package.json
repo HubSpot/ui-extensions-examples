@@ -1,8 +1,6 @@
 {
-  "name": "contact-duplicate-functions",
+  "name": "hubspot-example-function",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
   "author": "HubSpot",
   "license": "MIT",
   "dependencies": {
