@@ -11,9 +11,9 @@ import {
   Link,
   LoadingSpinner,
   ServerlessFuncRunner,
-  Stack,
   Text,
-  hubspot
+  Flex,
+  hubspot,
 } from '@hubspot/ui-extensions';
 
 // Define the extension to be run within the Hubspot CRM
@@ -52,8 +52,8 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
     // Request association data from serverless function
     runServerless({
       name: 'fetchAssociations',
-      propertiesToSend: ['hs_object_id']
-    }).then(resp => {
+      propertiesToSend: ['hs_object_id'],
+    }).then((resp) => {
       setLoading(false); // End loading state
       if (resp.status === 'SUCCESS') {
         // Set associations with response data
@@ -72,8 +72,8 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
     runServerless({
       name: 'duplicateContact',
       propertiesToSend: ['hs_object_id'],
-      parameters: { associations, email } // Send current associations and email as parameters
-    }).then(resp => {
+      parameters: { associations, email }, // Send current associations and email as parameters
+    }).then((resp) => {
       setLoading(false);
       if (resp.status === 'SUCCESS') {
         const contact = resp.response;
@@ -116,17 +116,17 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
         <Text format={{ fontWeight: 'bold' }}>
           Enter a new email and duplicate the contact
         </Text>
-        <Stack direction="row" align="end">
+        <Flex direction="row" justify="end">
           <Input
             label="Email"
             name="email"
-            onInput={v => setEmail(v)}
+            onInput={(v) => setEmail(v)}
             required={true}
           />
           <Button onClick={duplicateContact} disabled={email === ''}>
             Duplicate Contact
           </Button>
-        </Stack>
+        </Flex>
       </>
     );
   }
