@@ -6,7 +6,6 @@ import {
   Context,
   DescriptionList,
   DescriptionListItem,
-  Divider,
   Input,
   Link,
   LoadingSpinner,
@@ -62,7 +61,7 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
         setError(resp.message); // Set error message from response
       }
     });
-  }, []); // Dependency array is empty, so this effect runs only once
+  }, [runServerless]); // Dependency array is empty, so this effect runs only once
 
   // Function to handle contact duplication
   const duplicateContact = () => {
@@ -77,7 +76,7 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
         const contact = resp.response;
         // Set the URL to the newly created contact
         setUrl(
-          `https://app.hubspot.com/contacts/${context.portal.id}/contact/${contact.id}`,
+          `https://app.hubspot.com/contacts/${context.portal.id}/contact/${contact.id}`
         );
       } else {
         setError(resp.message); // Set error message from response
