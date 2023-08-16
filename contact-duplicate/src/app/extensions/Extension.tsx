@@ -3,16 +3,16 @@ import React, { useEffect, useState } from 'react';
 import {
   Alert,
   Button,
-  Context,
   DescriptionList,
   DescriptionListItem,
   Input,
   Link,
   LoadingSpinner,
-  ServerlessFuncRunner,
   Text,
   Flex,
   hubspot,
+  type Context,
+  type ServerlessFuncRunner,
 } from '@hubspot/ui-extensions';
 
 // Define the extension to be run within the Hubspot CRM
