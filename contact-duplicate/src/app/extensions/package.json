@@ -9,7 +9,8 @@
   },
   "scripts": {
     "lint": "eslint . --ext .tsx,.ts",
-    "lint:fix": "eslint . --ext .tsx,.ts --fix"
+    "lint:fix": "eslint . --ext .tsx,.ts --fix",
+    "check": "npm run lint && tsc"
   },
   "devDependencies": {
     "@hubspot/eslint-config-ui-extensions": "^0.7.2",
