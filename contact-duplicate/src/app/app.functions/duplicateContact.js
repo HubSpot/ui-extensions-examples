@@ -48,7 +48,16 @@ const createContact = (token, properties) => {
         },
       },
     )
-    .then((res) => res.data);
+    .then((res) => res.data)
+    .catch((err) => {
+      if (err.response && err.response.status === 409) {
+        throw new Error('An existing contact already has this email');
+      } else if (error.response && err.response.status === 401) {
+        throw new Error('You do not have permission to duplicate this contact');
+      } else {
+        throw err;
+      }
+    });
 };
 
 // Function to set associations for the given contact and return the contact
