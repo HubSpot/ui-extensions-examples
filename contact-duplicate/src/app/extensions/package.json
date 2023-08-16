@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "eslint . --ext .tsx,.ts",
     "lint:fix": "eslint . --ext .tsx,.ts --fix",
-    "typecheck": "tsc --noEmit --jsx react-jsx --esModuleInterop --lib WebWorker --lib esnext --skipLibCheck .**/*.ts[x]",
+    "typecheck": "tsc --noEmit --jsx react-jsx --esModuleInterop --lib WebWorker --lib esnext --skipLibCheck ./**/*.ts[x]",
     "check": "npm run lint && npm run typecheck"
   },
   "devDependencies": {
