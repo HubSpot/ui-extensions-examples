@@ -1,46 +1,35 @@
 const axios = require('axios');
 
-const PRIVATE_APP_TOKEN = process.env['PRIVATE_APP_ACCESS_TOKEN'];
-
-exports.main = async (context = {}, sendResponse) => {
+exports.main = (context = {}, sendResponse) => {
   const { hs_object_id } = context.propertiesToSend;
+  const token = process.env['PRIVATE_APP_ACCESS_TOKEN'];
 
-  try {
-    // Fetch associations
-    const { data } = await fetchAssociations(
-      query,
-      PRIVATE_APP_TOKEN,
-      hs_object_id
-    );
-
-    // Send the response data
-    sendResponse(data);
-  } catch (e) {
-    sendResponse(e);
-  }
+  return fetchAssociations(token, hs_object_id).then(sendResponse);
 };
 
-const fetchAssociations = (query, token, id) => {
+// Function to fetch associations for the object by id
+const fetchAssociations = (token, id) => {
   const body = {
     operationName: 'data',
-    query,
-    variables: { id: id }
+    query: QUERY,
+    variables: { id },
   };
 
-  return axios.post(
-    'https://api.hubapi.com/collector/graphql',
-    JSON.stringify(body),
-    {
+  return axios
+    .post('https://api.hubapi.com/collector/graphql', JSON.stringify(body), {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
-    }
-  );
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      const body = res.data;
+      return body.data.CRM.contact;
+    });
 };
 
 // GraphQL query to fetch associations
-const query = `
+const QUERY = `
     query data ($id: String!) {
       CRM {
         contact(uniqueIdentifier: "id", uniqueIdentifierValue: $id) {

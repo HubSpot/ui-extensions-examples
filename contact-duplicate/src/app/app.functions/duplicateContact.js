@@ -1,107 +1,102 @@
 // Importing necessary libraries
 const axios = require('axios');
 
-// Mapping association type to IDs
-const ASSOCIATION_TYPE_IDS = {
-  company_collection__primary: 1,
-  deal_collection__contact_to_deal: 4
-};
-
-const PRIVATE_APP_TOKEN = process.env['PRIVATE_APP_ACCESS_TOKEN'];
-
 // Entry function of this module, it prepares and sends request to HubSpot
-exports.main = async (context = {}, sendResponse) => {
+exports.main = (context = {}, sendResponse) => {
   const { hs_object_id } = context.propertiesToSend;
   const { associations, email } = context.parameters;
+  const token = process.env['PRIVATE_APP_ACCESS_TOKEN'];
 
-  try {
-    // Fetch contact properties
-    const { data } = await fetchProperties(
-      query,
-      PRIVATE_APP_TOKEN,
-      hs_object_id
-    );
-
-    // Create contact on HubSpot
-    const contact = await createContact(
-      filterProperties({
-        ...data.data.CRM.contact,
-        email
-      }),
-      PRIVATE_APP_TOKEN
-    );
-
-    const formattedAssociations = transformAssociations(
-      associations,
-      contact.data.id
-    );
-
-    if (formattedAssociations.company_collection__primary) {
-      await updateAssociations(
-        formattedAssociations.company_collection__primary,
-        '0-1',
-        '0-2',
-        PRIVATE_APP_TOKEN
-      );
-    }
-
-    if (formattedAssociations.deal_collection__contact_to_deal) {
-      await updateAssociations(
-        formattedAssociations.deal_collection__contact_to_deal,
-        '0-1',
-        '0-3',
-        PRIVATE_APP_TOKEN
-      );
-    }
-
-    // Send successful response
-    sendResponse(contact.data);
-  } catch (e) {
-    // Send error response
-    sendResponse(e);
-  }
+  return fetchProperties(token, hs_object_id)
+    .then((properties) => filterProperties({ ...properties, email }))
+    .then((properties) => createContact(token, properties))
+    .then((contact) => setAssociations(token, contact, associations))
+    .then((contact) => sendResponse(contact));
 };
 
-// Function to fetch contact properties from HubSpot
-const fetchProperties = (query, token, id) => {
+// Function to fetch existing contact properties from HubSpot
+const fetchProperties = (token, id) => {
   const body = {
     operationName: 'data',
-    query,
-    variables: { id: id }
+    query: QUERY,
+    variables: { id },
   };
 
-  return axios.post(
-    'https://api.hubapi.com/collector/graphql',
-    JSON.stringify(body),
-    {
+  return axios
+    .post('https://api.hubapi.com/collector/graphql', JSON.stringify(body), {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
-    }
-  );
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      const body = res.data;
+      return body.data.CRM.contact;
+    });
 };
 
 // Function to create contact on HubSpot
-const createContact = (properties, token) => {
-  return axios.post(
-    'https://api.hubapi.com/crm/v3/objects/contacts',
-    { properties: properties },
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+const createContact = (token, properties) => {
+  return axios
+    .post(
+      'https://api.hubapi.com/crm/v3/objects/contacts',
+      { properties: properties },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
+    .then((res) => res.data)
+    .catch((err) => {
+      if (err.response && err.response.status === 409) {
+        throw new Error('An existing contact already has this email');
+      } else if (error.response && err.response.status === 401) {
+        throw new Error('You do not have permission to duplicate this contact');
+      } else {
+        throw err;
       }
-    }
-  );
+    });
+};
+
+// Function to set associations for the given contact and return the contact
+const setAssociations = (token, contact, associations) => {
+  const formattedAssociations = transformAssociations(associations, contact.id);
+
+  const associationsPromises = [];
+
+  if (formattedAssociations.company_collection__primary) {
+    associationsPromises.push(
+      updateAssociations(
+        token,
+        formattedAssociations.company_collection__primary,
+        '0-1',
+        '0-2',
+      ),
+    );
+  }
+
+  if (formattedAssociations.deal_collection__contact_to_deal) {
+    associationsPromises.push(
+      updateAssociations(
+        token,
+        formattedAssociations.deal_collection__contact_to_deal,
+        '0-1',
+        '0-3',
+      ),
+    );
+  }
+
+  return Promise.all(associationsPromises).then(() => contact);
 };
 
 // Function to update contact associations on HubSpot
 const updateAssociations = (
+  token,
   associations,
   fromObjectType,
   toObjectType,
-  token
 ) => {
   return axios.post(
     `https://api.hubapi.com/crm/v4/associations/${fromObjectType}/${toObjectType}/batch/create`,
@@ -109,9 +104,9 @@ const updateAssociations = (
     {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
-    }
+        Authorization: `Bearer ${token}`,
+      },
+    },
   );
 };
 
@@ -119,21 +114,21 @@ const updateAssociations = (
 const transformAssociations = (associationsGQL, id) => {
   let result = {
     company_collection__primary: [],
-    deal_collection__contact_to_deal: []
+    deal_collection__contact_to_deal: [],
   };
 
   // Loop through each association and transform its format
-  Object.keys(associationsGQL).forEach(key => {
-    associationsGQL[key].items.forEach(item => {
+  Object.keys(associationsGQL).forEach((key) => {
+    associationsGQL[key].items.forEach((item) => {
       result[key].push({
         from: { id },
         to: { id: item.hs_object_id.toString() },
         types: [
           {
             associationCategory: 'HUBSPOT_DEFINED',
-            associationTypeId: ASSOCIATION_TYPE_IDS[key]
-          }
-        ]
+            associationTypeId: ASSOCIATION_TYPE_IDS[key],
+          },
+        ],
       });
     });
   });
@@ -142,7 +137,7 @@ const transformAssociations = (associationsGQL, id) => {
 };
 
 // Function to filter the contact properties that we are interested in
-const filterProperties = obj => {
+const filterProperties = (obj) => {
   return Object.entries(obj).reduce((accumulator, [key, value]) => {
     if (key !== 'hs_object_id' && value !== null) {
       accumulator[key] = value;
@@ -151,8 +146,14 @@ const filterProperties = obj => {
   }, {});
 };
 
+// Mapping association type to IDs
+const ASSOCIATION_TYPE_IDS = {
+  company_collection__primary: 1,
+  deal_collection__contact_to_deal: 4,
+};
+
 // GraphQL query to fetch contact data from HubSpot
-const query = `query data($id: String!) {
+const QUERY = `query data($id: String!) {
   CRM {
     contact(uniqueIdentifier: "id", uniqueIdentifierValue: $id) {
       address
