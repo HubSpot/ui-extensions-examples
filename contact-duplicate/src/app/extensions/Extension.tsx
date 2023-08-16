@@ -58,7 +58,7 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
       if (resp.status === 'SUCCESS') {
         // Set associations with response data
         setAssocaitions(
-          resp.response.data.CRM.contact.associations as AssociationsGQL
+          resp.response.data.CRM.contact.associations as AssociationsGQL,
         );
       } else {
         setError(resp.message); // Set error message from response
@@ -79,7 +79,7 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
         const contact = resp.response;
         // Set the URL to the newly created contact
         setUrl(
-          `https://app.hubspot.com/contacts/${context.portal.id}/contact/${contact.id}`
+          `https://app.hubspot.com/contacts/${context.portal.id}/contact/${contact.id}`,
         );
       } else {
         setError(resp.message); // Set error message from response
@@ -101,31 +101,36 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
     // If we have associations data but no URL, show the associations and a duplication form
     return (
       <>
-        <Text format={{ fontWeight: 'bold' }}>
-          Number of associations to be copied
-        </Text>
-        <DescriptionList direction="row">
-          <DescriptionListItem label={'Deals'}>
-            {associations.deal_collection__contact_to_deal.total}
-          </DescriptionListItem>
-          <DescriptionListItem label={'Companies'}>
-            {associations.company_collection__primary.total}
-          </DescriptionListItem>
-        </DescriptionList>
-        <Divider />
-        <Text format={{ fontWeight: 'bold' }}>
-          Enter a new email and duplicate the contact
-        </Text>
-        <Flex direction="row" justify="end">
+        <Flex direction="column" gap="sm">
+          <Text format={{ fontWeight: 'bold' }}>
+            Enter an email for the new contact:
+          </Text>
           <Input
-            label="Email"
+            label=""
             name="email"
             onInput={(v) => setEmail(v)}
             required={true}
           />
-          <Button onClick={duplicateContact} disabled={email === ''}>
-            Duplicate Contact
-          </Button>
+          <Text format={{ fontWeight: 'bold' }}>
+            Number of associations to be copied:
+          </Text>
+          <DescriptionList direction="row">
+            <DescriptionListItem label={'Deals'}>
+              {associations.deal_collection__contact_to_deal.total}
+            </DescriptionListItem>
+            <DescriptionListItem label={'Companies'}>
+              {associations.company_collection__primary.total}
+            </DescriptionListItem>
+          </DescriptionList>
+          <Flex direction="row" justify="end">
+            <Button
+              onClick={duplicateContact}
+              disabled={email === ''}
+              variant="primary"
+            >
+              Duplicate Contact
+            </Button>
+          </Flex>
         </Flex>
       </>
     );
