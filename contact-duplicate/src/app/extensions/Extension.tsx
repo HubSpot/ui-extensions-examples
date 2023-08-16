@@ -61,7 +61,7 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
         setError(resp.message); // Set error message from response
       }
     });
-  }, [runServerless]); // Dependency array is empty, so this effect runs only once
+  }, [runServerless]);
 
   // Function to handle contact duplication
   const duplicateContact = () => {
