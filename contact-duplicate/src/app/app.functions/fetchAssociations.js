@@ -4,9 +4,7 @@ exports.main = (context = {}, sendResponse) => {
   const { hs_object_id } = context.propertiesToSend;
   const token = process.env['PRIVATE_APP_ACCESS_TOKEN'];
 
-  return fetchAssociations(token, hs_object_id).then((data) =>
-    sendResponse(data),
-  );
+  return fetchAssociations(token, hs_object_id).then(sendResponse);
 };
 
 // Function to fetch associations for the object by id
@@ -24,7 +22,10 @@ const fetchAssociations = (token, id) => {
         Authorization: `Bearer ${token}`,
       },
     })
-    .then((res) => res.data);
+    .then((res) => {
+      const body = res.data;
+      return body.data.CRM.contact;
+    });
 };
 
 // GraphQL query to fetch associations
