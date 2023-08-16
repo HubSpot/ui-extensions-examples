@@ -20,7 +20,9 @@ export const RestaurantsTable = ({
 
   if (paginatedRestaurants.length === 0) {
     return (
-      <Text>No matches for "{searchTerm}". Try being a bit less specific.</Text>
+      <Text>
+        No matches for &quot;{searchTerm}&quot;. Try being a bit less specific.
+      </Text>
     );
   }
 

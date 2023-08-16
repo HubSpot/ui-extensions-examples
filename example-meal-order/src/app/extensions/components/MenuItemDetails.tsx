@@ -38,9 +38,19 @@ export const MenuItemDetails = ({
       bases: bases!,
       toppings: toppings!,
       premiums: premiums!,
-      dressing: dressing!
+      dressing: dressing!,
     });
-  }, [item.id, item.name, item.price, bases, toppings, premiums, dressing]);
+  }, [
+    item.id,
+    item.name,
+    item.price,
+    bases,
+    toppings,
+    premiums,
+    dressing,
+    onAddClick,
+    restaurantId,
+  ]);
 
   return (
     <Flex direction="column" gap="sm">

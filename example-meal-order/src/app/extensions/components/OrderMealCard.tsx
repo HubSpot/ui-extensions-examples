@@ -33,7 +33,7 @@ export const OrderMealCard = ({
     setError(false);
     // Fetch a list of restaurants and their menus from our serverless function
     runServerless({ name: 'restaurants' })
-      .then(async result => {
+      .then(async (result) => {
         if (result.status === 'SUCCESS') {
           // Make sure the response is the shape we expect (array of Restaurants)
           if (Array.isArray(result.response)) {
@@ -58,8 +58,7 @@ export const OrderMealCard = ({
 
         throw new Error(result.message);
       })
-      .catch(error => {
-        console.error(error.message);
+      .catch(() => {
         setError(true);
       })
       .finally(() => {
@@ -72,18 +71,21 @@ export const OrderMealCard = ({
     fetchCrmObjectProperties(['firstname']).then(({ firstname }) => {
       setContactName(firstname);
     });
-  }, []);
+  }, [getRestaurants, fetchCrmObjectProperties]);
 
   const clearSelection = useCallback(() => setSelected(undefined), []);
 
-  const handleAddClick = useCallback((item: CartItem) => {
-    updateCart((items: Array<CartItem>) => [...items, item]);
-    clearSelection();
-  }, []);
+  const handleAddClick = useCallback(
+    (item: CartItem) => {
+      updateCart((items: Array<CartItem>) => [...items, item]);
+      clearSelection();
+    },
+    [updateCart, clearSelection]
+  );
 
   const handleRemoveClick = useCallback((id: number) => {
     updateCart((items: Array<CartItem>) =>
-      items.filter(item => item.id !== id)
+      items.filter((item) => item.id !== id)
     );
   }, []);
 
@@ -91,12 +93,12 @@ export const OrderMealCard = ({
     (message: string) => {
       sendAlert({
         type: 'success',
-        message: `Nicely done! The meal is on its way to ${contactName} with the message: "${message}"`
+        message: `Nicely done! The meal is on its way to ${contactName} with the message: "${message}"`,
       });
       updateCart([]);
       clearSelection();
     },
-    [contactName]
+    [contactName, sendAlert, updateCart, clearSelection]
   );
 
   if (error) {
@@ -116,10 +118,10 @@ export const OrderMealCard = ({
 
   // Small utility function for help below
   const getRestaurant = (id?: number) => {
-    return restaurants.find(r => r.id === id);
+    return restaurants.find((r) => r.id === id);
   };
 
-  const uniqueRestaurants = new Set(cart.map(item => item.restaurantId));
+  const uniqueRestaurants = cart.map((item) => item.restaurantId);
   const totalDeliveryCost = [...uniqueRestaurants].reduce((total, id) => {
     return total + (getRestaurant(id)?.deliveryCost ?? 0);
   }, 0);

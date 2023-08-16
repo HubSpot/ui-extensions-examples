@@ -11,10 +11,13 @@ export const RestaurantsSearch = ({
   const [searchTerm, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
 
-  const handleRestaurantClick = useCallback((id: number) => {
-    onRestaurantClick(id);
-    setSearchTerm('');
-  }, []);
+  const handleRestaurantClick = useCallback(
+    (id: number) => {
+      onRestaurantClick(id);
+      setSearchTerm('');
+    },
+    [onRestaurantClick]
+  );
 
   const handleSearch = useCallback((searchTerm: string) => {
     setSearchTerm(searchTerm);
