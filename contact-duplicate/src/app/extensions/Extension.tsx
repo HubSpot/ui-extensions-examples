@@ -3,17 +3,16 @@ import React, { useEffect, useState } from 'react';
 import {
   Alert,
   Button,
-  Context,
   DescriptionList,
   DescriptionListItem,
-  Divider,
   Input,
   Link,
   LoadingSpinner,
-  ServerlessFuncRunner,
   Text,
   Flex,
   hubspot,
+  type Context,
+  type ServerlessFuncRunner,
 } from '@hubspot/ui-extensions';
 
 // Define the extension to be run within the Hubspot CRM
@@ -43,7 +42,7 @@ export interface AssociationsGQL {
 // Define the Extension component, taking in runServerless and context as props
 const Extension = ({ runServerless, context }: ExtensionProps) => {
   const [loading, setLoading] = useState(true);
-  const [associations, setAssocaitions] = useState<AssociationsGQL>();
+  const [associations, setAssociations] = useState<AssociationsGQL>();
   const [email, setEmail] = useState('');
   const [url, setUrl] = useState('');
   const [error, setError] = useState('');
@@ -57,12 +56,12 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
       setLoading(false); // End loading state
       if (resp.status === 'SUCCESS') {
         // Set associations with response data
-        setAssocaitions(resp.response.associations as AssociationsGQL);
+        setAssociations(resp.response.associations as AssociationsGQL);
       } else {
         setError(resp.message); // Set error message from response
       }
     });
-  }, []); // Dependency array is empty, so this effect runs only once
+  }, [runServerless]);
 
   // Function to handle contact duplication
   const duplicateContact = () => {
@@ -77,7 +76,7 @@ const Extension = ({ runServerless, context }: ExtensionProps) => {
         const contact = resp.response;
         // Set the URL to the newly created contact
         setUrl(
-          `https://app.hubspot.com/contacts/${context.portal.id}/contact/${contact.id}`,
+          `https://app.hubspot.com/contacts/${context.portal.id}/contact/${contact.id}`
         );
       } else {
         setError(resp.message); // Set error message from response
