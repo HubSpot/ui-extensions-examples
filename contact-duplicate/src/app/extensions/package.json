@@ -10,8 +10,8 @@
   "scripts": {
     "lint": "eslint . --ext .tsx,.ts",
     "lint:fix": "eslint . --ext .tsx,.ts --fix",
-    "typecheck": "tsc --noEmit --jsx react-jsx --esModuleInterop --lib WebWorker --lib esnext --skipLibCheck ./**/*.ts[x]",
-    "check": "npm run lint && npm run typecheck"
+    "check:types": "tsc --noEmit --jsx react-jsx --esModuleInterop --lib WebWorker --lib esnext --skipLibCheck Extension.tsx",
+    "check": "npm run lint && npm run check:types"
   },
   "devDependencies": {
     "@hubspot/eslint-config-ui-extensions": "^0.7.2",
