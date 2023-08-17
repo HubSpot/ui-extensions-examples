@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "cd ./src/app/extensions/ && npm install",
-    "build": "npm run build --prefix ./src/app/extensions/",
     "dev": "npm run dev --prefix ./src/app/extensions/"
   },
   "repository": {
