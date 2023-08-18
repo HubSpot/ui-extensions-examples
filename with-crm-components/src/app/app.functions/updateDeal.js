@@ -14,7 +14,7 @@ exports.main = (context = {}, sendResponse) => {
 
 const updateDeal = (token, id, stage) => {
   return axios.patch(
-    `https://api.hubapiqa.com/crm/v3/objects/deals/${id}`,
+    `https://api.hubapi.com/crm/v3/objects/deals/${id}`,
     {
       properties: {
         dealstage: stage,
