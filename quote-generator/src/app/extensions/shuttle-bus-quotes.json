@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Shuttle bus quotes",
+    "uid": "shuttle_bus_quotes_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "ShuttleBusQuotes.jsx"
+    },
+    "objectTypes": [{ "name": "deals" }]
+  }
+}
