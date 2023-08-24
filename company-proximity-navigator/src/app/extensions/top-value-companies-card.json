@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Top value companies within radius",
+    "uid": "tov_value_companies_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "TopValueCompanies.jsx"
+    },
+    "objectTypes": [{ "name": "companies" }]
+  }
+}

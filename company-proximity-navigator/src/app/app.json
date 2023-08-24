@@ -1,0 +1,19 @@
+{
+  "name": "Company Proximity Navigator",
+  "description": "Company Proximity Navigator",
+  "uid": "company_proximity_navigator_app",
+  "scopes": ["crm.objects.companies.write", "crm.objects.companies.read"],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/nearest-companies-card.json"
+        },
+        {
+          "file": "extensions/top-value-companies-card.json"
+        }
+      ]
+    }
+  }
+}
