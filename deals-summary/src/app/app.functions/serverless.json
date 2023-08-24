@@ -1,0 +1,10 @@
+{
+  "runtime": "nodejs16.x",
+  "version": "1.0",
+  "appFunctions": {
+    "get-data": {
+      "file": "get-data.js",
+      "secrets": []
+    }
+  }
+}
