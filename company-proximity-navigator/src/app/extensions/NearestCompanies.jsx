@@ -9,22 +9,25 @@ const NearestCompanies = ({ context, runServerless, fetchProperties }) => {
   const [nearestCompaniesSorted, setNearestCompaniesSorted] = useState([]);
   const companiesToDisplay = 3;
 
-  useEffect(async () => {
-    setLoading(true);
-    const companiesServerlessResponse = await runServerless({
-      name: 'get-companies-with-distance-batch',
-      propertiesToSend: ['hs_object_id', 'city', 'state', 'address'],
-      payload: { batchSize: 30 },
-    });
-    if (companiesServerlessResponse.status == 'SUCCESS') {
-      const { companies } = companiesServerlessResponse.response;
-      setNearestCompaniesSorted(
-        companies.sort((c1, c2) => c1.distance - c2.distance),
-      );
-    } else {
-      setErrorMessage(companiesServerlessResponse.message);
+  useEffect(() => {
+    async function fetchCompaniesWithDistanceBatch() {
+      setLoading(true);
+      const companiesServerlessResponse = await runServerless({
+        name: 'get-companies-with-distance-batch',
+        propertiesToSend: ['hs_object_id', 'city', 'state', 'address'],
+        payload: { batchSize: 30 }
+      });
+      if (companiesServerlessResponse.status == 'SUCCESS') {
+        const { companies } = companiesServerlessResponse.response;
+        setNearestCompaniesSorted(
+          companies.sort((c1, c2) => c1.distance - c2.distance)
+        );
+      } else {
+        setErrorMessage(companiesServerlessResponse.message);
+      }
+      setLoading(false);
     }
-    setLoading(false);
+    fetchCompaniesWithDistanceBatch();
   }, [fetchProperties, runServerless]);
 
   if (errorMessage) {
@@ -43,7 +46,7 @@ const NearestCompanies = ({ context, runServerless, fetchProperties }) => {
       companies={nearestCompaniesSorted.slice(0, companiesToDisplay)}
       propertiesToDisplay={[
         { title: 'Domain', propertyName: 'domain' },
-        { title: 'Phone', propertyName: 'phone' },
+        { title: 'Phone', propertyName: 'phone' }
       ]}
     />
   );
