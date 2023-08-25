@@ -1,4 +1,4 @@
-import { Button, ButtonRow, Select } from '@hubspot/ui-extensions';
+import { Button, Box, Select } from '@hubspot/ui-extensions';
 import { useState, useMemo } from 'react';
 
 export const BusOptions = ({ passengers, onNext }) => {
@@ -62,7 +62,7 @@ export const BusOptions = ({ passengers, onNext }) => {
         onChange={setBusOption}
         options={busOptions}
       />
-      <ButtonRow>
+      <Box>
         <Button
           onClick={handleNextButtonClick}
           variant="primary"
@@ -71,7 +71,7 @@ export const BusOptions = ({ passengers, onNext }) => {
         >
           Next
         </Button>
-      </ButtonRow>
+      </Box>
     </>
   );
 };
