@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { Flex, Form, NumberInput, Button, Box } from '@hubspot/ui-extensions';
 
 export const TripDetails = ({ onNext }) => {
-  const [passengers, setPassengers] = useState(10);
-  const [distance, setDistance] = useState(50);
+  const PASSENGERS_DEFAULT = 10;
+  const DISTANCE_DEFAULT = 50;
+
+  const [passengers, setPassengers] = useState(PASSENGERS_DEFAULT);
+  const [distance, setDistance] = useState(DISTANCE_DEFAULT);
 
   return (
     <Form>

@@ -33,12 +33,16 @@ exports.main = async (context = {}, sendResponse) => {
   }
 };
 
+const SECONDS_IN_HOUR = 3600;
+const HOURS_IN_DAY = 24;
+const DAYS_IN_WEEK = 7;
+const SECONDS_IN_WEEK = DAYS_IN_WEEK * HOURS_IN_DAY * SECONDS_IN_HOUR;
+
 async function createQuote({ dealId, quoteName }) {
-  const oneWeek = 168 * 60 * 60000;
   const request = {
     properties: {
       hs_title: quoteName,
-      hs_expiration_date: Date.now() + oneWeek,
+      hs_expiration_date: Date.now() + SECONDS_IN_WEEK,
       hs_status: 'DRAFT',
       hs_currency: 'USD',
       hs_language: 'en',
