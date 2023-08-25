@@ -18,13 +18,17 @@ exports.main = async (context = {}, sendResponse) => {
       dealId: hs_object_id,
       quoteName,
     });
+    const lineItems = [];
     for (let i = 0; i < numberOfBuses; i++) {
-      await addLineItem({
-        productId: product.id,
-        quoteId: quote.id,
-        quantity: distance,
-      });
+      lineItems.push(
+        addLineItem({
+          productId: product.id,
+          quoteId: quote.id,
+          quantity: distance,
+        })
+      );
     }
+    await Promise.all(lineItems);
     sendResponse({ quote });
   }
 };
@@ -86,7 +90,7 @@ async function findProductBySKU(sku) {
       undefined,
       undefined,
       undefined,
-      'hs_sku',
+      'hs_sku'
     );
     return product;
   } catch (error) {

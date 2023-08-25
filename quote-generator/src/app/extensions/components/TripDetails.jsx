@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Flex,
-  Form,
-  NumberInput,
-  Button,
-  ButtonRow,
-} from '@hubspot/ui-extensions';
+import { Flex, Form, NumberInput, Button, Box } from '@hubspot/ui-extensions';
 
 export const TripDetails = ({ onNext }) => {
   const [passengers, setPassengers] = useState(10);
@@ -32,7 +26,7 @@ export const TripDetails = ({ onNext }) => {
           value={distance}
           onChange={(value) => setDistance(value)}
         />
-        <ButtonRow>
+        <Box>
           <Button
             onClick={() => onNext({ passengers, distance })}
             variant="secondary"
@@ -41,7 +35,7 @@ export const TripDetails = ({ onNext }) => {
           >
             Next
           </Button>
-        </ButtonRow>
+        </Box>
       </Flex>
     </Form>
   );
