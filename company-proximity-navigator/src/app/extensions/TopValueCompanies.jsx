@@ -6,7 +6,7 @@ import {
   NumberInput,
   Flex,
   Button,
-  ButtonRow,
+  Box
 } from '@hubspot/ui-extensions';
 import { CompaniesWithDistanceTable } from './components/CompaniesWithDistanceTable.jsx';
 import { hubspot } from '@hubspot/ui-extensions';
@@ -16,6 +16,7 @@ const TopValueCompanies = ({ context, runServerless }) => {
   const [radius, setRadius] = useState(50);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const companiesBatchSize = 30;
   const companiesToDisplay = 3;
 
   const executeServerless = async () => {
@@ -23,17 +24,17 @@ const TopValueCompanies = ({ context, runServerless }) => {
     const companiesServerlessResponse = await runServerless({
       name: 'get-companies-with-distance-batch',
       propertiesToSend: ['hs_object_id', 'city', 'state', 'address'],
-      payload: { batchSize: 30 },
+      payload: { batchSize: companiesBatchSize }
     });
     if (companiesServerlessResponse.status == 'SUCCESS') {
       const { companies } = companiesServerlessResponse.response;
       setTopValueCompaniesSorted(
         companies
-          .filter((company) => company.distance <= radius)
+          .filter(company => company.distance <= radius)
           .sort(
             (c1, c2) =>
-              c2.properties.annualrevenue - c1.properties.annualrevenue,
-          ),
+              c2.properties.annualrevenue - c1.properties.annualrevenue
+          )
       );
     } else {
       setErrorMessage(companiesServerlessResponse.message);
@@ -69,15 +70,15 @@ const TopValueCompanies = ({ context, runServerless }) => {
           portalId={context.portal.id}
           companies={topValueCompaniesSorted.slice(0, companiesToDisplay)}
           propertiesToDisplay={[
-            { title: 'Annual Revenue', propertyName: 'annualrevenue' },
+            { title: 'Annual Revenue', propertyName: 'annualrevenue' }
           ]}
         />
       )}
-      <ButtonRow>
+      <Box>
         <Button onClick={executeServerless} variant="primary" type="button">
           Fetch companies
         </Button>
-      </ButtonRow>
+      </Box>
     </Flex>
   );
 };
