@@ -15,39 +15,43 @@ const DealsSummary = ({ runServerless }) => {
   const [totalAmount, setTotalAmount] = useState(0);
 
   useEffect(() => {
-    const executeServerless = async () => {
-      const serverlessResponse = await runServerless({
-        name: 'get-data',
-        propertiesToSend: ['hs_object_id'],
+    runServerless({
+      name: 'get-data',
+      propertiesToSend: ['hs_object_id'],
+    })
+      .then((serverlessResponse) => {
+        if (serverlessResponse.status == 'SUCCESS') {
+          const { response } = serverlessResponse;
+          setDealsCount(response.dealsCount);
+          setTotalAmount(response.totalAmount);
+        } else {
+          setErrorMessage(serverlessResponse.message);
+        }
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
       });
-      setLoading(false);
-      if (serverlessResponse.status == 'SUCCESS') {
-        const { response } = serverlessResponse;
-        setDealsCount(response.dealsCount);
-        setTotalAmount(response.totalAmount);
-      } else {
-        setErrorMessage(serverlessResponse.message);
-      }
-    };
-    executeServerless();
   }, [runServerless]);
 
   if (loading) {
-    return <LoadingSpinner label="Loading..." />;
+    return <LoadingSpinner />;
   }
   if (errorMessage) {
     return (
-      <Alert title="Error executing serverless function" variant="error">
+      <Alert title="Unable to get deals data" variant="error">
         {errorMessage}
       </Alert>
     );
   }
   return (
     <Statistics>
-      <StatisticsItem label="OPEN DEALS" number={dealsCount}>
+      <StatisticsItem label="Open deals" number={dealsCount}>
         <Text>Total number of deals contact is associated with</Text>
       </StatisticsItem>
-      <StatisticsItem label="UNIT PRICE" number={totalAmount}>
+      <StatisticsItem label="Unit price" number={totalAmount}>
         <Text>High End</Text>
       </StatisticsItem>
     </Statistics>

@@ -80,10 +80,10 @@ const [avgAmount, setAvgAmount] = useState(0);
 setAvgAmount(serverlessResponse.response.avgAmount);
 ```
 
-- Finally, add a new statisticsItem component to display the average amount in the CRM card
+- Finally, add a new `StatisticsItem` component to display the average amount in the CRM card
 
-```html
-<StatisticsItem label="AVG MARGIN" number="{avgAmount}">
+```jsx
+<StatisticsItem label="Avg margin" number={avgAmount}>
   <Text>Low End</Text>
 </StatisticsItem>
 ```
