@@ -2,8 +2,8 @@
   "runtime": "nodejs16.x",
   "version": "1.0",
   "appFunctions": {
-    "create-quote": {
-      "file": "create-quote.js",
+    "createQuote": {
+      "file": "createQuote.js",
       "secrets": []
     }
   }

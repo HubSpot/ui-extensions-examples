@@ -3,10 +3,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "dependencies": {
-    "@hubspot/ui-extensions": "^0.7.2",
+    "@hubspot/ui-extensions": "latest",
     "react": "^18.2.0"
-  },
-  "devDependencies": {
-    "@hubspot/ui-extensions-dev-server": "^0.7.2"
   }
 }
