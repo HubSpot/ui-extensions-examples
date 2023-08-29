@@ -1,0 +1,21 @@
+{
+  "name": "Deals summary app",
+  "description": "Deals summary app",
+  "uid": "deals_summary_app",
+  "scopes": [
+    "crm.objects.contacts.read",
+    "crm.objects.contacts.write",
+    "crm.objects.deals.read",
+    "crm.objects.deals.write"
+  ],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/deals-summary-card.json"
+        }
+      ]
+    }
+  }
+}
