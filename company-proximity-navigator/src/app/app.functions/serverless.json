@@ -1,0 +1,10 @@
+{
+  "runtime": "nodejs16.x",
+  "version": "1.0",
+  "appFunctions": {
+    "getCompaniesWithDistanceBatch": {
+      "file": "getCompaniesWithDistanceBatch.js",
+      "secrets": ["MAPBOX_ACCESS_TOKEN"]
+    }
+  }
+}

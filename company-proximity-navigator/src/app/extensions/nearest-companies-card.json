@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Nearest companies to current company record",
+    "uid": "nearest_companies_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "NearestCompanies.jsx"
+    },
+    "objectTypes": [{ "name": "companies" }]
+  }
+}
