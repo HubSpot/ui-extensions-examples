@@ -13,7 +13,7 @@ const NearestCompanies = ({ context, runServerless, fetchProperties }) => {
     async function fetchCompaniesWithDistanceBatch() {
       setLoading(true);
       const companiesServerlessResponse = await runServerless({
-        name: 'get-companies-with-distance-batch',
+        name: 'getCompaniesWithDistanceBatch',
         propertiesToSend: ['hs_object_id', 'city', 'state', 'address'],
         payload: { batchSize: 30 }
       });

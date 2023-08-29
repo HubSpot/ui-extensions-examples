@@ -30,7 +30,7 @@ exports.main = async (context = {}, sendResponse) => {
   const companiesWithDistance = await extendWithDistance({
     companies: companies.filter(
       ({ properties }) =>
-        properties.hs_object_id != currentCompanyProperties.hs_object_id,
+        properties.hs_object_id != currentCompanyProperties.hs_object_id
     ),
     currentCompanyProperties,
   });
@@ -44,7 +44,7 @@ async function getCompaniesBatch({ hubspotClient, batchSize }) {
   const apiResponse = await hubspotClient.crm.companies.basicApi.getPage(
     batchSize,
     undefined,
-    PROPERTIES_TO_FETCH,
+    PROPERTIES_TO_FETCH
   );
 
   return apiResponse.results;
@@ -67,7 +67,7 @@ async function extendWithDistance({ companies, currentCompanyProperties }) {
         ...company,
         distance,
       };
-    }),
+    })
   );
 }
 

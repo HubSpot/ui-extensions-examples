@@ -2,8 +2,8 @@
   "runtime": "nodejs16.x",
   "version": "1.0",
   "appFunctions": {
-    "get-companies-with-distance-batch": {
-      "file": "get-companies-with-distance-batch.js",
+    "getCompaniesWithDistanceBatch": {
+      "file": "getCompaniesWithDistanceBatch.js",
       "secrets": ["MAPBOX_ACCESS_TOKEN"]
     }
   }
