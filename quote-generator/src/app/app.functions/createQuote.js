@@ -1,10 +1,12 @@
 // for HubSpot API calls
 const hubspot = require('@hubspot/api-client');
 
+// Initialize HubSpot API client
 const hubspotClient = new hubspot.Client({
   accessToken: process.env['PRIVATE_APP_ACCESS_TOKEN'],
 });
 
+// Entry function of this module, it creates a quote together with line items
 exports.main = async (context = {}, sendResponse) => {
   const { hs_object_id } = context.propertiesToSend;
   const { distance, sku, numberOfBuses, quoteName } = context.event.payload;
@@ -18,6 +20,8 @@ exports.main = async (context = {}, sendResponse) => {
       dealId: hs_object_id,
       quoteName,
     });
+
+    // Add line items to a newly created quote
     const lineItems = [];
     for (let i = 0; i < numberOfBuses; i++) {
       lineItems.push(
@@ -38,11 +42,12 @@ const HOURS_IN_DAY = 24;
 const DAYS_IN_WEEK = 7;
 const SECONDS_IN_WEEK = DAYS_IN_WEEK * HOURS_IN_DAY * SECONDS_IN_HOUR;
 
+// Function to create a quote using HubSpot API client
 async function createQuote({ dealId, quoteName }) {
   const request = {
     properties: {
       hs_title: quoteName,
-      hs_expiration_date: Date.now() + SECONDS_IN_WEEK,
+      hs_expiration_date: Date.now() + SECONDS_IN_WEEK, // Expire in one week
       hs_status: 'DRAFT',
       hs_currency: 'USD',
       hs_language: 'en',
@@ -64,6 +69,7 @@ async function createQuote({ dealId, quoteName }) {
   return await hubspotClient.crm.quotes.basicApi.create(request);
 }
 
+// Function to create a line item and associate with quote
 async function addLineItem({ productId, quoteId, quantity }) {
   const request = {
     properties: {
@@ -86,6 +92,7 @@ async function addLineItem({ productId, quoteId, quantity }) {
   await hubspotClient.crm.lineItems.basicApi.create(request);
 }
 
+// Function to find a product by SKU using HubSpot API client
 async function findProductBySKU(sku) {
   try {
     const product = await hubspotClient.crm.products.basicApi.getById(
