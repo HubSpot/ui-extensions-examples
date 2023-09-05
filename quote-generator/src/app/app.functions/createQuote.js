@@ -47,7 +47,7 @@ async function createQuote({ dealId, quoteName }) {
   const request = {
     properties: {
       hs_title: quoteName,
-      hs_expiration_date: Date.now() + SECONDS_IN_WEEK, // Expire in one week
+      hs_expiration_date: Date.now() + SECONDS_IN_WEEK, // Expires in one week
       hs_status: 'DRAFT',
       hs_currency: 'USD',
       hs_language: 'en',
