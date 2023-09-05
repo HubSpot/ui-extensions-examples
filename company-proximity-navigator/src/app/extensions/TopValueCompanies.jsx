@@ -6,10 +6,15 @@ import {
   NumberInput,
   Flex,
   Button,
-  Box
+  Box,
 } from '@hubspot/ui-extensions';
 import { CompaniesWithDistanceTable } from './components/CompaniesWithDistanceTable.jsx';
 import { hubspot } from '@hubspot/ui-extensions';
+
+// Define the extension to be run within the Hubspot CRM
+hubspot.extend(({ context, runServerlessFunction }) => (
+  <TopValueCompanies context={context} runServerless={runServerlessFunction} />
+));
 
 const TopValueCompanies = ({ context, runServerless }) => {
   const [topValueCompaniesSorted, setTopValueCompaniesSorted] = useState([]);
@@ -24,13 +29,13 @@ const TopValueCompanies = ({ context, runServerless }) => {
     const companiesServerlessResponse = await runServerless({
       name: 'getCompaniesWithDistanceBatch',
       propertiesToSend: ['hs_object_id', 'city', 'state', 'address'],
-      payload: { batchSize: companiesBatchSize }
+      payload: { batchSize: companiesBatchSize },
     });
     if (companiesServerlessResponse.status == 'SUCCESS') {
       const { companies } = companiesServerlessResponse.response;
       setTopValueCompaniesSorted(
         companies
-          .filter(company => company.distance <= radius)
+          .filter((company) => company.distance <= radius)
           .sort(
             (c1, c2) =>
               c2.properties.annualrevenue - c1.properties.annualrevenue
@@ -43,6 +48,7 @@ const TopValueCompanies = ({ context, runServerless }) => {
   };
 
   if (errorMessage) {
+    // If there's an error, show an alert
     return (
       <Alert title="Error executing serverless function" variant="error">
         {errorMessage}
@@ -50,6 +56,7 @@ const TopValueCompanies = ({ context, runServerless }) => {
     );
   }
   if (loading) {
+    // If loading, show a spinner
     return <LoadingSpinner />;
   }
   return (
@@ -65,12 +72,13 @@ const TopValueCompanies = ({ context, runServerless }) => {
           onChange={setRadius}
         />
       </Form>
+      {/* If any company to display - render companies table */}
       {topValueCompaniesSorted.length > 0 && (
         <CompaniesWithDistanceTable
           portalId={context.portal.id}
           companies={topValueCompaniesSorted.slice(0, companiesToDisplay)}
           propertiesToDisplay={[
-            { title: 'Annual Revenue', propertyName: 'annualrevenue' }
+            { title: 'Annual Revenue', propertyName: 'annualrevenue' },
           ]}
         />
       )}
@@ -82,7 +90,3 @@ const TopValueCompanies = ({ context, runServerless }) => {
     </Flex>
   );
 };
-
-hubspot.extend(({ context, runServerlessFunction }) => (
-  <TopValueCompanies context={context} runServerless={runServerlessFunction} />
-));

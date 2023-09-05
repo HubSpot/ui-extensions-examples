@@ -13,6 +13,11 @@ const Steps = {
   QuoteName: 3,
 };
 
+// Define the extension to be run within the Hubspot CRM
+hubspot.extend(({ runServerlessFunction }) => (
+  <ShuttleBusQuotes runServerless={runServerlessFunction} />
+));
+
 const ShuttleBusQuotes = ({ runServerless }) => {
   const [step, setStep] = useState(Steps.QuotesView);
   const [passengers, setPassengers] = useState();
@@ -22,20 +27,23 @@ const ShuttleBusQuotes = ({ runServerless }) => {
   const [loading, setLoading] = useState(false);
 
   const generateQuote = ({ ...payload }) => {
+    // Execute serverless function to generate a quote
     return runServerless({
-      name: '',
+      name: 'createQuote',
       propertiesToSend: ['hs_object_id'],
       payload,
     });
   };
 
   const handleTripDetails = ({ passengers, distance }) => {
+    // Save passengers and distance form data
     setPassengers(passengers);
     setDistance(distance);
     setStep(Steps.BusOptions);
   };
 
   const handleBusOption = ({ sku, numberOfBuses }) => {
+    // Save bus options form data
     setSku(sku);
     setNumberOfBuses(numberOfBuses);
     setStep(Steps.QuoteName);
@@ -43,6 +51,7 @@ const ShuttleBusQuotes = ({ runServerless }) => {
 
   const handleQuoteName = ({ quoteName }) => {
     setLoading(true);
+    // Generate a quote and render initial view
     generateQuote({ distance, sku, numberOfBuses, quoteName }).then(() => {
       setLoading(false);
       setStep(Steps.QuotesView);
@@ -53,6 +62,7 @@ const ShuttleBusQuotes = ({ runServerless }) => {
     <>
       {loading == false && (
         <Flex direction="column" gap="xs">
+          {/* Render a step indicator  */}
           {step != Steps.QuotesView && (
             <StepIndicator
               currentStep={step - 1}
@@ -76,11 +86,8 @@ const ShuttleBusQuotes = ({ runServerless }) => {
           )}
         </Flex>
       )}
+      {/* If loading, show a spinner */}
       {loading === true && <LoadingSpinner />}
     </>
   );
 };
-
-hubspot.extend(({ runServerlessFunction }) => (
-  <ShuttleBusQuotes runServerless={runServerlessFunction} />
-));

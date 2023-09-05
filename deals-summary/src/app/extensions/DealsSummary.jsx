@@ -8,6 +8,12 @@ import {
 } from '@hubspot/ui-extensions';
 import { hubspot } from '@hubspot/ui-extensions';
 
+// Define the extension to be run within the Hubspot CRM
+hubspot.extend(({ runServerlessFunction }) => (
+  <DealsSummary runServerless={runServerlessFunction} />
+));
+
+// Define the Extension component, taking in runServerless prop
 const DealsSummary = ({ runServerless }) => {
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
@@ -15,6 +21,7 @@ const DealsSummary = ({ runServerless }) => {
   const [totalAmount, setTotalAmount] = useState(0);
 
   useEffect(() => {
+    // Request statistics data from serverless function
     runServerless({
       name: 'get-data',
       propertiesToSend: ['hs_object_id'],
@@ -37,9 +44,11 @@ const DealsSummary = ({ runServerless }) => {
   }, [runServerless]);
 
   if (loading) {
+    // If loading, show a spinner
     return <LoadingSpinner />;
   }
   if (errorMessage) {
+    // If there's an error, show an alert
     return (
       <Alert title="Unable to get deals data" variant="error">
         {errorMessage}
@@ -57,7 +66,3 @@ const DealsSummary = ({ runServerless }) => {
     </Statistics>
   );
 };
-
-hubspot.extend(({ runServerlessFunction }) => (
-  <DealsSummary runServerless={runServerlessFunction} />
-));
