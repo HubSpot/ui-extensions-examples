@@ -11,7 +11,7 @@ export const BusOptions = ({ passengers, onNext }) => {
   const [busOption, setBusOption] = useState();
   const BUS_OPTION_DELIMETER = '*';
 
-  // Generate a memoized select options
+  // Generate memoized select options
   const busOptions = useMemo(() => {
     if (passengers < SMALL_BUS_THRESHOLD) {
       return [
