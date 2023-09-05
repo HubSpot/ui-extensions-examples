@@ -1,15 +1,15 @@
 import React from 'react';
-import { Button, ButtonRow, Divider } from '@hubspot/ui-extensions';
+import { Button, Box, Divider } from '@hubspot/ui-extensions';
 import { CrmAssociationTable } from '@hubspot/ui-extensions/crm';
 
 export const QuotesView = ({ onNext }) => {
   return (
     <>
-      <ButtonRow>
+      <Box>
         <Button onClick={onNext} type="button">
           Create Quote
         </Button>
-      </ButtonRow>
+      </Box>
       <Divider />
       <CrmAssociationTable
         objectTypeId="0-14"
