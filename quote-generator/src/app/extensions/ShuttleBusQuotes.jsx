@@ -23,7 +23,7 @@ const ShuttleBusQuotes = ({ runServerless }) => {
 
   const generateQuote = ({ ...payload }) => {
     return runServerless({
-      name: '',
+      name: 'createQuote',
       propertiesToSend: ['hs_object_id'],
       payload,
     });
