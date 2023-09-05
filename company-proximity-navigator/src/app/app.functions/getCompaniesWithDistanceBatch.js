@@ -5,7 +5,7 @@ const MapboxClient = require('@mapbox/mapbox-sdk/services/geocoding');
 // For calculating the distance between two points
 const turf = require('@turf/turf');
 
-// To fetch only needed company properties
+// To fetch needed company properties
 const PROPERTIES_TO_FETCH = [
   'hs_object_id',
   'city',
