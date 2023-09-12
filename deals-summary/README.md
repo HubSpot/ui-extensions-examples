@@ -67,7 +67,7 @@ const avgAmount = calculateAverageAmount(deals);
 sendResponse({ deals, totalAmount, avgAmount });
 ```
 
-- This is everything required for fetching the data and making it available to the front end. Open the [card-frontend.jsx](./src/app/extensions/card-frontend.jsx) file to add this data to the CRM card.
+- This is everything required for fetching the data and making it available to the front end. Open the [DealsSummary.jsx](./src/app/extensions/DealsSummary.jsx) file to add this data to the CRM card.
 - First, add a state variable to define the initial state of the average amount
 
 ```javascript
