@@ -3,6 +3,15 @@ import { Alert, LoadingSpinner } from '@hubspot/ui-extensions';
 import { CompaniesWithDistanceTable } from './components/CompaniesWithDistanceTable.jsx';
 import { hubspot } from '@hubspot/ui-extensions';
 
+// Define the extension to be run within the Hubspot CRM
+hubspot.extend(({ actions, context, runServerlessFunction }) => (
+  <NearestCompanies
+    runServerless={runServerlessFunction}
+    context={context}
+    fetchProperties={actions.fetchCrmObjectProperties}
+  />
+));
+
 const NearestCompanies = ({ context, runServerless, fetchProperties }) => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -12,13 +21,15 @@ const NearestCompanies = ({ context, runServerless, fetchProperties }) => {
   useEffect(() => {
     async function fetchCompaniesWithDistanceBatch() {
       setLoading(true);
+      // Request companies batch from serverless function
       const companiesServerlessResponse = await runServerless({
         name: 'getCompaniesWithDistanceBatch',
         propertiesToSend: ['hs_object_id', 'city', 'state', 'address'],
-        payload: { batchSize: 30 }
+        payload: { batchSize: 30 },
       });
       if (companiesServerlessResponse.status == 'SUCCESS') {
         const { companies } = companiesServerlessResponse.response;
+        // Sort companies by distance
         setNearestCompaniesSorted(
           companies.sort((c1, c2) => c1.distance - c2.distance)
         );
@@ -31,6 +42,7 @@ const NearestCompanies = ({ context, runServerless, fetchProperties }) => {
   }, [fetchProperties, runServerless]);
 
   if (errorMessage) {
+    // If there's an error, show an alert
     return (
       <Alert title="Error executing serverless function" variant="error">
         {errorMessage}
@@ -38,6 +50,7 @@ const NearestCompanies = ({ context, runServerless, fetchProperties }) => {
     );
   }
   if (loading) {
+    // If loading, show a spinner
     return <LoadingSpinner />;
   }
   return (
@@ -46,16 +59,8 @@ const NearestCompanies = ({ context, runServerless, fetchProperties }) => {
       companies={nearestCompaniesSorted.slice(0, companiesToDisplay)}
       propertiesToDisplay={[
         { title: 'Domain', propertyName: 'domain' },
-        { title: 'Phone', propertyName: 'phone' }
+        { title: 'Phone', propertyName: 'phone' },
       ]}
     />
   );
 };
-
-hubspot.extend(({ actions, context, runServerlessFunction }) => (
-  <NearestCompanies
-    runServerless={runServerlessFunction}
-    context={context}
-    fetchProperties={actions.fetchCrmObjectProperties}
-  />
-));
