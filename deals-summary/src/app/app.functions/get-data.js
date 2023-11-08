@@ -1,16 +1,16 @@
 // for HubSpot API calls
 const hubspot = require('@hubspot/api-client');
 
-exports.main = async (context = {}, sendResponse) => {
+exports.main = async (context = {}) => {
   const { hs_object_id } = context.propertiesToSend;
 
   const deals = await getAssociatedDeals(hs_object_id);
   const totalAmount = calculateTotalAmount(deals);
 
-  sendResponse({ dealsCount: deals.length, totalAmount });
+  return { dealsCount: deals.length, totalAmount };
 };
 
-async function getAssociatedDeals(hs_object_id) {
+const getAssociatedDeals = async (hs_object_id) => {
   const hubSpotClient = new hubspot.Client({
     accessToken: process.env['PRIVATE_APP_ACCESS_TOKEN'],
   });
@@ -31,7 +31,7 @@ async function getAssociatedDeals(hs_object_id) {
   return deals.results;
 }
 
-function calculateTotalAmount(deals) {
+const calculateTotalAmount = (deals) => {
   const amounts = deals.map((deal) => parseFloat(deal.properties.amount));
   return amounts.reduce((sum, amount) => sum + amount, 0);
 }

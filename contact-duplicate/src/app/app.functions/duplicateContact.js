@@ -2,42 +2,42 @@
 const axios = require('axios');
 
 // Entry function of this module, it prepares and sends request to HubSpot
-exports.main = (context = {}, sendResponse) => {
+exports.main = async (context = {}) => {
   const { hs_object_id } = context.propertiesToSend;
   const { associations, email } = context.parameters;
   const token = process.env['PRIVATE_APP_ACCESS_TOKEN'];
 
-  return fetchProperties(token, hs_object_id)
-    .then((properties) => filterProperties({ ...properties, email }))
-    .then((properties) => createContact(token, properties))
-    .then((contact) => setAssociations(token, contact, associations))
-    .then((contact) => sendResponse(contact));
+  const properties = await fetchProperties(token, hs_object_id);
+  const filteredProperties = filterProperties({ ...properties, email });
+  const contact = await createContact(token, filteredProperties);
+  await setAssociations(token, contact, associations);
+
+  return contact;
 };
 
 // Function to fetch existing contact properties from HubSpot
-const fetchProperties = (token, id) => {
-  const body = {
+const fetchProperties = async (token, id) => {
+  const requestBody = {
     operationName: 'data',
     query: QUERY,
     variables: { id },
   };
 
-  return axios
-    .post('https://api.hubapi.com/collector/graphql', JSON.stringify(body), {
+  const response = await axios
+    .post('https://api.hubapi.com/collector/graphql', JSON.stringify(requestBody), {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-    })
-    .then((res) => {
-      const body = res.data;
-      return body.data.CRM.contact;
     });
+  const responseBody = response.data;
+  return responseBody.data.CRM.contact;
 };
 
 // Function to create contact on HubSpot
-const createContact = (token, properties) => {
-  return axios
+const createContact = async (token, properties) => {
+  try {
+    const response = await axios
     .post(
       'https://api.hubapi.com/crm/v3/objects/contacts',
       { properties: properties },
@@ -47,21 +47,22 @@ const createContact = (token, properties) => {
           Authorization: `Bearer ${token}`,
         },
       },
-    )
-    .then((res) => res.data)
-    .catch((err) => {
-      if (err.response && err.response.status === 409) {
-        throw new Error('An existing contact already has this email');
-      } else if (error.response && err.response.status === 401) {
-        throw new Error('You do not have permission to duplicate this contact');
-      } else {
-        throw err;
-      }
-    });
+    );
+
+    return response.data;
+  } catch (err) {
+    if (err.response && err.response.status === 409) {
+      throw new Error('An existing contact already has this email');
+    } else if (err.response && err.response.status === 401) {
+      throw new Error('You do not have permission to duplicate this contact');
+    } else {
+      throw err;
+    }
+  }
 };
 
-// Function to set associations for the given contact and return the contact
-const setAssociations = (token, contact, associations) => {
+// Function to set associations for the given contact
+const setAssociations = async (token, contact, associations) => {
   const formattedAssociations = transformAssociations(associations, contact.id);
 
   const associationsPromises = [];
@@ -88,11 +89,11 @@ const setAssociations = (token, contact, associations) => {
     );
   }
 
-  return Promise.all(associationsPromises).then(() => contact);
+  return Promise.all(associationsPromises);
 };
 
 // Function to update contact associations on HubSpot
-const updateAssociations = (
+const updateAssociations = async (
   token,
   associations,
   fromObjectType,
