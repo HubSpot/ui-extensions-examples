@@ -22,6 +22,10 @@ Access to these UI Extensions is part of [CRM Development public beta](https://d
 - You must have an active HubSpot account with Sales or Service Hub Enterprise access.
 - Your HubSpot account must be enrolled in CRM development tools public beta. You can enrol by visiting [Product Updates > Betas](https://app.hubspot.com/l/whats-new/betas).
 - You must be using the latest [HubSpot CLI](https://www.npmjs.com/package/@hubspot/cli).
+
+## Lockfiles
+
+It's best practice to generate package lockfiles before uploading projects. This will help prevent running out of file descriptors during the build, and streamline subsequent builds. To generate a lockfile for a project, either install the project locally using `npm install` or generate the lockfile only using `npm install --package-lock-only`.
   
 ## Get started with developer project
 UI extensions are createing using developer projects that are part of CRM development beta. Read [Quick Start guide](https://developers.hubspot.com/docs/platform/projects-quick-start-guide) for developer projects for instructions to get started. 
