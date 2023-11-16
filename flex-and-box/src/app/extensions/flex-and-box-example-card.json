@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Flex and box example card",
+    "uid": "flex_and_box_example_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "FlexAndBoxExample.tsx"
+    },
+    "objectTypes": [{ "name": "deals" }]
+  }
+}

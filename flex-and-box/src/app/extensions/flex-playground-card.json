@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Flex playground card",
+    "uid": "flex_playground_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "FlexPlayground.tsx"
+    },
+    "objectTypes": [{ "name": "deals" }]
+  }
+}
