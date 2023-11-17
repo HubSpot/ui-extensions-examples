@@ -1,6 +1,6 @@
-exports.main = (context = {}, sendResponse) => {
+exports.main = async () => {
   setTimeout(() => {
-    sendResponse(demoRestaurants);
+    return demoRestaurants;
   }, 1000);
 };
 

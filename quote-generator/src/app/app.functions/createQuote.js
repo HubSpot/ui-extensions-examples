@@ -5,14 +5,14 @@ const hubspotClient = new hubspot.Client({
   accessToken: process.env['PRIVATE_APP_ACCESS_TOKEN'],
 });
 
-exports.main = async (context = {}, sendResponse) => {
+exports.main = async (context = {}) => {
   const { hs_object_id } = context.propertiesToSend;
   const { distance, sku, numberOfBuses, quoteName } = context.event.payload;
 
   const product = await findProductBySKU(sku);
 
   if (product === null) {
-    sendResponse({ error: 'PRODUCT_NOT_FOUND' });
+    return ({ error: 'PRODUCT_NOT_FOUND' });
   } else {
     const quote = await createQuote({
       dealId: hs_object_id,
@@ -29,7 +29,7 @@ exports.main = async (context = {}, sendResponse) => {
       );
     }
     await Promise.all(lineItems);
-    sendResponse({ quote });
+    return { quote };
   }
 };
 
@@ -38,7 +38,7 @@ const HOURS_IN_DAY = 24;
 const DAYS_IN_WEEK = 7;
 const SECONDS_IN_WEEK = DAYS_IN_WEEK * HOURS_IN_DAY * SECONDS_IN_HOUR;
 
-async function createQuote({ dealId, quoteName }) {
+const createQuote = async ({ dealId, quoteName }) => {
   const request = {
     properties: {
       hs_title: quoteName,
@@ -64,7 +64,7 @@ async function createQuote({ dealId, quoteName }) {
   return await hubspotClient.crm.quotes.basicApi.create(request);
 }
 
-async function addLineItem({ productId, quoteId, quantity }) {
+const addLineItem = async ({ productId, quoteId, quantity }) => {
   const request = {
     properties: {
       hs_product_id: productId,
@@ -86,7 +86,7 @@ async function addLineItem({ productId, quoteId, quantity }) {
   await hubspotClient.crm.lineItems.basicApi.create(request);
 }
 
-async function findProductBySKU(sku) {
+const findProductBySKU = async (sku) => {
   try {
     const product = await hubspotClient.crm.products.basicApi.getById(
       sku,

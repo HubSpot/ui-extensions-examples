@@ -16,7 +16,7 @@ const PROPERTIES_TO_FETCH = [
   'annualrevenue',
 ];
 
-exports.main = async (context = {}, sendResponse) => {
+exports.main = async (context = {}) => {
   const { batchSize } = context.event.payload;
 
   const companies = await getCompaniesBatch({
@@ -35,12 +35,12 @@ exports.main = async (context = {}, sendResponse) => {
     currentCompanyProperties,
   });
 
-  sendResponse({
+  return {
     companies: companiesWithDistance,
-  });
+  };
 };
 
-async function getCompaniesBatch({ hubspotClient, batchSize }) {
+const getCompaniesBatch = async ({ hubspotClient, batchSize }) => {
   const apiResponse = await hubspotClient.crm.companies.basicApi.getPage(
     batchSize,
     undefined,
@@ -50,7 +50,7 @@ async function getCompaniesBatch({ hubspotClient, batchSize }) {
   return apiResponse.results;
 }
 
-async function extendWithDistance({ companies, currentCompanyProperties }) {
+const extendWithDistance = async ({ companies, currentCompanyProperties }) => {
   const coordinatesFrom = await getCoordinates({
     address: buildFullAdress(currentCompanyProperties),
   });
@@ -71,11 +71,11 @@ async function extendWithDistance({ companies, currentCompanyProperties }) {
   );
 }
 
-function buildFullAdress({ city, state, address }) {
+const buildFullAdress = ({ city, state, address }) => {
   return `${city} ${state} ${address}`;
 }
 
-async function getCoordinates({ address }) {
+const getCoordinates = async ({ address }) => {
   const mapboxClient = MapboxClient({
     accessToken: process.env.MAPBOX_ACCESS_TOKEN,
   });
@@ -84,7 +84,7 @@ async function getCoordinates({ address }) {
   return response.body.features[0].geometry.coordinates;
 }
 
-function getDistance({ coordinatesFrom, coordinatesTo }) {
+const getDistance = ({ coordinatesFrom, coordinatesTo }) => {
   return turf.distance(turf.point(coordinatesFrom), turf.point(coordinatesTo), {
     units: 'miles',
   });
