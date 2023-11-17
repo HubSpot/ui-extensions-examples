@@ -43,7 +43,6 @@ export const PropertyForm = ({ onSubmit }: PropertyFormProps) => {
             <NumberInput
               name="rentalPrice"
               label="Monthly rental price"
-              placeholder="3100"
               max={maxrentalPrice}
               value={listingItem.rentalPrice}
               onChange={value =>
@@ -57,6 +56,7 @@ export const PropertyForm = ({ onSubmit }: PropertyFormProps) => {
               name="creationDate"
               label="Listing creation date"
               format="ll"
+              value={listingItem.creationDate}
               onChange={value =>
                 setListingItem({
                   ...listingItem,
@@ -102,7 +102,6 @@ export const PropertyForm = ({ onSubmit }: PropertyFormProps) => {
               name="address"
               label="Address"
               value={listingItem.address}
-              placeholder="Input Value"
               maxLength={maxCharsAddressInput}
               onChange={value =>
                 setListingItem({ ...listingItem, address: value })

@@ -1,3 +1,5 @@
+import { getCurrentDate } from '../utils/date'
+
 export enum PropertyType {
   Bedroom = 'bedroom',
   Studio = 'studio',
@@ -12,7 +14,10 @@ export enum ListingItemStatus {
 }
 
 export interface CreationDate {
-  formattedDate: string;
+  year: number;
+  month: number;
+  date: number;
+  formattedDate?: string;
 }
 
 export interface ListingItem {
@@ -37,6 +42,9 @@ export const listingItemStatusSelectOptions = [
 ];
 
 const ListingItemDefaultCreationDate: CreationDate = {
+  year: 2023,
+  month: 6,
+  date: 20,
   formattedDate: 'Jul 20, 2023',
 };
 export const listingItemsSamples: ListingItem[] = [
@@ -80,7 +88,7 @@ export const listingItemsSamples: ListingItem[] = [
 export const listingItemDefaultFields: ListingItem = {
   address: '',
   rentalPrice: undefined,
-  creationDate: { formattedDate: '' },
+  creationDate: getCurrentDate(),
   propertyType: PropertyType.Studio,
   status: ListingItemStatus.Available,
 };
