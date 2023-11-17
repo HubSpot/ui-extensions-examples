@@ -24,7 +24,7 @@ export const PropertyTile = ({ listingItem }: PropertyTileProps) => {
     options: { label: string; value: string }[],
     value: string,
   ) => {
-    const option = options.find(o => o.value === value)!;
+    const option = options.find((o) => o.value === value)!;
     return option.label;
   };
   const maxAddressLength = 18;

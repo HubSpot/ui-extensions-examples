@@ -28,7 +28,7 @@ const FlexPlayground = () => {
   };
 
   const settingsAreDefault = Object.keys(settings).some(
-    key => settings[key] !== defaultSettings[key],
+    (key) => settings[key] !== defaultSettings[key],
   );
 
   return (
@@ -60,19 +60,21 @@ const FlexPlayground = () => {
               <Select
                 label="Justify"
                 value={settings[Setting.Justify]}
-                onChange={value => handleSettingChange(Setting.Justify, value)}
+                onChange={(value) =>
+                  handleSettingChange(Setting.Justify, value)
+                }
                 options={settingsOptions[Setting.Justify]}
               />
               <Select
                 label="Align"
                 value={settings[Setting.Align]}
-                onChange={value => handleSettingChange(Setting.Align, value)}
+                onChange={(value) => handleSettingChange(Setting.Align, value)}
                 options={settingsOptions[Setting.Align]}
               />
               <Select
                 label="Direction"
                 value={settings[Setting.Direction]}
-                onChange={value =>
+                onChange={(value) =>
                   handleSettingChange(Setting.Direction, value)
                 }
                 options={settingsOptions[Setting.Direction]}
@@ -82,13 +84,13 @@ const FlexPlayground = () => {
               <Select
                 label="Gap"
                 value={settings[Setting.Gap]}
-                onChange={value => handleSettingChange(Setting.Gap, value)}
+                onChange={(value) => handleSettingChange(Setting.Gap, value)}
                 options={settingsOptions[Setting.Gap]}
               />
               <Select
                 label="Wrap"
                 value={settings[Setting.Wrap]}
-                onChange={value => handleSettingChange(Setting.Wrap, value)}
+                onChange={(value) => handleSettingChange(Setting.Wrap, value)}
                 options={settingsOptions[Setting.Wrap]}
               />
             </Box>

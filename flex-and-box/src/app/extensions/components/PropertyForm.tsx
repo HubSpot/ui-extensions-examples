@@ -45,7 +45,7 @@ export const PropertyForm = ({ onSubmit }: PropertyFormProps) => {
               label="Monthly rental price"
               max={maxrentalPrice}
               value={listingItem.rentalPrice}
-              onChange={value =>
+              onChange={(value) =>
                 setListingItem({ ...listingItem, rentalPrice: value })
               }
               required={true}
@@ -57,7 +57,7 @@ export const PropertyForm = ({ onSubmit }: PropertyFormProps) => {
               label="Listing creation date"
               format="ll"
               value={listingItem.creationDate}
-              onChange={value =>
+              onChange={(value) =>
                 setListingItem({
                   ...listingItem,
                   creationDate: value as CreationDate,
@@ -72,7 +72,7 @@ export const PropertyForm = ({ onSubmit }: PropertyFormProps) => {
             <Select
               label="Property type"
               value={listingItem.propertyType}
-              onChange={value =>
+              onChange={(value) =>
                 setListingItem({
                   ...listingItem,
                   propertyType: value as PropertyType,
@@ -86,7 +86,7 @@ export const PropertyForm = ({ onSubmit }: PropertyFormProps) => {
             <Select
               label="Status"
               value={listingItem.status}
-              onChange={value =>
+              onChange={(value) =>
                 setListingItem({
                   ...listingItem,
                   status: value as ListingItemStatus,
@@ -103,7 +103,7 @@ export const PropertyForm = ({ onSubmit }: PropertyFormProps) => {
               label="Address"
               value={listingItem.address}
               maxLength={maxCharsAddressInput}
-              onChange={value =>
+              onChange={(value) =>
                 setListingItem({ ...listingItem, address: value })
               }
               required={true}

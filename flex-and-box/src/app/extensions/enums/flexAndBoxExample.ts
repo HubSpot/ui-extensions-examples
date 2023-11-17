@@ -1,4 +1,4 @@
-import { getCurrentDate } from '../utils/date'
+import { getCurrentDate } from '../utils/date';
 
 export enum PropertyType {
   Bedroom = 'bedroom',

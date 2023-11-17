@@ -55,7 +55,7 @@ export const defaultSettings = (() => {
     [Setting.Tiles]: 5,
   };
   Object.entries(settingsOptions).forEach(([name, options]) => {
-    const defaultOption: SelectOption = options.find(o => o.default == true)!;
+    const defaultOption: SelectOption = options.find((o) => o.default == true)!;
     defaultSettings[name] = defaultOption.value;
   });
   return defaultSettings;
