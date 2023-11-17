@@ -1,15 +1,39 @@
 {
   "projects": [
     {
+      "name": "company-proximity-navigator",
+      "label": "Company Proximity Navigator",
+      "path": "company-proximity-navigator",
+      "insertPath": null
+    },
+    {
       "name": "contact-duplicate",
       "label": "Duplicate a Contact",
       "path": "contact-duplicate",
       "insertPath": null
     },
     {
+      "name": "deal-summary",
+      "label": "Deal Summary",
+      "path": "deal-summary",
+      "insertPath": null
+    },
+    {
       "name": "example-meal-order",
       "label": "Gift a Meal",
       "path": "example-meal-order",
+      "insertPath": null
+    },
+    {
+      "name": "flex-and-box",
+      "label": "Flex and Box",
+      "path": "flex-and-box",
+      "insertPath": null
+    },
+    {
+      "name": "quote-generator",
+      "label": "Quote Generator",
+      "path": "quote-generators",
       "insertPath": null
     },
     {
