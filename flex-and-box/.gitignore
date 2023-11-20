@@ -5,10 +5,3 @@ package-lock.json
 hubspot.config.yml
 .env*
 !.env.sample
-node_modules/
-target/
-dist/
-package-lock.json
-hubspot.config.yml
-.env*
-!.env.sample

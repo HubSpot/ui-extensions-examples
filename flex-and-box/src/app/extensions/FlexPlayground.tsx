@@ -7,8 +7,7 @@ import {
   Text,
   Link,
   Flex,
-  hubspot,
-  ButtonRow,
+  hubspot
 } from '@hubspot/ui-extensions';
 import {
   Setting,
@@ -47,7 +46,13 @@ const FlexPlayground = () => {
             .
           </Text>
 
-          <Flex {...settings}>
+          <Flex
+            justify={settings.justify}
+            align={settings.align}
+            direction={settings.direction}
+            gap={settings.gap}
+            wrap={settings.wrap}
+          >
             {Array.from({ length: settings[Setting.Tiles] }, (_, i) => (
               <Tile key={i}>
                 <Text>{`Tile ${i + 1}`}</Text>
@@ -94,12 +99,13 @@ const FlexPlayground = () => {
                 options={settingsOptions[Setting.Wrap]}
               />
             </Box>
-            <Box flex={3}></Box>
+            {/* Added an empty Box component to regulate the space taken up by components. */}
+            <Box flex={3} />
           </Flex>
         </Flex>
       </Box>
 
-      <ButtonRow>
+      <Box>
         <Button
           onClick={() => {
             handleSettingChange(Setting.Tiles, settings[Setting.Tiles] + 1);
@@ -124,7 +130,7 @@ const FlexPlayground = () => {
         >
           Restore default properties
         </Button>
-      </ButtonRow>
+      </Box>
     </Flex>
   );
 };

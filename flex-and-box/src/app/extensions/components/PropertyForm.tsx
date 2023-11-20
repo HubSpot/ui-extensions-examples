@@ -7,8 +7,7 @@ import {
   NumberInput,
   Select,
   TextArea,
-  Button,
-  ButtonRow,
+  Button
 } from '@hubspot/ui-extensions';
 import {
   CreationDate,
@@ -110,14 +109,14 @@ export const PropertyForm = ({ onSubmit }: PropertyFormProps) => {
             />
           </Box>
           {/* Added empty Вox component to avoid stretching the TextArea field. */}
-          <Box flex={5}></Box>
+          <Box flex={5} />
         </Flex>
-        {/* Wrapped in ButtonRow to avoid button stretching. */}
-        <ButtonRow>
+        {/* Wrapped in Box to avoid button stretching. */}
+        <Box>
           <Button variant="primary" type="submit">
             Add property listing
           </Button>
-        </ButtonRow>
+        </Box>
       </Flex>
     </Form>
   );

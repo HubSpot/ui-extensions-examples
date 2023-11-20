@@ -12,8 +12,6 @@ This sample is designed to help you with layout management in our custom cards b
 - This is a dummy real estate listing card for deal records that uses Flex and Box to arrange information on each listing.
 - This card aims to show how the front end layout works with many components. It allows users to add a property listing based on the form below. On refresh, the original listings will be restored. Note that it doesn't save the user input.
 
-[INSERT screenshots here]
-
 We recommend installing this sample in a Sandbox account.
 
 ## Quick Start
