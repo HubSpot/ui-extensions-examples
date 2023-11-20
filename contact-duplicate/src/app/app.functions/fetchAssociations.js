@@ -1,10 +1,10 @@
 const axios = require('axios');
 
-exports.main = (context = {}, sendResponse) => {
+exports.main = (context = {}) => {
   const { hs_object_id } = context.propertiesToSend;
   const token = process.env['PRIVATE_APP_ACCESS_TOKEN'];
 
-  return fetchAssociations(token, hs_object_id).then(sendResponse);
+  return fetchAssociations(token, hs_object_id);
 };
 
 // Function to fetch associations for the object by id
