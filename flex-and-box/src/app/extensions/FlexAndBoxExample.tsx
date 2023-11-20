@@ -37,8 +37,9 @@ const FlexAndBoxExample = () => {
         , as well as how to use multiple components with them. Property listings
         are presented in a tile format. Use the form below to add more tiles.{' '}
         <Link href="https://developers.hubspot.com/docs/platform/manage-ui-extension-layout">
-          Learn more about layout management.
+          Learn more about layout management
         </Link>
+        .
       </Text>
       <Flex direction="column" gap="md" align="start">
         <Text format={{ fontWeight: 'bold' }}>Property listings</Text>
