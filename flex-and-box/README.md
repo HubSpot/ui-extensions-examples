@@ -5,8 +5,6 @@ This sample is designed to help you with layout management in our custom cards b
 ### 1. **Flex playground card**: [FlexPlayground.tsx](src/app/extensions/FlexPlayground.tsx)
 
 
-[FlexPlayground.tsx]([url](https://github.com/HubSpot/ui-extensions-examples/blob/flexbox/flex-and-box/src/app/extensions/FlexPlayground.tsx))
-
 - This is a card which will let you experiment with various Flex props to better understand how they work together.
 - You can Add/Remove tiles, change the various properties of Flex and implement this spacing in your own cards
 
