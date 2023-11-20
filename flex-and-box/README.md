@@ -2,7 +2,9 @@
 
 This sample is designed to help you with layout management in our custom cards by showing ways of using `<Flex>` and `<Box>`. There are two cards provided by this sample, both of which will be on the Deal object.
 
-### 1. **Flex playground card**:([FlexPlayground.tsx]([url]([www.google.com](https://github.com/HubSpot/ui-extensions-examples/blob/flexbox/flex-and-box/src/app/extensions/FlexPlayground.tsx))))
+### 1. **Flex playground card**: [FlexPlayground.tsx](flex-and-box/src/app/extensions/FlexPlayground.tsx)
+
+[FlexPlayground.tsx]([url](https://github.com/HubSpot/ui-extensions-examples/blob/flexbox/flex-and-box/src/app/extensions/FlexPlayground.tsx))
 
 - This is a card which will let you experiment with various Flex props to better understand how they work together.
 - You can Add/Remove tiles, change the various properties of Flex and implement this spacing in your own cards
@@ -13,9 +15,7 @@ https://github.com/HubSpot/ui-extensions-examples/assets/110251572/214944ab-3c00
 
 
 
-
-
-### 2. **Flex and Box example card**:([FlexAndBoxExample.tsx]([url](https://github.com/HubSpot/ui-extensions-examples/blob/flexbox/flex-and-box/src/app/extensions/FlexAndBoxExample.tsx)))
+### 2. **Flex and Box example card**: [FlexAndBoxExample.tsx]([url](flex-and-box/src/app/extensions/FlexAndBoxExample.tsx))
 
 - This is a dummy real estate listing card for deal records that uses Flex and Box to arrange information on each listing.
 - This card aims to show how the front end layout works with many components. It allows users to add a property listing based on the form below. On refresh, the original listings will be restored. Note that it doesn't save the user input.
