@@ -1,0 +1,19 @@
+{
+  "name": "Flex playground.",
+  "description": "",
+  "uid": "flex_and_box",
+  "scopes": ["crm.objects.deals.read", "crm.objects.deals.write"],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/flex-playground-card.json"
+        },
+        {
+          "file": "extensions/flex-and-box-example-card.json"
+        }
+      ]
+    }
+  }
+}
