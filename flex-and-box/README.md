@@ -38,7 +38,7 @@ We recommend installing this sample in a Sandbox account.
 
 ### Step 2: Create Flex and Box project
 
-Create a new project with `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="flex-and-box" --name="flex-and-box" --template="flex-and-box"`
+In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="flex-and-box" --name="flex-and-box" --template="flex-and-box"`
 
 ### Step 3: Install dependencies
 
