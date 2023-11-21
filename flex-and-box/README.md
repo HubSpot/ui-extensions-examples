@@ -46,7 +46,7 @@ In the CLI, run `npm install` to install the dependencies for this project.
 
 ### Step 4: Upload project
 
-Run `hs project upload`. Alternatively, if you’d like to build on this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
+Run `hs project upload`. If you’d like to build on this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
 
 ### Step 5: View the cards
 
