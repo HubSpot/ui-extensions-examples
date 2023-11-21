@@ -4,7 +4,7 @@
   "description": "UI extension example using CRM components",
   "main": "index.js",
   "scripts": {
-    "postinstall": "cd ./src/app/extensions/ && npm install && cd ../app.functions && npm install",
+    "postinstall": "cd ./src/app/extensions/ && npm install && cd ../app.functions && npm install && cd ../../.. && ../scripts/check-hs-version.js",
     "dev": "npm run dev --prefix ./src/app/extensions/"
   },
   "repository": {

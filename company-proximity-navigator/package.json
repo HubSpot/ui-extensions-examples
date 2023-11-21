@@ -2,7 +2,7 @@
   "name": "company-proximity-navigator",
   "version": "0.1.0",
   "scripts": {
-    "postinstall": "cd ./src/app/extensions/ && npm install && cd ../app.functions && npm install"
+    "postinstall": "cd ./src/app/extensions/ && npm install && cd ../app.functions && npm install && cd ../../.. && ../scripts/check-hs-version.js"
   },
   "author": "HubSpot",
   "license": "MIT"
