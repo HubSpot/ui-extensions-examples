@@ -13,9 +13,9 @@
       "insertPath": null
     },
     {
-      "name": "deal-summary",
+      "name": "deals-summary",
       "label": "Deal Summary",
-      "path": "deal-summary",
+      "path": "deals-summary",
       "insertPath": null
     },
     {
@@ -33,7 +33,7 @@
     {
       "name": "quote-generator",
       "label": "Quote Generator",
-      "path": "quote-generators",
+      "path": "quote-generator",
       "insertPath": null
     },
     {
