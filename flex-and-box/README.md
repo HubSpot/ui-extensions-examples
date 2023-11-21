@@ -56,5 +56,5 @@ In the main menu select `Sales` > `Deals` to view deal records. Click on any of 
 2. Click `Create deal` in the top right hand corner and fill in all required fields. Click `create` once you’ve finished filling in your deal details.
 3. Your new deal should appear in the `Deals table`. Select it and navigate to the `custom tab` in the middle pane to access the sample cards.
 
-If you haven't customized the tabs before follow step #4 from [this guide](https://developers.hubspot.com/docs/platform/ui-extensions-quickstart)https://developers.hubspot.com/docs/platform/ui-extensions-quickstart) to add  the two sample cards as below:
+If you haven't customized the tabs before follow step #4 from [this guide](https://developers.hubspot.com/docs/platform/ui-extensions-quickstart) to add  the two sample cards as below:
 ![image (8)](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/1824f8e4-1c98-456e-9b92-a3ea84b5a5e5)
