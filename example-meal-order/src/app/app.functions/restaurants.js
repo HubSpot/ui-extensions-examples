@@ -1,7 +1,10 @@
+// Credit to Dan Dascalescu and Community:
+// https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
 exports.main = async () => {
-  setTimeout(() => {
-    return demoRestaurants;
-  }, 1000);
+  await sleep(1000);
+  return demoRestaurants;
 };
 
 const demoMenu = {
