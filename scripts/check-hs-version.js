@@ -3,6 +3,13 @@ const FgRed = '\x1b[31m';
 const Reset = '\x1b[0m';
 const FgGreen = '\x1b[32m';
 
+const { execSync } = require('child_process');
+const minRequiredVersion = {
+  major: 5,
+  minor: 0,
+  patch: 0,
+};
+
 function exitWithError(...args) {
   console.error(FgRed, ...args, Reset);
   process.exit(1);
@@ -15,19 +22,6 @@ function exitWithSuccess() {
     Reset
   );
   process.exit(0);
-}
-const { execSync } = require('child_process');
-const minRequiredVersion = {
-  major: 5,
-  minor: 0,
-  patch: 0,
-};
-try {
-  execSync('hs', { stdio: 'pipe' });
-} catch (e) {
-  exitWithError(
-    'You do not have the HubSpot cli installed, please run `npm install -g @hubspot/cli` to install it.\n'
-  );
 }
 
 function meetsMinimumRequiredVersion(major, minor, patch) {
@@ -48,6 +42,14 @@ function meetsMinimumRequiredVersion(major, minor, patch) {
   }
 
   return true;
+}
+
+try {
+  execSync('hs', { stdio: 'pipe' });
+} catch (e) {
+  exitWithError(
+    'You do not have the HubSpot cli installed, please run `npm install -g @hubspot/cli` to install it.\n'
+  );
 }
 
 try {
