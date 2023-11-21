@@ -7,7 +7,5 @@
   },
   "author": "HubSpot",
   "license": "MIT",
-  "dependencies": {
-    "@hubspot/cli": "^5.0.1"
-  }
+  "dependencies": {}
 }
