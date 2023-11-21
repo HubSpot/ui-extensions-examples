@@ -1,6 +1,4 @@
 {
-  "runtime": "nodejs16.x",
-  "version": "1.0",
   "appFunctions": {
     "updateDeal": {
       "file": "updateDeal.js",

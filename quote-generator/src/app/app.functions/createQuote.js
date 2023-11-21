@@ -7,14 +7,14 @@ const hubspotClient = new hubspot.Client({
 });
 
 // Entry function of this module, it creates a quote together with line items
-exports.main = async (context = {}, sendResponse) => {
+exports.main = async (context = {}) => {
   const { hs_object_id } = context.propertiesToSend;
   const { distance, sku, numberOfBuses, quoteName } = context.event.payload;
 
   const product = await findProductBySKU(sku);
 
   if (product === null) {
-    sendResponse({ error: 'PRODUCT_NOT_FOUND' });
+    return ({ error: 'PRODUCT_NOT_FOUND' });
   } else {
     const quote = await createQuote({
       dealId: hs_object_id,
@@ -33,7 +33,7 @@ exports.main = async (context = {}, sendResponse) => {
       );
     }
     await Promise.all(lineItems);
-    sendResponse({ quote });
+    return { quote };
   }
 };
 

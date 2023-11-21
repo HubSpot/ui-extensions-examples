@@ -17,8 +17,9 @@ const PROPERTIES_TO_FETCH = [
   'annualrevenue',
 ];
 
+
 // Entry function of this module, it fetches batch of companies and calculates distance to the current company record
-exports.main = async (context = {}, sendResponse) => {
+exports.main = async (context = {}) => {
   const { batchSize } = context.event.payload;
 
   const companies = await getCompaniesBatch({
@@ -38,9 +39,9 @@ exports.main = async (context = {}, sendResponse) => {
     currentCompanyProperties,
   });
 
-  sendResponse({
+  return {
     companies: companiesWithDistance,
-  });
+  };
 };
 
 // Function to fetch companies batch using HubSpot API client
@@ -77,7 +78,7 @@ async function extendWithDistance({ companies, currentCompanyProperties }) {
   );
 }
 
-function buildFullAdress({ city, state, address }) {
+const buildFullAdress = ({ city, state, address }) => {
   return `${city} ${state} ${address}`;
 }
 

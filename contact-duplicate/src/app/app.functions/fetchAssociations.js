@@ -1,31 +1,30 @@
 const axios = require('axios');
 
-exports.main = (context = {}, sendResponse) => {
+exports.main = async (context = {}) => {
   const { hs_object_id } = context.propertiesToSend;
   const token = process.env['PRIVATE_APP_ACCESS_TOKEN'];
 
-  return fetchAssociations(token, hs_object_id).then(sendResponse);
+  return await fetchAssociations(token, hs_object_id);
 };
 
 // Function to fetch associations for the object by id
-const fetchAssociations = (token, id) => {
-  const body = {
+const fetchAssociations = async (token, id) => {
+  const requestBody = {
     operationName: 'data',
     query: QUERY,
     variables: { id },
   };
 
-  return axios
-    .post('https://api.hubapi.com/collector/graphql', JSON.stringify(body), {
+  const response = await axios
+    .post('https://api.hubapi.com/collector/graphql', JSON.stringify(requestBody), {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-    })
-    .then((res) => {
-      const body = res.data;
-      return body.data.CRM.contact;
     });
+    const responseBody = response.data;
+
+    return responseBody.data.CRM.contact;
 };
 
 // GraphQL query to fetch associations

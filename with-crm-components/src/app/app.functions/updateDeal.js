@@ -1,18 +1,18 @@
 const axios = require('axios');
 
-exports.main = (context = {}, sendResponse) => {
+exports.main = async (context = {}) => {
   const { dealId, dealStage } = context.parameters;
   const token = process.env['PRIVATE_APP_ACCESS_TOKEN'];
-  return updateDeal(token, dealId, dealStage)
-    .then(() => {
-      sendResponse({ status: 'success' });
-    })
-    .catch((e) => {
-      sendResponse({ status: 'error', message: e.message });
-    });
+
+  try {
+    await updateDeal(token, dealId, dealStage);
+    return { status: 'success' };
+  } catch (err) {
+    return { status: 'error', message: err.message }
+  }
 };
 
-const updateDeal = (token, id, stage) => {
+const updateDeal = async (token, id, stage) => {
   return axios.patch(
     `https://api.hubapi.com/crm/v3/objects/deals/${id}`,
     {

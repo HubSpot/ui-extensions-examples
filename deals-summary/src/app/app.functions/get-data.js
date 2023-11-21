@@ -2,13 +2,13 @@
 const hubspot = require('@hubspot/api-client');
 
 // Entry function of this module, it fetches associated deals and calculates the statistics
-exports.main = async (context = {}, sendResponse) => {
+exports.main = async (context = {}) => {
   const { hs_object_id } = context.propertiesToSend;
 
   const deals = await getAssociatedDeals(hs_object_id);
   const totalAmount = calculateTotalAmount(deals);
 
-  sendResponse({ dealsCount: deals.length, totalAmount });
+  return { dealsCount: deals.length, totalAmount };
 };
 
 // Function to fetch associated deals with their properties
