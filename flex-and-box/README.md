@@ -4,27 +4,17 @@ This sample is designed to help you with layout management in our custom cards b
 
 ### 1. **Flex playground card**: [FlexPlayground.tsx](src/app/extensions/FlexPlayground.tsx)
 
-
 - This is a card which will let you experiment with various Flex props to better understand how they work together.
 - You can Add/Remove tiles, change the various properties of Flex and implement this spacing in your own cards
 
-
-
 https://github.com/HubSpot/ui-extensions-examples/assets/110251572/214944ab-3c00-4f77-b80b-3f7723ef1837
-
-
 
 ### 2. **Flex and Box example card**: [FlexAndBoxExample.tsx](src/app/extensions/FlexAndBoxExample.tsx)
 
 - This is a dummy real estate listing card for deal records that uses Flex and Box to arrange information on each listing.
 - This card aims to show how the front end layout works with many components. It allows users to add a property listing based on the form below. On refresh, the original listings will be restored. Note that it doesn't save the user input.
 
-
-
 https://github.com/HubSpot/ui-extensions-examples/assets/110251572/31c7c43e-36cc-4ac6-8677-ae479237780b
-
-
-
 
 We recommend installing this sample in a Sandbox account.
 
@@ -56,5 +46,5 @@ In the main menu select `Sales` > `Deals` to view deal records. Click on any of 
 2. Click `Create deal` in the top right hand corner and fill in all required fields. Click `create` once you’ve finished filling in your deal details.
 3. Your new deal should appear in the `Deals table`. Select it and navigate to the `custom tab` in the middle pane to access the sample cards.
 
-If you haven't customized the tabs before follow step #4 from [this guide](https://developers.hubspot.com/docs/platform/ui-extensions-quickstart) to add  the two sample cards as below:
+If you haven't customized the tabs before follow step #4 from [this guide](https://developers.hubspot.com/docs/platform/ui-extensions-quickstart) to add the two sample cards as below:
 ![image (8)](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/1824f8e4-1c98-456e-9b92-a3ea84b5a5e5)
