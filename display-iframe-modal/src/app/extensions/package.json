@@ -1,0 +1,22 @@
+{
+  "name": "iframe-extension",
+  "version": "0.1.0",
+  "description": "",
+  "license": "MIT",
+  "main": "DisplayIframe.jsx",
+  "scripts": {
+    "dev": "hs-ui-extensions-dev-server dev",
+    "build": "hs-ui-extensions-dev-server build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HubSpot/ui-extensions-react-examples"
+  },
+  "dependencies": {
+    "@hubspot/ui-extensions": "latest",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@hubspot/ui-extensions-dev-server": "latest"
+  }
+}
