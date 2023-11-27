@@ -2,7 +2,8 @@
 
 This sample is designed to help you with opening a popup iframe modal from inside the custom card.
 
-[ADD GIF HERE]
+![display-iframe](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/523d06d6-1fa4-4218-9587-83c162224c38)
+
 
 ## Quick Start
 
