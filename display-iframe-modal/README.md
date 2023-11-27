@@ -2,6 +2,8 @@
 
 This sample is designed to help you with opening a popup iframe modal from inside the custom card. 
 
+[ADD GIF HERE]
+
 ## Quick Start
 
 ### Step 1: Update your CLI and & authenticate your account
