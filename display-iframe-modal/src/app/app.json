@@ -1,0 +1,16 @@
+{
+  "name": "Displaying iframe modal",
+  "description": "This is a sample to show how to open a popup iframe modal from a custom card",
+  "scopes": ["crm.objects.contacts.read", "crm.objects.contacts.write"],
+  "uid": "display-iframe-modal",
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/iframe-modal.json"
+        }
+      ]
+    }
+  }
+}
