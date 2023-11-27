@@ -1,6 +1,6 @@
 # Display an iframe modal
 
-This sample is designed to help you with opening a popup iframe modal from inside the custom card. 
+This sample is designed to help you with opening a popup iframe modal from inside the custom card.
 
 [ADD GIF HERE]
 
@@ -14,7 +14,7 @@ This sample is designed to help you with opening a popup iframe modal from insid
 
 ### Step 2: Create the project
 
-In the folder where you want this sample to be cloned, create a new project by running [ADD CLI COMMAND HERE]
+In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="display-iframe-modal" --name="display-iframe-modal" --template="display-iframe-modal"`
 
 ### Step 3: Install dependencies
 
