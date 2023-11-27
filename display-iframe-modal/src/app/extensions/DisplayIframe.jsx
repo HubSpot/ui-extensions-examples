@@ -18,20 +18,16 @@ const Extension = ({ context, runServerless, openIframe }) => {
 
   return (
     <>
-      <Flex direction="column" align="start" gap="medium">
-        <Flex direction="row" gap="medium">
-          <Text format={{ fontWeight: "bold" }} inline="true">
-            How to open a popup iframe:
-          </Text>
-          <Text>
-            Clicking the button will open a modal dialog with an iframe that
-            displays the content at the provided URL. Get more info on how to do
-            this here{" "}
-            <Link href="https://developers.hubspot.com/docs/platform/create-ui-extensions#open-an-iframe-in-a-modal">
-              here
-            </Link>
-          </Text>
-        </Flex>
+        <Flex direction="column" align="start" gap="medium">
+        <Text>
+          Clicking the button will open a modal dialog with an iframe that
+          displays the content at the provided URL. Get more info on how to do
+          this here{" "}
+          <Link href="https://developers.hubspot.com/docs/platform/create-ui-extensions#open-an-iframe-in-a-modal">
+            here
+          </Link>
+        </Text>
+
         <Box>
           <Button type="submit" onClick={handleClick}>
             Click me
