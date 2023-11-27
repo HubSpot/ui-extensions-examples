@@ -41,6 +41,12 @@
       "label": "CRM Components UI Extensions",
       "path": "with-crm-components",
       "insertPath": null
+    },
+    {
+      "name": "display-iframe-modal",
+      "label": "Displaying an Iframe Modal",
+      "path": "display-iframe-modal",
+      "insertPath": null
     }
   ]
 }
