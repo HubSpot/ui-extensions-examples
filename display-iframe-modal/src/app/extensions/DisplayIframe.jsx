@@ -5,7 +5,7 @@ hubspot.extend((
   { actions } // serverless function is not required for simply displaying an iframe
 ) => <Extension openIframe={actions.openIframeModal} />);
 
-// Define the Extension component, taking in openIframe as prop
+// Define the Extension component, taking in openIframe as a prop
 const Extension = ({ openIframe }) => {
   const handleClick = () => {
     openIframe({
