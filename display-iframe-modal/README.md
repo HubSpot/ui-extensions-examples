@@ -2,7 +2,7 @@
 
 This sample is designed to help you with opening a popup iframe modal from inside the custom card. You can embed a link of your choice into this iframe. For the sake of simplicity, we have embedded a link to Wikipedia as shown below.
 
-![display-iframe](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/523d06d6-1fa4-4218-9587-83c162224c38)
+![display-an-iframe-modal-example](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/a15126c3-3c70-4783-8e5b-774d9d8826ff)
 
 
 ## Quick Start
