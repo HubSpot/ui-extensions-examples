@@ -14,11 +14,9 @@ const Steps = {
 };
 
 // Define the extension to be run within the Hubspot CRM
-hubspot.extend(({ runServerlessFunction }) => (
-  <ShuttleBusQuotes runServerless={runServerlessFunction} />
-));
+hubspot.extend(() => <ShuttleBusQuotes />);
 
-const ShuttleBusQuotes = ({ runServerless }) => {
+const ShuttleBusQuotes = () => {
   const [step, setStep] = useState(Steps.QuotesView);
   const [passengers, setPassengers] = useState();
   const [distance, setDistance] = useState();
@@ -28,8 +26,7 @@ const ShuttleBusQuotes = ({ runServerless }) => {
 
   const generateQuote = ({ ...payload }) => {
     // Execute serverless function to generate a quote
-    return runServerless({
-      name: 'createQuote',
+    return hubspot.serverless('createQuote', {
       propertiesToSend: ['hs_object_id'],
       payload,
     });
