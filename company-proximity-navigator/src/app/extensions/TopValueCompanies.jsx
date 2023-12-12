@@ -29,7 +29,7 @@ const TopValueCompanies = ({ context }) => {
         'getCompaniesWithDistanceBatch',
         {
           propertiesToSend: ['hs_object_id', 'city', 'state', 'address'],
-          payload: { batchSize: companiesBatchSize },
+          parameters: { batchSize: companiesBatchSize },
         },
       );
       setTopValueCompaniesSorted(

@@ -26,7 +26,7 @@ const NearestCompanies = ({ context, fetchProperties }) => {
           'getCompaniesWithDistanceBatch',
           {
             propertiesToSend: ['hs_object_id', 'city', 'state', 'address'],
-            payload: { batchSize: 30 },
+            parameters: { batchSize: 30 },
           },
         );
         // Sort companies by distance

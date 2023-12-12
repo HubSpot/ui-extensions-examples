@@ -24,11 +24,11 @@ const ShuttleBusQuotes = () => {
   const [numberOfBuses, setNumberOfBuses] = useState();
   const [loading, setLoading] = useState(false);
 
-  const generateQuote = ({ ...payload }) => {
+  const generateQuote = ({ ...parameters }) => {
     // Execute serverless function to generate a quote
     return hubspot.serverless('createQuote', {
       propertiesToSend: ['hs_object_id'],
-      payload,
+      parameters,
     });
   };
 
