@@ -5,7 +5,8 @@ import {
   ErrorState,
   Text,
   Button,
-  Flex
+  Flex,
+  hubspot,
 } from '@hubspot/ui-extensions';
 import { RestaurantMenu } from './RestaurantMenu';
 import { Cart } from './Cart';
@@ -16,8 +17,7 @@ import { Checkout } from './Checkout';
 export const OrderMealCard = ({
   fetchCrmObjectProperties,
   context,
-  runServerless,
-  sendAlert
+  sendAlert,
 }: OrderMealProps) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -32,40 +32,36 @@ export const OrderMealCard = ({
     setLoading(true);
     setError(false);
     // Fetch a list of restaurants and their menus from our serverless function
-    runServerless({ name: 'restaurants' })
-      .then(async result => {
-        if (result.status === 'SUCCESS') {
-          // Make sure the response is the shape we expect (array of Restaurants)
-          if (Array.isArray(result.response)) {
-            const restaurants = result.response.map((restaurant: unknown) => {
-              if (
-                typeof restaurant !== 'object' ||
-                Array.isArray(restaurant) ||
-                restaurant === null
-              ) {
-                throw new TypeError('Object is not a Restaurant');
-              }
+    hubspot
+      .serverless('restaurants')
+      .then((response) => {
+        // Make sure the response is the shape we expect (array of Restaurants)
+        if (Array.isArray(response)) {
+          const restaurants = response.map((restaurant: unknown) => {
+            if (
+              typeof restaurant !== 'object' ||
+              Array.isArray(restaurant) ||
+              restaurant === null
+            ) {
+              throw new TypeError('Object is not a Restaurant');
+            }
 
-              return restaurant as Restaurant;
-            });
+            return restaurant as Restaurant;
+          });
 
-            setRestaurants(restaurants);
-            return;
-          }
-
-          throw new Error('Response is not an array.');
+          setRestaurants(restaurants);
+          return;
         }
-
-        throw new Error(result.message);
+        throw new Error('Response is not an array.');
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error.message);
         setError(true);
       })
       .finally(() => {
         setLoading(false);
       });
-  }, [runServerless]);
+  }, []);
 
   useEffect(() => {
     getRestaurants();
@@ -83,7 +79,7 @@ export const OrderMealCard = ({
 
   const handleRemoveClick = useCallback((id: number) => {
     updateCart((items: Array<CartItem>) =>
-      items.filter(item => item.id !== id)
+      items.filter((item) => item.id !== id),
     );
   }, []);
 
@@ -91,12 +87,12 @@ export const OrderMealCard = ({
     (message: string) => {
       sendAlert({
         type: 'success',
-        message: `Nicely done! The meal is on its way to ${contactName} with the message: "${message}"`
+        message: `Nicely done! The meal is on its way to ${contactName} with the message: "${message}"`,
       });
       updateCart([]);
       clearSelection();
     },
-    [contactName]
+    [contactName],
   );
 
   if (error) {
@@ -116,10 +112,10 @@ export const OrderMealCard = ({
 
   // Small utility function for help below
   const getRestaurant = (id?: number) => {
-    return restaurants.find(r => r.id === id);
+    return restaurants.find((r) => r.id === id);
   };
 
-  const uniqueRestaurants = new Set(cart.map(item => item.restaurantId));
+  const uniqueRestaurants = new Set(cart.map((item) => item.restaurantId));
   const totalDeliveryCost = [...uniqueRestaurants].reduce((total, id) => {
     return total + (getRestaurant(id)?.deliveryCost ?? 0);
   }, 0);

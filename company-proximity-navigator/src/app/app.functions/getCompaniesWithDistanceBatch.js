@@ -20,7 +20,7 @@ const PROPERTIES_TO_FETCH = [
 
 // Entry function of this module, it fetches batch of companies and calculates distance to the current company record
 exports.main = async (context = {}) => {
-  const { batchSize } = context.event.payload;
+  const { batchSize } = context.parameters;
 
   const companies = await getCompaniesBatch({
     hubspotClient: new hubspot.Client({
