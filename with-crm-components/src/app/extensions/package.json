@@ -12,7 +12,7 @@
     "url": "https://github.com/HubSpot/ui-extensions-examples"
   },
   "dependencies": {
-    "@hubspot/ui-extensions": "^0.4.0",
+    "@hubspot/ui-extensions": "latest",
     "react": "^18.2.0"
   },
   "devDependencies": {
