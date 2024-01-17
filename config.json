@@ -14,7 +14,7 @@
     },
     {
       "name": "deals-summary",
-      "label": "Deal Summary",
+      "label": "Create a deals summary",
       "path": "deals-summary",
       "insertPath": null
     },

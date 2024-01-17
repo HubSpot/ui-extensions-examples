@@ -1,4 +1,4 @@
-# Deals summary sample
+# Create a deals summary sample
 
 This tutorial will help you get up to speed with React based UI extensions in the HubSpot CRM. You’ll install a project containing a CRM card with two components. Then you’ll follow the steps to add one more component to the card.
 

@@ -5,6 +5,7 @@ import {
   Statistics,
   StatisticsItem,
   Text,
+  Flex,
 } from '@hubspot/ui-extensions';
 import { hubspot } from '@hubspot/ui-extensions';
 
@@ -49,13 +50,16 @@ const DealsSummary = () => {
     );
   }
   return (
-    <Statistics>
-      <StatisticsItem label="Open deals" number={dealsCount}>
-        <Text>Total number of deals contact is associated with</Text>
-      </StatisticsItem>
-      <StatisticsItem label="Unit price" number={totalAmount}>
-        <Text>High End</Text>
-      </StatisticsItem>
-    </Statistics>
+    <Flex direction={'column'} gap={'lg'}>
+      <Text variant="microcopy">This example shows you how you can view a high-level summary of data from associated deals.</Text>
+      <Statistics>
+        <StatisticsItem label="Open deals" number={dealsCount}>
+          <Text>Total number of deals contact is associated with</Text>
+        </StatisticsItem>
+        <StatisticsItem label="Unit price" number={totalAmount}>
+          <Text>High End</Text>
+        </StatisticsItem>
+      </Statistics>
+    </Flex>
   );
 };
