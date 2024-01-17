@@ -1,7 +1,7 @@
 {
-  "name": "Shuttle bus quotes",
-  "description": "Shuttle bus quotes",
-  "uid": "shuttle_bus_quotes_app",
+  "name": "Generate multiple quotes example card",
+  "description": "Generate multiple quotes example card",
+  "uid": "generate_multiple_quotes_example_card",
   "scopes": [
     "crm.objects.deals.read",
     "crm.objects.deals.write",
@@ -14,7 +14,7 @@
     "crm": {
       "cards": [
         {
-          "file": "extensions/shuttle-bus-quotes.json"
+          "file": "extensions/generate-multiple-quotes-example-card.json"
         }
       ]
     }

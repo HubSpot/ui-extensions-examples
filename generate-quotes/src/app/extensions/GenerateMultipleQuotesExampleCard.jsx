@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { hubspot } from '@hubspot/ui-extensions';
-import { LoadingSpinner, Flex, StepIndicator } from '@hubspot/ui-extensions';
+import { LoadingSpinner, Flex, Text, StepIndicator } from '@hubspot/ui-extensions';
 import { TripDetails } from './components/TripDetails.jsx';
 import { BusOptions } from './components/BusOptions.jsx';
 import { QuotesView } from './components/QuotesView.jsx';
@@ -58,29 +58,35 @@ const ShuttleBusQuotes = () => {
   return (
     <>
       {loading == false && (
-        <Flex direction="column" gap="xs">
-          {/* Render a step indicator  */}
-          {step != Steps.QuotesView && (
-            <StepIndicator
-              currentStep={step - 1}
-              stepNames={['Trip details', 'Bus options']}
-            />
-          )}
-          {step === Steps.QuotesView && (
-            <QuotesView onNext={() => setStep(Steps.TripDetails)} />
-          )}
-          {step === Steps.TripDetails && (
-            <TripDetails onNext={handleTripDetails} />
-          )}
-          {step === Steps.BusOptions && (
-            <BusOptions passengers={passengers} onNext={handleBusOption} />
-          )}
-          {step === Steps.QuoteName && (
-            <QuoteName
-              onNext={handleQuoteName}
-              defaultName={`Quote-${sku}-${distance}-x${numberOfBuses}`}
-            />
-          )}
+        <Flex direction="column" gap="xl">
+          <Text variant="microcopy">
+            This example uses a fictional shuttle bus rental company with several service options.
+            The card matches customers with the most appropriate service, and then generates multiple quotes for them.
+          </Text>
+          <Flex direction="column" gap="xs">
+            {/* Render a step indicator  */}
+            {step != Steps.QuotesView && (
+              <StepIndicator
+                currentStep={step - 1}
+                stepNames={['Trip details', 'Bus options']}
+              />
+            )}
+            {step === Steps.QuotesView && (
+              <QuotesView onNext={() => setStep(Steps.TripDetails)} />
+            )}
+            {step === Steps.TripDetails && (
+              <TripDetails onNext={handleTripDetails} />
+            )}
+            {step === Steps.BusOptions && (
+              <BusOptions passengers={passengers} onNext={handleBusOption} />
+            )}
+            {step === Steps.QuoteName && (
+              <QuoteName
+                onNext={handleQuoteName}
+                defaultName={`Quote-${sku}-${distance}-x${numberOfBuses}`}
+              />
+            )}
+          </Flex>
         </Flex>
       )}
       {/* If loading, show a spinner */}

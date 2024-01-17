@@ -31,9 +31,9 @@
       "insertPath": null
     },
     {
-      "name": "quote-generator",
-      "label": "Quote Generator",
-      "path": "quote-generator",
+      "name": "generate-quotes",
+      "label": "Generate multiple quotes",
+      "path": "generate-quotes",
       "insertPath": null
     },
     {

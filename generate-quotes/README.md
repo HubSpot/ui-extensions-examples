@@ -1,4 +1,4 @@
-# Shuttle bus quotes sample
+# Generate quotes sample
 
 This example uses a fictitious Shuttle Bus Rental Service. The sample allows a salesperson to quickly determine which of the company’s services match the customer’s requirements. This example uses HubSpot quotes, but it adds a custom UI inside the CRM so that users can quickly and intuitively create specialized quotes with a lower margin for error than using the full featured quote tool.
 

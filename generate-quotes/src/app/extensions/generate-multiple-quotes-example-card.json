@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Generate multiple quotes",
+    "uid": "generate_multiple_quotes_example_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "GenerateMultipleQuotesExampleCard.jsx"
+    },
+    "objectTypes": [{ "name": "deals" }]
+  }
+}
