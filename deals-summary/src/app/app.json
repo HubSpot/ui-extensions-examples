@@ -1,7 +1,7 @@
 {
-  "name": "Deals summary example card",
-  "description": "Deals summary example card",
-  "uid": "deals_summary_example_card",
+  "name": "Deals summary example app",
+  "description": "Deals summary example app",
+  "uid": "deals_summary_example_app",
   "scopes": [
     "crm.objects.contacts.read",
     "crm.objects.contacts.write",

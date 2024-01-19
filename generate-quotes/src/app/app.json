@@ -1,7 +1,7 @@
 {
-  "name": "Generate multiple quotes example card",
-  "description": "Generate multiple quotes example card",
-  "uid": "generate_multiple_quotes_example_card",
+  "name": "Generate multiple quotes example app",
+  "description": "Generate multiple quotes example app",
+  "uid": "generate_multiple_quotes_example_app",
   "scopes": [
     "crm.objects.deals.read",
     "crm.objects.deals.write",
