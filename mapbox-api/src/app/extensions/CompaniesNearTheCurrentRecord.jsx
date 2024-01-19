@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Alert, LoadingSpinner } from '@hubspot/ui-extensions';
+import { Alert, LoadingSpinner, Flex, Text } from '@hubspot/ui-extensions';
 import { CompaniesWithDistanceTable } from './components/CompaniesWithDistanceTable.jsx';
 import { hubspot } from '@hubspot/ui-extensions';
 
@@ -54,13 +54,16 @@ const NearestCompanies = ({ context, fetchProperties }) => {
     return <LoadingSpinner />;
   }
   return (
-    <CompaniesWithDistanceTable
-      portalId={context.portal.id}
-      companies={nearestCompaniesSorted.slice(0, companiesToDisplay)}
-      propertiesToDisplay={[
-        { title: 'Domain', propertyName: 'domain' },
-        { title: 'Phone', propertyName: 'phone' },
-      ]}
-    />
+    <Flex direction={'column'} gap={'lg'}>
+      <Text variant="microcopy"> View the companies nearest to the currently displaying record.</Text>
+      <CompaniesWithDistanceTable
+        portalId={context.portal.id}
+        companies={nearestCompaniesSorted.slice(0, companiesToDisplay)}
+        propertiesToDisplay={[
+          { title: 'Domain', propertyName: 'domain' },
+          { title: 'Phone', propertyName: 'phone' },
+        ]}
+      />
+    </Flex>
   );
 };

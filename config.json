@@ -1,9 +1,9 @@
 {
   "projects": [
     {
-      "name": "company-proximity-navigator",
-      "label": "Company Proximity Navigator",
-      "path": "company-proximity-navigator",
+      "name": "mapbox-api",
+      "label": "View nearby companies: Mapbox API",
+      "path": "mapbox-api",
       "insertPath": null
     },
     {

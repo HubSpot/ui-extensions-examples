@@ -4,6 +4,7 @@ import {
   Form,
   LoadingSpinner,
   NumberInput,
+  Text,
   Flex,
   Button,
   Box,
@@ -59,33 +60,36 @@ const TopValueCompanies = ({ context }) => {
     return <LoadingSpinner />;
   }
   return (
-    <Flex direction="column" gap="xs">
-      <Form>
-        <NumberInput
-          label="Radius"
-          name="radius"
-          description="Please enter the radius in miles"
-          required={true}
-          value={radius}
-          min={0}
-          onChange={setRadius}
-        />
-      </Form>
-      {/* If any company to display - render companies table */}
-      {topValueCompaniesSorted.length > 0 && (
-        <CompaniesWithDistanceTable
-          portalId={context.portal.id}
-          companies={topValueCompaniesSorted.slice(0, companiesToDisplay)}
-          propertiesToDisplay={[
-            { title: 'Annual Revenue', propertyName: 'annualrevenue' },
-          ]}
-        />
-      )}
-      <Box>
-        <Button onClick={executeServerless} variant="primary" type="button">
-          Fetch companies
-        </Button>
-      </Box>
+    <Flex direction={'column'} gap={'lg'}>
+      <Text variant="microcopy">Search for nearby companies by mile radius.</Text>
+      <Flex direction={'column'}  gap={'xs'}>
+        <Form>
+          <NumberInput
+            label="Radius"
+            name="radius"
+            description="Please enter the radius in miles"
+            required={true}
+            value={radius}
+            min={0}
+            onChange={setRadius}
+          />
+        </Form>
+        {/* If any company to display - render companies table */}
+        {topValueCompaniesSorted.length > 0 && (
+          <CompaniesWithDistanceTable
+            portalId={context.portal.id}
+            companies={topValueCompaniesSorted.slice(0, companiesToDisplay)}
+            propertiesToDisplay={[
+              { title: 'Annual Revenue', propertyName: 'annualrevenue' },
+            ]}
+          />
+        )}
+        <Box>
+          <Button onClick={executeServerless} variant="primary" type="button">
+            Fetch companies
+          </Button>
+        </Box>
+      </Flex>
     </Flex>
   );
 };

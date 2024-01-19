@@ -1,4 +1,4 @@
-# Company proximity navigator sample
+# View nearby companies: Mapbox API sample
 
 This example uses a fictitious IT services company. Company proximity information appears in the custom middle pane tab of a company record. It contains two CRM cards that help salespeople identify companies they might want to plan to visit along with a trip to the company they’re currently viewing.
 
