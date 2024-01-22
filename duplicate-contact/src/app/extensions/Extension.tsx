@@ -97,35 +97,40 @@ const Extension = ({ context }: ExtensionProps) => {
     // If we have associations data but no URL, show the associations and a duplication form
     return (
       <>
-        <Flex direction="column" gap="sm">
-          <Text format={{ fontWeight: 'bold' }}>
-            Enter an email for the new contact:
+        <Flex direction={'column'} gap={'xl'}>
+          <Text variant="microcopy">
+            Duplicate a contact along with some of its properties and associated deals and companies.
           </Text>
-          <Input
-            label=""
-            name="email"
-            onInput={(v) => setEmail(v)}
-            required={true}
-          />
-          <Text format={{ fontWeight: 'bold' }}>
-            Number of associations to be copied:
-          </Text>
-          <DescriptionList direction="row">
-            <DescriptionListItem label={'Deals'}>
-              {associations.deal_collection__contact_to_deal.total}
-            </DescriptionListItem>
-            <DescriptionListItem label={'Companies'}>
-              {associations.company_collection__primary.total}
-            </DescriptionListItem>
-          </DescriptionList>
-          <Flex direction="row" justify="end">
-            <Button
-              onClick={duplicateContact}
-              disabled={email === ''}
-              variant="primary"
-            >
-              Duplicate Contact
-            </Button>
+          <Flex direction={'column'} gap={'sm'}>
+            <Text format={{ fontWeight: 'bold' }}>
+              Enter an email for the new contact:
+            </Text>
+            <Input
+              label=""
+              name="email"
+              onInput={(v) => setEmail(v)}
+              required={true}
+            />
+            <Text format={{ fontWeight: 'bold' }}>
+              Number of associations to be copied:
+            </Text>
+            <DescriptionList direction="row">
+              <DescriptionListItem label={'Deals'}>
+                {associations.deal_collection__contact_to_deal.total}
+              </DescriptionListItem>
+              <DescriptionListItem label={'Companies'}>
+                {associations.company_collection__primary.total}
+              </DescriptionListItem>
+            </DescriptionList>
+            <Flex direction={'row'} justify={'end'}>
+              <Button
+                onClick={duplicateContact}
+                disabled={email === ''}
+                variant="primary"
+              >
+                Duplicate Contact
+              </Button>
+            </Flex>
           </Flex>
         </Flex>
       </>

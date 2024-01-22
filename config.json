@@ -7,9 +7,9 @@
       "insertPath": null
     },
     {
-      "name": "contact-duplicate",
+      "name": "duplicate-contact",
       "label": "Duplicate a Contact",
-      "path": "contact-duplicate",
+      "path": "duplicate-contact",
       "insertPath": null
     },
     {

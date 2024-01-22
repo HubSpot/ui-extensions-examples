@@ -1,6 +1,6 @@
-# Contact Duplicate Extension
+# Duplicate a contact sample
 
-The Contact Duplicate extension allows a HubSpot user to duplicate one of their contacts, its deal & company associations, and some of its contact properties.
+The Duplicate a contact sample allows a HubSpot user to duplicate one of their contacts, its deal & company associations, and some of its contact properties.
 
 This extension demonstrates a number of interactions that are enabled by React extensions.
 
