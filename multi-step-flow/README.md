@@ -1,8 +1,8 @@
-# Gift A Meal extension
+# Build a multi-step flow sample
 
-The Gift A Meal extension allows a HubSpot user to send a meal from a local restaurant to one of their contacts.
+The Build a multi-step flow sample allows a HubSpot user to send a meal from a local restaurant to one of their contacts.
 
-This extension demonstrates a number of interactions that are enabled by React extensions.
+This sample demonstrates a number of interactions that are enabled by React extensions.
 
 - realtime form validation
 - table pagination and search

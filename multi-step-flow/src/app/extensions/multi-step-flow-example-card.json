@@ -1,8 +1,8 @@
 {
   "type": "crm-card",
   "data": {
-    "title": "Gift a meal",
-    "uid": "gift_meal_card",
+    "title": "Build a multi-step flow",
+    "uid": "multy_step_flow_example_card",
     "location": "crm.record.tab",
     "module": {
       "file": "OrderMealExtension.tsx"

@@ -19,9 +19,9 @@
       "insertPath": null
     },
     {
-      "name": "example-meal-order",
-      "label": "Gift a Meal",
-      "path": "example-meal-order",
+      "name": "multi-step-flow",
+      "label": "Build a multi-step flow",
+      "path": "multi-step-flow",
       "insertPath": null
     },
     {
