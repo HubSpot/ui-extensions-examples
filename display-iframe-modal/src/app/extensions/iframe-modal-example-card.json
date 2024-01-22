@@ -1,7 +1,7 @@
 {
   "type": "crm-card",
   "data": {
-    "title": "iframe modal example card",
+    "title": "Display an iframe modal",
     "location": "crm.record.tab",
     "module": {
       "file": "DisplayIframe.jsx"
