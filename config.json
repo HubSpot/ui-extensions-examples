@@ -37,9 +37,9 @@
       "insertPath": null
     },
     {
-      "name": "with-crm-components",
-      "label": "CRM Components UI Extensions",
-      "path": "with-crm-components",
+      "name": "crm-data-components",
+      "label": "Use CRM data components",
+      "path": "crm-data-components",
       "insertPath": null
     },
     {

@@ -6,6 +6,7 @@ import {
   Select,
   Accordion,
   Flex,
+  Text,
   Heading,
   Alert,
 } from '@hubspot/ui-extensions';
@@ -104,43 +105,48 @@ const Extension = ({ context, fetchCrmObjectProperties, addAlert }) => {
   }
 
   return (
-    <Flex direction="column" justify="start" gap="medium">
-      <Heading>Deal status : {dealname}</Heading>
-      <Flex direction="row" justify="start" align="end" gap="medium">
-        <Form>
-          <Select
-            label="Update Deal Stage"
-            name="deal-stage"
-            tooltip="Please choose"
-            value={stage}
-            onChange={handleStageChange}
-            options={options}
-          />
-        </Form>
-        <Button
-          variant={showProperties ? 'primary' : 'secondary'}
-          onClick={handlePropertyToggle}
-        >
-          {showProperties ? 'Hide' : 'Show'} Properties
-        </Button>
-      </Flex>
-      <CrmStageTracker
-        properties={stageToPropertiesMap[stage || '']}
-        showProperties={showProperties}
-      />
-      <Accordion title="Association Labels" size="small" defaultOpen={true}>
-        <CrmAssociationPivot
-          objectTypeId="0-1"
-          associationLabels={['CEO']}
-          maxAssociations={10}
-          sort={[
-            {
-              columnName: 'createdate',
-              direction: -1,
-            },
-          ]}
+    <Flex direction={'column'} gap={'lg'}>
+      <Text variant="microcopy">
+        This is example is a card for deal records to view and update pipeline stage progress.
+      </Text>
+      <Flex direction={'column'} justify={'start'} gap={'medium'}>
+        <Heading>Deal status : {dealname}</Heading>
+        <Flex direction={'row'} justify={'start'} align={'end'} gap={'medium'}>
+          <Form>
+            <Select
+              label="Update Deal Stage"
+              name="deal-stage"
+              tooltip="Please choose"
+              value={stage}
+              onChange={handleStageChange}
+              options={options}
+            />
+          </Form>
+          <Button
+            variant={showProperties ? 'primary' : 'secondary'}
+            onClick={handlePropertyToggle}
+          >
+            {showProperties ? 'Hide' : 'Show'} Properties
+          </Button>
+        </Flex>
+        <CrmStageTracker
+          properties={stageToPropertiesMap[stage || '']}
+          showProperties={showProperties}
         />
-      </Accordion>
+        <Accordion title="Association Labels" size="small" defaultOpen={true}>
+          <CrmAssociationPivot
+            objectTypeId="0-1"
+            associationLabels={['CEO']}
+            maxAssociations={10}
+            sort={[
+              {
+                columnName: 'createdate',
+                direction: -1,
+              },
+            ]}
+          />
+        </Accordion>
+      </Flex>
     </Flex>
   );
 };

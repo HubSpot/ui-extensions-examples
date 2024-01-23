@@ -1,4 +1,4 @@
-# CRM Components Extensions
+# Use CRM data components sample
 
 This React Project demonstrates the usage of HubSpot CRM Components through UIE. The project includes 2 extensions:
 
