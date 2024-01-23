@@ -58,7 +58,7 @@ const ShuttleBusQuotes = () => {
   return (
     <>
       {loading == false && (
-        <Flex direction="column" gap="xl">
+        <Flex direction="column" gap="lg">
           <Text variant="microcopy">
             This example uses a fictional shuttle bus rental company with several service options.
             The card matches customers with the most appropriate service, and then generates multiple quotes for them.

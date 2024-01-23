@@ -1,7 +1,7 @@
 {
   "type": "crm-card",
   "data": {
-    "title": "Create a deals summary",
+    "title": "Deals summary example card",
     "uid": "deals_summary_example_card",
     "location": "crm.record.tab",
     "module": {

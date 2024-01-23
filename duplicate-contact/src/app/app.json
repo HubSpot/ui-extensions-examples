@@ -1,7 +1,7 @@
 {
-  "name": "Duplicate contact example card",
+  "name": "Duplicate contact example app",
   "description": "An example private app that contains a single card extension.",
-  "uid": "duplicate_contact_app",
+  "uid": "duplicate_contact_example_app",
   "scopes": [
     "crm.objects.contacts.read",
     "crm.objects.deals.read",

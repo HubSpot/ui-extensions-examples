@@ -1,7 +1,7 @@
 {
   "type": "crm-card",
   "data": {
-    "title": "Duplicate a contact",
+    "title": "Duplicate a contact example card",
     "uid": "duplicate_contact_example_card",
     "location": "crm.record.tab",
     "module": {

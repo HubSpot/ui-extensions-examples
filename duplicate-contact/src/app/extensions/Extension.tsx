@@ -97,7 +97,7 @@ const Extension = ({ context }: ExtensionProps) => {
     // If we have associations data but no URL, show the associations and a duplication form
     return (
       <>
-        <Flex direction={'column'} gap={'xl'}>
+        <Flex direction={'column'} gap={'lg'}>
           <Text variant="microcopy">
             Duplicate a contact along with some of its properties and associated deals and companies.
           </Text>
