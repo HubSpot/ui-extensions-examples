@@ -1,0 +1,16 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Deals summary example card",
+    "uid": "deals_summary_example_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "DealsSummaryExampleCard.jsx"
+    },
+    "objectTypes": [
+      {
+        "name": "contacts"
+      }
+    ]
+  }
+}

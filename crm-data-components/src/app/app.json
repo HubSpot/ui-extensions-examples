@@ -1,0 +1,24 @@
+{
+  "name": "CRM Data Components App",
+  "description": "This is an example of private app that shows 2 custom cards. It demonstrates usages of CRM Components",
+  "uid": "crm_data_components_app",
+  "scopes": [
+    "crm.objects.contacts.read",
+    "crm.objects.contacts.write",
+    "crm.objects.deals.write",
+    "crm.objects.deals.read"
+  ],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/stage-tracker-example-card.json"
+        },
+        {
+          "file": "extensions/association-table-example-card.json"
+        }
+      ]
+    }
+  }
+}

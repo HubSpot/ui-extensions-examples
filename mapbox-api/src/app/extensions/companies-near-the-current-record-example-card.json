@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Companies near the current record example card",
+    "uid": "companies_near_the_current_record_example_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "CompaniesNearTheCurrentRecord.jsx"
+    },
+    "objectTypes": [{ "name": "companies" }]
+  }
+}

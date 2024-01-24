@@ -1,0 +1,22 @@
+{
+  "name": "Generate multiple quotes example app",
+  "description": "Generate multiple quotes example app",
+  "uid": "generate_multiple_quotes_example_app",
+  "scopes": [
+    "crm.objects.deals.read",
+    "crm.objects.deals.write",
+    "e-commerce",
+    "crm.objects.quotes.read",
+    "crm.objects.quotes.write"
+  ],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/generate-multiple-quotes-example-card.json"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Multi-step flow example app",
+  "description": "Build a multi-step flow",
+  "uid": "multi_step_flow_example_app",
+  "scopes": ["crm.objects.contacts.read"],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/multi-step-flow-example-card.json"
+        }
+      ]
+    }
+  }
+}

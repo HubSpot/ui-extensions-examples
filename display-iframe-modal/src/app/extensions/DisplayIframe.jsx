@@ -20,8 +20,7 @@ const Extension = ({ openIframe }) => {
       <Flex direction="column" align="start" gap="medium">
         <Text>
           Clicking the button will open a modal dialog with an iframe that
-          displays the content at the provided URL. Get more info on how to do
-          this {" "}
+          displays the content at the provided URL. Get more info on how to do this {" "}.
           <Link href="https://developers.hubspot.com/docs/platform/create-ui-extensions#open-an-iframe-in-a-modal">
             here
           </Link>

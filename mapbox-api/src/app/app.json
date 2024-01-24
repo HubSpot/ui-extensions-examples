@@ -1,0 +1,19 @@
+{
+  "name": "View nearby companies: Mapbox API",
+  "description": "View nearby companies: Mapbox API",
+  "uid": "view_nearby_companies_app",
+  "scopes": ["crm.objects.companies.write", "crm.objects.companies.read"],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/companies-near-the-current-record-example-card.json"
+        },
+        {
+          "file": "extensions/search-nearby-companies-example-card.json"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Iframe modal example card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "DisplayIframe.jsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}

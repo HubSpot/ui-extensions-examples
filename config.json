@@ -1,27 +1,27 @@
 {
   "projects": [
     {
-      "name": "company-proximity-navigator",
-      "label": "Company Proximity Navigator",
-      "path": "company-proximity-navigator",
+      "name": "mapbox-api",
+      "label": "View nearby companies: Mapbox API",
+      "path": "mapbox-api",
       "insertPath": null
     },
     {
-      "name": "contact-duplicate",
+      "name": "duplicate-contact",
       "label": "Duplicate a Contact",
-      "path": "contact-duplicate",
+      "path": "duplicate-contact",
       "insertPath": null
     },
     {
       "name": "deals-summary",
-      "label": "Deal Summary",
+      "label": "Create a deals summary",
       "path": "deals-summary",
       "insertPath": null
     },
     {
-      "name": "example-meal-order",
-      "label": "Gift a Meal",
-      "path": "example-meal-order",
+      "name": "multi-step-flow",
+      "label": "Build a multi-step flow",
+      "path": "multi-step-flow",
       "insertPath": null
     },
     {
@@ -31,15 +31,15 @@
       "insertPath": null
     },
     {
-      "name": "quote-generator",
-      "label": "Quote Generator",
-      "path": "quote-generator",
+      "name": "generate-quotes",
+      "label": "Generate multiple quotes",
+      "path": "generate-quotes",
       "insertPath": null
     },
     {
-      "name": "with-crm-components",
-      "label": "CRM Components UI Extensions",
-      "path": "with-crm-components",
+      "name": "crm-data-components",
+      "label": "Use CRM data components",
+      "path": "crm-data-components",
       "insertPath": null
     },
     {

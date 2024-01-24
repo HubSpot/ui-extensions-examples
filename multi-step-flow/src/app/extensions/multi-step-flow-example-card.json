@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Multi-step flow example card",
+    "uid": "multy_step_flow_example_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "OrderMealExtension.tsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "uid": "stage_tracker_example",
+  "data": {
+    "title": "CRM data: Stage Tracker example card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "StageTrackerExtension.tsx"
+    },
+    "objectTypes": [{ "name": "deals" }]
+  }
+}

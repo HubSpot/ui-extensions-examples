@@ -1,0 +1,9 @@
+{
+  "name": "generate-multiple-quotes-example",
+  "version": "0.1.0",
+  "scripts": {
+    "postinstall": "cd ./src/app/extensions/ && npm install && cd ../app.functions && npm install"
+  },
+  "author": "HubSpot",
+  "license": "MIT"
+}
