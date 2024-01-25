@@ -12,8 +12,8 @@ These extensions demonstrate a number of interactions including:
 - Making API calls to the HubSpot API using serverless functions
 - Fetching properties for the current object
 
-![Example Image of the Association Table](images/association-table.png)
-![Example Video of the Stage Tracker](images/stage-tracker.gif)
+![Example Image of the Association Table](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/3230755a-4ea2-44eb-b8b6-4858dbb01a87)
+![Example Image of Stage Tracker](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/fd35ab4d-a2ac-4165-b5de-02e8a2481a9a)
 
 ## Quick Start
 
@@ -47,4 +47,4 @@ For `CRM data: Association Table example card`.In the main menu select `Contacts
 2. Click `Create contact` in the top right hand corner and fill in all required fields. Click `create` once you’ve finished filling in your contact details.
 3. Your new contact should appear in the `Contacts table`. Select it and navigate to the `Custom` tab in the middle pane to access the sample card.
 
-If you haven't customized the tabs before follow step #4 from [this guide](https://developers.hubspot.com/docs/platform/ui-extensions-quickstart) to add the two sample cards as below:
+If you haven't customized the tabs before follow step #4 from [this guide](https://developers.hubspot.com/docs/platform/ui-extensions-quickstart) to add the two sample cards.
