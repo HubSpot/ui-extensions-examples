@@ -12,7 +12,11 @@ We recommend installing this sample in a Sandbox account.
 2. Run `hs init` if you haven’t already done so to create a config file for your parent account
 3. Run `hs auth` to authenticate your account. Alternatively, select your pre-authenticated account with `hs accounts use`
 
-## Step 2: Provide access token to access Mapbox API
+## Step 2: Create the project
+
+In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="mapbox-api" --name="mapbox-api" --template="mapbox-api"`
+
+## Step 3: Provide access token to access Mapbox API
 
 1. Obtain Mapbox [access token](https://docs.mapbox.com/help/getting-started/access-tokens/)
 2. Add token as a secret:
@@ -21,7 +25,7 @@ We recommend installing this sample in a Sandbox account.
 hs secrets add MAPBOX_ACCESS_TOKEN
 ```
 
-## Step 3: Provide sample data to demonstrate functionality of the sample project
+## Step 4: Provide sample data to demonstrate functionality of the sample project
 
 [Import](https://knowledge.hubspot.com/crm-setup/import-objects) sample [companies](./companies.csv) into your HubSpot account:
 
@@ -31,14 +35,15 @@ hs secrets add MAPBOX_ACCESS_TOKEN
 4. Choose Import file from computer, then one file, then one object, then select the companies object.
 5. Select the `companies.csv` file in this project and click Next and then Finish to finish the import.
 
-## Step 4: Install dependencies
+## Step 5: Install dependencies
 
 In the CLI, run `npm install` to install the dependencies for this project.
 
-### Step 4: Upload project
+### Step 6: Upload project
 
 Run `hs project upload`. Alternatively, if you’d like to build on this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
 
-## Step 6: View the cards
+## Step 7: View the cards
 
 In the main menu select Contacts > Companies to view company records. Click on any of the sample companies and navigate to the custom tab to access the sample.
+If you haven't customized the tabs before follow step #4 from [this guide](https://developers.hubspot.com/docs/platform/ui-extensions-quickstart).

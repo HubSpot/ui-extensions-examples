@@ -1,5 +1,5 @@
 {
-  "name": "crm-components-example",
+  "name": "crm-data-components",
   "version": "0.1.0",
   "description": "UI extension example using CRM components",
   "main": "index.js",

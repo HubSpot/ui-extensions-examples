@@ -8,13 +8,25 @@ We recommend installing this sample in a Sandbox account.
 
 [Full local environment documentation](https://app.hubspot.com/l/docs/doc/platform/developer-projects-setup#set-up-your-local-environment)
 
+## Quick Start
+
+### Step 1: Update your CLI and & authenticate your account
 1. Update to latest CLI version by running `npm install -g @hubspot/cli@latest`.
 2. Run `hs init` if you haven’t already done so to create a config file for your parent account.
 3. Run `hs auth` to authenticate your account. Alternatively, select your pre-authenticated account with `hs accounts use`.
 
-## Clone the project and upload it to your HubSpot sandbox account
+### Step 2: Create the project
 
-- Run the command `hs project upload` to upload this sample project to your HubSpot account
+In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="deals-summary" --name="deals-summary" --template="deals-summary"`
+
+### Step 3: Install dependencies
+In the CLI, run `npm install` to install the dependencies for this project.
+
+### Step 4: Upload project
+Run `hs project upload`. If you’d like to build on this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
+
+## Your HubSpot sandbox account
+
 - In the main menu of your HubSpot account navigate to `Contacts` > `Contacts`. Click into the `Brian Halligan` contact.
 - Select the `Custom tab` in the middle pane of this contact record
 - You should see the Deals summary card with two components: Deals and Unit Price. These will both be set to 0 because there are currently no deals associated with this contact.
