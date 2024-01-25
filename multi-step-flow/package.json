@@ -1,5 +1,5 @@
 {
-  "name": "hubspot-meal-order-project",
+  "name": "multi-step-flow",
   "version": "0.1.0",
   "scripts": {
     "postinstall": "cd ./src/app/extensions/ && npm install && cd ../app.functions && npm install",

@@ -1,5 +1,5 @@
 {
-  "name": "display-modal-iframe",
+  "name": "display-iframe-modal",
   "version": "0.1.0",
   "description": "Sample of opening a popup iframe modal in custom cards",
   "main": "index.js",

@@ -1,5 +1,5 @@
 {
-  "name": "company-proximity-navigator",
+  "name": "mapbox-api",
   "version": "0.1.0",
   "scripts": {
     "postinstall": "cd ./src/app/extensions/ && npm install && cd ../app.functions && npm install"
