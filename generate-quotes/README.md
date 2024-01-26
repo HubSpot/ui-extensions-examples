@@ -1,5 +1,8 @@
 # Generate quotes sample
 
+![Generate Quotes sample](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/345244de-ed4c-4fee-8dd1-5667600ad94d)
+
+
 This example uses a fictitious Shuttle Bus Rental Service. The sample allows a salesperson to quickly determine which of the company’s services match the customer’s requirements. This example uses HubSpot quotes, but it adds a custom UI inside the CRM so that users can quickly and intuitively create specialized quotes with a lower margin for error than using the full featured quote tool.
 
 We recommend installing this sample in a Sandbox account.
