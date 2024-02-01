@@ -6,5 +6,8 @@
     "dev": "npm run dev --prefix ./src/app/extensions/"
   },
   "author": "HubSpot",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@hubspot/ui-extensions": "^0.8.8"
+  }
 }
