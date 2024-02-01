@@ -4,6 +4,10 @@ import {
   LoadingSpinner,
   ErrorState,
   Text,
+  Panel,
+  PanelBody,
+  PanelFooter,
+  PanelSection,
   Button,
   Flex,
   hubspot,
@@ -79,7 +83,7 @@ export const OrderMealCard = ({
 
   const handleRemoveClick = useCallback((id: number) => {
     updateCart((items: Array<CartItem>) =>
-      items.filter((item) => item.id !== id),
+      items.filter((item) => item.id !== id)
     );
   }, []);
 
@@ -92,7 +96,7 @@ export const OrderMealCard = ({
       updateCart([]);
       clearSelection();
     },
-    [contactName],
+    [contactName]
   );
 
   if (error) {
@@ -125,23 +129,47 @@ export const OrderMealCard = ({
 
   return (
     <Flex direction={'column'} gap={'md'}>
+      <Panel id="menu-panel" title="Menu Panel">
+        <Flex direction={'column'}>
+          <PanelBody>
+            <Panel>test</Panel>
+            <PanelSection>
+              {selectedRestaurant && (
+                <RestaurantMenu
+                  restaurant={selectedRestaurant}
+                  onBackClick={clearSelection}
+                  onAddClick={handleAddClick}
+                />
+              )}
+            </PanelSection>
+          </PanelBody>
+          <PanelFooter>
+            <Button
+              onClick={(event, reactions) => {
+                reactions.closePanel('menu-panel');
+              }}
+              variant="primary"
+              type="submit"
+            >
+              Back
+            </Button>
+          </PanelFooter>
+        </Flex>
+      </Panel>
       <Text variant="microcopy">
-        This example shows you how many components work together to build a multi-step flow.
-        This card lets you send a meal from a local restaurant to one of your contacts.
+        This example shows you how many components work together to build a
+        multi-step flow. This card lets you send a meal from a local restaurant
+        to one of your contacts.
       </Text>
-      {selectedRestaurant ? (
-        <RestaurantMenu
-          restaurant={selectedRestaurant}
-          onBackClick={clearSelection}
-          onAddClick={handleAddClick}
-        />
-      ) : (
-        <RestaurantsSearch
-          contactName={contactName}
-          restaurants={restaurants}
-          onRestaurantClick={setSelected}
-        />
-      )}
+      <RestaurantsSearch
+        contactName={contactName}
+        restaurants={restaurants}
+        onRestaurantClick={(id, reactions) => {
+          console.log(id, reactions);
+          setSelected(id);
+          reactions.openPanel('menu-panel');
+        }}
+      />
       <Divider />
       <Cart cart={cart} onRemoveClick={handleRemoveClick} />
       {cart.length > 0 && (

@@ -6,13 +6,14 @@ import type { RestaurantsSearchProps } from '../types';
 export const RestaurantsSearch = ({
   contactName,
   restaurants,
-  onRestaurantClick
+  onRestaurantClick,
 }: RestaurantsSearchProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
 
-  const handleRestaurantClick = useCallback((id: number) => {
-    onRestaurantClick(id);
+  const handleRestaurantClick = useCallback((id: number, reactions) => {
+    console.log(reactions);
+    onRestaurantClick(id, reactions);
     setSearchTerm('');
   }, []);
 
@@ -22,7 +23,7 @@ export const RestaurantsSearch = ({
   }, []);
 
   const searchResults = restaurants.filter(({ name, category }) => {
-    return [name, category].some(prop => {
+    return [name, category].some((prop) => {
       return prop.toLowerCase().includes(searchTerm.toLowerCase());
     });
   });
