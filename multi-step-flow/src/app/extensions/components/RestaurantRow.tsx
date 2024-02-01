@@ -34,11 +34,8 @@ export const RestaurantRow = ({ restaurant, onClick }: RestaurantRowProps) => {
         <Text>${deliveryCost} delivery</Text>
       </TableCell>
       <TableCell width="min">
-        {/* <Button onClick={onClick}>Menu</Button> */}
         <Button
           onClick={(event, reactions) => {
-            // reactions.openPanel('menu-panel');
-            console.log(reactions);
             onClick(reactions);
           }}
         >

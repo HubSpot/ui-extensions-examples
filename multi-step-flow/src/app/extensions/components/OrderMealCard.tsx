@@ -4,10 +4,6 @@ import {
   LoadingSpinner,
   ErrorState,
   Text,
-  Panel,
-  PanelBody,
-  PanelFooter,
-  PanelSection,
   Button,
   Flex,
   hubspot,
@@ -129,33 +125,6 @@ export const OrderMealCard = ({
 
   return (
     <Flex direction={'column'} gap={'md'}>
-      <Panel id="menu-panel" title="Menu Panel">
-        <Flex direction={'column'}>
-          <PanelBody>
-            <Panel>test</Panel>
-            <PanelSection>
-              {selectedRestaurant && (
-                <RestaurantMenu
-                  restaurant={selectedRestaurant}
-                  onBackClick={clearSelection}
-                  onAddClick={handleAddClick}
-                />
-              )}
-            </PanelSection>
-          </PanelBody>
-          <PanelFooter>
-            <Button
-              onClick={(event, reactions) => {
-                reactions.closePanel('menu-panel');
-              }}
-              variant="primary"
-              type="submit"
-            >
-              Back
-            </Button>
-          </PanelFooter>
-        </Flex>
-      </Panel>
       <Text variant="microcopy">
         This example shows you how many components work together to build a
         multi-step flow. This card lets you send a meal from a local restaurant
@@ -164,6 +133,7 @@ export const OrderMealCard = ({
       <RestaurantsSearch
         contactName={contactName}
         restaurants={restaurants}
+        addToCart={handleAddClick}
         onRestaurantClick={(id, reactions) => {
           console.log(id, reactions);
           setSelected(id);

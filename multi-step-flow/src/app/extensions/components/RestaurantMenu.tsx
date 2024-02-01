@@ -1,11 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import {
   Heading,
-  Button,
   Table,
   TableBody,
   Divider,
-  Flex
+  Flex,
 } from '@hubspot/ui-extensions';
 import type { RestaurantMenuProps } from '../types';
 import { MenuItemDetails } from './MenuItemDetails';
@@ -13,21 +12,18 @@ import { MenuItemRow } from './MenuItemRow';
 
 export const RestaurantMenu = ({
   restaurant,
-  onBackClick,
-  onAddClick
+  onAddClick,
 }: RestaurantMenuProps) => {
   const [selected, setSelected] = useState<number>();
   const handleCancelClick = useCallback(() => {
     setSelected(undefined);
   }, []);
-  const handleBackClick = selected ? handleCancelClick : onBackClick;
   const selectedMenuItem = restaurant.menu.items.find(
-    item => item.id === selected
+    (item) => item.id === selected
   );
 
   return (
     <Flex direction="column" gap="md">
-      <Button onClick={handleBackClick}>{'< Back'}</Button>
       <Heading>{restaurant.name}</Heading>
       <Divider />
       {selectedMenuItem ? (
@@ -41,7 +37,7 @@ export const RestaurantMenu = ({
       ) : (
         <Table>
           <TableBody>
-            {restaurant.menu.items.map(item => (
+            {restaurant.menu.items.map((item) => (
               <MenuItemRow
                 key={item.id}
                 item={item}

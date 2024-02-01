@@ -6,16 +6,11 @@ import type { RestaurantsSearchProps } from '../types';
 export const RestaurantsSearch = ({
   contactName,
   restaurants,
+  addToCart,
   onRestaurantClick,
 }: RestaurantsSearchProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
-
-  const handleRestaurantClick = useCallback((id: number, reactions) => {
-    console.log(reactions);
-    onRestaurantClick(id, reactions);
-    setSearchTerm('');
-  }, []);
 
   const handleSearch = useCallback((searchTerm: string) => {
     setSearchTerm(searchTerm);
@@ -39,7 +34,7 @@ export const RestaurantsSearch = ({
       />
       <RestaurantsTable
         pageNumber={pageNumber}
-        onClick={handleRestaurantClick}
+        addToCart={addToCart}
         searchTerm={searchTerm}
         restaurants={searchResults}
         onPageChange={setPageNumber}
