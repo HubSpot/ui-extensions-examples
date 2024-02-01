@@ -5,7 +5,7 @@ import {
   ToggleGroup,
   Form,
   ButtonRow,
-  Flex
+  Flex,
 } from '@hubspot/ui-extensions';
 import type { MenuItemDetailsProps } from '../types';
 
@@ -16,7 +16,7 @@ export const MenuItemDetails = ({
   menu,
   item,
   onCancelClick,
-  onAddClick
+  onAddClick,
 }: MenuItemDetailsProps) => {
   const [bases, setBases] = useState<Array<string>>();
   const [toppings, setToppings] = useState<Array<string>>();
@@ -38,7 +38,7 @@ export const MenuItemDetails = ({
       bases: bases!,
       toppings: toppings!,
       premiums: premiums!,
-      dressing: dressing!
+      dressing: dressing!,
     });
   }, [item.id, item.name, item.price, bases, toppings, premiums, dressing]);
 
@@ -54,7 +54,7 @@ export const MenuItemDetails = ({
           required={true}
           toggleType="checkboxList"
           options={menu.bases.map(makeOption)}
-          onChange={items => setBases(items!)}
+          onChange={(items) => setBases(items!)}
           value={bases}
           validationMessage={basesError ? 'Please choose 1 or 2 options' : ''}
         />
@@ -65,7 +65,7 @@ export const MenuItemDetails = ({
           tooltip="Choose up to 4"
           toggleType="checkboxList"
           options={menu.toppings.map(makeOption)}
-          onChange={items => setToppings(items!)}
+          onChange={(items) => setToppings(items!)}
           value={toppings}
           validationMessage={
             toppingsError ? 'Please choose 4 or fewer options' : ''
@@ -78,7 +78,7 @@ export const MenuItemDetails = ({
           tooltip="Choose up to 3"
           toggleType="checkboxList"
           options={menu.premiums.map(makeOption)}
-          onChange={items => setPremiums(items!)}
+          onChange={(items) => setPremiums(items!)}
           value={premiums}
           validationMessage={
             premiumsError ? 'Please choose 3 or fewer options' : ''
@@ -90,7 +90,7 @@ export const MenuItemDetails = ({
           required={true}
           toggleType="radioButtonList"
           options={menu.dressings.map(makeOption)}
-          onChange={item => setDressing(item!)}
+          onChange={(item) => setDressing(item!)}
           value={dressing}
         />
       </Form>

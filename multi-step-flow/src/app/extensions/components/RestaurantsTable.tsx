@@ -1,17 +1,30 @@
-import React from 'react';
-import { Table, TableBody, Text } from '@hubspot/ui-extensions';
+import React, { useState } from 'react';
+import {
+  Button,
+  Flex,
+  Panel,
+  PanelBody,
+  PanelFooter,
+  PanelSection,
+  Table,
+  TableBody,
+  Text,
+} from '@hubspot/ui-extensions';
 import { RestaurantRow } from './RestaurantRow';
 import type { RestaurantsTableProps } from '../types';
+import { RestaurantMenu } from './RestaurantMenu';
 
 const PAGE_SIZE = 4;
 
 export const RestaurantsTable = ({
   searchTerm,
-  onClick,
+  addToCart,
   restaurants,
   pageNumber,
-  onPageChange
+  onPageChange,
 }: RestaurantsTableProps) => {
+  const [selected, setSelected] = useState();
+
   const pageCount = Math.ceil(restaurants.length / PAGE_SIZE);
   const paginatedRestaurants = restaurants.slice(
     (pageNumber - 1) * PAGE_SIZE,
@@ -25,22 +38,51 @@ export const RestaurantsTable = ({
   }
 
   return (
-    <Table
-      page={pageNumber}
-      paginated={pageCount > 1}
-      pageCount={pageCount}
-      onPageChange={onPageChange}
-      showFirstLastButtons={false}
-    >
-      <TableBody>
-        {paginatedRestaurants.map(restaurant => (
-          <RestaurantRow
-            restaurant={restaurant}
-            onClick={() => onClick(restaurant.id)}
-            key={restaurant.id}
-          />
-        ))}
-      </TableBody>
-    </Table>
+    <>
+      <Panel id="menu-panel" title="Menu Panel">
+        <Flex direction={'column'}>
+          <PanelBody>
+            <Panel>test</Panel>
+            <PanelSection>
+              {selected && (
+                <RestaurantMenu restaurant={selected} onAddClick={addToCart} />
+              )}
+            </PanelSection>
+          </PanelBody>
+          <PanelFooter>
+            <Button
+              onClick={(event, reactions) => {
+                reactions.closePanel('menu-panel');
+              }}
+              variant="primary"
+              type="submit"
+            >
+              Back
+            </Button>
+          </PanelFooter>
+        </Flex>
+      </Panel>
+      <Table
+        page={pageNumber}
+        paginated={pageCount > 1}
+        pageCount={pageCount}
+        onPageChange={onPageChange}
+        showFirstLastButtons={false}
+      >
+        <TableBody>
+          {paginatedRestaurants.map((restaurant) => (
+            <RestaurantRow
+              restaurant={restaurant}
+              addToCart={addToCart}
+              onClick={(reactions) => {
+                setSelected(restaurant);
+                reactions.openPanel('menu-panel');
+              }}
+              key={restaurant.id}
+            />
+          ))}
+        </TableBody>
+      </Table>
+    </>
   );
 };

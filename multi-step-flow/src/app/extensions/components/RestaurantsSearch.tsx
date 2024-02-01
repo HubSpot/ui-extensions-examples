@@ -6,15 +6,11 @@ import type { RestaurantsSearchProps } from '../types';
 export const RestaurantsSearch = ({
   contactName,
   restaurants,
-  onRestaurantClick
+  addToCart,
+  onRestaurantClick,
 }: RestaurantsSearchProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
-
-  const handleRestaurantClick = useCallback((id: number) => {
-    onRestaurantClick(id);
-    setSearchTerm('');
-  }, []);
 
   const handleSearch = useCallback((searchTerm: string) => {
     setSearchTerm(searchTerm);
@@ -22,7 +18,7 @@ export const RestaurantsSearch = ({
   }, []);
 
   const searchResults = restaurants.filter(({ name, category }) => {
-    return [name, category].some(prop => {
+    return [name, category].some((prop) => {
       return prop.toLowerCase().includes(searchTerm.toLowerCase());
     });
   });
@@ -38,7 +34,7 @@ export const RestaurantsSearch = ({
       />
       <RestaurantsTable
         pageNumber={pageNumber}
-        onClick={handleRestaurantClick}
+        addToCart={addToCart}
         searchTerm={searchTerm}
         restaurants={searchResults}
         onPageChange={setPageNumber}
