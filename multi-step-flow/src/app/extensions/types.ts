@@ -94,20 +94,6 @@ export interface CartItem {
 
 export type OnAddClick = (item: CartItem) => void;
 
-export interface MenuItemDetailsProps {
-  restaurantId: number;
-  menu: Menu;
-  item: MenuItem;
-  onCancelClick: () => void;
-  onAddClick: OnAddClick;
-}
-
-export interface RestaurantMenuProps {
-  restaurant: Restaurant;
-  onBackClick: () => void;
-  onAddClick: OnAddClick;
-}
-
 export interface MenuItemRowProps {
   item: MenuItem;
   onClick: () => void;
