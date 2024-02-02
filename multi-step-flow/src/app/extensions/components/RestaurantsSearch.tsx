@@ -6,7 +6,7 @@ import type { RestaurantsSearchProps } from '../types';
 export const RestaurantsSearch = ({
   contactName,
   restaurants,
-  addToCart,
+  onAddToCart,
   onRestaurantClick,
 }: RestaurantsSearchProps) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -34,7 +34,7 @@ export const RestaurantsSearch = ({
       />
       <RestaurantsTable
         pageNumber={pageNumber}
-        addToCart={addToCart}
+        onAddToCart={onAddToCart}
         searchTerm={searchTerm}
         restaurants={searchResults}
         onPageChange={setPageNumber}

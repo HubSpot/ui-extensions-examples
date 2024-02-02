@@ -8,7 +8,6 @@ import {
   Flex,
   hubspot,
 } from '@hubspot/ui-extensions';
-import { RestaurantMenu } from './RestaurantMenu';
 import { Cart } from './Cart';
 import type { CartItem, OrderMealProps, Restaurant } from '../types';
 import { RestaurantsSearch } from './RestaurantsSearch';
@@ -133,7 +132,7 @@ export const OrderMealCard = ({
       <RestaurantsSearch
         contactName={contactName}
         restaurants={restaurants}
-        addToCart={handleAddClick}
+        onAddToCart={handleAddClick}
         onRestaurantClick={(id, reactions) => {
           console.log(id, reactions);
           setSelected(id);
