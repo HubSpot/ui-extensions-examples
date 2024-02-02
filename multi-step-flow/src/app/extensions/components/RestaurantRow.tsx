@@ -3,13 +3,8 @@ import {
   Heading,
   Button,
   Text,
-  Flex,
   TableRow,
   TableCell,
-  Panel,
-  PanelBody,
-  PanelFooter,
-  PanelSection,
 } from '@hubspot/ui-extensions';
 import type { RestaurantRowProps } from '../types';
 import { Rating } from './Rating';
