@@ -1,9 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import {
-  Heading,
   Table,
   TableBody,
-  Divider,
   Flex,
 } from '@hubspot/ui-extensions';
 import type { RestaurantMenuProps } from '../types';
@@ -24,8 +22,6 @@ export const RestaurantMenu = ({
 
   return (
     <Flex direction="column" gap="md">
-      <Heading>{restaurant.name}</Heading>
-      <Divider />
       {selectedMenuItem ? (
         <MenuItemDetails
           restaurantId={restaurant.id}

@@ -2,14 +2,9 @@ import React from 'react';
 import {
   Heading,
   Button,
-  Flex,
   Text,
   TableRow,
   TableCell,
-  Panel,
-  PanelBody,
-  PanelFooter,
-  PanelSection,
 } from '@hubspot/ui-extensions';
 import type { RestaurantRowProps } from '../types';
 import { Rating } from './Rating';
@@ -22,20 +17,6 @@ export const RestaurantRow = ({ restaurant, onClick }: RestaurantRowProps) => {
 
   return (
     <TableRow>
-      <Panel id='menu-panel' title='Menu Panel'>
-        <Flex direction={'column'}>
-          <PanelBody>
-            <Panel>test</Panel>
-            <PanelSection>
-            </PanelSection>
-          </PanelBody>
-          <PanelFooter>
-            <Button onClick={(event, reactions) => {reactions.closePanel('menu-panel')}}variant='primary' type='submit'>
-              close panel
-            </Button>
-          </PanelFooter>
-        </Flex>
-      </Panel>
       <TableCell width="min">
         <Heading>{name}</Heading>
         <Text variant="microcopy">{category}</Text>

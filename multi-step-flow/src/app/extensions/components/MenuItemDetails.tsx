@@ -100,7 +100,7 @@ export const MenuItemDetails = ({
           variant="primary"
           onClick={handleAddClick}
         >
-          Add
+          Add aaaa
         </Button>
         <Button onClick={onCancelClick}>Cancel</Button>
       </ButtonRow>

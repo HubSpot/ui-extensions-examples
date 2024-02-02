@@ -36,10 +36,9 @@ export const RestaurantsTable = ({
       <Text>No matches for "{searchTerm}". Try being a bit less specific.</Text>
     );
   }
-
   return (
     <>
-      <Panel id="menu-panel" title="Menu Panel">
+      <Panel id="menu-panel" title={selected ? selected.name : "Menu Panel"}>
         <Flex direction={'column'}>
           <PanelBody>
             <Panel>test</Panel>
@@ -54,10 +53,19 @@ export const RestaurantsTable = ({
               onClick={(event, reactions) => {
                 reactions.closePanel('menu-panel');
               }}
-              variant="primary"
+              variant="secondary"
               type="submit"
             >
               Back
+            </Button>
+            <Button
+              onClick={(event, reactions) => {
+                reactions.closePanel('menu-panel');
+              }}
+              variant="primary"
+              type="submit"
+            >
+              Add
             </Button>
           </PanelFooter>
         </Flex>
