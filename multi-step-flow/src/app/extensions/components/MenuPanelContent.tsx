@@ -142,25 +142,27 @@ export const MenuPanelContent = ({
         </PanelSection>
       </PanelBody>
       <PanelFooter>
-        <Button
-          onClick={() => setMenuItem(undefined)}
-          variant="secondary"
-          type="submit"
-          disabled={!menuItem}
-        >
-          Back
-        </Button>
-        <Button
-          onClick={(event, reactions) => {
-            handleAddClick();
-            closePanel(reactions);
-          }}
-          variant="primary"
-          type="submit"
-          disabled={isNotMeetingRequirements()}
-        >
-          Add
-        </Button>
+        <Flex justify={'end'} gap={'md'}>
+          <Button
+            onClick={() => setMenuItem(undefined)}
+            variant="secondary"
+            type="submit"
+            disabled={!menuItem}
+          >
+            Back
+          </Button>
+          <Button
+            onClick={(event, reactions) => {
+              handleAddClick();
+              closePanel(reactions);
+            }}
+            variant="primary"
+            type="submit"
+            disabled={isNotMeetingRequirements()}
+          >
+            Add
+          </Button>
+        </Flex>
       </PanelFooter>
     </Flex>
   );
