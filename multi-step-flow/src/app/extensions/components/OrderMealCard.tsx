@@ -133,11 +133,6 @@ export const OrderMealCard = ({
         contactName={contactName}
         restaurants={restaurants}
         onAddToCart={handleAddClick}
-        onRestaurantClick={(id, reactions) => {
-          console.log(id, reactions);
-          setSelected(id);
-          reactions.openPanel('menu-panel');
-        }}
       />
       <Divider />
       <Cart cart={cart} onRemoveClick={handleRemoveClick} />

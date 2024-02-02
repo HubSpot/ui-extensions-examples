@@ -11,15 +11,15 @@ import {
   TableBody,
   ToggleGroup,
 } from '@hubspot/ui-extensions';
-import type { RestaurantsTableProps } from '../types';
+import { MenuItem, type MenuPanelContentProps } from '../types';
 import { MenuItemRow } from './MenuItemRow';
 
 export const MenuPanelContent = ({
   restaurant,
   onAddToCart,
   closePanel,
-}: RestaurantsTableProps) => {
-  const [menuItem, setMenuItem] = useState();
+}: MenuPanelContentProps) => {
+  const [menuItem, setMenuItem] = useState<MenuItem>();
   const [bases, setBases] = useState<Array<string>>();
   const [toppings, setToppings] = useState<Array<string>>();
   const [premiums, setPremiums] = useState<Array<string>>();
@@ -49,7 +49,7 @@ export const MenuPanelContent = ({
       restaurantId: restaurant.id,
       id: restaurant.id,
       name: restaurant.name,
-      price: menuItem.price,
+      price: menuItem!.price,
       bases: bases!,
       toppings: toppings!,
       premiums: premiums!,

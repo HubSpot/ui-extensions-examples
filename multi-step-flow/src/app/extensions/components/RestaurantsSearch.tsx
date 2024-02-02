@@ -7,7 +7,6 @@ export const RestaurantsSearch = ({
   contactName,
   restaurants,
   onAddToCart,
-  onRestaurantClick,
 }: RestaurantsSearchProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
