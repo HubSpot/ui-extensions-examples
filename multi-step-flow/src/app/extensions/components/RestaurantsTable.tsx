@@ -16,7 +16,7 @@ import {
 import { RestaurantRow } from './RestaurantRow';
 import type { RestaurantsTableProps } from '../types';
 import { MenuItemRow } from './MenuItemRow';
-import { RestaurantMenuPanel } from './RestaurantMenuPanel';
+import { MenuPanelContent } from './MenuPanelContent';
 
 const PAGE_SIZE = 4;
 const MENU_PANEL_ID = 'menu-panel';
@@ -73,11 +73,11 @@ export const RestaurantsTable = ({
         onClose={() => setSelectedRestaurant(undefined)}
       >
         {selectedRestaurant && (
-          <RestaurantMenuPanel
+          <MenuPanelContent
             restaurant={selectedRestaurant}
             onAddToCart={onAddToCart}
             closePanel={(reactions) => reactions.closePanel(MENU_PANEL_ID)}
-          ></RestaurantMenuPanel>
+          ></MenuPanelContent>
         )}{' '}
       </Panel>
     </>
