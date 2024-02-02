@@ -10,10 +10,12 @@ import {
 import { hubspot } from '@hubspot/ui-extensions';
 
 // Define the extension to be run within the Hubspot CRM
-hubspot.extend(() => <DealsSummary />);
+hubspot.extend(({ runServerlessFunction }) => (
+  <DealsSummary runServerless={runServerlessFunction} />
+));
 
-// Define the Extension component
-const DealsSummary = () => {
+// Define the Extension component, taking in runServerless prop
+const DealsSummary = ({ runServerless }) => {
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [dealsCount, setDealsCount] = useState(0);
@@ -21,13 +23,18 @@ const DealsSummary = () => {
 
   useEffect(() => {
     // Request statistics data from serverless function
-    hubspot
-      .serverless('get-data', {
-        propertiesToSend: ['hs_object_id'],
-      })
-      .then((response) => {
-        setDealsCount(response.dealsCount);
-        setTotalAmount(response.totalAmount);
+    runServerless({
+      name: 'get-data',
+      propertiesToSend: ['hs_object_id'],
+    })
+      .then((serverlessResponse) => {
+        if (serverlessResponse.status == 'SUCCESS') {
+          const { response } = serverlessResponse;
+          setDealsCount(response.dealsCount);
+          setTotalAmount(response.totalAmount);
+        } else {
+          setErrorMessage(serverlessResponse.message);
+        }
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -35,7 +42,7 @@ const DealsSummary = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [runServerless]);
 
   if (loading) {
     // If loading, show a spinner

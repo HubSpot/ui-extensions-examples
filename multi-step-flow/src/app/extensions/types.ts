@@ -1,7 +1,8 @@
 import type {
   AddAlertAction,
-  CrmContext,
+  Context,
   FetchCrmObjectPropertiesAction,
+  ServerlessFuncRunner
 } from '@hubspot/ui-extensions';
 
 export interface MenuItem {
@@ -106,6 +107,7 @@ export interface AddonsProps {
 
 export interface OrderMealProps {
   fetchCrmObjectProperties: FetchCrmObjectPropertiesAction;
-  context: CrmContext;
+  context: Context;
+  runServerless: ServerlessFuncRunner;
   sendAlert: AddAlertAction;
 }

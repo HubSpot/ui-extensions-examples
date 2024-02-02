@@ -4,14 +4,15 @@ import { CompaniesWithDistanceTable } from './components/CompaniesWithDistanceTa
 import { hubspot } from '@hubspot/ui-extensions';
 
 // Define the extension to be run within the Hubspot CRM
-hubspot.extend(({ actions, context }) => (
+hubspot.extend(({ actions, context, runServerlessFunction }) => (
   <NearestCompanies
+    runServerless={runServerlessFunction}
     context={context}
     fetchProperties={actions.fetchCrmObjectProperties}
   />
 ));
 
-const NearestCompanies = ({ context, fetchProperties }) => {
+const NearestCompanies = ({ context, runServerless, fetchProperties }) => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const [nearestCompaniesSorted, setNearestCompaniesSorted] = useState([]);
@@ -20,26 +21,25 @@ const NearestCompanies = ({ context, fetchProperties }) => {
   useEffect(() => {
     async function fetchCompaniesWithDistanceBatch() {
       setLoading(true);
-      try {
-        // Request companies batch from serverless function
-        const { companies } = await hubspot.serverless(
-          'getCompaniesWithDistanceBatch',
-          {
-            propertiesToSend: ['hs_object_id', 'city', 'state', 'address'],
-            parameters: { batchSize: 30 },
-          },
-        );
+      // Request companies batch from serverless function
+      const companiesServerlessResponse = await runServerless({
+        name: 'getCompaniesWithDistanceBatch',
+        propertiesToSend: ['hs_object_id', 'city', 'state', 'address'],
+        payload: { batchSize: 30 },
+      });
+      if (companiesServerlessResponse.status == 'SUCCESS') {
+        const { companies } = companiesServerlessResponse.response;
         // Sort companies by distance
         setNearestCompaniesSorted(
-          companies.sort((c1, c2) => c1.distance - c2.distance),
+          companies.sort((c1, c2) => c1.distance - c2.distance)
         );
-      } catch (error) {
-        setErrorMessage(error.message);
+      } else {
+        setErrorMessage(companiesServerlessResponse.message);
       }
       setLoading(false);
     }
     fetchCompaniesWithDistanceBatch();
-  }, [fetchProperties]);
+  }, [fetchProperties, runServerless]);
 
   if (errorMessage) {
     // If there's an error, show an alert
