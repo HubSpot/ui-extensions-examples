@@ -1,27 +1,17 @@
-import React, { useState } from 'react';
-import {
-  Panel,
-  Reactions,
-  Table,
-  TableBody,
-  Text,
-} from '@hubspot/ui-extensions';
+import React from 'react';
+import { Table, TableBody, Text } from '@hubspot/ui-extensions';
 import { RestaurantRow } from './RestaurantRow';
-import { Restaurant, type RestaurantsTableProps } from '../types';
-import { MenuPanelContent } from './MenuPanelContent';
+import type { RestaurantsTableProps } from '../types';
 
 const PAGE_SIZE = 4;
-const MENU_PANEL_ID = 'menu-panel';
 
 export const RestaurantsTable = ({
   searchTerm,
-  onAddToCart,
+  onClick,
   restaurants,
   pageNumber,
-  onPageChange,
+  onPageChange
 }: RestaurantsTableProps) => {
-  const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant>();
-
   const pageCount = Math.ceil(restaurants.length / PAGE_SIZE);
   const paginatedRestaurants = restaurants.slice(
     (pageNumber - 1) * PAGE_SIZE,
@@ -35,42 +25,22 @@ export const RestaurantsTable = ({
   }
 
   return (
-    <>
-      <Table
-        page={pageNumber}
-        paginated={pageCount > 1}
-        pageCount={pageCount}
-        onPageChange={onPageChange}
-        showFirstLastButtons={false}
-      >
-        <TableBody>
-          {paginatedRestaurants.map((restaurant) => (
-            <RestaurantRow
-              restaurant={restaurant}
-              onClick={(reactions: Reactions) => {
-                setSelectedRestaurant(restaurant);
-                reactions.openPanel(MENU_PANEL_ID);
-              }}
-              key={restaurant.id}
-            />
-          ))}
-        </TableBody>
-      </Table>
-      <Panel
-        id="menu-panel"
-        title={selectedRestaurant ? selectedRestaurant.name : 'Menu Panel'}
-        onClose={() => setSelectedRestaurant(undefined)}
-      >
-        {selectedRestaurant && (
-          <MenuPanelContent
-            restaurant={selectedRestaurant}
-            onAddToCart={onAddToCart}
-            closePanel={(reactions: Reactions) =>
-              reactions.closePanel(MENU_PANEL_ID)
-            }
-          ></MenuPanelContent>
-        )}{' '}
-      </Panel>
-    </>
+    <Table
+      page={pageNumber}
+      paginated={pageCount > 1}
+      pageCount={pageCount}
+      onPageChange={onPageChange}
+      showFirstLastButtons={false}
+    >
+      <TableBody>
+        {paginatedRestaurants.map(restaurant => (
+          <RestaurantRow
+            restaurant={restaurant}
+            onClick={() => onClick(restaurant.id)}
+            key={restaurant.id}
+          />
+        ))}
+      </TableBody>
+    </Table>
   );
 };

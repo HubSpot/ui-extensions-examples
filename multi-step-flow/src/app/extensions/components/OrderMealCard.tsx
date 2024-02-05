@@ -8,6 +8,7 @@ import {
   Flex,
   hubspot,
 } from '@hubspot/ui-extensions';
+import { RestaurantMenu } from './RestaurantMenu';
 import { Cart } from './Cart';
 import type { CartItem, OrderMealProps, Restaurant } from '../types';
 import { RestaurantsSearch } from './RestaurantsSearch';
@@ -78,7 +79,7 @@ export const OrderMealCard = ({
 
   const handleRemoveClick = useCallback((id: number) => {
     updateCart((items: Array<CartItem>) =>
-      items.filter((item) => item.id !== id)
+      items.filter((item) => item.id !== id),
     );
   }, []);
 
@@ -91,7 +92,7 @@ export const OrderMealCard = ({
       updateCart([]);
       clearSelection();
     },
-    [contactName]
+    [contactName],
   );
 
   if (error) {
@@ -125,15 +126,22 @@ export const OrderMealCard = ({
   return (
     <Flex direction={'column'} gap={'md'}>
       <Text variant="microcopy">
-        This example shows you how many components work together to build a
-        multi-step flow. This card lets you send a meal from a local restaurant
-        to one of your contacts.
+        This example shows you how many components work together to build a multi-step flow.
+        This card lets you send a meal from a local restaurant to one of your contacts.
       </Text>
-      <RestaurantsSearch
-        contactName={contactName}
-        restaurants={restaurants}
-        onAddToCart={handleAddClick}
-      />
+      {selectedRestaurant ? (
+        <RestaurantMenu
+          restaurant={selectedRestaurant}
+          onBackClick={clearSelection}
+          onAddClick={handleAddClick}
+        />
+      ) : (
+        <RestaurantsSearch
+          contactName={contactName}
+          restaurants={restaurants}
+          onRestaurantClick={setSelected}
+        />
+      )}
       <Divider />
       <Cart cart={cart} onRemoveClick={handleRemoveClick} />
       {cart.length > 0 && (

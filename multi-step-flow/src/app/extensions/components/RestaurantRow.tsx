@@ -4,7 +4,7 @@ import {
   Button,
   Text,
   TableRow,
-  TableCell,
+  TableCell
 } from '@hubspot/ui-extensions';
 import type { RestaurantRowProps } from '../types';
 import { Rating } from './Rating';
@@ -12,8 +12,13 @@ import { Rating } from './Rating';
 const timeRange = (minutes: number) => `${minutes - 5}-${minutes + 5} min`;
 
 export const RestaurantRow = ({ restaurant, onClick }: RestaurantRowProps) => {
-  const { name, category, deliveryCost, deliveryInMinutes, rating } =
-    restaurant;
+  const {
+    name,
+    category,
+    deliveryCost,
+    deliveryInMinutes,
+    rating
+  } = restaurant;
 
   return (
     <TableRow>
@@ -29,13 +34,7 @@ export const RestaurantRow = ({ restaurant, onClick }: RestaurantRowProps) => {
         <Text>${deliveryCost} delivery</Text>
       </TableCell>
       <TableCell width="min">
-        <Button
-          onClick={(event, reactions) => {
-            onClick(reactions);
-          }}
-        >
-          Menu
-        </Button>
+        <Button onClick={onClick}>Menu</Button>
       </TableCell>
     </TableRow>
   );
