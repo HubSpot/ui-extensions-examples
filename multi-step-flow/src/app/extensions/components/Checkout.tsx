@@ -4,8 +4,12 @@ import {
   Divider,
   Flex,
   Heading,
+  Table,
+  TableRow,
+  TableBody,
+  TableCell,
   Text,
-  TextArea
+  TextArea,
 } from '@hubspot/ui-extensions';
 import React, { useState } from 'react';
 import type { CheckoutProps } from '../types';
@@ -20,19 +24,23 @@ export const Checkout = ({
   const delivery = deliveryCost || 0;
 
   return (
-    <Flex direction="column" gap="sm">
-      <Heading>
-        <Text format={{ fontWeight: 'demibold' }}>
-          Subtotal: {formatPrice(subtotal)}
-        </Text>
-        <Text format={{ fontWeight: 'demibold' }}>
-          Delivery: {formatPrice(delivery)}
-        </Text>
-        <Divider />
-        <Text format={{ fontWeight: 'bold' }}>
-          Total: {formatPrice(subtotal + delivery)}
-        </Text>
-      </Heading>
+  <Flex direction="column" gap="sm">
+    <Table>
+      <TableRow>
+      <TableCell width="min">
+        <Heading>
+          <Text>Subtotal: {formatPrice(subtotal)}</Text>
+          <Text>Delivery fee: {formatPrice(delivery)}</Text>
+          </Heading>
+        </TableCell>
+        </TableRow>
+        <TableCell>
+        <Heading>
+          <Text>TOTAL: {formatPrice(subtotal + delivery)}</Text>
+        </Heading>
+      </TableCell>
+      </Table>
+
       <TextArea
         required={true}
         name="message"
@@ -50,7 +58,7 @@ export const Checkout = ({
             onCheckoutClick(message);
           }}
         >
-          Checkout
+          Place order
         </Button>
       </ButtonRow>
     </Flex>
