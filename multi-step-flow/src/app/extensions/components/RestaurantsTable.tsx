@@ -56,11 +56,14 @@ export const RestaurantsTable = ({
           ))}
         </TableBody>
       </Table>
+
+      {/* Render Panel wrapper */}
       <Panel
-        id="menu-panel"
+        id={MENU_PANEL_ID}
         title={selectedRestaurant ? selectedRestaurant.name : 'Menu Panel'}
         onClose={() => setSelectedRestaurant(undefined)}
       >
+        {/* Render Panel content if any restaurant has been selected */}
         {selectedRestaurant && (
           <MenuPanelContent
             restaurant={selectedRestaurant}
