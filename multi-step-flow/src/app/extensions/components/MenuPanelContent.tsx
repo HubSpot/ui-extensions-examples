@@ -11,15 +11,15 @@ import {
   TableBody,
   ToggleGroup,
 } from '@hubspot/ui-extensions';
-import type { RestaurantsTableProps } from '../types';
+import { MenuItem, type MenuPanelContentProps } from '../types';
 import { MenuItemRow } from './MenuItemRow';
 
 export const MenuPanelContent = ({
   restaurant,
   onAddToCart,
   closePanel,
-}: RestaurantsTableProps) => {
-  const [menuItem, setMenuItem] = useState();
+}: MenuPanelContentProps) => {
+  const [menuItem, setMenuItem] = useState<MenuItem>();
   const [bases, setBases] = useState<Array<string>>();
   const [toppings, setToppings] = useState<Array<string>>();
   const [premiums, setPremiums] = useState<Array<string>>();
@@ -49,7 +49,7 @@ export const MenuPanelContent = ({
       restaurantId: restaurant.id,
       id: restaurant.id,
       name: restaurant.name,
-      price: menuItem.price,
+      price: menuItem!.price,
       bases: bases!,
       toppings: toppings!,
       premiums: premiums!,
@@ -63,82 +63,80 @@ export const MenuPanelContent = ({
     <Flex direction={'column'}>
       <PanelBody>
         <PanelSection>
-          {restaurant && (
-            <Flex direction={'column'} gap={'md'}>
-              {menuItem ? (
-                <Flex direction={'column'} gap={'sm'}>
-                  <Heading>{menuItem.name}</Heading>
-                  <Form>
-                    <ToggleGroup
-                      error={getBasesError()}
-                      name="bases"
-                      label="Bases"
-                      tooltip="Choose 1-2"
-                      required={true}
-                      toggleType="checkboxList"
-                      options={restaurant.menu.bases.map(makeOption)}
-                      onChange={setBases}
-                      value={bases}
-                      validationMessage={
-                        getBasesError() ? 'Please choose 1 or 2 options' : ''
-                      }
+          <Flex direction="column" gap="md">
+            {menuItem ? (
+              <Flex direction="column" gap="sm">
+                <Heading>{menuItem.name}</Heading>
+                <Form>
+                  <ToggleGroup
+                    error={getBasesError()}
+                    name="bases"
+                    label="Bases"
+                    tooltip="Choose 1-2"
+                    required={true}
+                    toggleType="checkboxList"
+                    options={restaurant.menu.bases.map(makeOption)}
+                    onChange={setBases}
+                    value={bases}
+                    validationMessage={
+                      getBasesError() ? 'Please choose 1 or 2 options' : ''
+                    }
+                  />
+                  <ToggleGroup
+                    error={getToppingsError()}
+                    name="toppings"
+                    label="Toppings (Optional)"
+                    tooltip="Choose up to 4"
+                    toggleType="checkboxList"
+                    options={restaurant.menu.toppings.map(makeOption)}
+                    onChange={setToppings}
+                    value={toppings}
+                    validationMessage={
+                      getToppingsError()
+                        ? 'Please choose 4 or fewer options'
+                        : ''
+                    }
+                  />
+                  <ToggleGroup
+                    error={getPremiumsError()}
+                    name="premiums"
+                    label="Premiums (Optional)"
+                    tooltip="Choose up to 3"
+                    toggleType="checkboxList"
+                    options={restaurant.menu.premiums.map(makeOption)}
+                    onChange={(items) => setPremiums(items!)}
+                    value={premiums}
+                    validationMessage={
+                      getPremiumsError()
+                        ? 'Please choose 3 or fewer options'
+                        : ''
+                    }
+                  />
+                  <ToggleGroup
+                    name="dressing"
+                    label="Dressing"
+                    required={true}
+                    toggleType="radioButtonList"
+                    options={restaurant.menu.dressings.map(makeOption)}
+                    onChange={setDressing}
+                    value={dressing}
+                  />
+                </Form>
+              </Flex>
+            ) : (
+              <Table>
+                <TableBody>
+                  {restaurant.menu.items.map((item) => (
+                    <MenuItemRow
+                      key={item.id}
+                      item={item}
+                      onClick={() => setMenuItem(item)}
                     />
-                    <ToggleGroup
-                      error={getToppingsError()}
-                      name="toppings"
-                      label="Toppings (Optional)"
-                      tooltip="Choose up to 4"
-                      toggleType="checkboxList"
-                      options={restaurant.menu.toppings.map(makeOption)}
-                      onChange={setToppings}
-                      value={toppings}
-                      validationMessage={
-                        getToppingsError()
-                          ? 'Please choose 4 or fewer options'
-                          : ''
-                      }
-                    />
-                    <ToggleGroup
-                      error={getPremiumsError()}
-                      name="premiums"
-                      label="Premiums (Optional)"
-                      tooltip="Choose up to 3"
-                      toggleType="checkboxList"
-                      options={restaurant.menu.premiums.map(makeOption)}
-                      onChange={(items) => setPremiums(items!)}
-                      value={premiums}
-                      validationMessage={
-                        getPremiumsError()
-                          ? 'Please choose 3 or fewer options'
-                          : ''
-                      }
-                    />
-                    <ToggleGroup
-                      name="dressing"
-                      label="Dressing"
-                      required={true}
-                      toggleType="radioButtonList"
-                      options={restaurant.menu.dressings.map(makeOption)}
-                      onChange={setDressing}
-                      value={dressing}
-                    />
-                  </Form>
-                </Flex>
-              ) : (
-                <Table>
-                  <TableBody>
-                    {restaurant.menu.items.map((item) => (
-                      <MenuItemRow
-                        key={item.id}
-                        item={item}
-                        onClick={() => setMenuItem(item)}
-                      />
-                    ))}
-                  </TableBody>
-                </Table>
-              )}
-            </Flex>
-          )}
+                  ))}
+                </TableBody>
+              </Table>
+            )}
+          </Flex>
         </PanelSection>
       </PanelBody>
       <PanelFooter>

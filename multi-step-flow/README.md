@@ -1,13 +1,15 @@
 # Build a multi-step flow sample
 
-![ui-extensions-multi-step-flow-sample](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/6424ce89-8330-43a2-85bb-6f96e9cc3903)
-
-
 The Build a multi-step flow sample allows a HubSpot user to send a meal from a local restaurant to one of their contacts.
+
+![ui-extension-sample-multi-step-flow-with-panel](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/1b5b00dc-7c21-4b76-931e-0fd2bed18fd5)
+
+
 
 This sample demonstrates a number of interactions that are enabled by React extensions.
 
 - realtime form validation
+- a form in a Panel
 - table pagination and search
 - async fetching with HubSpot serverless functions
 - loading, error, and empty states

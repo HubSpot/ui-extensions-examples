@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import {
   Panel,
+  Reactions,
   Table,
   TableBody,
   Text,
 } from '@hubspot/ui-extensions';
 import { RestaurantRow } from './RestaurantRow';
-import type { RestaurantsTableProps } from '../types';
-import { MenuItemRow } from './MenuItemRow';
+import { Restaurant, type RestaurantsTableProps } from '../types';
 import { MenuPanelContent } from './MenuPanelContent';
 
 const PAGE_SIZE = 4;
@@ -20,9 +20,7 @@ export const RestaurantsTable = ({
   pageNumber,
   onPageChange,
 }: RestaurantsTableProps) => {
-  const [selectedRestaurant, setSelectedRestaurant] = useState();
-
-  const handleClosePanel = (reactions) => {};
+  const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant>();
 
   const pageCount = Math.ceil(restaurants.length / PAGE_SIZE);
   const paginatedRestaurants = restaurants.slice(
@@ -48,8 +46,7 @@ export const RestaurantsTable = ({
           {paginatedRestaurants.map((restaurant) => (
             <RestaurantRow
               restaurant={restaurant}
-              addToCart={onAddToCart}
-              onClick={(reactions) => {
+              onClick={(reactions: Reactions) => {
                 setSelectedRestaurant(restaurant);
                 reactions.openPanel(MENU_PANEL_ID);
               }}
@@ -67,7 +64,9 @@ export const RestaurantsTable = ({
           <MenuPanelContent
             restaurant={selectedRestaurant}
             onAddToCart={onAddToCart}
-            closePanel={(reactions) => reactions.closePanel(MENU_PANEL_ID)}
+            closePanel={(reactions: Reactions) =>
+              reactions.closePanel(MENU_PANEL_ID)
+            }
           ></MenuPanelContent>
         )}{' '}
       </Panel>
