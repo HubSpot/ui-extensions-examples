@@ -15,7 +15,7 @@ const MENU_PANEL_ID = 'menu-panel';
 
 export const RestaurantsTable = ({
   searchTerm,
-  onAddToCart,
+  onAddToCartClick,
   restaurants,
   pageNumber,
   onPageChange,
@@ -64,7 +64,7 @@ export const RestaurantsTable = ({
         {selectedRestaurant && (
           <MenuPanelContent
             restaurant={selectedRestaurant}
-            onAddToCart={onAddToCart}
+            onAddToCartClick={onAddToCartClick}
             closePanel={(reactions: Reactions) =>
               reactions.closePanel(MENU_PANEL_ID)
             }

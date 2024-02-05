@@ -16,7 +16,7 @@ import { MenuItemRow } from './MenuItemRow';
 
 export const MenuPanelContent = ({
   restaurant,
-  onAddToCart,
+  onAddToCartClick,
   closePanel,
 }: MenuPanelContentProps) => {
   const [menuItem, setMenuItem] = useState<MenuItem>();
@@ -45,7 +45,7 @@ export const MenuPanelContent = ({
   };
 
   const handleAddClick = () => {
-    onAddToCart({
+    onAddToCartClick({
       restaurantId: restaurant.id,
       id: restaurant.id,
       name: restaurant.name,

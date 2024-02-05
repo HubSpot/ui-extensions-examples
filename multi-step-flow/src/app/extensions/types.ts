@@ -35,34 +35,34 @@ export interface RatingProps {
   value: number;
 }
 
-export interface Reactons {
+export interface ButtonOnClickReactons {
   openPanel: (id: string) => void;
   closePanel: (id: string) => void;
 }
 
 export interface RestaurantRowProps {
   restaurant: Restaurant;
-  onClick: (reactions: Reactons) => void;
+  onClick: (reactions: ButtonOnClickReactons) => void;
 }
 
 export interface RestaurantsTableProps {
   pageNumber: number;
   onPageChange: (pageNumber: number) => void;
   searchTerm: string;
-  onAddToCart: (cartItem: CartItem) => void;
+  onAddToCartClick: (cartItem: CartItem) => void;
   restaurants: Array<Restaurant>;
 }
 
 export interface MenuPanelContentProps {
   restaurant: Restaurant;
-  onAddToCart: (cartItem: CartItem) => void;
-  closePanel: (reactions: Reactons) => void;
+  onAddToCartClick: (cartItem: CartItem) => void;
+  closePanel: (reactions: ButtonOnClickReactons) => void;
 }
 
 export interface RestaurantsSearchProps {
   contactName: string;
   restaurants: Array<Restaurant>;
-  onAddToCart: (cartItem: CartItem) => void;
+  onAddToCartClick: (cartItem: CartItem) => void;
 }
 
 export interface CartItemRowProps {

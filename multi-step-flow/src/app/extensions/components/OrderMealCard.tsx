@@ -132,7 +132,7 @@ export const OrderMealCard = ({
       <RestaurantsSearch
         contactName={contactName}
         restaurants={restaurants}
-        onAddToCart={handleAddClick}
+        onAddToCartClick={handleAddClick}
       />
       <Divider />
       <Cart cart={cart} onRemoveClick={handleRemoveClick} />
