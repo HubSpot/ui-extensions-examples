@@ -63,7 +63,7 @@ export const RestaurantsTable = ({
         title={selectedRestaurant ? selectedRestaurant.name : 'Menu Panel'}
         onClose={() => setSelectedRestaurant(undefined)}
       >
-        {/* Render Panel content if any restaurant has been selected */}
+        {/* Check if any restaurant is selected and conditionally render Panel content */}
         {selectedRestaurant && (
           <MenuPanelContent
             restaurant={selectedRestaurant}
