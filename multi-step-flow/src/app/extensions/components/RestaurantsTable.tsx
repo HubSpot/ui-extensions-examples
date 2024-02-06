@@ -20,7 +20,7 @@ export const RestaurantsTable = ({
   pageNumber,
   onPageChange,
 }: RestaurantsTableProps) => {
-  const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant>();
+  const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null);
 
   const pageCount = Math.ceil(restaurants.length / PAGE_SIZE);
   const paginatedRestaurants = restaurants.slice(
@@ -61,7 +61,7 @@ export const RestaurantsTable = ({
       <Panel
         id={MENU_PANEL_ID}
         title={selectedRestaurant ? selectedRestaurant.name : 'Menu Panel'}
-        onClose={() => setSelectedRestaurant(undefined)}
+        onClose={() => setSelectedRestaurant(null)}
       >
         {/* Check if any restaurant is selected and conditionally render Panel content */}
         {selectedRestaurant && (
