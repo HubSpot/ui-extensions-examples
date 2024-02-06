@@ -71,8 +71,8 @@ export const RestaurantsTable = ({
             closePanel={(reactions: Reactions) =>
               reactions.closePanel(MENU_PANEL_ID)
             }
-          ></MenuPanelContent>
-        )}{' '}
+          />
+        )}
       </Panel>
     </>
   );
