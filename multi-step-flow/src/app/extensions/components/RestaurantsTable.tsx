@@ -20,7 +20,8 @@ export const RestaurantsTable = ({
   pageNumber,
   onPageChange,
 }: RestaurantsTableProps) => {
-  const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null);
+  const [selectedRestaurant, setSelectedRestaurant] =
+    useState<Restaurant | null>(null);
 
   const pageCount = Math.ceil(restaurants.length / PAGE_SIZE);
   const paginatedRestaurants = restaurants.slice(
