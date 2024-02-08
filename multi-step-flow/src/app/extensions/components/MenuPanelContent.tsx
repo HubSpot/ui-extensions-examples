@@ -16,10 +16,10 @@ import { MenuItemRow } from './MenuItemRow';
 
 export const MenuPanelContent = ({
   restaurant,
-  onAddToCart,
+  onAddToCartClick,
   closePanel,
 }: MenuPanelContentProps) => {
-  const [menuItem, setMenuItem] = useState<MenuItem>();
+  const [menuItem, setMenuItem] = useState<MenuItem | null>(null);
   const [bases, setBases] = useState<Array<string>>();
   const [toppings, setToppings] = useState<Array<string>>();
   const [premiums, setPremiums] = useState<Array<string>>();
@@ -45,7 +45,7 @@ export const MenuPanelContent = ({
   };
 
   const handleAddClick = () => {
-    onAddToCart({
+    onAddToCartClick({
       restaurantId: restaurant.id,
       id: restaurant.id,
       restorauntName: restaurant.name,
@@ -143,7 +143,7 @@ export const MenuPanelContent = ({
       <PanelFooter>
         <Flex justify={'end'} gap={'md'}>
           <Button
-            onClick={() => setMenuItem(undefined)}
+            onClick={() => setMenuItem(null)}
             variant="secondary"
             type="submit"
             disabled={!menuItem}

@@ -15,12 +15,13 @@ const MENU_PANEL_ID = 'menu-panel';
 
 export const RestaurantsTable = ({
   searchTerm,
-  onAddToCart,
+  onAddToCartClick,
   restaurants,
   pageNumber,
   onPageChange,
 }: RestaurantsTableProps) => {
-  const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant>();
+  const [selectedRestaurant, setSelectedRestaurant] =
+    useState<Restaurant | null>(null);
 
   const pageCount = Math.ceil(restaurants.length / PAGE_SIZE);
   const paginatedRestaurants = restaurants.slice(
@@ -55,20 +56,23 @@ export const RestaurantsTable = ({
           ))}
         </TableBody>
       </Table>
+
+      {/* Render Panel wrapper */}
       <Panel
-        id="menu-panel"
+        id={MENU_PANEL_ID}
         title={selectedRestaurant ? selectedRestaurant.name : 'Menu Panel'}
-        onClose={() => setSelectedRestaurant(undefined)}
+        onClose={() => setSelectedRestaurant(null)}
       >
+        {/* Check if any restaurant is selected and conditionally render Panel content */}
         {selectedRestaurant && (
           <MenuPanelContent
             restaurant={selectedRestaurant}
-            onAddToCart={onAddToCart}
+            onAddToCartClick={onAddToCartClick}
             closePanel={(reactions: Reactions) =>
               reactions.closePanel(MENU_PANEL_ID)
             }
-          ></MenuPanelContent>
-        )}{' '}
+          />
+        )}
       </Panel>
     </>
   );

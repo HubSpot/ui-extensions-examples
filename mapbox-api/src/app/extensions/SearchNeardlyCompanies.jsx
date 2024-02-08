@@ -13,9 +13,11 @@ import { CompaniesWithDistanceTable } from './components/CompaniesWithDistanceTa
 import { hubspot } from '@hubspot/ui-extensions';
 
 // Define the extension to be run within the Hubspot CRM
-hubspot.extend(({ context }) => <TopValueCompanies context={context} />);
+hubspot.extend(({ context, runServerlessFunction }) => (
+  <TopValueCompanies context={context} runServerless={runServerlessFunction} />
+));
 
-const TopValueCompanies = ({ context }) => {
+const TopValueCompanies = ({ context, runServerless }) => {
   const [topValueCompaniesSorted, setTopValueCompaniesSorted] = useState([]);
   const [radius, setRadius] = useState(50);
   const [loading, setLoading] = useState(false);
@@ -25,24 +27,23 @@ const TopValueCompanies = ({ context }) => {
 
   const executeServerless = async () => {
     setLoading(true);
-    try {
-      const { companies } = await hubspot.serverless(
-        'getCompaniesWithDistanceBatch',
-        {
-          propertiesToSend: ['hs_object_id', 'city', 'state', 'address'],
-          parameters: { batchSize: companiesBatchSize },
-        },
-      );
+    const companiesServerlessResponse = await runServerless({
+      name: 'getCompaniesWithDistanceBatch',
+      propertiesToSend: ['hs_object_id', 'city', 'state', 'address'],
+      payload: { batchSize: companiesBatchSize },
+    });
+    if (companiesServerlessResponse.status == 'SUCCESS') {
+      const { companies } = companiesServerlessResponse.response;
       setTopValueCompaniesSorted(
         companies
           .filter((company) => company.distance <= radius)
           .sort(
             (c1, c2) =>
-              c2.properties.annualrevenue - c1.properties.annualrevenue,
-          ),
+              c2.properties.annualrevenue - c1.properties.annualrevenue
+          )
       );
-    } catch (error) {
-      setErrorMessage(error.message);
+    } else {
+      setErrorMessage(companiesServerlessResponse.message);
     }
     setLoading(false);
   };

@@ -11,18 +11,20 @@ import {
   Text,
   Flex,
   hubspot,
-  type CrmContext,
+  type Context,
+  type ServerlessFuncRunner,
 } from '@hubspot/ui-extensions';
 
 // Define the extension to be run within the Hubspot CRM
-hubspot.extend<'crm.record.tab'>(({ context }) => (
+hubspot.extend<'crm.record.tab'>(({ context, runServerlessFunction }) => (
   // This line specifies what is returned to the CRM tab
-  <Extension context={context} />
+  <Extension runServerless={runServerlessFunction} context={context} />
 ));
 
 // Define the types for the properties we're going to use in our Extension component
 interface ExtensionProps {
-  context: CrmContext;
+  runServerless: ServerlessFuncRunner;
+  context: Context;
 }
 
 // Define the interface for the Association type
@@ -37,8 +39,8 @@ export interface AssociationsGQL {
   company_collection__primary: Association;
 }
 
-// Define the Extension component, taking in context as prop
-const Extension = ({ context }: ExtensionProps) => {
+// Define the Extension component, taking in runServerless and context as props
+const Extension = ({ runServerless, context }: ExtensionProps) => {
   const [loading, setLoading] = useState(true);
   const [associations, setAssociations] = useState<AssociationsGQL>();
   const [email, setEmail] = useState('');
@@ -47,40 +49,39 @@ const Extension = ({ context }: ExtensionProps) => {
 
   useEffect(() => {
     // Request association data from serverless function
-    hubspot
-      .serverless('fetchAssociations', {
-        propertiesToSend: ['hs_object_id'],
-      })
-      .then((response) => {
-        setLoading(false); // End loading state
+    runServerless({
+      name: 'fetchAssociations',
+      propertiesToSend: ['hs_object_id'],
+    }).then((resp) => {
+      setLoading(false); // End loading state
+      if (resp.status === 'SUCCESS') {
         // Set associations with response data
-        setAssociations(response.associations as AssociationsGQL);
-      })
-      .catch((error) => {
-        // Set error message if the serverless function failed
-        setError(error.message);
-      });
-  }, []);
+        setAssociations(resp.response.associations as AssociationsGQL);
+      } else {
+        setError(resp.message); // Set error message from response
+      }
+    });
+  }, [runServerless]);
 
   // Function to handle contact duplication
   const duplicateContact = () => {
     setLoading(true);
-    hubspot
-      .serverless('duplicateContact', {
-        propertiesToSend: ['hs_object_id'],
-        parameters: { associations, email } as any, // Send current associations and email as parameters
-      })
-      .then((contact) => {
-        setLoading(false);
+    runServerless({
+      name: 'duplicateContact',
+      propertiesToSend: ['hs_object_id'],
+      parameters: { associations, email }, // Send current associations and email as parameters
+    }).then((resp) => {
+      setLoading(false);
+      if (resp.status === 'SUCCESS') {
+        const contact = resp.response;
         // Set the URL to the newly created contact
         setUrl(
-          `https://app.hubspot.com/contacts/${context.portal.id}/contact/${contact.id}`,
+          `https://app.hubspot.com/contacts/${context.portal.id}/contact/${contact.id}`
         );
-      })
-      .catch((error) => {
-        // Set error message if the serverless function failed
-        setError(error.message);
-      });
+      } else {
+        setError(resp.message); // Set error message from response
+      }
+    });
   };
 
   if (loading) {
