@@ -1,50 +1,57 @@
 import {
   Button,
   ButtonRow,
-  Divider,
   Flex,
   Heading,
   Table,
   TableRow,
-  TableBody,
   TableCell,
   Text,
   TextArea,
+  TableBody,
 } from '@hubspot/ui-extensions';
 import React, { useState } from 'react';
 import type { CheckoutProps } from '../types';
-import { formatPrice } from '../utils';
+// import { formatPrice } from '../utils';
 
 export const Checkout = ({
-  deliveryCost,
-  subtotal,
+  // deliveryCost,
+  // subtotal,
   onCheckoutClick
 }: CheckoutProps) => {
   const [message, setMessage] = useState('');
-  const delivery = deliveryCost || 0;
+  // const delivery = deliveryCost || 0;
 
   return (
   <Flex direction="column" gap="sm">
-    <Table>
-      <TableRow>
-      <TableCell width="min">
-        <Heading>
-          <Text>Subtotal: {formatPrice(subtotal)}</Text>
-          <Text>Delivery fee: {formatPrice(delivery)}</Text>
-          </Heading>
-        </TableCell>
+    {/* <Table>
+      <TableBody>
+        <TableRow>
+          <TableCell width="min">
+            <Flex direction="column" gap="sm">
+              <Text format={{ fontWeight: 'bold' }}>
+                Subtotal: {formatPrice(subtotal)}
+              </Text>
+              <Text format={{ fontWeight: 'bold' }}>
+                Delivery fee: {formatPrice(delivery)}
+              </Text>
+            </Flex>
+          </TableCell>
         </TableRow>
-        <TableCell>
-        <Heading>
-          <Text>TOTAL: {formatPrice(subtotal + delivery)}</Text>
-        </Heading>
-      </TableCell>
-      </Table>
+        <TableRow>
+          <TableCell>
+            <Text format={{ fontWeight: 'bold' }}>
+              TOTAL: {formatPrice(subtotal + delivery)}
+            </Text>
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table> */}
 
       <TextArea
         required={true}
         name="message"
-        label="Message"
+        label="Leave a message"
         onInput={setMessage}
         validationMessage={
           !message ? 'Please add a nice message for your contact.' : ''

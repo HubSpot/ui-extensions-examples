@@ -1,39 +1,44 @@
 import {
+  Box,
   Button,
+  Divider,
   Flex,
   Heading,
   TableCell,
-  TableRow
+  TableRow,
+  Text
 } from '@hubspot/ui-extensions';
 import React from 'react';
 import type { CartItemRowProps } from '../types';
-import { formatPrice } from '../utils';
-import { Addons } from './Addons';
+import { formatPrice, capitalizeFirstLetter } from '../utils';
 
 export const CartItemRow = ({ item, onRemoveClick }: CartItemRowProps) => {
   return (
-    <TableRow>
-      <TableCell>
-        <Flex direction="column" gap="sm">
-          <Heading inline={true}>{item.name}</Heading>
-          <Flex gap="xs">
-            <Addons label="Bases">{item.bases.join(', ')}</Addons>
-            {item.toppings && item.toppings.length > 0 && (
-              <Addons label="Toppings">{item.toppings.join(', ')}</Addons>
-            )}
-            {item.premiums && item.premiums.length > 0 && (
-              <Addons label="Premiums">{item.premiums.join(', ')}</Addons>
-            )}
-            <Addons label="Dressing">{item.dressing}</Addons>
-          </Flex>
+    <Flex gap='md'>
+      <Box flex={2}>
+        <Text format={{ fontWeight: 'bold' }}>{item.name}</Text>
+      </Box>
+      <Box flex={8}>
+        <Flex justify='around'>
+          <Box flex={6}>
+            <Text>
+              {item.bases && capitalizeFirstLetter(item.bases.join(', '))}
+              {item.bases && (item.toppings || item.premiums || item.dressing) && ', '}
+              {item.toppings && capitalizeFirstLetter(item.toppings.join(', '))}
+              {item.toppings && (item.premiums || item.dressing) && ', '}
+              {item.premiums && capitalizeFirstLetter(item.premiums.join(', '))}
+              {item.premiums && item.dressing && ', '}
+              {item.dressing && capitalizeFirstLetter(item.dressing)}.
+            </Text>
+          </Box>
+          <Box flex={1}>
+            <Text>{formatPrice(item.price)}</Text>
+          </Box>
+          <Box flex={1}>
+            <Button size='xs' onClick={onRemoveClick}>Remove</Button>
+          </Box>
         </Flex>
-      </TableCell>
-      <TableCell align="right" width="min">
-        {formatPrice(item.price)}
-      </TableCell>
-      <TableCell>
-        <Button onClick={onRemoveClick}>Remove</Button>
-      </TableCell>
-    </TableRow>
+      </Box>
+    </Flex>
   );
 };

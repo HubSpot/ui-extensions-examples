@@ -135,14 +135,20 @@ export const OrderMealCard = ({
         onAddToCart={handleAddClick}
       />
       <Divider />
-      <Cart cart={cart} onRemoveClick={handleRemoveClick} />
+      <Flex direction={'column'}>
+      <Cart
+        cart={cart}
+        subtotal={subtotal}
+        deliveryCost={totalDeliveryCost}
+        onRemoveClick={handleRemoveClick} />
       {cart.length > 0 && (
         <Checkout
-          subtotal={subtotal}
-          deliveryCost={totalDeliveryCost}
+          // subtotal={subtotal}
+          // deliveryCost={totalDeliveryCost}
           onCheckoutClick={handleCheckoutClick}
         />
       )}
+      </Flex>
     </Flex>
   );
 };

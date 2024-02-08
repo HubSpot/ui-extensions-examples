@@ -72,18 +72,21 @@ export interface CartItemRowProps {
 
 export interface CartProps {
   cart: Array<CartItem>;
+  deliveryCost?: number;
+  subtotal: number;
   onRemoveClick: (id: number) => void;
 }
 
 export interface CheckoutProps {
-  deliveryCost?: number;
-  subtotal: number;
+  // deliveryCost?: number;
+  // subtotal: number;
   onCheckoutClick: (message: string) => void;
 }
 
 export interface CartItem {
   restaurantId: number;
   id: number;
+  restorauntName: string;
   name: string;
   price: number;
   bases: Array<string>;
@@ -97,11 +100,6 @@ export type OnAddClick = (item: CartItem) => void;
 export interface MenuItemRowProps {
   item: MenuItem;
   onClick: () => void;
-}
-
-export interface AddonsProps {
-  label: string;
-  children: string;
 }
 
 export interface OrderMealProps {
