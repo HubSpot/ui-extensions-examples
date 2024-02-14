@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Property Refresh",
+    "uid": "property_refresh_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "PropertyRefreshExtension.tsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}

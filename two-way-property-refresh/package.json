@@ -1,0 +1,10 @@
+{
+  "name": "two-way-property-refresh",
+  "version": "0.1.0",
+  "scripts": {
+    "postinstall": "cd ./src/app/extensions/ && npm install && cd ../app.functions && npm install",
+    "build": "npm run build --prefix ./src/app/extensions/"
+  },
+  "author": "HubSpot",
+  "license": "MIT"
+}

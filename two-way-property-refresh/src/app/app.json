@@ -1,0 +1,23 @@
+{
+  "name": "Property refresh example app",
+  "description": "This app is an example of how to use property refresh tools",
+  "uid": "property_refresh",
+  "scopes": [
+    "crm.objects.contacts.read",
+    "crm.objects.contacts.write",
+    "crm.schemas.deals.write",
+    "crm.schemas.contacts.write",
+    "crm.schemas.companies.write",
+    "tickets"
+  ],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/example-card.json"
+        }
+      ]
+    }
+  }
+}
