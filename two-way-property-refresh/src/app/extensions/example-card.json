@@ -1,7 +1,7 @@
 {
   "type": "crm-card",
   "data": {
-    "title": "Property Refresh",
+    "title": "Two way property refresh",
     "uid": "property_refresh_card",
     "location": "crm.record.tab",
     "module": {
