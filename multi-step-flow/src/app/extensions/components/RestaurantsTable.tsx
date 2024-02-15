@@ -60,6 +60,7 @@ export const RestaurantsTable = ({
 
       {/* Render Panel wrapper */}
       <Panel
+        variant='modal'
         id={MENU_PANEL_ID}
         title={selectedRestaurant ? selectedRestaurant.name : 'Menu Panel'}
         onClose={() => setSelectedRestaurant(null)}
