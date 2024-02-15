@@ -24,7 +24,7 @@ In the folder where you want this sample to be cloned, create a new project by r
 
 ### Step 3: Install dependencies
 
-In the CLI, run `npm install` to install the dependencies for this project.
+Now in the CLI, enter into this newly created folder by `cd duplicate-contact`. Run `npm install` to install the dependencies for this project.
 
 ### Step 4: Upload project
 
