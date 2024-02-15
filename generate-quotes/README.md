@@ -31,7 +31,7 @@ In the folder where you want this sample to be cloned, create a new project by r
 
 ### Step 4: Install dependencies
 
-In the CLI, run `npm install` to install the dependencies for this project.
+Now in the CLI, enter into this newly created folder by `cd generate-quotes`. Run `npm install` to install the dependencies for this project.
 
 ### Step 5: Upload project
 
