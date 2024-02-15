@@ -19,10 +19,10 @@ We recommend installing this sample in a Sandbox account.
 
 ### Step 2: Create the project
 
-In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="deals-summary" --name="deals-summary" --template="deals-summary"`
+In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="deals-summary" --name="deals-summary" --template="deals-summary"`. 
 
 ### Step 3: Install dependencies
-In the CLI, run `npm install` to install the dependencies for this project.
+Now in the CLI, `cd` into your project directory such as `cd deals-summary`. Run `npm install` to install the dependencies for this project.
 
 ### Step 4: Upload project
 Run `hs project upload`. If you’d like to build on this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
