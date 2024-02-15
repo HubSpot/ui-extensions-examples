@@ -147,8 +147,6 @@ export const OrderMealCard = ({
         onRemoveClick={handleRemoveClick} />
       {cart.length > 0 && (
         <Checkout
-          // subtotal={subtotal}
-          // deliveryCost={totalDeliveryCost}
           onCheckoutClick={handleCheckoutClick}
         />
       )}

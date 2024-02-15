@@ -48,8 +48,7 @@ export const MenuPanelContent = ({
     onAddToCartClick({
       restaurantId: restaurant.id,
       id: restaurant.id,
-      restorauntName: restaurant.name,
-      name: menuItem!.name,
+      name: restaurant.name,
       price: menuItem!.price,
       bases: bases!,
       toppings: toppings!,

@@ -17,7 +17,7 @@ export const MenuItemRow = ({ item, onClick }: MenuItemRowProps) => {
         <Text variant="microcopy">{item.description}</Text>
       </TableCell>
       <TableCell>
-        <Button onClick={onClick}>{formatPrice(item.price)}</Button>
+        <Button size='sm' onClick={onClick}>{formatPrice(item.price)}</Button>
       </TableCell>
     </TableRow>
   );

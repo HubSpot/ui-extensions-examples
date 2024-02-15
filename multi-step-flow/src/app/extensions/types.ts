@@ -79,8 +79,6 @@ export interface CartProps {
 }
 
 export interface CheckoutProps {
-  // deliveryCost?: number;
-  // subtotal: number;
   onCheckoutClick: (message: string) => void;
 }
 
