@@ -22,7 +22,7 @@ exports.main = async (context = {}) => {
   let currentCompany = await extendWithGeoCoordinates(context.propertiesToSend);
   if (!currentCompany.coordinates) {
     throw new Error(
-      'Unable to calculate geo coordintes. Please specify an address for the record'
+      'Unable to calculate geo coordintes. Please specify an address for the record.'
     );
   }
 
