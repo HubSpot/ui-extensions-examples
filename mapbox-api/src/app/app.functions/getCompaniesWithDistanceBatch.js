@@ -27,7 +27,7 @@ exports.main = async (context = {}) => {
   }
 
   const { batchSize } = context.event.payload;
-  let otherCompanies = await getCompaniesBatch({
+  let otherCompanies = await getOtherCompaniesBatch({
     hubspotClient: new hubspot.Client({
       accessToken: process.env['PRIVATE_APP_ACCESS_TOKEN'],
     }),
@@ -50,7 +50,11 @@ exports.main = async (context = {}) => {
 };
 
 // Function to fetch companies batch using HubSpot API client
-async function getCompaniesBatch({ hubspotClient, batchSize, currentCompany }) {
+async function getOtherCompaniesBatch({
+  hubspotClient,
+  batchSize,
+  currentCompany,
+}) {
   const apiResponse = await hubspotClient.crm.companies.basicApi.getPage(
     batchSize,
     undefined,
