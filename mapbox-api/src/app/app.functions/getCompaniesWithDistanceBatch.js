@@ -19,8 +19,6 @@ const PROPERTIES_TO_FETCH = [
 
 // Entry function of this module, it fetches batch of companies and calculates distance to the current company record
 exports.main = async (context = {}) => {
-  const { batchSize } = context.event.payload;
-
   let currentCompany = await extendWithGeoCoordinates(context.propertiesToSend);
   if (!currentCompany.coordinates) {
     throw new Error(
@@ -28,22 +26,19 @@ exports.main = async (context = {}) => {
     );
   }
 
-  const companiesBatch = await getCompaniesBatch({
+  const { batchSize } = context.event.payload;
+  let otherCompanies = await getCompaniesBatch({
     hubspotClient: new hubspot.Client({
       accessToken: process.env['PRIVATE_APP_ACCESS_TOKEN'],
     }),
     batchSize,
+    currentCompany,
   });
-  let otherCompanies = companiesBatch.filter(
-    // Exclude current company recored from list
-    ({ hs_object_id }) => hs_object_id != currentCompany.hs_object_id
-  );
 
-  // Extend companies records with geo coordinates and distance to current company
+  // Extend companies records with geo coordinates and distance to the current company
   otherCompanies = await Promise.all(
-    otherCompanies.map(({ properties }) => extendWithGeoCoordinates(properties))
+    otherCompanies.map((company) => extendWithGeoCoordinates(company))
   );
-
   otherCompanies = await extendWithDistance({
     coordinatesFrom: currentCompany.coordinates,
     companies: otherCompanies.filter(({ coordinates }) => !!coordinates),
@@ -55,17 +50,22 @@ exports.main = async (context = {}) => {
 };
 
 // Function to fetch companies batch using HubSpot API client
-async function getCompaniesBatch({ hubspotClient, batchSize }) {
+async function getCompaniesBatch({ hubspotClient, batchSize, currentCompany }) {
   const apiResponse = await hubspotClient.crm.companies.basicApi.getPage(
     batchSize,
     undefined,
     PROPERTIES_TO_FETCH
   );
 
-  return apiResponse.results.map((company) => ({
-    ...company,
-    ...company.properties,
-  }));
+  return apiResponse.results
+    .map((company) => ({
+      ...company,
+      ...company.properties,
+    }))
+    .filter(
+      // Exclude current company recored from list
+      ({ hs_object_id }) => hs_object_id != currentCompany.hs_object_id
+    );
 }
 
 // Function to queery geo coordinates based on company address
