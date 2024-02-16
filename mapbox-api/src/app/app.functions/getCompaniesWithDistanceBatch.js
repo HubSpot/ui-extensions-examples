@@ -17,30 +17,40 @@ const PROPERTIES_TO_FETCH = [
   'annualrevenue',
 ];
 
-
 // Entry function of this module, it fetches batch of companies and calculates distance to the current company record
 exports.main = async (context = {}) => {
   const { batchSize } = context.event.payload;
 
-  const companies = await getCompaniesBatch({
+  let currentCompany = await extendWithGeoCoordinates(context.propertiesToSend);
+  if (!currentCompany.coordinates) {
+    throw new Error(
+      'Unable to calculate geo coordintes. Please specify an address for the record'
+    );
+  }
+
+  const companiesBatch = await getCompaniesBatch({
     hubspotClient: new hubspot.Client({
       accessToken: process.env['PRIVATE_APP_ACCESS_TOKEN'],
     }),
     batchSize,
   });
+  let otherCompanies = companiesBatch.filter(
+    // Exclude current company recored from list
+    ({ hs_object_id }) => hs_object_id != currentCompany.hs_object_id
+  );
 
-  const currentCompanyProperties = context.propertiesToSend;
-  const companiesWithDistance = await extendWithDistance({
-    companies: companies.filter(
-      // Exclude current company recored from list
-      ({ properties }) =>
-        properties.hs_object_id != currentCompanyProperties.hs_object_id
-    ),
-    currentCompanyProperties,
+  // Extend companies records with geo coordinates and distance to current company
+  otherCompanies = await Promise.all(
+    otherCompanies.map(({ properties }) => extendWithGeoCoordinates(properties))
+  );
+
+  otherCompanies = await extendWithDistance({
+    coordinatesFrom: currentCompany.coordinates,
+    companies: otherCompanies.filter(({ coordinates }) => !!coordinates),
   });
 
   return {
-    companies: companiesWithDistance,
+    companies: otherCompanies,
   };
 };
 
@@ -52,22 +62,33 @@ async function getCompaniesBatch({ hubspotClient, batchSize }) {
     PROPERTIES_TO_FETCH
   );
 
-  return apiResponse.results;
+  return apiResponse.results.map((company) => ({
+    ...company,
+    ...company.properties,
+  }));
+}
+
+// Function to queery geo coordinates based on company address
+async function extendWithGeoCoordinates(company) {
+  try {
+    return {
+      ...company,
+      coordinates: await getGeoCoordinates({
+        address: buildFullAdress(company),
+      }),
+    };
+  } catch (e) {
+    return company;
+  }
 }
 
 // Function to calculate the distance from current company record
-async function extendWithDistance({ companies, currentCompanyProperties }) {
-  const coordinatesFrom = await getCoordinates({
-    address: buildFullAdress(currentCompanyProperties),
-  });
+async function extendWithDistance({ coordinatesFrom, companies }) {
   return Promise.all(
     companies.map(async (company) => {
-      const coordinates = await getCoordinates({
-        address: buildFullAdress(company.properties),
-      });
       const distance = getDistance({
         coordinatesFrom,
-        coordinatesTo: coordinates,
+        coordinatesTo: company.coordinates,
       });
       // Return existing company properties together with calculated distance
       return {
@@ -80,10 +101,10 @@ async function extendWithDistance({ companies, currentCompanyProperties }) {
 
 const buildFullAdress = ({ city, state, address }) => {
   return `${city} ${state} ${address}`;
-}
+};
 
 // Function to obtain geographic coordinates for specified address
-async function getCoordinates({ address }) {
+async function getGeoCoordinates({ address }) {
   // Use Mapbox Geocoding API
   // See https://docs.mapbox.com/api/search/geocoding/
   const mapboxClient = MapboxClient({

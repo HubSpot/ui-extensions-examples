@@ -37,10 +37,7 @@ const TopValueCompanies = ({ context, runServerless }) => {
       setTopValueCompaniesSorted(
         companies
           .filter((company) => company.distance <= radius)
-          .sort(
-            (c1, c2) =>
-              c2.properties.annualrevenue - c1.properties.annualrevenue
-          )
+          .sort((c1, c2) => c2.annualrevenue - c1.annualrevenue)
       );
     } else {
       setErrorMessage(companiesServerlessResponse.message);
@@ -62,8 +59,10 @@ const TopValueCompanies = ({ context, runServerless }) => {
   }
   return (
     <Flex direction={'column'} gap={'lg'}>
-      <Text variant="microcopy">Search for nearby companies by mile radius.</Text>
-      <Flex direction={'column'}  gap={'xs'}>
+      <Text variant="microcopy">
+        Search for nearby companies by mile radius.
+      </Text>
+      <Flex direction={'column'} gap={'xs'}>
         <Form>
           <NumberInput
             label="Radius"
