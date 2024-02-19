@@ -28,17 +28,17 @@ export const CompaniesWithDistanceTable = ({
       <TableBody>
         {companies.map((company) => {
           return (
-            <TableRow key={company.id}>
+            <TableRow key={company.hs_object_id}>
               <TableCell>
                 <Link
-                  href={`https://app.hubspot.com/contacts/${portalId}/record/0-2/${company.id}`}
+                  href={`https://app.hubspot.com/contacts/${portalId}/record/0-2/${company.hs_object_id}`}
                 >
-                  {company.properties.name}
+                  {company.name}
                 </Link>
               </TableCell>
               <TableCell>{company.distance.toFixed(2)} miles</TableCell>
               {propertiesToDisplay.map((p) => (
-                <TableCell>{company.properties[p.propertyName]}</TableCell>
+                <TableCell>{company[p.propertyName]}</TableCell>
               ))}
             </TableRow>
           );
