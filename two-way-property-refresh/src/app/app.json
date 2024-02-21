@@ -1,6 +1,6 @@
 {
   "name": "Property refresh example app",
-  "description": "This app is an example of how to use property refresh tools",
+  "description": "This app demonstrates how CRM properties refreshed is enabled between a custom card and the parent CRM page where the card is located.",
   "uid": "property_refresh",
   "scopes": [
     "crm.objects.contacts.read",
@@ -15,7 +15,7 @@
     "crm": {
       "cards": [
         {
-          "file": "extensions/example-card.json"
+          "file": "extensions/property-refresh-card.json"
         }
       ]
     }
