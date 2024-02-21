@@ -7,7 +7,8 @@ import {
   Divider,
   Tile,
   Flex,
-  Select
+  Select,
+  Text,
 } from '@hubspot/ui-extensions';
 
 import { CrmStageTracker, CrmPropertyList } from '@hubspot/ui-extensions/crm';
@@ -20,7 +21,7 @@ const Extension = ({ actions, runServerlessFunction }) => {
   const {
     fetchCrmObjectProperties,
     onCrmPropertiesUpdate,
-    refreshObjectProperties
+    refreshObjectProperties,
   } = actions;
   const [properties, setProperties] = useState<Record<string, string>>({});
   const [lifecycleStage, setLifecycleStage] = useState<{ options } | null>(
@@ -28,18 +29,18 @@ const Extension = ({ actions, runServerlessFunction }) => {
   );
 
   useEffect(() => {
-    fetchCrmObjectProperties(['firstname', 'lastname']).then(properties => {
+    fetchCrmObjectProperties(['firstname', 'lastname']).then((properties) => {
       setProperties(properties);
     });
   }, []);
 
-  onCrmPropertiesUpdate(['firstname', 'lastname'], properties => {
+  onCrmPropertiesUpdate(['firstname', 'lastname'], (properties) => {
     setProperties(properties);
   });
 
   useEffect(() => {
     runServerlessFunction({ name: 'getLifecycleStage' }).then(
-      serverlessResponse => {
+      (serverlessResponse) => {
         if (serverlessResponse.status == 'SUCCESS') {
           setLifecycleStage(serverlessResponse.response);
         }
@@ -47,12 +48,12 @@ const Extension = ({ actions, runServerlessFunction }) => {
     );
   }, []);
 
-  const onChange = stage => {
+  const onChange = (stage) => {
     console.log(stage);
     runServerlessFunction({
       name: 'updateLifecycleStage',
       parameters: { stage },
-      propertiesToSend: ['hs_object_id']
+      propertiesToSend: ['hs_object_id'],
     }).then(() => {
       refreshObjectProperties();
     });
@@ -61,29 +62,47 @@ const Extension = ({ actions, runServerlessFunction }) => {
   return (
     <>
       <Tile>
-        <Heading>Components using properties actions</Heading>
-        <Divider />
-        <Flex justify="between" direction="column">
-          <DescriptionList>
+        <Flex direction="column" gap="sm">
+          <Heading>
+            Property refreshed on custom card when changes happen on CRM
+          </Heading>
+          <Text variant="microcopy">
+            The firstname and lastname properties are displayed using
+            `fetchCrmObjectProperties``. Custom cards listens for changes made
+            to these using `onCrmPropertiesUpdate`, and refreshes the values
+            using `refreshObjectProperties` without manual page reload by the
+            user. Try to update firstname or lastname from anywhere on the
+            record page to see it in action.
+          </Text>
+          <DescriptionList direction="row">
             {Object.entries(properties).map(([key, value]) => (
-              <DescriptionListItem label={key}>{value}</DescriptionListItem>
+              <DescriptionListItem label={key}>
+                <Text format={{ fontWeight: 'bold' }}>{value}</Text>
+              </DescriptionListItem>
             ))}
           </DescriptionList>
+        </Flex>
+      </Tile>
+
+      <Tile>
+        <Flex direction="column" gap="sm">
+          <Heading>
+            Peroperty refreshed on CRM pages when changes happen on custom card
+          </Heading>
+          <Text variant="microcopy">
+            The lifecycle stage property below is displayed using HubSpot's
+            public API. When you make changes, the card refreshes properties on
+            the page using `refreshObjectProperties`, so that users don't have
+            to manually reload the page. Change lifecycle stage to see it in
+            action.
+          </Text>
+          <Divider />
           <Select
             onChange={onChange}
             options={lifecycleStage && lifecycleStage.options}
             label="Lifecycle stage"
             placeholder="Update lifecycle stage"
           />
-        </Flex>
-      </Tile>
-
-      <Tile>
-        <Heading>CRM components</Heading>
-        <Divider />
-        <Flex justify="between" direction="column">
-          <CrmStageTracker />
-          <CrmPropertyList properties={['firstname', 'lastname']} />
         </Flex>
       </Tile>
     </>
