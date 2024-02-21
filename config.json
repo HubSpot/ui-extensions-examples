@@ -47,6 +47,12 @@
       "label": "Displaying an Iframe Modal",
       "path": "display-iframe-modal",
       "insertPath": null
+    },
+    {
+      "name": "bi-directional-property-refresh",
+      "label": "Bi-directional refresh of CRM properties",
+      "path": "property-refresh",
+      "insertPath": null
     }
   ]
 }
