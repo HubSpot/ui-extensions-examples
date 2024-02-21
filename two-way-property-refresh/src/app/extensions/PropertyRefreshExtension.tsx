@@ -68,11 +68,11 @@ const Extension = ({ actions, runServerlessFunction }) => {
           </Heading>
           <Text variant="microcopy">
             The firstname and lastname properties are displayed using
-            `fetchCrmObjectProperties``. Custom cards listens for changes made
-            to these using `onCrmPropertiesUpdate`, and refreshes the values
-            using `refreshObjectProperties` without manual page reload by the
-            user. Try to update firstname or lastname from anywhere on the
-            record page to see it in action.
+            `fetchCrmObjectProperties`. Custom cards listens for changes made to
+            these using `onCrmPropertiesUpdate`, and refreshes the values using
+            `refreshObjectProperties` without manual page reload by the user.
+            Try to update firstname or lastname from anywhere on the record page
+            to see it in action.
           </Text>
           <DescriptionList direction="row">
             {Object.entries(properties).map(([key, value]) => (
