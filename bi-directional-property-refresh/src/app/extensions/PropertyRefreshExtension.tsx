@@ -87,7 +87,7 @@ const Extension = ({ actions, runServerlessFunction }) => {
       <Tile>
         <Flex direction="column" gap="sm">
           <Heading>
-            Peroperty refreshed on CRM pages when changes happen on custom card
+            Property refreshed on CRM pages when changes happen on custom card
           </Heading>
           <Text variant="microcopy">
             The lifecycle stage property below is displayed using HubSpot's
