@@ -1,0 +1,12 @@
+{
+  "appFunctions": {
+    "updateLifecycleStage": {
+      "file": "updateLifecycleStage.js",
+      "secrets": []
+    },
+    "getLifecycleStage": {
+      "file": "getLifecycleStage.js",
+      "secrets": []
+    }
+  }
+}

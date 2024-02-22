@@ -1,0 +1,23 @@
+{
+  "name": "Property refresh example app",
+  "description": "This app demonstrates how CRM properties refreshed is enabled between a custom card and the parent CRM page where the card is located.",
+  "uid": "property_refresh",
+  "scopes": [
+    "crm.objects.contacts.read",
+    "crm.objects.contacts.write",
+    "crm.schemas.deals.write",
+    "crm.schemas.contacts.write",
+    "crm.schemas.companies.write",
+    "tickets"
+  ],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/property-refresh-card.json"
+        }
+      ]
+    }
+  }
+}
