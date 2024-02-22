@@ -10,7 +10,27 @@ This example demonstrates how `fetchCrmObjectProperties`, `onCrmPropertiesUpdate
 
 ## Quick Start
 
-1. Use the [quick start guide](https://developers.hubspot.com/docs/platform/ui-extensions-quickstart) to learn how to setup your account and local environment to work with HubSpot developer projects. 
-2. In place of `hs project create`, you can optionally use this handy command to directly create project based on this example app: `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="bi-directional-property-refresh" --name="property-refresh" --template="bi-directional-property-refresh"`
-3. Change `firstname` or `lastname` anywhere on the page and see that they get updated on the custom card.
-4. Change lifecycle stage on the custom card, and see that it gets refreshed in other places on the parent page.
+### Step 1: Update your CLI and & authenticate your account
+
+1. Update to latest CLI version by running `npm install -g @hubspot/cli@latest`.
+2. Use the [quick start guide](https://developers.hubspot.com/docs/platform/ui-extensions-quickstart) to learn how to setup your account and local environment to work with HubSpot developer projects. 
+
+### Step 2: Create the project
+
+Enter into the folder where you want this sample project. In place of `hs project create`, you can optionally use this handy command to directly create a project based on this sample project using `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="bi-directional-property-refresh" --name="property-refresh" --template="bi-directional-property-refresh"`.
+
+### Step 3: Install dependencies
+
+Now in the CLI, enter into this newly created folder by `cd bi-directional-property-refresh`. Run `npm install` to install the dependencies for this project.
+
+### Step 4: Upload project
+
+Run `hs project upload`. If you’d like to build on this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
+
+### Step 5: View the cards
+
+In the main menu select `Contacts` > `Contacts` to view contact records. Click on any of the contact objects and navigate to the custom tab to access the sample card which is called `Refresh properties between custom card and CRM page`. If you haven't customized the tabs before follow step #4 from [this guide](https://developers.hubspot.com/docs/platform/ui-extensions-quickstart).
+
+### Step 6: Experiment with the cards
+
+On the Contact record, add the card and change the `firstname` or `lastname` anywhere on the page and see that they get updated on the custom card. Change lifecycle stage on the custom card, and see that it gets refreshed in other places on the parent page.
