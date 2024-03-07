@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Sidebar Logging",
+    "uid": "sidebar-logging",
+    "location": "crm.record.sidebar",
+    "module": {
+      "file": "SidebarLogging.jsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}

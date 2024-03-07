@@ -1,0 +1,10 @@
+{
+  "name": "custom-logger-example-ui",
+  "version": "0.1.0",
+  "author": "HubSpot",
+  "license": "MIT",
+  "dependencies": {
+    "@hubspot/ui-extensions": "latest",
+    "react": "^18.2.0"
+  }
+}

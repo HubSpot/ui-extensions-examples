@@ -1,0 +1,12 @@
+{
+  "appFunctions": {
+    "serverless-success": {
+      "file": "serverless-success.js",
+      "secrets": []
+    },
+    "serverless-error": {
+      "file": "serverless-error.js",
+      "secrets": []
+    }
+  }
+}

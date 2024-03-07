@@ -1,0 +1,19 @@
+{
+  "name": "Custom Logger Example",
+  "description": "An example app demonstrating usage of the custom logger.",
+  "uid": "custom-logger-example",
+  "scopes": ["crm.objects.contacts.read"],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/sidebar-logging.json"
+        },
+        {
+          "file": "extensions/middle-tab-logging.json"
+        }
+      ]
+    }
+  }
+}
