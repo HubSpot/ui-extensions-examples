@@ -1,3 +1,3 @@
 exports.main = async () => {
-  return 'Serverless has succeeded.';
+  return 'Serverless has succeeded';
 };
