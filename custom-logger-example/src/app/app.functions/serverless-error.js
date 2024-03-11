@@ -1,3 +1,3 @@
 exports.main = async () => {
-  throw new Error('Serverless has errored.');
+  throw new Error('Serverless has errored');
 };
