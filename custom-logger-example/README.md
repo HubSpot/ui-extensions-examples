@@ -18,7 +18,7 @@ For documentation about the custom logger itself, please visit https://developer
 
 When [deployed](https://developers.hubspot.com/docs/platform/project-cli-commands#upload-to-hubspot), the custom logger will persist the logs in the HubSpot logging system. Don't forget to add the extension card to the middle pane.
 
-![logger demo deployed](./images/logger-demo-deployed.gif)
+![logger demo deployed](./images/logger-example-deployed.gif)
 
 Logs can be retrieved from the app dashboard.
 
@@ -28,4 +28,4 @@ Logs can be retrieved from the app dashboard.
 
 When [running the project locally](https://developers.hubspot.com/docs/platform/create-private-apps-with-projects), click the buttons and watch the events log to the console.
 
-![logger demo local dev](./images/logger-demo-local.gif)
+![logger demo local dev](./images/logger-example-local.gif)
