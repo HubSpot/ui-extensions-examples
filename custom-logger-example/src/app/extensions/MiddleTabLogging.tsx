@@ -1,18 +1,15 @@
 import React from 'react';
 import {
-  hubspot,
-  logger,
+  Box,
   Button,
+  CrmContext,
   Divider,
   Flex,
-  Text,
   GenericContext,
-  CrmContext,
   Heading,
-  Box,
-  OpenIframeModalAction,
-  CrmCardActionsProps,
-  ExtensionPointApi,
+  hubspot,
+  logger,
+  Text,
 } from '@hubspot/ui-extensions';
 
 logger.warn('Warning in the middle tab, before my extension');
