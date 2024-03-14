@@ -31,7 +31,7 @@ const SidebarLogging = ({ context }) => {
 
   return (
     <Flex direction="column" align="start" gap="small">
-      <Text>Test out the logger with the following buttons</Text>
+      <Text>Test out the logger with the following buttons.</Text>
       <Text variant="microcopy">
         The browser's developer console will show your events in local dev.
       </Text>
@@ -43,7 +43,7 @@ const SidebarLogging = ({ context }) => {
       </Flex>
       <Divider />
       <Flex direction="column" gap="small">
-        <Text>Test different log levels</Text>
+        <Text>Test different log levels.</Text>
         <Flex gap="small" wrap="wrap">
           <Button onClick={() => logger.info('Logging an info!')}>
             logger.info()
