@@ -1,0 +1,11 @@
+{
+  "name": "custom-logger-example",
+  "version": "0.1.0",
+  "description": "A simple demo of the custom logger.",
+  "scripts": {
+    "postinstall": "cd ./src/app/extensions/ && npm install && cd ../app.functions && npm install",
+    "build": "npm run build --prefix ./src/app/extensions/"
+  },
+  "author": "HubSpot",
+  "license": "MIT"
+}

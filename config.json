@@ -53,6 +53,12 @@
       "label": "Bi-directional refresh of CRM properties",
       "path": "property-refresh",
       "insertPath": null
+    },
+    {
+      "name": "custom-logger-example",
+      "label": "Custom Logger Example",
+      "path": "custom-logger-example",
+      "insertPath": null
     }
   ]
 }

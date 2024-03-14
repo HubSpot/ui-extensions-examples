@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Middle Tab Logging",
+    "uid": "middle-tab-logging",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "MiddleTabLogging.tsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}
