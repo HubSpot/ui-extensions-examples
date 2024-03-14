@@ -3,7 +3,6 @@ import {
   Button,
   Divider,
   Flex,
-  Heading,
   hubspot,
   logger,
   Text,
@@ -32,19 +31,19 @@ const SidebarLogging = ({ context }) => {
 
   return (
     <Flex direction="column" align="start" gap="small">
-      <Heading>Test out the logger with the following buttons</Heading>
-      <Text>
+      <Text>Test out the logger with the following buttons</Text>
+      <Text variant="microcopy">
         The browser's developer console will show your events in local dev.
       </Text>
       <Divider />
-      <Heading>Test serverless functions</Heading>
+      <Text>Test serverless functions</Text>
       <Flex gap="small" wrap="wrap">
         <Button onClick={callServerlessSuccess}>Serverless success ✅</Button>
         <Button onClick={callServerlessFail}>Serverless error ❌</Button>
       </Flex>
       <Divider />
       <Flex direction="column" gap="small">
-        <Heading>Test different log levels</Heading>
+        <Text>Test different log levels</Text>
         <Flex gap="small" wrap="wrap">
           <Button onClick={() => logger.info('Logging an info!')}>
             logger.info()
