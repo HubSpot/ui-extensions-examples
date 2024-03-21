@@ -13,6 +13,9 @@ This is an app that demonstrates the main features of the custom logger.
 
 For documentation about the custom logger itself, please visit https://developers.hubspot.com/docs/platform/ui-extensions-sdk#send-custom-log-messages-for-debugging.
 
+## Create the project
+
+Enter into the folder where you want to create this sample project. In place of `hs project create` you can optionally create a project based directly on this sample using `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="custom-logger-example" --name="custom-logger-example" --template="custom-logger-example"`.
 
 ## Testing when deployed
 
