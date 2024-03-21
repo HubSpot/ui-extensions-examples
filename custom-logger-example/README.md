@@ -15,7 +15,7 @@ For documentation about the custom logger itself, please visit https://developer
 
 ## Create the project
 
-Enter into the folder where you want this sample project. In place of `hs project create`, you can optionally use this handy command to directly create a project based on this sample project using `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="custom-logger-example" --name="custom-logger-example" --template="custom-logger-example"`.
+Enter into the folder where you want to create this sample project. In place of `hs project create` you can optionally create a project based directly on this sample using `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="custom-logger-example" --name="custom-logger-example" --template="custom-logger-example"`.
 
 ## Testing when deployed
 
