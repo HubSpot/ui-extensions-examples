@@ -21,12 +21,35 @@ Access to these UI Extensions is part of [CRM Development public beta](https://d
 - Your HubSpot account must be enrolled in CRM development tools public beta. You can enrol by visiting [Product Updates > Betas](https://app.hubspot.com/l/whats-new/betas).
 - You must be using the latest [HubSpot CLI](https://www.npmjs.com/package/@hubspot/cli).
 
+## Quick Start
+
+### Step 1: Update your CLI and & authenticate your account
+
+1. Update to latest CLI version by running `npm install -g @hubspot/cli@latest`.
+2. Run `hs init` to create a config file for your parent account.
+3. Run `hs auth` to authenticate your account. Alternatively, select your pre-authenticated account with `hs accounts use`.
+
+### Step 2: Create a project
+
+In the folder where you want a sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples"`. Give it a name, specify a project directory, and select a sample you'd like to run in your account.
+
+### Step 3: Install dependencies
+
+Now in the CLI, `cd` into your project directory such as `cd <project_dir>`. Run `npm install` to install the dependencies for this project.
+
+### Step 4: Configure and upload the project
+
+Follow project-specific instructions in the project folder README file. You might need to set up additional environmental variables and provide test data.
+
+Run `hs project upload`. If you’d like to build on this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
+
 ## Lockfiles
 
 It's best practice to generate package lockfiles before uploading projects. This will help prevent running out of file descriptors during the build, and streamline subsequent builds. To generate a lockfile for a project, either install the project locally using `npm install` or generate the lockfile only using `npm install --package-lock-only`.
-  
+
 ## Get started with developer project
-UI extensions are createing using developer projects that are part of CRM development beta. Read [Quick Start guide](https://developers.hubspot.com/docs/platform/projects-quick-start-guide) for developer projects for instructions to get started. 
+
+UI extensions are createing using developer projects that are part of CRM development beta. Read [Quick Start guide](https://developers.hubspot.com/docs/platform/projects-quick-start-guide) for developer projects for instructions to get started.
 
 ## Tools available in this repository
 
