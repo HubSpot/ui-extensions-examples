@@ -18,7 +18,7 @@ Access to these UI Extensions is part of [CRM Development public beta](https://d
 ## Prerequisites
 
 - You must have an active HubSpot account with Sales or Service Hub Enterprise access.
-- Your HubSpot account must be enrolled in CRM development tools public beta. You can enrol by visiting [Product Updates > Betas](https://app.hubspot.com/l/whats-new/betas).
+- Your HubSpot account must be enrolled in CRM development tools public beta. You can enroll by visiting [this product update](https://app.hubspot.com/l/product-updates/in-beta?query=crm&update=13899236).
 - You must be using the latest [HubSpot CLI](https://www.npmjs.com/package/@hubspot/cli).
 
 ## Quick Start
