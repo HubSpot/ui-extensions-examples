@@ -49,7 +49,7 @@ It's best practice to generate package lockfiles before uploading projects. This
 
 ## Get started with developer project
 
-UI extensions are createing using developer projects that are part of CRM development beta. Read [Quick Start guide](https://developers.hubspot.com/docs/platform/projects-quick-start-guide) for developer projects for instructions to get started.
+UI extensions are created using developer projects that are part of CRM development beta. Read [Quick Start guide](https://developers.hubspot.com/docs/platform/projects-quick-start-guide) for developer projects for instructions to get started.
 
 ## Tools available in this repository
 
