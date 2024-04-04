@@ -12,6 +12,7 @@ const Extension = ({ openIframe }) => {
       uri: "https://wikipedia.com/", // this is a relative link. Some links will be blocked since they don't allow iframing
       height: 1000,
       width: 1000,
+      title: 'Wikipedia in an Iframe'
     });
   };
 
