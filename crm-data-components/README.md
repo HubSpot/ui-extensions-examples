@@ -1,6 +1,5 @@
 # Use CRM data components sample ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 
-
 This React Project demonstrates the usage of HubSpot CRM Components through UIE. The project includes 2 extensions:
 
 1. Association Table displaying important deals associated with the current user (demonstrates pre-filters, quick filters, and property projections)
