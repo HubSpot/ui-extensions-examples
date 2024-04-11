@@ -1,4 +1,5 @@
-# Use CRM data components sample
+# Use CRM data components sample ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+
 
 This React Project demonstrates the usage of HubSpot CRM Components through UIE. The project includes 2 extensions:
 
