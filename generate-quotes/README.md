@@ -1,4 +1,4 @@
-# Generate quotes sample
+# Generate quotes sample ![](https://badgen.net/badge/JS/JavaScript/blue)
 
 ![Generate Quotes sample](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/345244de-ed4c-4fee-8dd1-5667600ad94d)
 

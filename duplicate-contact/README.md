@@ -1,4 +1,4 @@
-# Duplicate a contact sample
+# Duplicate a contact sample ![](https://badgen.net/badge/-/TypeScript/blue?icon=typescript&label)
 
 The Duplicate a contact sample allows a HubSpot user to duplicate one of their contacts, its deal & company associations, and some of its contact properties.
 

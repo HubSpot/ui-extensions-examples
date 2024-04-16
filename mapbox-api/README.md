@@ -1,4 +1,4 @@
-# View nearby companies: Mapbox API sample
+# View nearby companies: Mapbox API sample ![](https://badgen.net/badge/JS/JavaScript/blue)
 ![Search Nearby companies card](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/9b1f79a1-7378-48ae-a973-3574f9174bea)
 ![Companies nearby card](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/d9e1ea3f-1cd1-4503-8a75-03a484fb730a)
 

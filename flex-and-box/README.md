@@ -1,4 +1,4 @@
-# Managing layouts: Flex and Box sample
+# Managing layouts: Flex and Box sample ![](https://badgen.net/badge/-/TypeScript/blue?icon=typescript&label)
 
 This sample is designed to help you with layout management in our custom cards by showing ways of using `<Flex>` and `<Box>`. There are two cards provided by this sample, both of which will be on the Deal object.
 
