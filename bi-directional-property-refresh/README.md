@@ -1,4 +1,4 @@
-# Bi-directional CRM property refresh example
+# Bi-directional CRM property refresh example ![](https://badgen.net/badge/-/TypeScript/blue?icon=typescript&label)
 
 This example demonstrates how `fetchCrmObjectProperties`, `onCrmPropertiesUpdate`, and `refreshObjectProperties` together enable bi-directional refresh for CRM properties. This avoids manual page reloads by end users in both scenarios.
 

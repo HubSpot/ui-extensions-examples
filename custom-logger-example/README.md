@@ -1,4 +1,4 @@
-# Custom Logger Example
+# Custom Logger Example ![](https://badgen.net/badge/JS/JavaScript/blue)
 
 This is an app that demonstrates the main features of the custom logger.
 

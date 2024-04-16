@@ -1,4 +1,4 @@
-# Create a deals summary sample
+# Create a deals summary sample ![](https://badgen.net/badge/JS/JavaScript/blue)
 ![Deals summary example card](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/2c922d90-5a69-4020-99c3-3ab23c3390c1)
 
 

@@ -1,4 +1,4 @@
-# Display an iframe modal
+# Display an iframe modal ![](https://badgen.net/badge/JS/JavaScript/blue)
 
 This sample is designed to help you with opening a popup iframe modal from inside the custom card. You can embed a link of your choice into this iframe. For the sake of simplicity, we have embedded a link to Wikipedia as shown below.
 
