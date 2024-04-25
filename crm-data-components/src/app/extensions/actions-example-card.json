@@ -1,0 +1,16 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "CRM Data: Crm Actions",
+    "uid": "actions_example",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "ActionsExtension.tsx"
+    },
+    "objectTypes": [
+      {
+        "name": "contacts"
+      }
+    ]
+  }
+}
