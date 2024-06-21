@@ -11,7 +11,7 @@ import {
   TableBody,
   Text,
 } from '@hubspot/ui-extensions';
-import { type Restaurant, type RestaurantsProps } from '../types';
+import { type Restaurant, type RestaurantsSearchProps } from '../types';
 import { Rating } from './Rating';
 import { Menu } from './Menu';
 
@@ -20,12 +20,12 @@ const formatPanelId = (restaurantId: number) => `panel-${restaurantId}`;
 
 const PAGE_SIZE = 4;
 
-export const Restaurants = ({
+export const RestaurantsSearch = ({
   contactName,
   restaurants,
   addToCart,
   closeOverlay,
-}: RestaurantsProps) => {
+}: RestaurantsSearchProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
   const [selectedRestaurant, setSelectedRestaurant] =

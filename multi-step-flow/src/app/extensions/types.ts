@@ -49,7 +49,7 @@ export interface MenuItemOptionsProps {
   closePanel: () => void;
 }
 
-export interface RestaurantsProps {
+export interface RestaurantsSearchProps {
   contactName: string;
   restaurants: Array<Restaurant>;
   addToCart: (cartItem: CartItem) => void;

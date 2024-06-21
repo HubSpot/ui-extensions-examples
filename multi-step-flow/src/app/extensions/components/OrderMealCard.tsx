@@ -9,7 +9,7 @@ import {
 } from '@hubspot/ui-extensions';
 import { Cart } from './Cart';
 import type { CartItem, OrderMealProps, Restaurant } from '../types';
-import { Restaurants } from './Restaurants';
+import { RestaurantsSearch } from './RestaurantsSearch';
 import { Checkout } from './Checkout';
 
 export const OrderMealCard = ({
@@ -127,7 +127,7 @@ export const OrderMealCard = ({
         multi-step flow. This card lets you send a meal from a local restaurant
         to one of your contacts.
       </Text>
-      <Restaurants
+      <RestaurantsSearch
         closeOverlay={closeOverlay}
         contactName={contactName}
         restaurants={restaurants}
