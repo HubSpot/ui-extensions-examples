@@ -11,7 +11,7 @@ import {
   TableCell,
   TableRow,
 } from '@hubspot/ui-extensions';
-import { MenuItem, type MenuProps } from '../types';
+import { type MenuItem, type MenuProps } from '../types';
 import { formatPrice } from '../utils';
 import { MenuItemOptions } from './MenuItemOptions';
 

@@ -11,7 +11,7 @@ import {
   TableBody,
   Text,
 } from '@hubspot/ui-extensions';
-import type { RestaurantsProps } from '../types';
+import { type Restaurant, type RestaurantsProps } from '../types';
 import { Rating } from './Rating';
 import { Menu } from './Menu';
 
@@ -28,7 +28,8 @@ export const Restaurants = ({
 }: RestaurantsProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
-  const [anySelected, setAnySelected] = useState(false);
+  const [selectedRestaurant, setSelectedRestaurant] =
+    useState<Restaurant | null>();
 
   const handleSearch = useCallback((searchTerm: string) => {
     setSearchTerm(searchTerm);
@@ -86,14 +87,14 @@ export const Restaurants = ({
                   <Button
                     overlay={
                       <Panel
-                        onOpen={() => setAnySelected(true)}
-                        onClose={() => setAnySelected(false)}
+                        onOpen={() => setSelectedRestaurant(restaurant)}
+                        onClose={() => setSelectedRestaurant(null)}
                         key={restaurant.id}
                         variant="modal"
                         id={formatPanelId(restaurant.id)}
                         title={restaurant.name}
                       >
-                        {anySelected && (
+                        {selectedRestaurant?.id == restaurant.id && (
                           <Menu
                             restaurant={restaurant}
                             addToCart={addToCart}
