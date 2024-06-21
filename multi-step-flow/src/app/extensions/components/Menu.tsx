@@ -13,7 +13,7 @@ import {
 } from '@hubspot/ui-extensions';
 import { MenuItem, type MenuProps } from '../types';
 import { formatPrice } from '../utils';
-import { MenuItemOptions } from './MenuIteamOptions';
+import { MenuItemOptions } from './MenuItemOptions';
 
 export const Menu = ({ restaurant, addToCart, closePanel }: MenuProps) => {
   const [menuItem, setMenuItem] = useState<MenuItem | null>(null);

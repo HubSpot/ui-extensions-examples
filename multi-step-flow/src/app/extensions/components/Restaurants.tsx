@@ -47,12 +47,6 @@ export const Restaurants = ({
     (pageNumber - 1) * PAGE_SIZE + PAGE_SIZE
   );
 
-  if (paginatedSearchResults.length === 0) {
-    return (
-      <Text>No matches for "{searchTerm}". Try being a bit less specific.</Text>
-    );
-  }
-
   return (
     <Flex direction="column" gap="md">
       <Input
