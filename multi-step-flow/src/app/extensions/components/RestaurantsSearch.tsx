@@ -11,7 +11,7 @@ import {
   TableBody,
   Text,
 } from '@hubspot/ui-extensions';
-import { type Restaurant, type RestaurantsSearchProps } from '../types';
+import type { Restaurant, RestaurantsSearchProps } from '../types';
 import { Rating } from './Rating';
 import { Menu } from './Menu';
 

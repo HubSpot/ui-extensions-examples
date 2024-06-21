@@ -9,7 +9,7 @@ import {
   PanelSection,
   ToggleGroup,
 } from '@hubspot/ui-extensions';
-import { type MenuItemOptionsProps } from '../types';
+import type { MenuItemOptionsProps } from '../types';
 
 export const MenuItemOptions = ({
   restaurant,
