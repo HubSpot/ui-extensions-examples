@@ -10,7 +10,7 @@ This sample is designed to show overlays by using `<Panel>` and `<Modal>` compon
 1. Run `hs init` if you haven’t already done so to create a config file for your parent account.
 1. Run `hs auth` to authenticate your account. Alternatively, select your pre-authenticated account with `hs accounts use`.
 
-### Step 2: Create Flex and Box project
+### Step 2: Create Overlay example project
 
 In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="overlay-example" --name="overlay-example" --template="overlay-example"`
 
