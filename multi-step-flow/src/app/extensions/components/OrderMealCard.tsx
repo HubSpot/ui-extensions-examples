@@ -9,20 +9,19 @@ import {
 } from '@hubspot/ui-extensions';
 import { Cart } from './Cart';
 import type { CartItem, OrderMealProps, Restaurant } from '../types';
-import { RestaurantsSearch } from './RestaurantsSearch';
+import { Restaurants } from './Restaurants';
 import { Checkout } from './Checkout';
 
 export const OrderMealCard = ({
   fetchCrmObjectProperties,
-  context,
   runServerless,
+  closeOverlay,
   sendAlert,
 }: OrderMealProps) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [restaurants, setRestaurants] = useState<Array<Restaurant>>([]);
   const [cart, updateCart] = useState<Array<CartItem>>([]);
-  const [selected, setSelected] = useState<number>();
   const [contactName, setContactName] = useState('');
 
   // Make a memoized fetch function that handles error and loading state
@@ -73,11 +72,8 @@ export const OrderMealCard = ({
     });
   }, []);
 
-  const clearSelection = useCallback(() => setSelected(undefined), []);
-
-  const handleAddClick = useCallback((item: CartItem) => {
+  const handleAddToCartClick = useCallback((item: CartItem) => {
     updateCart((items: Array<CartItem>) => [...items, item]);
-    clearSelection();
   }, []);
 
   const handleRemoveClick = useCallback((id: number) => {
@@ -93,7 +89,6 @@ export const OrderMealCard = ({
         message: `Nicely done! The meal is on its way to ${contactName} with the message: "${message}"`,
       });
       updateCart([]);
-      clearSelection();
     },
     [contactName]
   );
@@ -123,7 +118,6 @@ export const OrderMealCard = ({
     return total + (getRestaurant(id)?.deliveryCost ?? 0);
   }, 0);
 
-  const selectedRestaurant = getRestaurant(selected);
   const subtotal = cart.reduce((total, item) => total + item.price, 0);
 
   return (
@@ -133,10 +127,11 @@ export const OrderMealCard = ({
         multi-step flow. This card lets you send a meal from a local restaurant
         to one of your contacts.
       </Text>
-      <RestaurantsSearch
+      <Restaurants
+        closeOverlay={closeOverlay}
         contactName={contactName}
         restaurants={restaurants}
-        onAddToCartClick={handleAddClick}
+        addToCart={handleAddToCartClick}
       />
       <Divider />
       <Cart cart={cart} onRemoveClick={handleRemoveClick} />

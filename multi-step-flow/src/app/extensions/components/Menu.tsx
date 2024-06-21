@@ -8,17 +8,16 @@ import {
   PanelFooter,
   PanelSection,
   Table,
+  Text,
   TableBody,
+  TableCell,
+  TableRow,
   ToggleGroup,
 } from '@hubspot/ui-extensions';
-import { MenuItem, type MenuPanelContentProps } from '../types';
-import { MenuItemRow } from './MenuItemRow';
+import { MenuItem, type MenuProps } from '../types';
+import { formatPrice } from '../utils';
 
-export const MenuPanelContent = ({
-  restaurant,
-  onAddToCartClick,
-  closePanel,
-}: MenuPanelContentProps) => {
+export const Menu = ({ restaurant, addToCart, closePanel }: MenuProps) => {
   const [menuItem, setMenuItem] = useState<MenuItem | null>(null);
   const [bases, setBases] = useState<Array<string>>();
   const [toppings, setToppings] = useState<Array<string>>();
@@ -44,8 +43,8 @@ export const MenuPanelContent = ({
     return basesError || toppingsError || premiumsError || !bases || !dressing;
   };
 
-  const handleAddClick = () => {
-    onAddToCartClick({
+  const handleAddToCartClick = () => {
+    addToCart({
       restaurantId: restaurant.id,
       id: restaurant.id,
       name: restaurant.name,
@@ -127,11 +126,21 @@ export const MenuPanelContent = ({
               <Table>
                 <TableBody>
                   {restaurant.menu.items.map((item) => (
-                    <MenuItemRow
-                      key={item.id}
-                      item={item}
-                      onClick={() => setMenuItem(item)}
-                    />
+                    <TableRow>
+                      <TableCell>
+                        <Heading>{item.name}</Heading>
+                        <Text variant="microcopy">{item.description}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Button
+                          onClick={() => {
+                            setMenuItem(item);
+                          }}
+                        >
+                          {formatPrice(item.price)}
+                        </Button>
+                      </TableCell>
+                    </TableRow>
                   ))}
                 </TableBody>
               </Table>
@@ -150,9 +159,9 @@ export const MenuPanelContent = ({
             Back
           </Button>
           <Button
-            onClick={(event, reactions) => {
-              handleAddClick();
-              closePanel(reactions);
+            onClick={() => {
+              handleAddToCartClick();
+              closePanel();
             }}
             variant="primary"
             type="submit"
