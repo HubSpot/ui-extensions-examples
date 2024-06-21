@@ -28,6 +28,7 @@ export const Restaurants = ({
 }: RestaurantsProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
+  const [anySelected, setAnySelected] = useState(false);
 
   const handleSearch = useCallback((searchTerm: string) => {
     setSearchTerm(searchTerm);
@@ -91,18 +92,22 @@ export const Restaurants = ({
                   <Button
                     overlay={
                       <Panel
+                        onOpen={() => setAnySelected(true)}
+                        onClose={() => setAnySelected(false)}
                         key={restaurant.id}
                         variant="modal"
                         id={formatPanelId(restaurant.id)}
                         title={restaurant.name}
                       >
-                        <Menu
-                          restaurant={restaurant}
-                          addToCart={addToCart}
-                          closePanel={() =>
-                            closeOverlay(formatPanelId(restaurant.id))
-                          }
-                        />
+                        {anySelected && (
+                          <Menu
+                            restaurant={restaurant}
+                            addToCart={addToCart}
+                            closePanel={() =>
+                              closeOverlay(formatPanelId(restaurant.id))
+                            }
+                          />
+                        )}
                       </Panel>
                     }
                   >

@@ -41,6 +41,14 @@ export interface MenuProps {
   closePanel: () => void;
 }
 
+export interface MenuItemOptionsProps {
+  restaurant: Restaurant;
+  menuItem: MenuItem;
+  onBackClick: () => void;
+  addToCart: (cartItem: CartItem) => void;
+  closePanel: () => void;
+}
+
 export interface RestaurantsProps {
   contactName: string;
   restaurants: Array<Restaurant>;
