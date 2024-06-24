@@ -2,6 +2,9 @@
 
 This sample is designed to show overlays by using `<Panel>` and `<Modal>` components, examples of their use cases and design guidelines
 
+![overlay 2](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/9dc908f0-f13c-4725-b97c-b133524c683d)
+
+
 ## Quick Start
 
 ### Step 1: Update your CLI and & authenticate your account
