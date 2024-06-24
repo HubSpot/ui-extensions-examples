@@ -121,7 +121,7 @@ export const OrderMealCard = ({
   const subtotal = cart.reduce((total, item) => total + item.price, 0);
 
   return (
-    <Flex direction={'column'} gap={'md'}>
+    <Flex direction="column" gap="md">
       <Text variant="microcopy">
         This example shows you how many components work together to build a
         multi-step flow. This card lets you send a meal from a local restaurant

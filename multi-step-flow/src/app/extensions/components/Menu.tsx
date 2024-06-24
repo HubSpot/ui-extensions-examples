@@ -27,7 +27,7 @@ export const Menu = ({ restaurant, addToCart, closePanel }: MenuProps) => {
       onBackClick={() => setMenuItem(null)}
     />
   ) : (
-    <Flex direction={'column'}>
+    <Flex direction="column">
       <PanelBody>
         <PanelSection>
           <Flex direction="column" gap="md">

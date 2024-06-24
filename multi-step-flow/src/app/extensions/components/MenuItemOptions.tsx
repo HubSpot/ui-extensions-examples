@@ -58,7 +58,7 @@ export const MenuItemOptions = ({
   const makeOption = (option: string) => ({ value: option, label: option });
 
   return (
-    <Flex direction={'column'}>
+    <Flex direction="column">
       <PanelBody>
         <PanelSection>
           <Flex direction="column" gap="md">
