@@ -1,8 +1,7 @@
 import type {
   AddAlertAction,
-  Context,
   FetchCrmObjectPropertiesAction,
-  ServerlessFuncRunner
+  ServerlessFuncRunner,
 } from '@hubspot/ui-extensions';
 
 export interface MenuItem {
@@ -36,34 +35,25 @@ export interface RatingProps {
   value: number;
 }
 
-export interface ButtonOnClickReactons {
-  openPanel: (id: string) => void;
-  closePanel: (id: string) => void;
-}
-
-export interface RestaurantRowProps {
+export interface MenuProps {
   restaurant: Restaurant;
-  onClick: (reactions: ButtonOnClickReactons) => void;
+  addToCart: (cartItem: CartItem) => void;
+  closePanel: () => void;
 }
 
-export interface RestaurantsTableProps {
-  pageNumber: number;
-  onPageChange: (pageNumber: number) => void;
-  searchTerm: string;
-  onAddToCartClick: (cartItem: CartItem) => void;
-  restaurants: Array<Restaurant>;
-}
-
-export interface MenuPanelContentProps {
+export interface MenuItemOptionsProps {
   restaurant: Restaurant;
-  onAddToCartClick: (cartItem: CartItem) => void;
-  closePanel: (reactions: ButtonOnClickReactons) => void;
+  menuItem: MenuItem;
+  onBackClick: () => void;
+  addToCart: (cartItem: CartItem) => void;
+  closePanel: () => void;
 }
 
 export interface RestaurantsSearchProps {
   contactName: string;
   restaurants: Array<Restaurant>;
-  onAddToCartClick: (cartItem: CartItem) => void;
+  addToCart: (cartItem: CartItem) => void;
+  closeOverlay: (id: string) => void;
 }
 
 export interface CartItemRowProps {
@@ -107,7 +97,7 @@ export interface AddonsProps {
 
 export interface OrderMealProps {
   fetchCrmObjectProperties: FetchCrmObjectPropertiesAction;
-  context: Context;
   runServerless: ServerlessFuncRunner;
   sendAlert: AddAlertAction;
+  closeOverlay: (id: string) => void;
 }
