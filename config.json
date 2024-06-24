@@ -59,6 +59,12 @@
       "label": "Custom Logger Example",
       "path": "custom-logger-example",
       "insertPath": null
+    },
+    {
+      "name": "overlay-example",
+      "label": "Overlay Example",
+      "path": "overlay-example",
+      "insertPath": null
     }
   ]
 }

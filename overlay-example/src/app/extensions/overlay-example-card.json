@@ -1,0 +1,16 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Overlay Example Card",
+    "uid": "overlay_example_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "OverlayExampleCard.jsx"
+    },
+    "objectTypes": [
+      {
+        "name": "contacts"
+      }
+    ]
+  }
+}
