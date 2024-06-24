@@ -1,6 +1,6 @@
 # Overlay example ![](https://badgen.net/badge/JS/JavaScript/blue)
 
-This sample is designed to show overlays by using `<Panel>` and `<Modal>` components.
+This sample is designed to show overlays by using `<Panel>` and `<Modal>` components, examples of their use cases and design guidelines
 
 ## Quick Start
 
