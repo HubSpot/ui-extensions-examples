@@ -17,6 +17,9 @@
         },
         {
           "file": "extensions/association-table-example-card.json"
+        },
+        {
+          "file": "extensions/actions-example-card.json"
         }
       ]
     }
