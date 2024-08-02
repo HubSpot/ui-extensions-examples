@@ -163,12 +163,10 @@ const QUERY = `query data($id: String!) {
       zip
       state
       phone
-      photo
       lastname
       mobilephone
       jobtitle
       industry
-      hubspotscore
       hs_language
       firstname
       company
