@@ -27,7 +27,7 @@ These extensions demonstrate a number of interactions including:
 In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="crm-data-components" --name="crm-data-components" --template="crm-data-components"`
 
 ### Step 3: Install dependencies
-Now in the CLI, `cd` into your project directory such as `cd crm-data-components`. Run `npm install` to install the dependencies for this project.
+Now in the CLI, `cd` into your project directory such as `cd crm-data-components`. You will need to run `npm install` in both the `/src/app/extensions` and `/src/app/app.functions` directories to install the dependencies for this project.
 
 ### Step 4: Upload project
 Run `hs project upload`. If you’d like to build on this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
