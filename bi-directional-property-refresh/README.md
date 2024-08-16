@@ -21,7 +21,7 @@ Enter into the folder where you want this sample project. In place of `hs projec
 
 ### Step 3: Install dependencies
 
-Now in the CLI, enter into this newly created folder by `cd bi-directional-property-refresh`. Run `npm install` to install the dependencies for this project.
+Now in the CLI, enter into this newly created folder by `cd bi-directional-property-refresh`. You will need to run `npm install` in both the `/src/app/extensions` and `/src/app/app.functions` directories to install the dependencies for this project.
 
 ### Step 4: Upload project
 

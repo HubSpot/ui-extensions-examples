@@ -40,7 +40,7 @@ hs secrets add MAPBOX_ACCESS_TOKEN
 
 ## Step 5: Install dependencies
 
-Now in the CLI, enter into this newly created folder by `cd mapbox-api`. Run `npm install` to install the dependencies for this project.
+Now in the CLI, enter into this newly created folder by `cd mapbox-api`. You will need to run `npm install` in both the `/src/app/extensions` and `/src/app/app.functions` directories to install the dependencies for this project.
 
 ### Step 6: Upload project
 
