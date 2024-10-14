@@ -1,0 +1,16 @@
+{
+  "name": "Charts example",
+  "uid": "charts-example",
+  "description": "An example to demonstrate how to build a private app with developer projects.",
+  "scopes": ["crm.objects.contacts.read"],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "./extensions/charts-example-card.json"
+        }
+      ]
+    }
+  }
+}
