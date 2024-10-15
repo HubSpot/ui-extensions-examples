@@ -65,6 +65,12 @@
       "label": "Overlay Example",
       "path": "overlay-example",
       "insertPath": null
+    },
+    {
+      "name": "charts-example",
+      "label": "Charts Example",
+      "path": "charts-example",
+      "insertPath": null
     }
   ]
 }
