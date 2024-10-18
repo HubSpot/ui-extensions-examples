@@ -2,7 +2,7 @@
 
 This sample is designed to show charts by using <LineChart> and <BarChart> components.
 
-![image](https://github.com/user-attachments/assets/c91b73fc-ec5b-41da-967e-4722998c9e3b)
+![image](https://github.com/user-attachments/assets/c3ff5cad-e59b-45a8-aff6-58908529c0c3)
 
 ### Description:
 
