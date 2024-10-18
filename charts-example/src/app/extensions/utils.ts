@@ -24,22 +24,36 @@ export const generateSalesOverTimeSamples = ({
     date: moment().subtract(random(0, periodInMonths), 'months'),
     category: categories[random(0, categories.length)],
     price: random(1, 101),
-  }));
+  })).sort((a, b) => a.date.diff(b.date));
 
-export const calculateTotalSalesPerMonth = (sales: SaleSample[]) => {
-  const salesPerMonthAccumulation = {};
+export const calculatePurchaseHistory = (sales: SaleSample[]) => {
+  const acc = {};
   sales.forEach(({ date }) => {
     const yearMonth = formatToYearMonth(date);
-    if (salesPerMonthAccumulation[yearMonth]) {
-      salesPerMonthAccumulation[yearMonth]++;
+    if (acc[yearMonth]) {
+      acc[yearMonth]++;
     } else {
-      salesPerMonthAccumulation[yearMonth] = 1;
+      acc[yearMonth] = 1;
     }
   });
-  return Object.entries(salesPerMonthAccumulation).map(
-    ([yearMonth, sales]) => ({
+  return Object.entries(acc).map(([yearMonth, sales]) => ({
+    yearMonth,
+    sales,
+  }));
+};
+
+export const calculateSalesDistribution = (sales: SaleSample[]) => {
+  const acc = {};
+  sales.forEach(({ date, category, price }) => {
+    const yearMonth = formatToYearMonth(date);
+    const key = `${yearMonth}-${category}`;
+    acc[key] = acc[key] || {
       yearMonth,
-      sales,
-    }),
-  );
+      category,
+      revenue: 0,
+    };
+    acc[key]['revenue'] += price;
+  });
+
+  return Object.values(acc);
 };
