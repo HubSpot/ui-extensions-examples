@@ -38,8 +38,8 @@ const Extension = () => {
           }
         >
           line
-        </Link>
-        line and{' '}
+        </Link>{' '}
+        and{' '}
         <Link
           href={
             'https://developers.hubspot.com/docs/platform/ui-components/barchart'
