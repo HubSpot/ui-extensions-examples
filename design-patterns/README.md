@@ -1,4 +1,4 @@
-# Design Patterns
+# Design Patterns ![](https://badgen.net/badge/-/TypeScript/blue?icon=typescript&label)
 
 This app includes a number of different design patterns that showcase how to compose UI components the "HubSpot" way. Each extension file contains a different pattern that you can copy and paste right into your own project.
 
