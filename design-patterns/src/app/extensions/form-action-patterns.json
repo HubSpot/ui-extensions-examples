@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Form Action Patterns",
+    "uid": "form_action_patterns_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "FormActionPatterns.tsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}

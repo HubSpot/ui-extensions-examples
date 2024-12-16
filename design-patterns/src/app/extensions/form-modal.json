@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Modal Form",
+    "uid": "form_modal_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "FormModal.tsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}
