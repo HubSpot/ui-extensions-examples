@@ -1,7 +1,6 @@
 import type {
   AddAlertAction,
   FetchCrmObjectPropertiesAction,
-  ServerlessFuncRunner,
 } from '@hubspot/ui-extensions';
 
 export interface MenuItem {
@@ -97,7 +96,6 @@ export interface AddonsProps {
 
 export interface OrderMealProps {
   fetchCrmObjectProperties: FetchCrmObjectPropertiesAction;
-  runServerless: ServerlessFuncRunner;
   sendAlert: AddAlertAction;
   closeOverlay: (id: string) => void;
 }
