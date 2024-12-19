@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { hubspot } from '@hubspot/ui-extensions';
-import { LoadingSpinner, Flex, Text, StepIndicator } from '@hubspot/ui-extensions';
+import {
+  LoadingSpinner,
+  Flex,
+  Text,
+  StepIndicator,
+} from '@hubspot/ui-extensions';
 import { TripDetails } from './components/TripDetails.jsx';
 import { BusOptions } from './components/BusOptions.jsx';
 import { QuotesView } from './components/QuotesView.jsx';
@@ -14,11 +19,9 @@ const Steps = {
 };
 
 // Define the extension to be run within the Hubspot CRM
-hubspot.extend(({ runServerlessFunction }) => (
-  <ShuttleBusQuotes runServerless={runServerlessFunction} />
-));
+hubspot.extend(() => <ShuttleBusQuotes />);
 
-const ShuttleBusQuotes = ({ runServerless }) => {
+const ShuttleBusQuotes = () => {
   const [step, setStep] = useState(Steps.QuotesView);
   const [passengers, setPassengers] = useState();
   const [distance, setDistance] = useState();
@@ -28,8 +31,7 @@ const ShuttleBusQuotes = ({ runServerless }) => {
 
   const generateQuote = ({ ...payload }) => {
     // Execute serverless function to generate a quote
-    return runServerless({
-      name: 'createQuote',
+    return hubspot.serverless('createQuote', {
       propertiesToSend: ['hs_object_id'],
       payload,
     });
@@ -63,8 +65,9 @@ const ShuttleBusQuotes = ({ runServerless }) => {
       {loading == false && (
         <Flex direction="column" gap="lg">
           <Text variant="microcopy">
-            This example uses a fictional shuttle bus rental company with several service options.
-            The card matches customers with the most appropriate service, and then generates multiple quotes for them.
+            This example uses a fictional shuttle bus rental company with
+            several service options. The card matches customers with the most
+            appropriate service, and then generates multiple quotes for them.
           </Text>
           <Flex direction="column" gap="xs">
             {/* Render a step indicator  */}
