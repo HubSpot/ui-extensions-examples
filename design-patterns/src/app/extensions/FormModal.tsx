@@ -54,39 +54,33 @@ const FormModal = ({ actions }) => {
                   . Also, just to be sure, you're gonna get a confirmation
                   email.
                 </Text>
-                <Flex>
-                  <Box flex={2}>
-                    {
-                      // Display a success message when the form is submitted.
-                      formSubmitted ? (
-                        <Alert title="Success" variant="success">
-                          Account created successfully.
-                        </Alert>
-                      ) : (
-                        <>
-                          <Input name="first_name" label="First Name" />
-                          <Input name="last_name" label="Last Name" />
-                          <Input
-                            name="email"
-                            label="Email"
-                            required
-                            placeholder="name@domain.com"
-                            description="We'll never share your email with anyone else."
-                            tooltip="Your email is only used for support and account purposes."
-                          />
-                          <TextArea
-                            name="notes"
-                            label="Notes"
-                            required
-                            placeholder="Add any notes about the account here."
-                          />
-                        </>
-                      )
-                    }
-                  </Box>
-                  {/* Added an empty Box component to make the form narrower. */}
-                  <Box flex={1}>{''}</Box>
-                </Flex>
+                {
+                  // Display a success message when the form is submitted.
+                  formSubmitted ? (
+                    <Alert title="Success" variant="success">
+                      Account created successfully.
+                    </Alert>
+                  ) : (
+                    <>
+                      <Input name="first_name" label="First Name" />
+                      <Input name="last_name" label="Last Name" />
+                      <Input
+                        name="email"
+                        label="Email"
+                        required
+                        placeholder="name@domain.com"
+                        description="We'll never share your email with anyone else."
+                        tooltip="Your email is only used for support and account purposes."
+                      />
+                      <TextArea
+                        name="notes"
+                        label="Notes"
+                        required
+                        placeholder="Add any notes about the account here."
+                      />
+                    </>
+                  )
+                }
               </ModalBody>
               <ModalFooter>
                 <Button type="submit" variant="primary">

@@ -69,91 +69,86 @@ const FormMultistep = ({ actions }) => {
                       . Also, just to be sure, you're gonna get a confirmation
                       email.
                     </Text>
-                    <Flex>
-                      <Box flex={2}>
-                        {
-                          // Display a success message when the form is submitted.
-                          formSubmitted ? (
-                            <Alert title="Success" variant="success">
-                              Form submitted successfully.
-                            </Alert>
-                          ) : (
+                    {
+                      // Display a success message when the form is submitted.
+                      formSubmitted ? (
+                        <Alert title="Success" variant="success">
+                          Form submitted successfully.
+                        </Alert>
+                      ) : (
+                        <>
+                          {formStep === 0 && (
                             <>
-                              {formStep === 0 && (
-                                <>
-                                  <Input name="first_name" label="First Name" />
-                                  <Input name="last_name" label="Last Name" />
-                                  <Input
-                                    name="email"
-                                    label="Email"
-                                    required
-                                    placeholder="name@domain.com"
-                                    description="We'll never share your email with anyone else."
-                                    tooltip="Your email is only used for support and account purposes."
-                                  />
-                                </>
-                              )}
-                              {formStep === 1 && (
-                                <>
-                                  <DateInput
-                                    name="event_date"
-                                    label="Event Date"
-                                    required
-                                  />
-                                  <Input
-                                    name="event_name"
-                                    label="Event Name"
-                                    required
-                                  />
-                                </>
-                              )}
-                              {formStep === 2 && (
-                                <>
-                                  <Select
-                                    label="Rating"
-                                    options={[
-                                      { label: '☆☆☆☆☆', value: 5 },
-                                      { label: '☆☆☆☆', value: 4 },
-                                      { label: '☆☆☆', value: 3 },
-                                      { label: '☆☆', value: 2 },
-                                      { label: '☆', value: 1 },
-                                    ]}
-                                    name="rating"
-                                  />
-                                  <TextArea
-                                    name="notes"
-                                    label="Notes"
-                                    required
-                                    placeholder="Additional notes about your rating."
-                                  />
-                                </>
-                              )}
-                              {formStep === 3 && (
-                                <>
-                                  <Select
-                                    label="Update Frequency"
-                                    options={[
-                                      { label: 'Daily', value: 'daily' },
-                                      { label: 'Weekly', value: 'weekly' },
-                                      { label: 'Monthly', value: 'monthly' },
-                                    ]}
-                                    name="update_frequency"
-                                  />
-                                  <NumberInput
-                                    name="number_of_records"
-                                    label="Number of Records"
-                                    min={1}
-                                    max={100}
-                                  />
-                                </>
-                              )}
+                              <Input name="first_name" label="First Name" />
+                              <Input name="last_name" label="Last Name" />
+                              <Input
+                                name="email"
+                                label="Email"
+                                required
+                                placeholder="name@domain.com"
+                                description="We'll never share your email with anyone else."
+                                tooltip="Your email is only used for support and account purposes."
+                              />
                             </>
-                          )
-                        }
-                      </Box>
-                      {/* Added an empty Box component to make the form narrower. */}
-                      <Box flex={1}>{''}</Box>
-                    </Flex>
+                          )}
+                          {formStep === 1 && (
+                            <>
+                              <DateInput
+                                name="event_date"
+                                label="Event Date"
+                                required
+                              />
+                              <Input
+                                name="event_name"
+                                label="Event Name"
+                                required
+                              />
+                            </>
+                          )}
+                          {formStep === 2 && (
+                            <>
+                              <Select
+                                label="Rating"
+                                options={[
+                                  { label: '☆☆☆☆☆', value: 5 },
+                                  { label: '☆☆☆☆', value: 4 },
+                                  { label: '☆☆☆', value: 3 },
+                                  { label: '☆☆', value: 2 },
+                                  { label: '☆', value: 1 },
+                                ]}
+                                name="rating"
+                              />
+                              <TextArea
+                                name="notes"
+                                label="Notes"
+                                required
+                                placeholder="Additional notes about your rating."
+                              />
+                            </>
+                          )}
+                          {formStep === 3 && (
+                            <>
+                              <Select
+                                label="Update Frequency"
+                                options={[
+                                  { label: 'Daily', value: 'daily' },
+                                  { label: 'Weekly', value: 'weekly' },
+                                  { label: 'Monthly', value: 'monthly' },
+                                ]}
+                                name="update_frequency"
+                              />
+                              <NumberInput
+                                name="number_of_records"
+                                label="Number of Records"
+                                min={1}
+                                max={100}
+                              />
+                            </>
+                          )}
+                        </>
+                      )
+                    }
+                    {/* Added an empty Box component to make the form narrower. */}
                   </Flex>
                 </PanelSection>
               </PanelBody>

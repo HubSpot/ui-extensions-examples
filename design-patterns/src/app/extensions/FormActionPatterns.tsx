@@ -27,58 +27,51 @@ const FormSimple = ({ actions }) => {
         This is some information about this form.{' '}
         <Link href="https://www.hubspot.com">Learn more</Link>.
       </Text>
-      <Flex>
-        <Box flex={2}>
-          {
-            // Display a success message when the form is submitted.
-            formSubmitted ? (
-              <Alert title="Success" variant="success">
-                Account created successfully.
-              </Alert>
-            ) : (
-              <Form
-                onSubmit={(e) => {
-                  // Print out the form data when the form is submitted.
-                  console.log(e.targetValue);
-                  setFormSubmitted(true);
-                }}
-              >
-                <Flex direction="column" gap="sm">
-                  <Input name="first_name" label="First Name" />
-                  <Input name="last_name" label="Last Name" />
-                  <Input
-                    name="email"
-                    label="Email"
-                    required
-                    placeholder="name@domain.com"
-                    description="We'll never share your email with anyone else."
-                    tooltip="Your email is only used for support and account purposes."
-                  />
-                  <Flex direction="column" gap="md">
-                    <TextArea
-                      name="notes"
-                      label="Notes"
-                      required
-                      placeholder="Add any notes about the account here."
-                    />
-                    <Flex align="center" gap="sm">
-                      {/* Use a Button to do the action of submitting the form. */}
-                      <Button type="submit" variant="primary">
-                        Submit
-                      </Button>
-                      {/* Use a link to navigate to another location. */}
-                      <Link href="https://www.hubspot.com">
-                        More information
-                      </Link>
-                    </Flex>
-                  </Flex>
+      {
+        // Display a success message when the form is submitted.
+        formSubmitted ? (
+          <Alert title="Success" variant="success">
+            Account created successfully.
+          </Alert>
+        ) : (
+          <Form
+            onSubmit={(e) => {
+              // Print out the form data when the form is submitted.
+              console.log(e.targetValue);
+              setFormSubmitted(true);
+            }}
+          >
+            <Flex direction="column" gap="sm">
+              <Input name="first_name" label="First Name" />
+              <Input name="last_name" label="Last Name" />
+              <Input
+                name="email"
+                label="Email"
+                required
+                placeholder="name@domain.com"
+                description="We'll never share your email with anyone else."
+                tooltip="Your email is only used for support and account purposes."
+              />
+              <Flex direction="column" gap="md">
+                <TextArea
+                  name="notes"
+                  label="Notes"
+                  required
+                  placeholder="Add any notes about the account here."
+                />
+                <Flex align="center" gap="sm">
+                  {/* Use a Button to do the action of submitting the form. */}
+                  <Button type="submit" variant="primary">
+                    Submit
+                  </Button>
+                  {/* Use a link to navigate to another location. */}
+                  <Link href="https://www.hubspot.com">More information</Link>
                 </Flex>
-              </Form>
-            )
-          }
-        </Box>
-        <Box flex={1}>{''}</Box>
-      </Flex>
+              </Flex>
+            </Flex>
+          </Form>
+        )
+      }
     </>
   );
 };
