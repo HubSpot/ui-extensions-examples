@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Multistep Form",
+    "uid": "form_multistep_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "FormMultistep.tsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}
