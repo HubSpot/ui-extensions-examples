@@ -11,13 +11,11 @@ import {
   Text,
 } from '@hubspot/ui-extensions';
 
-import { CrmStageTracker, CrmPropertyList } from '@hubspot/ui-extensions/crm';
-
-hubspot.extend<'crm.record.tab'>(({ actions, runServerlessFunction }) => (
-  <Extension actions={actions} runServerlessFunction={runServerlessFunction} />
+hubspot.extend<'crm.record.tab'>(({ actions }) => (
+  <Extension actions={actions} />
 ));
 
-const Extension = ({ actions, runServerlessFunction }) => {
+const Extension = ({ actions }) => {
   const {
     fetchCrmObjectProperties,
     onCrmPropertiesUpdate,
@@ -39,24 +37,30 @@ const Extension = ({ actions, runServerlessFunction }) => {
   });
 
   useEffect(() => {
-    runServerlessFunction({ name: 'getLifecycleStage' }).then(
-      (serverlessResponse) => {
-        if (serverlessResponse.status == 'SUCCESS') {
-          setLifecycleStage(serverlessResponse.response);
-        }
-      }
-    );
+    hubspot
+      .serverless('getLifecycleStage')
+      .then((response) => {
+        setLifecycleStage(response);
+      })
+      .catch((err) => {
+        console.error(err.message);
+        setLifecycleStage(null);
+      });
   }, []);
 
   const onChange = (stage) => {
     console.log(stage);
-    runServerlessFunction({
-      name: 'updateLifecycleStage',
-      parameters: { stage },
-      propertiesToSend: ['hs_object_id'],
-    }).then(() => {
-      refreshObjectProperties();
-    });
+    hubspot
+      .serverless('updateLifecycleStage', {
+        parameters: { stage },
+        propertiesToSend: ['hs_object_id'],
+      })
+      .then(() => {
+        refreshObjectProperties();
+      })
+      .catch((err) => {
+        console.error(err.message);
+      });
   };
 
   return (

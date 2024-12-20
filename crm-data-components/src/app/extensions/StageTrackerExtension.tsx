@@ -15,21 +15,15 @@ import {
   CrmAssociationPivot,
 } from '@hubspot/ui-extensions/crm';
 
-hubspot.extend(({ context, actions, runServerlessFunction }) => (
+hubspot.extend<'crm.record.tab'>(({ context, actions }) => (
   <Extension
     context={context}
-    runServerless={runServerlessFunction}
     fetchCrmObjectProperties={actions.fetchCrmObjectProperties}
     addAlert={actions.addAlert}
   />
 ));
 
-const Extension = ({
-  context,
-  runServerless,
-  fetchCrmObjectProperties,
-  addAlert,
-}) => {
+const Extension = ({ context, fetchCrmObjectProperties, addAlert }) => {
   const [stage, setStage] = useState<string | null>(null);
   const [showProperties, setShowProperties] = useState(true);
   const [dealId, setDealId] = useState<string | null>(null);
@@ -75,31 +69,31 @@ const Extension = ({
         setStage(properties.dealstage);
         setDealId(properties.hs_object_id);
         setDealname(properties.dealname);
-      }
+      },
     );
   }, [stage]);
 
   const handleStageChange = useCallback(
     (newStage: string) => {
-      runServerless({
-        name: 'updateDeal',
-        parameters: {
-          dealId: dealId!,
-          dealStage: newStage,
-        },
-      }).then((resp: { status: string; message?: string }) => {
-        if (resp.status === 'SUCCESS') {
+      hubspot
+        .serverless('updateDeal', {
+          parameters: {
+            dealId: dealId!,
+            dealStage: newStage,
+          },
+        })
+        .then(() => {
           addAlert({
             type: 'success',
             message: 'Deal stage updated successfully',
           });
           setStage(newStage);
-        } else {
-          setError(resp.message || 'An error occurred');
-        }
-      });
+        })
+        .catch((error) => {
+          setError(error?.message || 'An error occurred');
+        });
     },
-    [dealId, addAlert, runServerless]
+    [dealId, addAlert],
   );
 
   const handlePropertyToggle = useCallback(() => {
@@ -113,7 +107,8 @@ const Extension = ({
   return (
     <Flex direction={'column'} gap={'lg'}>
       <Text variant="microcopy">
-        This is example is a card for deal records to view and update pipeline stage progress.
+        This is example is a card for deal records to view and update pipeline
+        stage progress.
       </Text>
       <Flex direction={'column'} justify={'start'} gap={'medium'}>
         <Heading>Deal status : {dealname}</Heading>

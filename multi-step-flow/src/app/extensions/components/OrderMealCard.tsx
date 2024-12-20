@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import {
+  hubspot,
   Divider,
   LoadingSpinner,
   ErrorState,
@@ -14,7 +15,6 @@ import { Checkout } from './Checkout';
 
 export const OrderMealCard = ({
   fetchCrmObjectProperties,
-  runServerless,
   closeOverlay,
   sendAlert,
 }: OrderMealProps) => {
@@ -30,31 +30,27 @@ export const OrderMealCard = ({
     setLoading(true);
     setError(false);
     // Fetch a list of restaurants and their menus from our serverless function
-    runServerless({ name: 'restaurants' })
-      .then(async (result) => {
-        if (result.status === 'SUCCESS') {
-          // Make sure the response is the shape we expect (array of Restaurants)
-          if (Array.isArray(result.response)) {
-            const restaurants = result.response.map((restaurant: unknown) => {
-              if (
-                typeof restaurant !== 'object' ||
-                Array.isArray(restaurant) ||
-                restaurant === null
-              ) {
-                throw new TypeError('Object is not a Restaurant');
-              }
-
-              return restaurant as Restaurant;
-            });
-
-            setRestaurants(restaurants);
-            return;
-          }
-
+    hubspot
+      .serverless('restaurants')
+      .then(async (response) => {
+        // Make sure the response is the shape we expect (array of Restaurants)
+        if (!Array.isArray(response)) {
           throw new Error('Response is not an array.');
         }
 
-        throw new Error(result.message);
+        const restaurants = response.map((restaurant: unknown) => {
+          if (
+            typeof restaurant !== 'object' ||
+            Array.isArray(restaurant) ||
+            restaurant === null
+          ) {
+            throw new TypeError('Object is not a Restaurant');
+          }
+
+          return restaurant as Restaurant;
+        });
+
+        setRestaurants(restaurants);
       })
       .catch((error) => {
         console.error(error.message);
@@ -63,7 +59,7 @@ export const OrderMealCard = ({
       .finally(() => {
         setLoading(false);
       });
-  }, [runServerless]);
+  }, []);
 
   useEffect(() => {
     getRestaurants();
