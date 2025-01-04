@@ -1,0 +1,16 @@
+{
+  "name": "Table Example Card",
+  "description": "This app demonstrates how to use buttons and example scrolling on tables.",
+  "uid": "table_example_app",
+  "scopes": ["crm.objects.contacts.read", "crm.objects.contacts.write"],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/table-example-card.json"
+        }
+      ]
+    }
+  }
+}
