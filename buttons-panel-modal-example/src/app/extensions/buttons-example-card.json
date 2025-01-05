@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Buttons Panel and Modal Example Card",
+    "uid": "buttons_panel_modal_example_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "ButtonsExampleCard.jsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}
