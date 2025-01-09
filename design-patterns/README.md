@@ -31,3 +31,16 @@ In the main menu select `Contacts` > `Contacts` to view contact records. Click o
 3. Your new contact should appear in the `Contacts table`. Select it and navigate to the `Custom` tab in the middle pane to access the sample card.
 
 If you haven't customized the tabs before follow step #4 from [this guide](https://developers.hubspot.com/docs/platform/ui-extensions-quickstart).
+
+## Examples by Component
+
+### Form
+- [Form Action Patterns](./src/app/extensions/FormActionPatterns.tsx)
+- [Modal Form](./src/app/extensions/FormModal.tsx)
+- [Multistep Form](./src/app/extensions/FormMultistep.tsx)
+
+### Modal
+- [Modal Form](./src/app/extensions/FormModal.tsx)
+
+### Panel
+- [Multistep Form](./src/app/extensions/FormMultistep.tsx)

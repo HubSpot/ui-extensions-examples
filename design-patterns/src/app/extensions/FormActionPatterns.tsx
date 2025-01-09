@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Alert,
-  Box,
   Button,
   Flex,
   Form,
@@ -13,12 +12,10 @@ import {
 } from '@hubspot/ui-extensions';
 
 // Define the extension to be run within the Hubspot CRM
-hubspot.extend<'crm.record.tab'>(({ actions }) => (
-  <FormSimple actions={actions} />
-));
+hubspot.extend<'crm.record.tab'>(() => <FormSimple />);
 
 // Define the FormSimple component.
-const FormSimple = ({ actions }) => {
+const FormSimple = () => {
   const [formSubmitted, setFormSubmitted] = React.useState(false);
 
   return (
@@ -26,6 +23,9 @@ const FormSimple = ({ actions }) => {
       <Text>
         This is some information about this form.{' '}
         <Link href="https://www.hubspot.com">Learn more</Link>.
+        <Text inline={true} format={{ fontWeight: 'bold' }}>
+          Bold text test
+        </Text>
       </Text>
       {
         // Display a success message when the form is submitted.

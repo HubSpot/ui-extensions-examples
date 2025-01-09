@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Alert,
-  Box,
   Button,
   DateInput,
   Flex,
@@ -148,7 +147,6 @@ const FormMultistep = ({ actions }) => {
                         </>
                       )
                     }
-                    {/* Added an empty Box component to make the form narrower. */}
                   </Flex>
                 </PanelSection>
               </PanelBody>
