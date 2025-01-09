@@ -1,12 +1,14 @@
 # Design Patterns ![](https://badgen.net/badge/-/TypeScript/blue?icon=typescript&label)
 
-This app includes a number of different design patterns that showcase how to compose UI components the "HubSpot" way. Each extension file contains a different pattern that you can copy and paste right into your own project.
+This app includes a number of different **Design Patterns** that showcase how to compose UI components the HubSpot way. These are our recommended best code and design practices to create a smooth, and easy to use end customer experience. Each extension file contains a different pattern that you can copy and paste right into your own project. Feel free to use these as boilerplates.
+
+[Here’s a link to the Figma Kit](https://developers.hubspot.com/docs/reference/ui-components/figma-design-kit) with Design Pattern assets if you prefer to begin with designs.
 
 ## Quick Start
 
 ### Step 1: Update your CLI and & authenticate your account
 
-1. Update to latest CLI version by running `npm install -g @hubspot/cli@latest`.
+1. Update to the latest CLI version by running `npm install -g @hubspot/cli@latest`.
 1. Run `hs init` if you haven’t already done so to create a config file for your parent account.
 1. Run `hs auth` to authenticate your account. Alternatively, select your pre-authenticated account with `hs accounts use`.
 
