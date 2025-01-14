@@ -1,0 +1,22 @@
+{
+  "name": "Design Patterns",
+  "description": "This is an app containing a variety of design patterns ready to copy and paste into your own app. The intent is to show how to effectively use components the HubSpot way.",
+  "uid": "design_patterns",
+  "scopes": ["crm.objects.contacts.read", "crm.objects.contacts.write"],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/form-modal.json"
+        },
+        {
+          "file": "extensions/form-action-patterns.json"
+        },
+        {
+          "file": "extensions/form-multistep.json"
+        }
+      ]
+    }
+  }
+}
