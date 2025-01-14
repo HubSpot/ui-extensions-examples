@@ -28,9 +28,33 @@ hubspot.extend<'crm.record.tab'>(({ actions }) => (
 const FormMultistep = ({ actions }) => {
   const [formSubmitted, setFormSubmitted] = React.useState(false);
   const [formStep, setFormStep] = React.useState(0);
+  const [email, setEmail] = React.useState('');
+  const today = new Date();
+  const [eventDate, setEventDate] = React.useState({
+    year: today.getFullYear(),
+    month: today.getMonth(),
+    date: today.getDate(),
+  });
+  const [eventName, setEventName] = React.useState('');
+
+  const activateNextButton = () => {
+    if (
+      (formStep === 0 && email !== '') ||
+      (formStep === 1 && eventDate !== null && eventName !== '') ||
+      formStep === 2
+    ) {
+      return true;
+    }
+
+    return false;
+  };
 
   return (
     <>
+      <Text>
+        HubSpot recommends having forms inside overlays like Modals and Panels
+        to keep the main view clean and easy to navigate.
+      </Text>
       <Button
         overlay={
           <Panel
@@ -46,7 +70,6 @@ const FormMultistep = ({ actions }) => {
             <Form
               onSubmit={(e) => {
                 // Print out the form data when the form is submitted.
-                console.log(e.targetValue);
                 setFormStep(4);
                 setFormSubmitted(true);
               }}
@@ -84,6 +107,7 @@ const FormMultistep = ({ actions }) => {
                                 name="email"
                                 label="Email"
                                 required
+                                onChange={setEmail}
                                 placeholder="name@domain.com"
                                 description="We'll never share your email with anyone else."
                                 tooltip="Your email is only used for support and account purposes."
@@ -95,11 +119,18 @@ const FormMultistep = ({ actions }) => {
                               <DateInput
                                 name="event_date"
                                 label="Event Date"
+                                value={eventDate}
+                                onChange={(value) => {
+                                  console.log(value);
+                                  setEventDate(value);
+                                }}
                                 required
                               />
                               <Input
                                 name="event_name"
                                 label="Event Name"
+                                value={eventName}
+                                onChange={setEventName}
                                 required
                               />
                             </>
@@ -120,7 +151,6 @@ const FormMultistep = ({ actions }) => {
                               <TextArea
                                 name="notes"
                                 label="Notes"
-                                required
                                 placeholder="Additional notes about your rating."
                               />
                             </>
@@ -158,6 +188,7 @@ const FormMultistep = ({ actions }) => {
                       variant="primary"
                       type="button"
                       onClick={() => setFormStep(formStep + 1)}
+                      disabled={!activateNextButton()}
                     >
                       Next
                     </Button>

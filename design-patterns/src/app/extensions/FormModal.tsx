@@ -21,9 +21,14 @@ hubspot.extend<'crm.record.tab'>(({ actions }) => (
 // Define the FormModal component.
 const FormModal = ({ actions }) => {
   const [formSubmitted, setFormSubmitted] = React.useState(false);
+  const [email, setEmail] = React.useState('');
 
   return (
     <>
+      <Text>
+        HubSpot recommends having forms inside overlays like Modals and Panels
+        to keep the main view clean and easy to navigate.
+      </Text>
       <Button
         overlay={
           <Modal
@@ -64,15 +69,16 @@ const FormModal = ({ actions }) => {
                       <Input
                         name="email"
                         label="Email"
+                        value={email}
                         required
                         placeholder="name@domain.com"
                         description="We'll never share your email with anyone else."
                         tooltip="Your email is only used for support and account purposes."
+                        onChange={setEmail}
                       />
                       <TextArea
                         name="notes"
                         label="Notes"
-                        required
                         placeholder="Add any notes about the account here."
                       />
                     </>
@@ -80,9 +86,15 @@ const FormModal = ({ actions }) => {
                 }
               </ModalBody>
               <ModalFooter>
-                <Button type="submit" variant="primary">
-                  Create
-                </Button>
+                {!formSubmitted && (
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    disabled={email === ''}
+                  >
+                    Submit
+                  </Button>
+                )}
                 <Button
                   onClick={() => actions.closeOverlay('modal-form-example')}
                 >

@@ -17,15 +17,13 @@ hubspot.extend<'crm.record.tab'>(() => <FormSimple />);
 // Define the FormSimple component.
 const FormSimple = () => {
   const [formSubmitted, setFormSubmitted] = React.useState(false);
+  const [email, setEmail] = React.useState('');
 
   return (
     <>
       <Text>
         This is some information about this form.{' '}
         <Link href="https://www.hubspot.com">Learn more</Link>.
-        <Text inline={true} format={{ fontWeight: 'bold' }}>
-          Bold text test
-        </Text>
       </Text>
       {
         // Display a success message when the form is submitted.
@@ -48,6 +46,8 @@ const FormSimple = () => {
                 name="email"
                 label="Email"
                 required
+                onChange={setEmail}
+                value={email}
                 placeholder="name@domain.com"
                 description="We'll never share your email with anyone else."
                 tooltip="Your email is only used for support and account purposes."
@@ -56,12 +56,15 @@ const FormSimple = () => {
                 <TextArea
                   name="notes"
                   label="Notes"
-                  required
                   placeholder="Add any notes about the account here."
                 />
                 <Flex align="center" gap="sm">
                   {/* Use a Button to do the action of submitting the form. */}
-                  <Button type="submit" variant="primary">
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    disabled={email === ''}
+                  >
                     Submit
                   </Button>
                   {/* Use a link to navigate to another location. */}
