@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Button,
   Flex,
+  Input,
   Panel,
   PanelSection,
   PanelBody,
@@ -24,6 +25,17 @@ export const PanelExample = ({ actions }) => {
             </Text>
             . Also, just to be sure, you're gonna get a confirmation email.
           </Text>
+        </PanelSection>
+        <PanelSection>
+          <Input label="Label *" name="label" placeholder="Placeholder" />
+          <Input label="Label *" name="label" placeholder="Placeholder" />
+          <Input label="Label" name="label" placeholder="Placeholder" />
+          <Input
+            label="Label"
+            name="label"
+            description="Description"
+            placeholder="Placeholder"
+          />
         </PanelSection>
       </PanelBody>
       <PanelFooter>
