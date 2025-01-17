@@ -86,17 +86,6 @@ const TableExampleCard = () => {
             value={search}
             onChange={(search) => setSearch(search)}
           />
-          <Flex justify="end">
-            <Button
-              size="xs"
-              variant="secondary"
-              type="button"
-              align-self="end"
-              onClick={handleSearchClick}
-            >
-              Button
-            </Button>
-          </Flex>
         </Flex>
 
         <Table
