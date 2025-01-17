@@ -15,8 +15,7 @@ export const PanelExample = ({ actions }) => {
       <PanelBody>
         <PanelSection>
           <Text>
-            When we get all the 0's and 1's line up, a link will show in
-            your&nbsp;
+            When we get all the 0's and 1's line up, a link will show in your{' '}
             <Text
               inline={true}
               format={{ fontWeight: 'bold', lineDecoration: 'underline' }}

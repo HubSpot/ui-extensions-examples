@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Button,
   Text,
@@ -11,26 +11,21 @@ import {
   TableHeader,
   TableRow,
   hubspot,
-} from "@hubspot/ui-extensions";
+} from '@hubspot/ui-extensions';
 import { ModalExample } from './components/ModalExample';
 import { PanelExample } from './components/PanelExample';
 
 // Define the extension to be run within the Hubspot CRM
-hubspot.extend(({ actions }) => (
-  <ButtonsExampleCard
-    actions={actions}
-  />
-));
+hubspot.extend(({ actions }) => <ButtonsExampleCard actions={actions} />);
 
-// Define the Extension component, taking in runServerless, context, & sendAlert as props
 const ButtonsExampleCard = ({ actions }) => {
   return (
     <>
       <Flex direction="column" gap="small">
         <Heading>Buttons within Panels and Modals</Heading>
         <Text>
-          Working with buttons within panels and modals can get tricky
-          Here are some examples that we suggest you to follow.
+          Working with buttons within panels and modals can get tricky. Here are
+          some examples that we suggest you follow.
         </Text>
         <Table bordered={true}>
           <TableHead width="min">
@@ -46,7 +41,8 @@ const ButtonsExampleCard = ({ actions }) => {
               <TableCell>
                 Use this to communicate a short message that needs the complete
                 attention of the user. Buttons should be left aligned with the
-                primary button placed leftmost. A primary button should only be used once on each surface.
+                primary button placed leftmost. A primary button should only be
+                used once on each surface.
               </TableCell>
               <TableCell>
                 <Button
@@ -63,7 +59,9 @@ const ButtonsExampleCard = ({ actions }) => {
               <TableCell>
                 When users need context from the page below, for longer forms
                 and multi-step flows. These pair well with the Table component.
-                Follow the same guidance as recommended above, but in this case, we suggest using buttons in the footer.              </TableCell>
+                Follow the same guidance as recommended above, but in this case,
+                we suggest using buttons in the footer.
+              </TableCell>
               <TableCell>
                 <Button
                   variant="secondary"

@@ -18,8 +18,7 @@ export const ModalExample = ({ actions }) => {
       <ModalBody>
         <Flex direction="column" gap="small">
           <Text>
-            When we get all the 0's and 1's line up, a link will show in
-            your&nbsp;
+            When we get all the 0's and 1's line up, a link will show in your{' '}
             <Text
               inline={true}
               format={{ fontWeight: 'bold', lineDecoration: 'underline' }}
@@ -28,20 +27,20 @@ export const ModalExample = ({ actions }) => {
             </Text>
             . Also, just to be sure, you're gonna get a confirmation email.
           </Text>
-          <Flex direction="row" gap="small">
-            <Button
-              variant="primary"
-              type="submit"
-              onClick={() => actions.closeOverlay('default-modal')}
-            >
-              Create
-            </Button>
-            <Button onClick={() => actions.closeOverlay('default-modal')}>
-              Cancel
-            </Button>
-          </Flex>
         </Flex>
       </ModalBody>
+      <ModalFooter>
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={() => actions.closeOverlay('default-modal')}
+        >
+          Create
+        </Button>
+        <Button onClick={() => actions.closeOverlay('default-modal')}>
+          Cancel
+        </Button>
+      </ModalFooter>
     </Modal>
   );
 };
