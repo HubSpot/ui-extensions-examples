@@ -6,7 +6,6 @@ import {
   TableHeader,
   TableBody,
   TableCell,
-  Button,
   Input,
   Flex,
   Heading,
@@ -53,22 +52,6 @@ const tableData = [
 ];
 
 const TableExampleCard = () => {
-  const [search, setSearch] = useState('');
-  const [data, setData] = useState(tableData);
-  // Search for both name and publish status match, case insensitive
-  const handleSearchClick = () => {
-    const foundSearch = tableData.filter(({ name, publishStatus }) => {
-      const searchLower = search.toLowerCase();
-      const nameMatch = name.toLowerCase().includes(searchLower);
-      const publishStatusMatch = publishStatus
-        .toLowerCase()
-        .includes(searchLower);
-      return nameMatch || publishStatusMatch;
-    });
-
-    setData(foundSearch);
-  };
-
   return (
     <>
       <Flex direction="column" gap="small">
@@ -80,12 +63,7 @@ const TableExampleCard = () => {
         </Text>
 
         <Flex direction="row">
-          <Input
-            name="search"
-            placeholder="Search"
-            value={search}
-            onChange={(search) => setSearch(search)}
-          />
+          <Input name="search" placeholder="Search" />
         </Flex>
 
         <Table
@@ -106,7 +84,7 @@ const TableExampleCard = () => {
           </TableHead>
 
           <TableBody>
-            {data.map(
+            {tableData.map(
               (
                 {
                   name,
