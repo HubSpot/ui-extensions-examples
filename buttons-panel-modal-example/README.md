@@ -1,17 +1,43 @@
-# HubSpot Getting Started Project Template
+# Design Patterns ![](https://badgen.net/badge/-/TypeScript/blue?icon=typescript&label)
 
-This is the Getting Started project for HubSpot developer projects. It contains a private app, a CRM card written in React, and a serverless function that the CRM card is able to interact with. This code is intended to help developers get up and running with developer projects quickly and easily.
+This app includes a number of different **Design Patterns** that showcase how to compose UI components the HubSpot way. These are our recommended best code and design practices to create a smooth, and easy to use end customer experience. Each extension file contains a different pattern that you can copy and paste right into your own project. Feel free to use these as boilerplates.
 
-## Requirements
+[Here’s a link to the Figma Kit](https://developers.hubspot.com/docs/reference/ui-components/figma-design-kit) with Design Pattern assets if you prefer to begin with designs.
 
-There are a few things that must be set up before you can make use of this getting started project.
+## Quick Start
 
-- You must have an active HubSpot account.
-- You must have the [HubSpot CLI](https://www.npmjs.com/package/@hubspot/cli) installed and set up.
-- You must have access to developer projects (developer projects are currently [in public beta under "CRM Development Tools"](https://app.hubspot.com/l/whats-new/betas)).
+### Step 1: Update your CLI and & authenticate your account
 
-## Usage
+1. Update to the latest CLI version by running `npm install -g @hubspot/cli@latest`.
+1. Run `hs init` if you haven’t already done so to create a config file for your parent account.
+1. Run `hs auth` to authenticate your account. Alternatively, select your pre-authenticated account with `hs accounts use`.
 
-The HubSpot CLI enables you to run this project locally so that you may test and iterate quickly. Getting started is simple, just run this HubSpot CLI command in your project directory and follow the prompts:
+### Step 2: Create the project
 
-`hs project dev`
+In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="design-patterns" --name="design-patterns" --template="design-patterns"`
+
+### Step 3: Install dependencies
+
+Now in the CLI, enter into this newly created folder by `cd design-patterns/src/app/extensions`. Run `npm install` to install the dependencies for this project.
+
+### Step 4: Upload project
+
+Run `hs project upload`. If you’d like to build directly from this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
+
+### Step 5: View the cards
+
+In the main menu select `Contacts` > `Contacts` to view contact records. Click on any of the contact objects and navigate to the custom tab to access the sample card. If you don’t have any contacts in the account you’re using to view this sample, create a contact by the following steps:
+
+1. In the main menu, select `Contacts` > `Contacts`.
+2. Click `Create contact` in the top right hand corner and fill in all required fields. Click `create` once you’ve finished filling in your contact details.
+3. Your new contact should appear in the `Contacts table`. Select it and navigate to the `Custom` tab in the middle pane to access the sample card.
+
+If you haven't customized the tabs before follow step #4 from [this guide](https://developers.hubspot.com/docs/platform/ui-extensions-quickstart).
+
+## Examples by Component
+
+### Modal
+- [Modal Example](./src/app/extensions/components/ModalExample.tsx)
+
+### Panel
+- [Panel Example](./src/app/extensions/components/PanelExample.tsx)
