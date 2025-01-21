@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Button Modal Card",
+    "uid": "button_modal_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "ButtonModal.jsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}

@@ -2,10 +2,10 @@
   "type": "crm-card",
   "data": {
     "title": "Button Panel Card",
-    "uid": "panel_example_card",
+    "uid": "button_panel_card",
     "location": "crm.record.tab",
     "module": {
-      "file": "PanelExampleCard.jsx"
+      "file": "ButtonPanel.jsx"
     },
     "objectTypes": [{ "name": "contacts" }]
   }

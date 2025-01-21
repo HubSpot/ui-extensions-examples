@@ -17,10 +17,13 @@
           "file": "extensions/form-multistep.json"
         },
         {
-          "file": "extensions/modal-example-card.json"
+          "file": "extensions/button-modal-card.json"
         },
         {
-          "file": "extensions/panel-example-card.json"
+          "file": "extensions/button-panel-card.json"
+        },
+        {
+          "file": "extensions/table-card.json"
         }
       ]
     }
