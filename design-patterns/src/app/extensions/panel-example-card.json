@@ -1,7 +1,7 @@
 {
   "type": "crm-card",
   "data": {
-    "title": "Panel Example Card",
+    "title": "Button Panel Card",
     "uid": "panel_example_card",
     "location": "crm.record.tab",
     "module": {

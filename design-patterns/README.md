@@ -46,3 +46,9 @@ If you haven't customized the tabs before follow step #4 from [this guide](https
 
 ### Panel
 - [Multistep Form](./src/app/extensions/FormMultistep.tsx)
+
+### Button Modal
+- [Modal Example](./src/app/extensions/components/ModalExample.tsx)
+
+### Button Panel
+- [Panel Example](./src/app/extensions/components/PanelExample.tsx)

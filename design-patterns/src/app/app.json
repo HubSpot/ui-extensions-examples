@@ -15,6 +15,12 @@
         },
         {
           "file": "extensions/form-multistep.json"
+        },
+        {
+          "file": "extensions/modal-example-card.json"
+        },
+        {
+          "file": "extensions/panel-example-card.json"
         }
       ]
     }

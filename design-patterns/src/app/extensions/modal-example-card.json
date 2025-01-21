@@ -1,7 +1,7 @@
 {
   "type": "crm-card",
   "data": {
-    "title": "Modal Example Card",
+    "title": "Button Modal Card",
     "uid": "modal_example_card",
     "location": "crm.record.tab",
     "module": {
