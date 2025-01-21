@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Modal Example Card",
+    "uid": "modal_example_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "ModalExampleCard.jsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}

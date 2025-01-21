@@ -1,5 +1,5 @@
 {
-  "name": "Buttons Panel and Modal Example Card",
+  "name": "Buttons Example Card",
   "description": "This app demonstrates how to use buttons in panels and modals",
   "uid": "buttons_panel_modal_example_card",
   "scopes": ["crm.objects.contacts.read", "crm.objects.contacts.write"],
@@ -8,7 +8,10 @@
     "crm": {
       "cards": [
         {
-          "file": "extensions/buttons-example-card.json"
+          "file": "extensions/modal-example-card.json"
+        },
+        {
+          "file": "extensions/panel-example-card.json"
         }
       ]
     }
