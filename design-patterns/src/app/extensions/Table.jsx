@@ -10,6 +10,7 @@ import {
   Flex,
   Heading,
   Text,
+  StatusTag,
   hubspot,
 } from '@hubspot/ui-extensions';
 
@@ -90,7 +91,26 @@ const TableExampleCard = () => {
             ) => (
               <TableRow key={index}>
                 <TableCell width="min">{name}</TableCell>
-                <TableCell width="min">{publishStatus}</TableCell>
+                <TableCell width="min">
+                  {['Published', 'Draft'].some((status) =>
+                    publishStatus.includes(status)
+                  ) ? (
+                    <>
+                      {publishStatus.includes('Published') && (
+                        <StatusTag variant="success">Published</StatusTag>
+                      )}
+                      {publishStatus.includes('Published') &&
+                        publishStatus.includes('Draft') &&
+                        '|'}
+                      {publishStatus.includes('Draft') && (
+                        <StatusTag>Draft</StatusTag>
+                      )}
+                    </>
+                  ) : (
+                    publishStatus
+                  )}
+                </TableCell>
+
                 <TableCell width="min">{review}</TableCell>
                 <TableCell width="min">{installs}</TableCell>
                 <TableCell width="min">{lastUpdated}</TableCell>
