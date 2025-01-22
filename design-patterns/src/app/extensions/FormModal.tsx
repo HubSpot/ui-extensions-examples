@@ -48,13 +48,9 @@ const FormModal = ({ actions }) => {
             >
               <ModalBody>
                 <Text>
-                  When we got all the 0's and 1's lined up, a link will show up
-                  in your{' '}
-                  <Link href="https://knowledge.hubspot.com/user-management/how-to-set-up-user-notifications-in-hubspot">
-                    Notification Center
-                  </Link>
-                  . Also, just to be sure, you're gonna get a confirmation
-                  email.
+                  This is our HubSpot pattern for a Form in Modal. Note how the
+                  Primary Button always appears to the left of the Secondary
+                  Button. Both buttons should be left aligned to the Modal.
                 </Text>
                 {
                   // Display a success message when the form is submitted.
