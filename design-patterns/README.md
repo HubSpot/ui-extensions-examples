@@ -36,6 +36,12 @@ If you haven't customized the tabs before follow step #4 from [this guide](https
 
 ## Examples by Component
 
+### Button Modal
+- [Modal Example](./src/app/extensions/components/ModalExample.tsx)
+
+### Button Panel
+- [Panel Example](./src/app/extensions/components/PanelExample.tsx)
+
 ### Form
 - [Form Action Patterns](./src/app/extensions/FormActionPatterns.tsx)
 - [Modal Form](./src/app/extensions/FormModal.tsx)
@@ -46,3 +52,6 @@ If you haven't customized the tabs before follow step #4 from [this guide](https
 
 ### Panel
 - [Multistep Form](./src/app/extensions/FormMultistep.tsx)
+
+### Table
+- [Table Example](./src/app/extensions/TableExampleCard.jsx)
