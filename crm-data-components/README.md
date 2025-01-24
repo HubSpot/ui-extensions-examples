@@ -18,18 +18,21 @@ These extensions demonstrate a number of interactions including:
 ## Quick Start
 
 ### Step 1: Update your CLI and & authenticate your account
+
 1. Update to latest CLI version by running `npm install -g @hubspot/cli@latest`.
 2. Run `hs init` if you haven’t already done so to create a config file for your parent account.
 3. Run `hs auth` to authenticate your account. Alternatively, select your pre-authenticated account with `hs accounts use`.
 
 ### Step 2: Create the project
 
-In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="crm-data-components" --name="crm-data-components" --template="crm-data-components"`
+In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="crm-data-components" --name="crm-data-components" --template="crm-data-components"`
 
 ### Step 3: Install dependencies
+
 Now in the CLI, `cd` into your project directory such as `cd crm-data-components`. You will need to run `npm install` in both the `/src/app/extensions` and `/src/app/app.functions` directories to install the dependencies for this project.
 
 ### Step 4: Upload project
+
 Run `hs project upload`. If you’d like to build on this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
 
 ### Step 5: View the cards

@@ -4,7 +4,6 @@ This sample is designed to help you with opening a popup iframe modal from insid
 
 ![display-an-iframe-modal-example](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/a15126c3-3c70-4783-8e5b-774d9d8826ff)
 
-
 ## Quick Start
 
 ### Step 1: Update your CLI and & authenticate your account
@@ -15,7 +14,7 @@ This sample is designed to help you with opening a popup iframe modal from insid
 
 ### Step 2: Create the project
 
-In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="display-iframe-modal" --name="display-iframe-modal" --template="display-iframe-modal"`
+In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="display-iframe-modal" --name="display-iframe-modal" --template="display-iframe-modal"`
 
 ### Step 3: Install dependencies
 
