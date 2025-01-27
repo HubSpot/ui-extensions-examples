@@ -3,10 +3,10 @@
 This is an app that demonstrates the main features of the custom logger.
 
 1. Multiple logging levels
-    - `info`
-    - `debug`
-    - `warn`
-    - `error`
+   - `info`
+   - `debug`
+   - `warn`
+   - `error`
 1. Built-in logging for serverless requests
 1. Local development niceties like logging to the console
 1. Using Trace IDs to investigate extension failures
@@ -15,7 +15,7 @@ For documentation about the custom logger itself, please visit https://developer
 
 ## Create the project
 
-Enter into the folder where you want to create this sample project. In place of `hs project create` you can optionally create a project based directly on this sample using `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="custom-logger-example" --name="custom-logger-example" --template="custom-logger-example"`.
+Enter into the folder where you want to create this sample project. In place of `hs project create` you can optionally create a project based directly on this sample using `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="custom-logger-example" --name="custom-logger-example" --template="custom-logger-example"`.
 
 ## Testing when deployed
 

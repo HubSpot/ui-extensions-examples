@@ -4,8 +4,6 @@ The Build a multi-step flow sample allows a HubSpot user to send a meal from a l
 
 ![ui-extension-sample-multi-step-flow-with-panel](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/1b5b00dc-7c21-4b76-931e-0fd2bed18fd5)
 
-
-
 This sample demonstrates a number of interactions that are enabled by React extensions.
 
 - realtime form validation
@@ -27,7 +25,7 @@ This sample demonstrates a number of interactions that are enabled by React exte
 
 ### Step 2: Create the project
 
-In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="multi-step-flow" --name="multi-step-flow" --template="multi-step-flow"`
+In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="multi-step-flow" --name="multi-step-flow" --template="multi-step-flow"`
 
 ### Step 3: Install dependencies
 

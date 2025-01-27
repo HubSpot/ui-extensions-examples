@@ -22,12 +22,11 @@ This card contains:
 
 ### Step 2: Create Charts example project
 
-In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="charts-example" --name="charts-example" --template="charts-example"`
+In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="charts-example" --name="charts-example" --template="charts-example"`
 
 ### Step 3: Install dependencies
 
 Now in the CLI, enter into this newly created folder by `cd charts-example`. Run `npm install` to install the dependencies for this project.
-
 
 ### Step 4: Upload project
 

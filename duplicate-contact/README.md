@@ -20,7 +20,7 @@ This extension demonstrates a number of interactions that are enabled by React e
 
 ### Step 2: Create the project
 
-In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="duplicate-contact" --name="duplicate-contact" --template="duplicate-contact"`
+In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="duplicate-contact" --name="duplicate-contact" --template="duplicate-contact"`
 
 ### Step 3: Install dependencies
 

@@ -1,7 +1,7 @@
 # View nearby companies: Mapbox API sample ![](https://badgen.net/badge/JS/JavaScript/blue)
+
 ![Search Nearby companies card](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/9b1f79a1-7378-48ae-a973-3574f9174bea)
 ![Companies nearby card](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/d9e1ea3f-1cd1-4503-8a75-03a484fb730a)
-
 
 This example uses a fictitious IT services company. Company proximity information appears in the custom middle pane tab of a company record. It contains two CRM cards that help salespeople identify companies they might want to plan to visit along with a trip to the company they’re currently viewing.
 
@@ -17,7 +17,7 @@ We recommend installing this sample in a Sandbox account.
 
 ## Step 2: Create the project
 
-In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="mapbox-api" --name="mapbox-api" --template="mapbox-api"`
+In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="mapbox-api" --name="mapbox-api" --template="mapbox-api"`
 
 ## Step 3: Provide access token to access Mapbox API
 

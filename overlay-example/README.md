@@ -4,7 +4,6 @@ This sample is designed to show overlays by using `<Panel>` and `<Modal>` compon
 
 ![overlay 2](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/9dc908f0-f13c-4725-b97c-b133524c683d)
 
-
 ## Quick Start
 
 ### Step 1: Update your CLI and & authenticate your account
@@ -15,7 +14,7 @@ This sample is designed to show overlays by using `<Panel>` and `<Modal>` compon
 
 ### Step 2: Create Overlay example project
 
-In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --location="overlay-example" --name="overlay-example" --template="overlay-example"`
+In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="overlay-example" --name="overlay-example" --template="overlay-example"`
 
 ### Step 3: Install dependencies
 
