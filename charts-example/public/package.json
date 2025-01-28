@@ -1,0 +1,9 @@
+{
+  "name": "charts",
+  "version": "0.1.0",
+  "scripts": {
+    "postinstall": "cd ./src/app/extensions/ && npm install"
+  },
+  "author": "HubSpot",
+  "license": "MIT"
+}

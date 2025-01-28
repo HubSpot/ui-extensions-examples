@@ -1,0 +1,16 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Charts example card",
+    "uid": "charts-example-card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "ChartsExampleCard.tsx"
+    },
+    "objectTypes": [
+      {
+        "name": "contacts"
+      }
+    ]
+  }
+}

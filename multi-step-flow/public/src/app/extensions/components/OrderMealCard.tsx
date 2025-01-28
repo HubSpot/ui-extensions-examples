@@ -1,0 +1,155 @@
+import React, { useCallback, useEffect, useState } from 'react';
+import {
+  Divider,
+  LoadingSpinner,
+  ErrorState,
+  Text,
+  Button,
+  Flex,
+  hubspot,
+} from '@hubspot/ui-extensions';
+import { Cart } from './Cart';
+import type { CartItem, OrderMealProps, Restaurant } from '../types';
+import { RestaurantsSearch } from './RestaurantsSearch';
+import { Checkout } from './Checkout';
+
+const RESTAURANTS_SOURCE_URL =
+  'https://run.mocky.io/v3/b8d16309-98b2-4a16-9724-46e8821395b5';
+
+export const OrderMealCard = ({
+  fetchCrmObjectProperties,
+  context,
+  runServerless,
+  sendAlert,
+}: OrderMealProps) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [cart, updateCart] = useState<Array<CartItem>>([]);
+  const [restaurants, setRestaurants] = useState<Array<Restaurant>>([]);
+  const [selected, setSelected] = useState<number>();
+  const [contactName, setContactName] = useState('');
+
+  // Make a memoized fetch function that handles error and loading state
+  // Reusable for both initial card load and retry in case of error
+  const getRestaurants = useCallback(() => {
+    setLoading(true);
+    setError(false);
+    // Fetch a list of restaurants and their menus from our serverless function
+    hubspot
+      .fetch(RESTAURANTS_SOURCE_URL)
+      .then((response) => {
+        response.json().then((data) => {
+          // Make sure the response is the shape we expect (array of Restaurants)
+          if (Array.isArray(data)) {
+            const restaurants = data.map((restaurant: unknown) => {
+              if (
+                typeof restaurant !== 'object' ||
+                Array.isArray(restaurant) ||
+                restaurant === null
+              ) {
+                throw new TypeError('Object is not a Restaurant');
+              }
+
+              return restaurant as Restaurant;
+            });
+
+            setRestaurants(restaurants);
+            return;
+          }
+
+          throw new Error('Response is not an array.');
+        });
+      })
+      .catch((error) => {
+        console.error(error.message);
+        setError(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [runServerless]);
+
+  useEffect(() => {
+    getRestaurants();
+    fetchCrmObjectProperties(['firstname']).then(({ firstname }) => {
+      setContactName(firstname);
+    });
+  }, []);
+
+  const clearSelection = useCallback(() => setSelected(undefined), []);
+
+  const handleAddClick = useCallback((item: CartItem) => {
+    updateCart((items: Array<CartItem>) => [...items, item]);
+    clearSelection();
+  }, []);
+
+  const handleRemoveClick = useCallback((id: number) => {
+    updateCart((items: Array<CartItem>) =>
+      items.filter((item) => item.id !== id),
+    );
+  }, []);
+
+  const handleCheckoutClick = useCallback(
+    (message: string) => {
+      sendAlert({
+        type: 'success',
+        message: `Nicely done! The meal is on its way to ${contactName} with the message: "${message}"`,
+      });
+      updateCart([]);
+      clearSelection();
+    },
+    [contactName],
+  );
+
+  if (error) {
+    return (
+      <ErrorState title="Unable to fetch restaurants">
+        <Text>Please wait a moment and try again.</Text>
+        <Button onClick={getRestaurants}>Retry</Button>
+      </ErrorState>
+    );
+  }
+
+  if (loading) {
+    return (
+      <LoadingSpinner layout="centered" label="Loading..." showLabel={true} />
+    );
+  }
+
+  // Small utility function for help below
+  const getRestaurant = (id?: number) => {
+    return restaurants.find((r) => r.id === id);
+  };
+
+  const uniqueRestaurants = new Set(cart.map((item) => item.restaurantId));
+  const totalDeliveryCost = [...uniqueRestaurants].reduce((total, id) => {
+    return total + (getRestaurant(id)?.deliveryCost ?? 0);
+  }, 0);
+
+  const selectedRestaurant = getRestaurant(selected);
+  const subtotal = cart.reduce((total, item) => total + item.price, 0);
+
+  return (
+    <Flex direction="column" gap="md">
+      <Text variant="microcopy">
+        This example shows you how many components work together to build a
+        multi-step flow. This card lets you send a meal from a local restaurant
+        to one of your contacts.
+      </Text>
+      <RestaurantsSearch
+        contactName={contactName}
+        restaurants={restaurants}
+        onAddToCartClick={handleAddClick}
+      />
+      <Divider />
+      <Cart cart={cart} onRemoveClick={handleRemoveClick} />
+      {cart.length > 0 && (
+        <Checkout
+          subtotal={subtotal}
+          deliveryCost={totalDeliveryCost}
+          onCheckoutClick={handleCheckoutClick}
+        />
+      )}
+    </Flex>
+  );
+};
