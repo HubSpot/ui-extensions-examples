@@ -1,0 +1,21 @@
+{
+  "name": "Multi-step flow public app example",
+  "description": "Build a multi-step flow",
+  "uid": "multi_step_flow_public_app_example",
+  "allowedUrls": ["https://run.mocky.io"],
+  "auth": {
+    "redirectUrls": ["http://localhost:3000/oauth-callback"],
+    "requiredScopes": ["crm.objects.contacts.read"],
+    "optionalScopes": [],
+    "conditionallyRequiredScopes": []
+  },
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/multi-step-flow-example-card.json"
+        }
+      ]
+    }
+  }
+}

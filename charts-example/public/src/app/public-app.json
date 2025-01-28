@@ -1,0 +1,21 @@
+{
+  "name": "Charts example",
+  "uid": "charts",
+  "description": "An example to demonstrate how to build a public app with developer projects.",
+  "allowedUrls": ["https://api.hubapi.com"],
+  "auth": {
+    "redirectUrls": ["http://localhost:3000/oauth-callback"],
+    "requiredScopes": ["crm.objects.contacts.read"],
+    "optionalScopes": [],
+    "conditionallyRequiredScopes": []
+  },
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "./extensions/charts-example-card.json"
+        }
+      ]
+    }
+  }
+}
