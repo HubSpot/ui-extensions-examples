@@ -1,4 +1,4 @@
-## Running charts example against public app
+## Run charts example with a public app
 
 ### 1. Install dependencies
 

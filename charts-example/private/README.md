@@ -1,4 +1,4 @@
-# Running charts example against private app
+# Run charts example with a private app
 
 ### 1. Install dependencies
 
