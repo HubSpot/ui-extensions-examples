@@ -24,22 +24,19 @@ This card contains:
 
 In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="charts-example" --name="charts-example" --template="charts-example"`
 
-### Step 3: Install dependencies
+### Step 3: Upload the project
 
-Now in the CLI, enter into this newly created folder by `cd charts-example`. Run `npm install` to install the dependencies for this project.
+Follow app specific instructions:
 
-### Step 4: Upload project
+- [Public app](./public/README.md)
+- [Private app](./private/README.md)
 
-Run `hs project upload`. Alternatively, if you’d like to build on this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
+### Step 4: View the cards in the dev test account
 
-### Step 5: View the cards
-
-In the main menu, select `Contacts` > `Contacts` to view contact records. Click on any of the contact objects and navigate to the custom tab to access the sample card. If you don’t have any contacts in the account you’re using to view this sample, create a contact by the following steps:
+In the main menu of your dev test account, select `Contacts` > `Contacts` to view contact records. Click on any of the contact objects and navigate to the custom tab to access the sample card. If you don’t have any contacts in the account you’re using to view this sample, create a contact by the following steps:
 
 1. In the main menu, select `Contacts` > `Contacts`.
 2. Click `Create contact` in the top right hand corner and fill in all required fields. Click `create` once you’ve finished filling in your contact details.
 3. Your new contact should appear in the `Contacts table`. Select it and navigate to the `Custom` tab in the middle pane to access the sample card.
 
 If you haven't customized the tabs before follow step #4 from [this guide](https://developers.hubspot.com/docs/platform/ui-extensions-quickstart).
-
-## Key Components
