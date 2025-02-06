@@ -24,7 +24,6 @@ const tableData = [
     publishStatus: 'Published',
     review: '-',
     installs: '-',
-    lastUpdated: 'March 8, 2019 (Amelia Merchant)',
     createdAt: 'March 8, 2019 (Amelia Merchant)',
   },
   {
@@ -32,7 +31,6 @@ const tableData = [
     publishStatus: 'Draft',
     review: '41',
     installs: '41',
-    lastUpdated: 'March 8, 2019 (Amelia Merchant)',
     createdAt: 'March 8, 2019 (Amelia Merchant)',
   },
   {
@@ -40,7 +38,6 @@ const tableData = [
     publishStatus: 'Published | Draft',
     review: '136',
     installs: '136',
-    lastUpdated: 'March 8, 2019 (Amelia Merchant)',
     createdAt: 'March 8, 2019 (Amelia Merchant)',
   },
   {
@@ -48,7 +45,6 @@ const tableData = [
     publishStatus: 'Published',
     review: '136',
     installs: '136',
-    lastUpdated: 'March 8, 2019 (Amelia Merchant)',
     createdAt: 'March 8, 2019 (Amelia Merchant)',
   },
 ];
@@ -76,12 +72,11 @@ const TableExampleCard = () => {
         <TableHead width="min">
           <TableRow>
             <TableHeader width="min">Name</TableHeader>
-            <TableHeader width="min">Review</TableHeader>
             <TableHeader width="min">Publish Status</TableHeader>
             <TableHeader width="min">Installs</TableHeader>
             <TableHeader width="min">Last Updated</TableHeader>
-            <TableHeader width="min">Created At</TableHeader>
             <TableHeader width="min">Actions</TableHeader>
+            <TableHeader width="min">Created At</TableHeader>
           </TableRow>
         </TableHead>
 
@@ -93,11 +88,6 @@ const TableExampleCard = () => {
             ) => (
               <TableRow key={index}>
                 <TableCell width="min">{name}</TableCell>
-                <TableCell width="min">
-                  <Button variant="secondary" size="sm">
-                    Action
-                  </Button>
-                </TableCell>
                 <TableCell width="min">
                   {['Published', 'Draft'].some((status) =>
                     publishStatus.includes(status)
@@ -119,7 +109,11 @@ const TableExampleCard = () => {
                 </TableCell>
                 <TableCell width="min">{review}</TableCell>
                 <TableCell width="min">{installs}</TableCell>
-                <TableCell width="min">{lastUpdated}</TableCell>
+                <TableCell width="min">
+                  <Button variant="secondary" size="sm">
+                    Action
+                  </Button>
+                </TableCell>
                 <TableCell width="min">{createdAt}</TableCell>
               </TableRow>
             )
