@@ -6,7 +6,7 @@ Make sure you've followed instructions [here](https://github.com/HubSpot/ui-exte
 
 ### 2. Create Charts example project
 
-In the folder where you want this sample to be cloned, create a new project by running hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="charts-example-private" --name="charts-example-private" --template="charts-example-private"
+In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="charts-example-private" --name="charts-example-private" --template="charts-example-private"`
 
 ### 3. Install dependencies
 
