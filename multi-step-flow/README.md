@@ -23,14 +23,12 @@ This sample demonstrates a number of interactions that are enabled by React exte
 1. Run `hs init` if you haven’t already done so to create a config file for your parent account.
 1. Run `hs auth` to authenticate your developer account. Alternatively, select your pre-authenticated account with `hs accounts use`.
 
-### Step 2: Upload project to your developer account
+### Step 2: Create and upload multi-step flow example project
 
-Run `hs project upload`. Open your developer account and see the app installed in the 'App' section. Under the Basic info -> Auth you will find the App ID, Client ID and scopes
+Follow app specific instructions:
 
-### Step 3: Install the app to your test account
-
-To get started, you can use our sample OAuth Nodejs [example](https://github.com/hubspot/oauth-quickstart-nodejs). 
-Configure the quickstart app's `.env` with the info from the app's settings pagen (App ID, Client ID and scopes), then run it locally. It is already set up to work with http://localhost:3000/oauth-callback as the redirect URL. Install the app into your developer test account
+- [Public app](./public/README.md)
+- [Private app](./private/README.md)
 
 ### Step 3: View the cards in the dev test account
 
