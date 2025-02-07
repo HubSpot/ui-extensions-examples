@@ -6,7 +6,7 @@ Make sure you've followed instructions [here](https://github.com/HubSpot/ui-exte
 
 ### 2. Create Charts example project
 
-In the folder where you want this sample to be cloned, create a new project by running hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="multi-step-flow-private" --name="multi-step-flow-private" --template="multi-step-flow-private"
+In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="multi-step-flow-private" --name="multi-step-flow-private" --template="multi-step-flow-private"`
 
 ### 3. Install dependencies
 
