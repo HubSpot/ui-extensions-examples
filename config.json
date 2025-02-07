@@ -19,11 +19,18 @@
       "insertPath": null
     },
     {
-      "name": "multi-step-flow",
-      "label": "Build a multi-step flow",
-      "path": "multi-step-flow",
+      "name": "multi-step-flow-private",
+      "label": "Build a multi-step flow with private app",
+      "path": "multi-step-flow/private",
       "insertPath": null
     },
+    {
+      "name": "multi-step-flow-public",
+      "label": "Build a multi-step flow with public app",
+      "path": "multi-step-flow/public",
+      "insertPath": null
+    },
+
     {
       "name": "flex-and-box",
       "label": "Flex and Box",
@@ -67,9 +74,15 @@
       "insertPath": null
     },
     {
-      "name": "charts-example",
-      "label": "Charts Example",
-      "path": "charts-example",
+      "name": "charts-example-private",
+      "label": "Charts Example with private app",
+      "path": "charts-example/private",
+      "insertPath": null
+    },
+    {
+      "name": "charts-example-public",
+      "label": "Charts Example with public app",
+      "path": "charts-example/public",
       "insertPath": null
     }
   ]
