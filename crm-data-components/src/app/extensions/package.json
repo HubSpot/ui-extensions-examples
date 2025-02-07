@@ -14,8 +14,5 @@
   "dependencies": {
     "@hubspot/ui-extensions": "latest",
     "react": "^18.2.0"
-  },
-  "devDependencies": {
-    "@hubspot/ui-extensions-dev-server": "latest"
   }
 }
