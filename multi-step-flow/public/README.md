@@ -6,7 +6,7 @@ Make sure you've followed instructions [here](https://github.com/HubSpot/ui-exte
 
 ### 2. Create multi-step flow example project
 
-In the folder where you want this sample to be cloned, create a new project by running hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="multi-step-flow-public" --name="multi-step-flow-public" --template="multi-step-flow-pubilc"
+In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="multi-step-flow-public" --name="multi-step-flow-public" --template="multi-step-flow-pubilc"`
 
 ### 3. Install dependencies
 
