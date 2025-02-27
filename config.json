@@ -84,6 +84,12 @@
       "label": "Charts Example with public app",
       "path": "charts-example/public",
       "insertPath": null
+    },
+    {
+      "name": "design-patterns",
+      "label": "Design Patterns",
+      "path": "design-patterns",
+      "insertPath": null
     }
   ]
 }
