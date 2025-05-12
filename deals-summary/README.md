@@ -8,7 +8,7 @@ We recommend installing this sample in a Sandbox account.
 
 ## Update your CLI and & authenticate your account
 
-[Full local environment documentation](https://app.hubspot.com/l/docs/doc/platform/developer-projects-setup#set-up-your-local-environment)
+[Full local environment documentation](https://developers.hubspot.com/docs/guides/crm/setup)
 
 ## Quick Start
 
@@ -46,7 +46,7 @@ Run `hs project upload`. If you’d like to build on this project, run `hs proje
 
 ## Setup local dev
 
-[Full Local dev documentation](https://app.hubspot.com/l/docs/doc/platform/ui-extensions-quickstart#3.-start-local-development) | [Full Secrets documentation](https://app.hubspot.com/l/docs/doc/platform/create-ui-extensions#managing-secrets)
+[Full Local dev documentation](https://developers.hubspot.com/docs/guides/crm/private-apps/quickstart#3.-start-local-development) | [Full Secrets documentation](https://developers.hubspot.com/docs/guides/crm/private-apps/serverless-functions#managing-secrets)
 
 - Run npm install to install dependencies for this project.
 - Create a file named `.env` inside the app.functions folder (inside `src/app`)
