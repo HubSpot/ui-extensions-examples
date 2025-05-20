@@ -2,8 +2,8 @@
 
 This React Project demonstrates how to implement a paginated table that loads data retrieved from an API and displays it.
 
-![full-table]()
-![loading-state]()
+![full-table](https://github.com/user-attachments/assets/5eca2a94-6473-4299-8370-0b2066f5d08f)
+![loading-state](https://github.com/user-attachments/assets/0aa8d9f2-11b7-493c-afd6-38579ad8a1d5)
 
 ## Quick Start
 
