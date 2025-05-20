@@ -1,0 +1,27 @@
+{
+  "name": "Data Table Example",
+  "uid": "data-table-example",
+  "description": "An example to demonstrate data table extensions",
+  "allowedUrls": ["https://api.artic.edu"],
+  "auth": {
+    "redirectUrls": ["http://localhost:3000/oauth-callback"],
+    "requiredScopes": ["crm.objects.contacts.read", "crm.objects.contacts.write"],
+    "optionalScopes": [],
+    "conditionallyRequiredScopes": []
+  },
+  "support": {
+    "supportEmail": "support@example.com",
+    "documentationUrl": "https://example.com/docs",
+    "supportUrl": "https://example.com/support",
+    "supportPhone": "+18005555555"
+  },
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "./extensions/data-table.json"
+        }
+      ]
+    }
+  }
+}
