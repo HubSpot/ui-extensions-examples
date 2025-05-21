@@ -90,6 +90,12 @@
       "label": "Design Patterns",
       "path": "design-patterns",
       "insertPath": null
+    },
+    {
+      "name": "data-table",
+      "label": "Data Table",
+      "path": "data-table",
+      "insertPath": null
     }
   ]
 }
