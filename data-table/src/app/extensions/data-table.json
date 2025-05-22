@@ -1,0 +1,16 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Data Table Example",
+    "uid": "data-table-example",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "DataTable.tsx"
+    },
+    "objectTypes":[
+      {
+        "name": "contacts"
+      }
+    ]
+  }
+}
