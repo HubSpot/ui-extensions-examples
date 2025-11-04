@@ -1,0 +1,8 @@
+{
+  "uid": "page-example-2025-2-project",
+  "type": "page",
+  "config": {
+    "entrypoint": "/app/pages/Home.tsx",
+    "location": "home"
+  }
+}

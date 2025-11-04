@@ -1,0 +1,7 @@
+{
+  "uid": "settings-example-2025-2-project",
+  "type": "settings",
+  "config": {
+    "entrypoint": "/app/settings/SettingsPage.tsx"
+  }
+}

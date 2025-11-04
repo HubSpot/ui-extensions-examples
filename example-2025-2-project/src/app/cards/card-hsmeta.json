@@ -1,0 +1,12 @@
+{
+  "uid": "card-example-2025-2-project",
+  "type": "card",
+  "config": {
+    "name": "New Card",
+    "location": "crm.record.tab",
+    "entrypoint": "/app/cards/NewCard.tsx",
+    "objectTypes": [
+      "contacts"
+    ]
+  }
+}
