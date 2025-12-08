@@ -1,7 +1,7 @@
 {
   "title": "Example Card",
   "fetch": {
-    "targetUrl": "https://raw.githubusercontent.com/HubSpot/ui-extensions-examples/refs/heads/main/legacy-crm-card-example/example-response/example-response.json",
+    "targetUrl": "https://raw.githubusercontent.com/HubSpot/ui-extensions-examples/refs/heads/legacy-crm-card-converter/legacy-card-converter/example-response/example-response.json",
     "objectTypes": [
       {
         "name": "contacts",

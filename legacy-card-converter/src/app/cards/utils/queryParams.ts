@@ -1,4 +1,4 @@
-import { CrmContext } from '@hubspot/ui-extensions';
+import type { CrmContext } from '@hubspot/ui-extensions';
 
 export const OBJECT_TYPE_ID_TO_NAME_FOR_QUERY_PARAMETERS: Record<
   string,

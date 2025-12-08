@@ -4,7 +4,7 @@ import type {
   DefinitionProperty,
   StatusPropertyOption,
 } from '../types/definition';
-import { PropertiesToSend } from '../types/definition/DefinitionObjectType';
+import type { PropertiesToSend } from '../types/definition/DefinitionObjectType';
 import { validateDefinition } from './validateDefinition';
 
 function getPropertiesToSend(

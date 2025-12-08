@@ -24,7 +24,7 @@ This Legacy CRM Card Converter provides a [UI extension card](https://developers
 Before you begin, ensure you have:
 
 * Installed the latest version of the [HubSpot CLI](https://developers.hubspot.com/docs/developer-tooling/local-development/hubspot-cli/install-the-cli) (version `7.9.0` or later)
-* An existing Legacy Crm Card that you want to migrate
+* An existing [Legacy Crm Card](https://developers.hubspot.com/docs/api-reference/crm-public-app-crm-cards-v3/guide) that you want to migrate
 * [Migrated the app with the Legacy Crm Card to the projects platform](https://developers.hubspot.com/docs/apps/developer-platform/build-apps/migrate-an-app/migrate-an-existing-public-app).
 
 ## Getting started
@@ -34,8 +34,8 @@ Before you begin, ensure you have:
 Clone this repository to your local machine:
 
 ```shell
-git clone <repository-url>
-cd LegacyCardConverter
+git clone git@github.com:HubSpot/ui-extensions-examples.git
+cd ui-extensions-examples/legacy-card-converter/
 ```
 
 ### Step 2: Get your legacy CRM card definition
