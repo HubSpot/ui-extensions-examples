@@ -1,0 +1,110 @@
+{
+  "title": "Example Card",
+  "fetch": {
+    "targetUrl": "https://raw.githubusercontent.com/HubSpot/ui-extensions-examples/refs/heads/main/legacy-crm-card-example/example-response/example-response.json",
+    "objectTypes": [
+      {
+        "name": "contacts",
+        "propertiesToSend": ["firstname", "lastname", "email"]
+      },
+      {
+        "name": "tickets",
+        "propertiesToSend": ["subject", "status", "priority"]
+      }
+    ]
+  },
+  "display": {
+    "properties": [
+      {
+        "name": "created",
+        "label": "Created At",
+        "dataType": "DATE",
+        "options": []
+      },
+      {
+        "name": "priority",
+        "label": "Priority",
+        "dataType": "STATUS",
+        "options": [
+          {
+            "name": "HIGH",
+            "label": "High",
+            "type": "DANGER"
+          }
+        ]
+      },
+      {
+        "name": "project",
+        "label": "Project",
+        "dataType": "STRING",
+        "options": []
+      },
+      {
+        "name": "reported_by",
+        "label": "Reported By",
+        "dataType": "EMAIL",
+        "options": []
+      },
+      {
+        "name": "description",
+        "label": "Description",
+        "dataType": "STRING",
+        "options": []
+      },
+      {
+        "name": "reporter_type",
+        "label": "Reported Type",
+        "dataType": "STRING",
+        "options": []
+      },
+      {
+        "name": "status",
+        "label": "Status",
+        "dataType": "STATUS",
+        "options": [
+          {
+            "name": "In Progress",
+            "label": "In Progress",
+            "type": "WARNING"
+          }
+        ]
+      },
+      {
+        "name": "ticket_type",
+        "label": "Ticket Type",
+        "dataType": "STRING",
+        "options": []
+      },
+      {
+        "name": "updated",
+        "label": "Last Updated",
+        "dataType": "DATE",
+        "options": []
+      }
+    ]
+  },
+  "actions": {
+    "baseUrls": ["https://example.com/", "https://raw.githubusercontent.com"]
+  },
+  "id": "1025272",
+  "createdAt": "2025-08-15T20:13:11.690Z",
+  "updatedAt": "2025-09-12T13:51:40.501Z",
+  "auditHistory": [
+    {
+      "objectTypeId": 1025272,
+      "applicationId": 3160326,
+      "authSource": "EXTERNAL",
+      "actionType": "CREATE",
+      "initiatingUserId": 0,
+      "changedAt": 1755288791690
+    },
+    {
+      "objectTypeId": 1025272,
+      "applicationId": 3160326,
+      "authSource": "APP",
+      "actionType": "UPDATE",
+      "initiatingUserId": 12345678,
+      "changedAt": 1757685100501
+    }
+  ]
+}

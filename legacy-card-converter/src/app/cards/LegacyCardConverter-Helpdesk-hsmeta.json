@@ -1,0 +1,10 @@
+{
+  "uid": "legacy-card-converter-card-helpdesk",
+  "type": "card",
+  "config": {
+    "name": "CARD TITLE - Helpdesk",
+    "location": "helpdesk.sidebar",
+    "entrypoint": "/app/cards/Converter.tsx",
+    "objectTypes": ["tickets"]
+  }
+}

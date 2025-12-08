@@ -1,0 +1,10 @@
+{
+  "uid": "legacy-card-converter-card",
+  "type": "card",
+  "config": {
+    "name": "CARD TITLE",
+    "location": "crm.record.sidebar",
+    "entrypoint": "/app/cards/Converter.tsx",
+    "objectTypes": ["contacts", "companies", "deals", "tickets"]
+  }
+}
