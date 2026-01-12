@@ -62,6 +62,10 @@ function ReferralBuilderCard({ context, actions }: any) {
 
   const [referrals, setReferrals] = useState<ReferralRow[]>([]);
 
+  // Deal context - companyId is fetched from the deal's associations
+  const [dealCompanyId, setDealCompanyId] = useState<string | null>(null);
+  const [dealContextLoaded, setDealContextLoaded] = useState(false);
+
   const [companyQuery, setCompanyQuery] = useState("");
   const [companyOptions, setCompanyOptions] = useState<Option[]>([]);
   const [selectedCompanyId, setSelectedCompanyId] = useState<string>("");
@@ -74,13 +78,18 @@ function ReferralBuilderCard({ context, actions }: any) {
 
   const [note, setNote] = useState("");
 
+  // New referral form fields for referral_status and client_interest
+  const [newReferralStatus, setNewReferralStatus] = useState<string>("");
+  const [newClientInterest, setNewClientInterest] = useState<string>("");
+
   const [outreachOptions, setOutreachOptions] = useState<Option[]>(DEFAULT_OUTREACH_OPTIONS);
   const [interestOptions, setInterestOptions] = useState<Option[]>(DEFAULT_INTEREST_OPTIONS);
   const [previouslySentOptions, setPreviouslySentOptions] = useState<Option[]>(DEFAULT_PREVIOUSLY_SENT_OPTIONS);
 
   const canCreate = useMemo(() => {
-    return Boolean(dealId && selectedCompanyId);
-  }, [dealId, selectedCompanyId]);
+    // Can create if we have dealId, dealCompanyId (or selected company), and context is loaded
+    return Boolean(dealId && dealContextLoaded && (dealCompanyId || selectedCompanyId));
+  }, [dealId, dealContextLoaded, dealCompanyId, selectedCompanyId]);
 
   async function apiRequest(path: string, init?: { method?: string; body?: any }) {
     const url = `${API_BASE}${path}`;
@@ -108,6 +117,18 @@ function ReferralBuilderCard({ context, actions }: any) {
       throw new Error(msg);
     }
     return data;
+  }
+
+  async function loadDealContext() {
+    if (!dealId) return;
+    try {
+      const data = await apiRequest(`/api/deals/${dealId}/context`);
+      setDealCompanyId(data?.companyId || null);
+      setDealContextLoaded(true);
+    } catch (e) {
+      console.error("Failed to load deal context:", e);
+      setDealContextLoaded(true); // Mark as loaded even on error to prevent blocking UI
+    }
   }
 
   async function loadPropertyDefinitions() {
@@ -184,14 +205,19 @@ function ReferralBuilderCard({ context, actions }: any) {
 
   async function createReferral() {
     if (!dealId) return;
-    if (!selectedCompanyId) return;
+
+    // Use selectedCompanyId if available, otherwise use dealCompanyId
+    const companyId = selectedCompanyId || dealCompanyId;
+    if (!companyId) return;
 
     const payload = {
       dealId,
-      companyId: selectedCompanyId,
+      companyId,
       programId: selectedProgramId || undefined,
       sessionId: selectedSessionId || undefined,
       note: note || undefined,
+      outreachStatus: newReferralStatus || undefined,
+      clientInterest: newClientInterest || undefined,
     };
 
     const data = await apiRequest(`/api/referrals`, { method: "POST", body: payload });
@@ -207,6 +233,8 @@ function ReferralBuilderCard({ context, actions }: any) {
 
     // Clear form
     setNote("");
+    setNewReferralStatus("");
+    setNewClientInterest("");
     setSelectedCompanyId("");
     setSelectedProgramId("");
     setSelectedSessionId("");
@@ -234,7 +262,7 @@ function ReferralBuilderCard({ context, actions }: any) {
       if (!dealId) return;
       try {
         setBusy(true);
-        await Promise.all([loadReferrals(), loadPropertyDefinitions()]);
+        await Promise.all([loadDealContext(), loadReferrals(), loadPropertyDefinitions()]);
       } catch (e: any) {
         setError(e?.message || "Failed to load data");
       } finally {
@@ -256,6 +284,14 @@ function ReferralBuilderCard({ context, actions }: any) {
     <Flex direction="column" gap="md">
       <Heading>Referral Builder</Heading>
       <Text>Deal ID: {dealId}</Text>
+      {dealContextLoaded && dealCompanyId && (
+        <Text>Associated Company ID: {dealCompanyId}</Text>
+      )}
+      {dealContextLoaded && !dealCompanyId && (
+        <Text format={{ color: "red" }}>
+          Warning: This deal has no associated company. You must select a company to create a referral.
+        </Text>
+      )}
 
       {error ? <Text format={{ color: "red" }}>{error}</Text> : null}
 
@@ -429,6 +465,22 @@ function ReferralBuilderCard({ context, actions }: any) {
         value={note}
         onChange={(val: string) => setNote(val)}
         placeholder="Optional note that will appear on the Referral record"
+      />
+
+      <Select
+        name="newReferralStatus"
+        label="Referral status (optional)"
+        options={outreachOptions}
+        value={newReferralStatus}
+        onChange={(val: string) => setNewReferralStatus(val)}
+      />
+
+      <Select
+        name="newClientInterest"
+        label="Client interest (optional)"
+        options={interestOptions}
+        value={newClientInterest}
+        onChange={(val: string) => setNewClientInterest(val)}
       />
 
       <Button
