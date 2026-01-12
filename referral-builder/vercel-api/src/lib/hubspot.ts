@@ -52,6 +52,6 @@ export async function hsPatch<T>(path: string, body: any): Promise<T> {
   return hubspotRequest<T>(path, { method: "PATCH", body: JSON.stringify(body) });
 }
 
-export async function hsPut(path: string): Promise<void> {
-  await hubspotRequest(path, { method: "PUT" });
+export async function hsPut(path: string, body?: any): Promise<void> {
+  await hubspotRequest(path, { method: "PUT", body: body ? JSON.stringify(body) : undefined });
 }
