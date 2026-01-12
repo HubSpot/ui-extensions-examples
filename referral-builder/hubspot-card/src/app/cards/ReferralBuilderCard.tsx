@@ -27,7 +27,8 @@ type ReferralRow = {
   session?: { id?: string; name?: string; startDate?: string; endDate?: string; price?: string };
 };
 
-const OUTREACH_OPTIONS: Option[] = [
+// Default options (will be replaced by API-loaded options if available)
+const DEFAULT_OUTREACH_OPTIONS: Option[] = [
   { label: "Draft", value: "Draft" },
   { label: "Ready to Send", value: "Ready to Send" },
   { label: "Sent", value: "Sent" },
@@ -35,13 +36,18 @@ const OUTREACH_OPTIONS: Option[] = [
   { label: "Don't send (already sent)", value: "Don't send (already sent)" },
 ];
 
-const INTEREST_OPTIONS: Option[] = [
+const DEFAULT_INTEREST_OPTIONS: Option[] = [
   { label: "Active / considering", value: "Active / considering" },
   { label: "Shortlist", value: "Shortlist" },
   { label: "Neutral", value: "Neutral" },
   { label: "Unlikely", value: "Unlikely" },
   { label: "Declined", value: "Declined" },
   { label: "Selected", value: "Selected" },
+];
+
+const DEFAULT_PREVIOUSLY_SENT_OPTIONS: Option[] = [
+  { label: "Yes (true)", value: "Yes (true)" },
+  { label: "No (false)", value: "No (false)" },
 ];
 
 hubspot.extend(({ context, actions }) => (
@@ -68,14 +74,25 @@ function ReferralBuilderCard({ context, actions }: any) {
 
   const [note, setNote] = useState("");
 
+  const [outreachOptions, setOutreachOptions] = useState<Option[]>(DEFAULT_OUTREACH_OPTIONS);
+  const [interestOptions, setInterestOptions] = useState<Option[]>(DEFAULT_INTEREST_OPTIONS);
+  const [previouslySentOptions, setPreviouslySentOptions] = useState<Option[]>(DEFAULT_PREVIOUSLY_SENT_OPTIONS);
+
   const canCreate = useMemo(() => {
     return Boolean(dealId && selectedCompanyId);
   }, [dealId, selectedCompanyId]);
 
   async function apiRequest(path: string, init?: { method?: string; body?: any }) {
     const url = `${API_BASE}${path}`;
+    const headers: Record<string, string> = {};
+
+    if (init?.body) {
+      headers["Content-Type"] = "application/json";
+    }
+
     const res = await hubspot.fetch(url, {
       method: init?.method || "GET",
+      headers,
       body: init?.body ? JSON.stringify(init.body) : undefined,
     });
 
@@ -91,6 +108,27 @@ function ReferralBuilderCard({ context, actions }: any) {
       throw new Error(msg);
     }
     return data;
+  }
+
+  async function loadPropertyDefinitions() {
+    try {
+      const data = await apiRequest(`/api/referrals/properties`);
+      const props = data?.properties || {};
+
+      // Update options if available from API
+      if (props.referral_status?.options?.length) {
+        setOutreachOptions(props.referral_status.options);
+      }
+      if (props.client_interest?.options?.length) {
+        setInterestOptions(props.client_interest.options);
+      }
+      if (props.previously_sent_to_camp?.options?.length) {
+        setPreviouslySentOptions(props.previously_sent_to_camp.options);
+      }
+    } catch (e) {
+      console.error("Failed to load property definitions:", e);
+      // Continue with default options
+    }
   }
 
   async function loadReferrals() {
@@ -158,12 +196,26 @@ function ReferralBuilderCard({ context, actions }: any) {
 
     const data = await apiRequest(`/api/referrals`, { method: "POST", body: payload });
 
+    const message = data?.created
+      ? `Referral created (ID ${data?.referralId || "unknown"})`
+      : `Referral updated (ID ${data?.referralId || "unknown"})`;
+
     actions?.addAlert?.({
       type: "success",
-      message: `Referral created (ID ${data?.referralId || "unknown"})`,
+      message,
     });
 
+    // Clear form
     setNote("");
+    setSelectedCompanyId("");
+    setSelectedProgramId("");
+    setSelectedSessionId("");
+    setCompanyQuery("");
+    setCompanyOptions([]);
+    setProgramOptions([]);
+    setSessionOptions([]);
+
+    // Refresh referrals list
     await loadReferrals();
   }
 
@@ -182,9 +234,9 @@ function ReferralBuilderCard({ context, actions }: any) {
       if (!dealId) return;
       try {
         setBusy(true);
-        await loadReferrals();
+        await Promise.all([loadReferrals(), loadPropertyDefinitions()]);
       } catch (e: any) {
-        setError(e?.message || "Failed to load referrals");
+        setError(e?.message || "Failed to load data");
       } finally {
         setBusy(false);
       }
@@ -247,7 +299,7 @@ function ReferralBuilderCard({ context, actions }: any) {
                 <Select
                   name={`outreach-${r.id}`}
                   label="Outreach"
-                  options={OUTREACH_OPTIONS}
+                  options={outreachOptions}
                   value={r.outreachStatus || ""}
                   onChange={(val: string) => {
                     setReferrals((prev) =>
@@ -261,7 +313,7 @@ function ReferralBuilderCard({ context, actions }: any) {
                 <Select
                   name={`interest-${r.id}`}
                   label="Client interest"
-                  options={INTEREST_OPTIONS}
+                  options={interestOptions}
                   value={r.clientInterest || ""}
                   onChange={(val: string) => {
                     setReferrals((prev) =>
@@ -290,8 +342,8 @@ function ReferralBuilderCard({ context, actions }: any) {
                   try {
                     setBusy(true);
                     await updateReferral(r.id, {
-                      referral_outreach_status: r.outreachStatus || "",
-                      referral_client_interest: r.clientInterest || "",
+                      referral_status: r.outreachStatus || "",
+                      client_interest: r.clientInterest || "",
                       referral_note_to_company: r.note || "",
                     });
                   } catch (e: any) {

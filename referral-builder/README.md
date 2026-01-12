@@ -13,6 +13,17 @@ This project provides a **Referral Builder** for HubSpot that:
 - Creates Referral records linking Deal → Company → Program → Session
 - Updates referral properties (outreach status, client interest, notes)
 
+### ✨ 2025.02 Schema Update
+
+This version has been updated to use the **2025.02 HubSpot schema** with the following improvements:
+
+- **Correct property names**: Updated from `referral_outreach_status` → `referral_status` and `referral_client_interest` → `client_interest`
+- **Upsert logic**: Create/Update operations now search for existing referrals by key to prevent duplicates
+- **Dynamic associations**: Association type IDs are fetched dynamically instead of hardcoded
+- **Auto-managed fields**: Automatically sets `referral_name`, `copied_from_deal_key`, and `copied_from_year`
+- **Dynamic enum loading**: Property dropdown options are loaded from HubSpot API
+- **Better error handling**: Improved error messages and form clearing after successful create
+
 ## 🏗️ Architecture
 
 The project consists of two main parts:
@@ -77,11 +88,19 @@ The project consists of two main parts:
    - **Session** (associated with Program)
    - **Referral** (associated with Deal, Company, Program, Session)
 
-   Key properties for **Referral** object:
-   - `referral_key` (text) - Unique identifier
-   - `referral_outreach_status` (dropdown) - Draft, Ready to Send, Sent, etc.
-   - `referral_client_interest` (dropdown) - Active, Shortlist, Neutral, etc.
-   - `referral_note_to_company` (text area) - Notes
+   Key properties for **Referral** object (2025.02 schema):
+   - **Editable in UI**:
+     - `referral_key` (text) - Unique identifier
+     - `referral_status` (dropdown) - Draft, Ready to Send, Sent, Resend, Don't send (already sent)
+     - `client_interest` (dropdown) - Active / considering, Shortlist, Neutral, Unlikely, Declined, Selected
+     - `referral_note_to_company` (text area) - Notes
+     - `previously_sent_to_camp` (dropdown) - Yes (true), No (false)
+   - **Auto-managed**:
+     - `referral_name` (text) - Display name (auto-set on create)
+     - `copied_from_deal_key` (text) - Source deal key
+     - `copied_from_year` (number) - Source year
+     - `email_send_count` (number) - Email tracking
+     - `email_last_sent_datetime` (datetime) - Last email sent
 
 ---
 
@@ -114,11 +133,19 @@ The project consists of two main parts:
   - Company (many-to-one)
   - Program (many-to-one, optional)
   - Session (many-to-one, optional)
-- **Properties**:
-  - `referral_key` (text, unique)
-  - `referral_outreach_status` (dropdown): Draft, Ready to Send, Sent, Resend, Don't send (already sent)
-  - `referral_client_interest` (dropdown): Active / considering, Shortlist, Neutral, Unlikely, Declined, Selected
-  - `referral_note_to_company` (text area)
+- **Properties** (2025.02 schema):
+  - **Editable**:
+    - `referral_key` (text, unique)
+    - `referral_status` (dropdown): Draft, Ready to Send, Sent, Resend, Don't send (already sent)
+    - `client_interest` (dropdown): Active / considering, Shortlist, Neutral, Unlikely, Declined, Selected
+    - `referral_note_to_company` (text area)
+    - `previously_sent_to_camp` (dropdown): Yes (true), No (false)
+  - **Auto-managed**:
+    - `referral_name` (text) - Auto-set on create
+    - `copied_from_deal_key` (text)
+    - `copied_from_year` (number)
+    - `email_send_count` (number)
+    - `email_last_sent_datetime` (datetime)
 
 ### Step 2: Deploy Vercel API
 
@@ -146,11 +173,22 @@ The project consists of two main parts:
    HS_SESSION_OBJECT_TYPE=p_session
    HS_REFERRAL_OBJECT_TYPE=p_referral
 
-   # Adjust these if your property names differ
+   # Adjust these if your property names differ (2025.02 schema defaults)
+   # Editable properties
    HS_REFERRAL_KEY_PROP=referral_key
-   HS_REFERRAL_OUTREACH_PROP=referral_outreach_status
-   HS_REFERRAL_INTEREST_PROP=referral_client_interest
+   HS_REFERRAL_OUTREACH_PROP=referral_status
+   HS_REFERRAL_INTEREST_PROP=client_interest
    HS_REFERRAL_NOTE_PROP=referral_note_to_company
+   HS_REFERRAL_PREVIOUSLY_SENT_PROP=previously_sent_to_camp
+
+   # Auto-managed properties
+   HS_REFERRAL_NAME_PROP=referral_name
+   HS_REFERRAL_COPIED_DEAL_KEY_PROP=copied_from_deal_key
+   HS_REFERRAL_COPIED_YEAR_PROP=copied_from_year
+
+   # Optional: Deal properties for metadata copying
+   # HS_DEAL_KEY_PROP=deal_key_property_name
+   # HS_DEAL_YEAR_PROP=deal_year_property_name
    ```
 
 5. **Test locally** (optional):
@@ -327,7 +365,9 @@ referral-builder/
                 │       └── referrals/
                 │           └── route.ts  # Get referrals for deal
                 └── referrals/
-                    ├── route.ts       # Create referral
+                    ├── route.ts       # Create/upsert referral
+                    ├── properties/
+                    │   └── route.ts   # Get property definitions
                     └── [referralId]/
                         └── route.ts   # Update referral
 ```
@@ -435,8 +475,34 @@ Get all referrals associated with a deal.
 }
 ```
 
+### `GET /api/referrals/properties`
+Get property definitions for referral enums (used for dropdown options).
+
+**Response:**
+```json
+{
+  "properties": {
+    "referral_status": {
+      "name": "referral_status",
+      "label": "Outreach Status",
+      "options": [
+        { "label": "Draft", "value": "Draft" },
+        { "label": "Ready to Send", "value": "Ready to Send" }
+      ]
+    },
+    "client_interest": {
+      "name": "client_interest",
+      "label": "Client Interest",
+      "options": [
+        { "label": "Active / considering", "value": "Active / considering" }
+      ]
+    }
+  }
+}
+```
+
 ### `POST /api/referrals`
-Create a new referral.
+Create a new referral (or update if already exists).
 
 **Request body:**
 ```json
@@ -445,7 +511,9 @@ Create a new referral.
   "companyId": "67890",
   "programId": "11111",
   "sessionId": "33333",
-  "note": "Great fit for the family"
+  "note": "Great fit for the family",
+  "outreachStatus": "Draft",
+  "clientInterest": "Active / considering"
 }
 ```
 
@@ -453,7 +521,9 @@ Create a new referral.
 ```json
 {
   "ok": true,
-  "referralId": "22222"
+  "referralId": "22222",
+  "created": true,
+  "updated": false
 }
 ```
 
@@ -464,8 +534,8 @@ Update referral properties.
 ```json
 {
   "properties": {
-    "referral_outreach_status": "Sent",
-    "referral_client_interest": "Shortlist",
+    "referral_status": "Sent",
+    "client_interest": "Shortlist",
     "referral_note_to_company": "Updated note"
   }
 }
