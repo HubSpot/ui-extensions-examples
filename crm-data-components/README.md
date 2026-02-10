@@ -15,27 +15,33 @@ These extensions demonstrate a number of interactions including:
 ![Example Image of the Association Table](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/3230755a-4ea2-44eb-b8b6-4858dbb01a87)
 ![Example Image of Stage Tracker](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/fd35ab4d-a2ac-4165-b5de-02e8a2481a9a)
 
+## Prerequisites
+
+- You must have an active HubSpot account.
+- You must have the latest [HubSpot CLI](https://developers.hubspot.com/docs/developer-tooling/local-development/hubspot-cli/install-the-cli) installed.
+- Run `hs init` if you haven't already done so to create a config file for your parent account.
+- Run `hs auth` to authenticate your account. Alternatively, select your pre-authenticated account with `hs accounts use`.
+
 ## Quick Start
 
-### Step 1: Update your CLI and & authenticate your account
+### Step 1: Clone the repository
 
-1. Update to latest CLI version by running `npm install -g @hubspot/cli@latest`.
-2. Run `hs init` if you haven’t already done so to create a config file for your parent account.
-3. Run `hs auth` to authenticate your account. Alternatively, select your pre-authenticated account with `hs accounts use`.
+Clone this repository and navigate to the project directory:
 
-### Step 2: Create the project
+```shell
+git clone https://github.com/HubSpot/ui-extensions-examples.git
+cd ui-extensions-examples/crm-data-components
+```
 
-In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="crm-data-components" --name="crm-data-components" --template="crm-data-components"`
+### Step 2: Install dependencies
 
-### Step 3: Install dependencies
+Run `hs project install-deps` to install the dependencies for this project.
 
-Now in the CLI, `cd` into your project directory such as `cd crm-data-components`. You will need to run `npm install` in both the `/src/app/extensions` and `/src/app/app.functions` directories to install the dependencies for this project.
-
-### Step 4: Upload project
+### Step 3: Upload project
 
 Run `hs project upload`. If you’d like to build on this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
 
-### Step 5: View the cards
+### Step 4: View the cards
 
 For `CRM data: Stage Tracker example card`.
 In the main menu select `Sales` > `Deals` to view deal records. Click on any of the deal objects and navigate to the custom tab to access the two sample cards. If you don’t have any deals in the account you’re using to view this sample, create a deal by the following steps:
