@@ -2,31 +2,34 @@
 
 ![Deals summary example card](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/2c922d90-5a69-4020-99c3-3ab23c3390c1)
 
-This tutorial will help you get up to speed with React based UI extensions in the HubSpot CRM. You’ll install a project containing a CRM card with two components. Then you’ll follow the steps to add one more component to the card.
+This tutorial will help you get up to speed with React based UI extensions in the HubSpot CRM. You'll install a project containing a CRM card with two components. Then you'll follow the steps to add one more component to the card.
 
 We recommend installing this sample in a Sandbox account.
 
-## Update your CLI and & authenticate your account
+## Prerequisites
 
-[Full local environment documentation](https://developers.hubspot.com/docs/guides/crm/setup)
+- You must have an active HubSpot account.
+- You must have the latest [HubSpot CLI](https://developers.hubspot.com/docs/developer-tooling/local-development/hubspot-cli/install-the-cli) installed.
+- Run `hs init` if you haven't already done so to create a config file for your parent account.
+- Run `hs auth` to authenticate your account. Alternatively, select your pre-authenticated account with `hs accounts use`.
+- [Full local environment documentation](https://developers.hubspot.com/docs/guides/crm/setup)
 
 ## Quick Start
 
-### Step 1: Update your CLI and & authenticate your account
+### Step 1: Clone the repository
 
-1. Update to latest CLI version by running `npm install -g @hubspot/cli@latest`.
-2. Run `hs init` if you haven’t already done so to create a config file for your parent account.
-3. Run `hs auth` to authenticate your account. Alternatively, select your pre-authenticated account with `hs accounts use`.
+Clone this repository and navigate to the project directory:
 
-### Step 2: Create the project
+```shell
+git clone https://github.com/HubSpot/ui-extensions-examples.git
+cd ui-extensions-examples/deals-summary
+```
 
-In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="deals-summary" --name="deals-summary" --template="deals-summary"`.
+### Step 2: Install dependencies
 
-### Step 3: Install dependencies
+Run `hs project install-deps` to install the dependencies for this project.
 
-Now in the CLI, `cd` into your project directory such as `cd deals-summary`. You will need to run `npm install` in both the `/src/app/extensions` and `/src/app/app.functions` directories to install the dependencies for this project.
-
-### Step 4: Upload project
+### Step 3: Upload project
 
 Run `hs project upload`. If you’d like to build on this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
 
@@ -48,7 +51,6 @@ Run `hs project upload`. If you’d like to build on this project, run `hs proje
 
 [Full Local dev documentation](https://developers.hubspot.com/docs/guides/crm/private-apps/quickstart#3.-start-local-development) | [Full Secrets documentation](https://developers.hubspot.com/docs/guides/crm/private-apps/serverless-functions#managing-secrets)
 
-- Run npm install to install dependencies for this project.
 - Create a file named `.env` inside the app.functions folder (inside `src/app`)
 - In your HubSpot account, click on the CRM development item in the main navigation
 - In the sidebar under Tools select Private apps and find the Deals summary app. Click View access token and copy this token to your clipboard.

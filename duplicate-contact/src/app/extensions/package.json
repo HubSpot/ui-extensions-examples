@@ -8,11 +8,11 @@
     "react": "^18.2.0"
   },
   "scripts": {
-    "lint": "eslint . --ext .tsx,.ts",
-    "lint:fix": "eslint . --ext .tsx,.ts --fix",
+    "check": "npm run lint && npm check:types",
     "check:types": "tsc --noEmit --jsx react-jsx --esModuleInterop --lib WebWorker --lib esnext --skipLibCheck Extension.tsx",
-    "check": "npm run lint && npm run check:types",
-    "dev": "hs project dev"
+    "dev": "hs project dev",
+    "lint": "eslint . --ext .tsx,.ts",
+    "lint:fix": "eslint . --ext .tsx,.ts --fix"
   },
   "devDependencies": {
     "@hubspot/eslint-config-ui-extensions": "^0.7.2",

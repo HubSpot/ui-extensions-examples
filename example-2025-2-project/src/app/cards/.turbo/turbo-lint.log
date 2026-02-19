@@ -1,0 +1,11 @@
+
+
+> hubspot-example-card@0.1.0 lint /Users/evdavis/src/ui-extensibility/examples-public/ui-extensions-examples/example-2025-2-project/src/app/cards
+> eslint .
+
+[0m[0m
+[0m[4m/Users/evdavis/src/ui-extensibility/examples-public/ui-extensions-examples/example-2025-2-project/src/app/cards/NewCard.tsx[24m[0m
+[0m  [2m11:3[22m  [33mwarning[39m  Unexpected console statement. Only these console methods are allowed: warn, error  [2mno-console[22m[0m
+[0m[0m
+[0m[33m[1m✖ 1 problem (0 errors, 1 warning)[22m[39m[0m
+[0m[33m[1m[22m[39m[0m

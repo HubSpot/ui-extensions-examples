@@ -29,13 +29,13 @@ Access to these UI Extensions is part of [CRM Development public beta](https://d
 2. Run `hs init` to create a config file for your parent account.
 3. Run `hs auth` to authenticate your account. Alternatively, select your pre-authenticated account with `hs accounts use`.
 
-### Step 2: Create a project
+### Step 2: Clone this repository
 
-In the folder where you want a sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples"`. Give it a name, specify a project directory, and select a sample you'd like to run in your account.
+Or simply download the source to a location on your machine.
 
-### Step 3: Install dependencies
+### Step 3: Enter the project
 
-Now in the CLI, `cd` into your project directory such as `cd <project_dir>`. Run `npm install` to install the dependencies for this project.
+Now in the CLI, `cd` into your project directory such as `cd ui-extensions-examples/<project_dir>`. Run `hs project install-deps` to install the dependencies for this project.
 
 ### Step 4: Configure and upload the project
 
@@ -45,30 +45,8 @@ Run `hs project upload`. If you’d like to build on this project, run `hs proje
 
 ## Lockfiles
 
-It's best practice to generate package lockfiles before uploading projects. This will help prevent running out of file descriptors during the build, and streamline subsequent builds. To generate a lockfile for a project, either install the project locally using `npm install` or generate the lockfile only using `npm install --package-lock-only`.
+It's best practice to generate package lockfiles before uploading projects. This will help prevent running out of file descriptors during the build, and streamline subsequent builds. To generate a lockfile for a project, install the project dependencies locally using `hs project install-deps`.
 
-## Get started with developer project
+## Get started with developer projects
 
 UI extensions are created using developer projects that are part of CRM development beta. Read [Quick Start guide](https://developers.hubspot.com/docs/platform/projects-quick-start-guide) for developer projects for instructions to get started.
-
-## Tools available in this repository
-
-ESLint and Prettier are included in the root of this repository for ease of development. You can choose whether or not to use them yourself. The usage of ESLint and Prettier in this repository can also serve as an example of how to set them up in your own directory of HubSpot developer projects if you so choose.
-
-### ESLint
-
-[ESLint](https://eslint.org/) is a common, open-source linting tool for JavaScript code. To check for any ESLint errors, use the following command:
-
-```
-npx eslint .
-```
-
-### Prettier
-
-[Prettier](https://prettier.io/) is an opinionated code formatter. This tool helps developers spend more time coding, and less time on adjusting code style.
-
-Prettier can be set up to run in your editor each time you save a file. Prettier can also be run through the CLI, using the following command:
-
-```
-npx prettier --write .
-```

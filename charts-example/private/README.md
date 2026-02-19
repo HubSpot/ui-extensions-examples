@@ -4,13 +4,18 @@
 
 Make sure you've followed instructions [here](https://github.com/HubSpot/ui-extensions-examples/blob/main/charts-example/README.md#step-1-update-your-cli-and--authenticate-your-developer-account).
 
-### 2. Create Charts example project
+### 2. Clone the repository
 
-In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="charts-example-private" --name="charts-example-private" --template="charts-example-private"`
+Clone this repository and navigate to the project directory:
+
+```shell
+git clone https://github.com/HubSpot/ui-extensions-examples.git
+cd ui-extensions-examples/charts-example/private
+```
 
 ### 3. Install dependencies
 
-In the CLI, enter into this newly created folder by `cd charts-example-private`. Run `npm install` to install the dependencies for this project.
+Run `hs project install-deps` to install the dependencies for this project.
 
 ### 4. Upload project
 
