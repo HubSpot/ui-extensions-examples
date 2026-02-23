@@ -7,29 +7,35 @@ This example demonstrates how `fetchCrmObjectProperties`, `onCrmPropertiesUpdate
 
 ![property-refresh](https://github.com/HubSpot/ui-extensions-examples/assets/20711270/0a13b2bc-c6d7-4fd6-a43c-225e9d94aef4)
 
+## Prerequisites
+
+- You must have an active HubSpot account.
+- You must have the latest [HubSpot CLI](https://developers.hubspot.com/docs/developer-tooling/local-development/hubspot-cli/install-the-cli) installed.
+- Use the [quick start guide](https://developers.hubspot.com/docs/platform/ui-extensions-quickstart) to learn how to setup your account and local environment to work with HubSpot developer projects.
+
 ## Quick Start
 
-### Step 1: Update your CLI and & authenticate your account
+### Step 1: Clone the repository
 
-1. Update to latest CLI version by running `npm install -g @hubspot/cli@latest`.
-2. Use the [quick start guide](https://developers.hubspot.com/docs/platform/ui-extensions-quickstart) to learn how to setup your account and local environment to work with HubSpot developer projects.
+Clone this repository and navigate to the project directory:
 
-### Step 2: Create the project
+```shell
+git clone https://github.com/HubSpot/ui-extensions-examples.git
+cd ui-extensions-examples/bi-directional-property-refresh
+```
 
-Enter into the folder where you want this sample project. In place of `hs project create`, you can optionally use this handy command to directly create a project based on this sample project using `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="bi-directional-property-refresh" --name="property-refresh" --template="bi-directional-property-refresh"`.
+### Step 2: Install dependencies
 
-### Step 3: Install dependencies
+Run `hs project install-deps` to install the dependencies for this project.
 
-Now in the CLI, enter into this newly created folder by `cd bi-directional-property-refresh`. You will need to run `npm install` in both the `/src/app/extensions` and `/src/app/app.functions` directories to install the dependencies for this project.
+### Step 3: Upload project
 
-### Step 4: Upload project
+Run `hs project upload`. If you'd like to build on this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
 
-Run `hs project upload`. If you’d like to build on this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
-
-### Step 5: View the cards
+### Step 4: View the cards
 
 In the main menu select `Contacts` > `Contacts` to view contact records. Click on any of the contact objects and navigate to the custom tab to access the sample card which is called `Refresh properties between custom card and CRM page`. If you haven't customized the tabs before follow step #4 from [this guide](https://developers.hubspot.com/docs/platform/ui-extensions-quickstart).
 
-### Step 6: Experiment with the cards
+### Step 5: Experiment with the cards
 
 On the Contact record, add the card and change the `firstname` or `lastname` anywhere on the page and see that they get updated on the custom card. Change lifecycle stage on the custom card, and see that it gets refreshed in other places on the parent page.

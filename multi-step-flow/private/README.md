@@ -4,13 +4,18 @@
 
 Make sure you've followed instructions [here](https://github.com/HubSpot/ui-extensions-examples/blob/main/multi-step-flow/README.md#step-1-update-your-cli-and--authenticate-your-developer-account).
 
-### 2. Create Charts example project
+### 2. Clone the repository
 
-In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="multi-step-flow-private" --name="multi-step-flow-private" --template="multi-step-flow-private"`
+Clone this repository and navigate to the project directory:
+
+```shell
+git clone https://github.com/HubSpot/ui-extensions-examples.git
+cd ui-extensions-examples/multi-step-flow/private
+```
 
 ### 3. Install dependencies
 
-In the CLI, enter into this newly created folder by `cd multi-step-flow-private`. Run `npm install` to install the dependencies for this project.
+Run `hs project install-deps` to install the dependencies for this project.
 
 ### 4. Upload project
 

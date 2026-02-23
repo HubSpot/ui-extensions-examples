@@ -4,27 +4,33 @@ This sample is designed to help you with opening a popup iframe modal from insid
 
 ![display-an-iframe-modal-example](https://github.com/HubSpot/ui-extensions-examples/assets/110251572/a15126c3-3c70-4783-8e5b-774d9d8826ff)
 
+## Prerequisites
+
+- You must have an active HubSpot account.
+- You must have the latest [HubSpot CLI](https://developers.hubspot.com/docs/developer-tooling/local-development/hubspot-cli/install-the-cli) installed.
+- Run `hs init` if you haven't already done so to create a config file for your parent account.
+- Run `hs auth` to authenticate your account. Alternatively, select your pre-authenticated account with `hs accounts use`.
+
 ## Quick Start
 
-### Step 1: Update your CLI and & authenticate your account
+### Step 1: Clone the repository
 
-1. Update to latest CLI version by running `npm install -g @hubspot/cli@latest`.
-1. Run `hs init` if you haven’t already done so to create a config file for your parent account.
-1. Run `hs auth` to authenticate your account. Alternatively, select your pre-authenticated account with `hs accounts use`.
+Clone this repository and navigate to the project directory:
 
-### Step 2: Create the project
+```shell
+git clone https://github.com/HubSpot/ui-extensions-examples.git
+cd ui-extensions-examples/display-iframe-modal
+```
 
-In the folder where you want this sample to be cloned, create a new project by running `hs project create --templateSource="HubSpot/ui-extensions-examples" --dest="display-iframe-modal" --name="display-iframe-modal" --template="display-iframe-modal"`
+### Step 2: Install dependencies
 
-### Step 3: Install dependencies
+Run `hs project install-deps` to install the dependencies for this project.
 
-Now in the CLI, enter into this newly created folder by `cd display-iframe-modal/src/app/extensions`. Run `npm install` to install the dependencies for this project.
-
-### Step 4: Upload project
+### Step 3: Upload project
 
 Run `hs project upload`. If you’d like to build on this project, run `hs project dev` to kickoff the dev process and see changes reflected locally as you build.
 
-### Step 5: View the cards
+### Step 4: View the cards
 
 In the main menu select `Contacts` > `Contacts` to view contact records. Click on any of the contact objects and navigate to the custom tab to access the sample card. If you don’t have any contacts in the account you’re using to view this sample, create a contact by the following steps:
 
