@@ -1,0 +1,7 @@
+{
+  "uid": "settings_extension",
+  "type": "settings",
+  "config": {
+    "entrypoint": "/app/settings/SettingsPage.tsx"
+  }
+}
