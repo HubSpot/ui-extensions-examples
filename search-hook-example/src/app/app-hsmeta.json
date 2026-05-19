@@ -1,0 +1,64 @@
+{
+  "uid": "search_hook_app",
+  "type": "app",
+  "config": {
+    "description": "Demonstrates the useCrmSearch hook for searching CRM records from a HubSpot app page.",
+    "name": "search-hook-app",
+    "distribution": "private",
+    "auth": {
+      "type": "static",
+      "requiredScopes": [
+        "oauth",
+        "crm.objects.contacts.read",
+        "crm.objects.contacts.write",
+        "crm.objects.companies.read",
+        "crm.objects.deals.read",
+        "crm.objects.custom.read",
+        "crm.objects.feedback_submissions.read",
+        "crm.objects.line_items.read",
+        "crm.objects.quotes.read",
+        "crm.objects.orders.read",
+        "crm.objects.carts.read",
+        "crm.objects.invoices.read",
+        "crm.objects.leads.read",
+        "crm.objects.subscriptions.read",
+        "crm.objects.commercepayments.read",
+        "crm.objects.services.read",
+        "crm.objects.courses.read",
+        "crm.objects.listings.read",
+        "crm.objects.appointments.read",
+        "crm.schemas.contacts.read",
+        "crm.schemas.companies.read",
+        "crm.schemas.deals.read",
+        "crm.schemas.custom.read",
+        "crm.schemas.line_items.read",
+        "crm.schemas.quotes.read",
+        "crm.schemas.orders.read",
+        "crm.schemas.carts.read",
+        "crm.schemas.invoices.read",
+        "crm.schemas.subscriptions.read",
+        "crm.schemas.commercepayments.read",
+        "crm.schemas.services.read",
+        "crm.schemas.courses.read",
+        "crm.schemas.listings.read",
+        "crm.schemas.appointments.read",
+        "e-commerce",
+        "tickets"
+      ],
+      "optionalScopes": [],
+      "conditionallyRequiredScopes": []
+    },
+    "permittedUrls": {
+      "fetch": [
+        "https://api.hubapi.com"
+      ],
+      "iframe": [],
+      "img": []
+    },
+    "support": {
+      "supportEmail": "developer-support@hubspot.com",
+      "documentationUrl": "https://developers.hubspot.com/docs/guides/crm/ui-extensions/overview",
+      "supportUrl": "https://community.hubspot.com/t5/HubSpot-Developers/ct-p/developers"
+    }
+  }
+}

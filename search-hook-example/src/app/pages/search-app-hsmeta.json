@@ -1,0 +1,8 @@
+{
+  "uid": "search_app_page",
+  "type": "page",
+  "config": {
+    "entrypoint": "/app/pages/SearchApp.tsx",
+    "location": "home"
+  }
+}
