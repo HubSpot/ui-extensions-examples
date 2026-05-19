@@ -1,0 +1,7 @@
+{
+  "name": "@hubspot-examples/search-hook-functions",
+  "version": "0.1.0",
+  "dependencies": {
+    "@hubspot/api-client": "^12.1.0"
+  }
+}

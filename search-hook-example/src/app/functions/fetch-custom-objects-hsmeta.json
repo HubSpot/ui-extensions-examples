@@ -1,0 +1,8 @@
+{
+  "uid": "fetch_custom_objects",
+  "type": "app-function",
+  "config": {
+    "entrypoint": "/app/functions/FetchCustomObjects.js",
+    "secretKeys": []
+  }
+}

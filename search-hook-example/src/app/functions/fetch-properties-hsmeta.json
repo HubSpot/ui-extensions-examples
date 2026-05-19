@@ -1,0 +1,8 @@
+{
+  "uid": "search_hook_app_function",
+  "type": "app-function",
+  "config": {
+    "entrypoint": "/app/functions/FetchProperties.js",
+    "secretKeys": []
+  }
+}
