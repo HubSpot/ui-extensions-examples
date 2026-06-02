@@ -232,7 +232,71 @@ If your app hasn't been migrated yet, follow the [migration guide](https://devel
 
 ### Step 2: Copy the cards folder
 
-Copy the entire `src/app/cards/` directory from this project into your app's `src/app/` directory.
+Copy the converter card files from this project into your app's existing `src/app/cards/` directory. If your app already has cards, you'll may need to merge files rather than overwrite the whole folder.
+
+#### Copy new files directly
+
+The following files and directories are unique to this converter and can be copied directly into your app's `src/app/cards/` directory without conflict:
+
+* `Converter.tsx` — entry point for the converter card
+* `LegacyCardConverter-hsmeta.json` — CRM card config
+* `LegacyCardConverter-Helpdesk-hsmeta.json` — helpdesk card config (delete if not supporting tickets; see [Step 6](#step-6-configure-helpdesk-card-if-supporting-tickets))
+* `components/` — all React components for the converter
+* `contexts/` — React contexts
+* `definition/` — card definition files including `DEFINITION.json`
+* `hooks/` — custom React hooks
+* `types/` — TypeScript type definitions
+* `utils/` — utility functions
+
+If any of these names conflict with files in your existing `src/app/cards/` directory, rename them to avoid collisions and update all import paths in files that reference them.
+
+#### Check for uid conflicts
+
+Each card in your app must have a unique `uid`. The converter cards use these uids:
+
+* `legacy-card-converter-card` (in `LegacyCardConverter-hsmeta.json`)
+* `legacy-card-converter-card-helpdesk` (in `LegacyCardConverter-Helpdesk-hsmeta.json`)
+
+Check all existing `*-hsmeta.json` files in your `src/app/cards/` directory to confirm no existing card uses either of these uids. If a conflict exists, update the uid in the converter's hsmeta file to something unique.
+
+#### Merge config files
+
+The following config files likely already exist in your `src/app/cards/` directory. Merge them manually rather than overwriting:
+
+**`package.json`**
+
+Add any missing dependencies from the converter's `package.json` into your existing one. Key dependencies to check for:
+
+* `dependencies`: `zod`
+* `devDependencies`: `@vitest/coverage-istanbul`, `vitest`, `jsdom`, `@testing-library/react`, `husky`, `lint-staged`, `prettier`, `eslint-config-prettier`, `eslint-plugin-simple-import-sort`
+
+Also merge the `scripts` entries (`test`, `test:watch`, `test:coverage`, `typecheck`, `format`, `format:check`) and the `lint-staged` configuration block if your project doesn't already have them.
+
+**`package-lock.json`**
+
+After merging `package.json`, regenerate `package-lock.json` by running:
+
+```shell
+npm install
+```
+
+Do not manually merge `package-lock.json`.
+
+**`tsconfig.json`**
+
+Compare the converter's `tsconfig.json` with yours. Ensure your config includes at minimum the same `compilerOptions` settings. If your existing config has additional options, keep them.
+
+**`eslint.config.js`**
+
+Merge the converter's ESLint rules into your existing config. Pay attention to any plugin rules specific to the converter (e.g., `eslint-plugin-simple-import-sort`) that your project may not already use.
+
+**`.prettierrc.json` and `.prettierignore`**
+
+If your project already has Prettier config files, compare them with the converter's versions and reconcile any differences. If your project has no Prettier config, copy these files directly.
+
+**`vitest.config.ts`**
+
+If your project already has a Vitest config, merge the converter's settings (such as coverage configuration) into your existing file. If your project has no Vitest config, copy this file directly.
 
 ### Step 3: Update app configuration
 
