@@ -1,0 +1,8 @@
+{
+  "uid": "app_home_extension",
+  "type": "page",
+  "config": {
+    "entrypoint": "/app/pages/Home.tsx",
+    "location": "home"
+  }
+}
