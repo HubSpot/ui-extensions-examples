@@ -1,0 +1,10 @@
+{
+  "uid": "button_panel_card",
+  "type": "card",
+  "config": {
+    "name": "Button Panel Card",
+    "entrypoint": "/app/cards/ButtonPanel.jsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["contacts"]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "uid": "app-multi-step-flow-public",
+  "type": "app",
+  "config": {
+    "name": "Multi-step flow public app example",
+    "description": "Build a multi-step flow",
+    "distribution": "private",
+    "auth": {
+      "type": "oauth",
+      "requiredScopes": [
+        "crm.objects.contacts.read"
+      ],
+      "redirectUrls": ["http://localhost:3000/oauth-callback"]
+    },
+    "permittedUrls": {
+      "fetch": ["https://api.hubapi.com", "https://run.mocky.io"],
+      "iframe": [],
+      "img": []
+    },
+    "support": {
+      "supportEmail": "support@example.com",
+      "documentationUrl": "https://example.com/docs",
+      "supportUrl": "https://example.com/support",
+      "supportPhone": "+18005555555"
+    }
+  }
+}

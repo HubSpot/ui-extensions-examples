@@ -1,0 +1,10 @@
+{
+  "uid": "multy_step_flow_example_public_card",
+  "type": "card",
+  "config": {
+    "name": "Multi-step flow example public card",
+    "entrypoint": "/app/cards/OrderMealExtension.tsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["contacts"]
+  }
+}

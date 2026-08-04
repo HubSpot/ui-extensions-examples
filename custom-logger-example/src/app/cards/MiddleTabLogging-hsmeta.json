@@ -1,0 +1,10 @@
+{
+  "uid": "middle-tab-logging",
+  "type": "card",
+  "config": {
+    "name": "Middle Tab Logging",
+    "entrypoint": "/app/cards/MiddleTabLogging.tsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["contacts"]
+  }
+}

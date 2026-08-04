@@ -1,0 +1,10 @@
+{
+  "uid": "property_refresh_card",
+  "type": "card",
+  "config": {
+    "name": "Refresh properties between custom card and CRM page",
+    "entrypoint": "/app/cards/PropertyRefreshExtension.tsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["contacts"]
+  }
+}

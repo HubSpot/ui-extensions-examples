@@ -1,0 +1,10 @@
+{
+  "uid": "sidebar-logging",
+  "type": "card",
+  "config": {
+    "name": "Sidebar Logging",
+    "entrypoint": "/app/cards/SidebarLogging.jsx",
+    "location": "crm.record.sidebar",
+    "objectTypes": ["contacts"]
+  }
+}

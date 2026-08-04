@@ -44,25 +44,25 @@ If you haven't customized the tabs before follow step #4 from [this guide](https
 
 ### Button
 
-- [Buttons in Modal](./src/app/extensions/components/ModalExample.tsx)
-- [Buttons in Panel](./src/app/extensions/components/PanelExample.tsx)
+- [Buttons in Modal](./src/app/cards/components/ModalExample.tsx)
+- [Buttons in Panel](./src/app/cards/components/PanelExample.tsx)
 
 ### Form
 
-- [Form Action Patterns](./src/app/extensions/FormActionPatterns.tsx)
-- [Modal Form](./src/app/extensions/FormModal.tsx)
-- [Multistep Form](./src/app/extensions/FormMultistep.tsx)
+- [Form Action Patterns](./src/app/cards/FormActionPatterns.tsx)
+- [Modal Form](./src/app/cards/FormModal.tsx)
+- [Multistep Form](./src/app/cards/FormMultistep.tsx)
 
 ### Modal
 
-- [Buttons in Modal](./src/app/extensions/components/ModalExample.tsx)
-- [Modal Form](./src/app/extensions/FormModal.tsx)
+- [Buttons in Modal](./src/app/cards/components/ModalExample.tsx)
+- [Modal Form](./src/app/cards/FormModal.tsx)
 
 ### Panel
 
-- [Buttons in Panel](./src/app/extensions/components/PanelExample.tsx)
-- [Multistep Form](./src/app/extensions/FormMultistep.tsx)
+- [Buttons in Panel](./src/app/cards/components/PanelExample.tsx)
+- [Multistep Form](./src/app/cards/FormMultistep.tsx)
 
 ### Table
 
-- [Table Example](./src/app/extensions/TableExampleCard.jsx)
+- [Table Example](./src/app/cards/Table.jsx)

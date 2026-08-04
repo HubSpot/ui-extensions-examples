@@ -1,0 +1,10 @@
+{
+  "uid": "search_nearby_companies_example_card",
+  "type": "card",
+  "config": {
+    "name": "Search nearby companies example card",
+    "entrypoint": "/app/cards/SearchNeardlyCompanies.jsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["companies"]
+  }
+}

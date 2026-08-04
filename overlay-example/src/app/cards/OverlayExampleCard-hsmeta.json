@@ -1,0 +1,10 @@
+{
+  "uid": "overlay_example_card",
+  "type": "card",
+  "config": {
+    "name": "Overlay Example Card",
+    "entrypoint": "/app/cards/OverlayExampleCard.jsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["contacts"]
+  }
+}

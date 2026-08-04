@@ -1,0 +1,7 @@
+{
+  "uid": "serverless-success",
+  "type": "app-function",
+  "config": {
+    "entrypoint": "/app/functions/serverless-success.js"
+  }
+}

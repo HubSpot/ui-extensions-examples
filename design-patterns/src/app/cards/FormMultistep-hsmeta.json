@@ -1,0 +1,10 @@
+{
+  "uid": "form_multistep_card",
+  "type": "card",
+  "config": {
+    "name": "Multistep Form",
+    "entrypoint": "/app/cards/FormMultistep.tsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["contacts"]
+  }
+}

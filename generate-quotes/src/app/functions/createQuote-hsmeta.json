@@ -1,0 +1,7 @@
+{
+  "uid": "createQuote",
+  "type": "app-function",
+  "config": {
+    "entrypoint": "/app/functions/createQuote.js"
+  }
+}

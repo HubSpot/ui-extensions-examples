@@ -1,0 +1,10 @@
+{
+  "uid": "companies_near_the_current_record_example_card",
+  "type": "card",
+  "config": {
+    "name": "Companies near the current record example card",
+    "entrypoint": "/app/cards/CompaniesNearTheCurrentRecord.jsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["companies"]
+  }
+}

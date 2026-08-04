@@ -1,0 +1,7 @@
+{
+  "uid": "fetchAssociations",
+  "type": "app-function",
+  "config": {
+    "entrypoint": "/app/functions/fetchAssociations.js"
+  }
+}

@@ -63,7 +63,7 @@ Run `hs project upload`. If you’d like to build on this project, run `hs proje
 
 ## Add the Average Margin component
 
-- Open the [get-data.js](./src/app/app.functions/get-data.js) file in your local text editor. This file is using the [HubSpot API client](https://developers.hubspot.com/docs/api/overview) to fetch deal data related to whichever contact record an end user is viewing in the CRM. This fetching is being done by the `getAssociatedDeals` function. The result of this function is stored in a deals variable. The `calculateTotalAmounts` function is using this data to calculate the total amount of deals.
+- Open the [get-data.js](./src/app/functions/get-data.js) file in your local text editor. This file is using the [HubSpot API client](https://developers.hubspot.com/docs/api/overview) to fetch deal data related to whichever contact record an end user is viewing in the CRM. This fetching is being done by the `getAssociatedDeals` function. The result of this function is stored in a deals variable. The `calculateTotalAmounts` function is using this data to calculate the total amount of deals.
 - To begin the dev process and automatically see your changes reflected in the CRM, run `hs project dev`.
 - Add a function called `calculateAverageAmount` below the `calculateTotalAmounts` function. It should look like this:
 
@@ -86,7 +86,7 @@ const avgAmount = calculateAverageAmount(deals);
 sendResponse({ deals, totalAmount, avgAmount });
 ```
 
-- This is everything required for fetching the data and making it available to the front end. Open the [DealsSummary.jsx](./src/app/extensions/DealsSummary.jsx) file to add this data to the CRM card.
+- This is everything required for fetching the data and making it available to the front end. Open the [DealsSummary.jsx](./src/app/cards/DealsSummaryExampleCard.jsx) file to add this data to the CRM card.
 - First, add a state variable to define the initial state of the average amount
 
 ```javascript

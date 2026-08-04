@@ -1,0 +1,9 @@
+{
+  "name": "@hubspot-example/custom-logger-example-functions",
+  "version": "0.1.0",
+  "author": "HubSpot",
+  "license": "MIT",
+  "dependencies": {
+    "@hubspot/api-client": "^7.0.1"
+  }
+}

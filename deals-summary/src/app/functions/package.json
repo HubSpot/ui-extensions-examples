@@ -1,0 +1,9 @@
+{
+  "name": "@hubspot-example/deals-summary-functions",
+  "version": "0.1.0",
+  "author": "HubSpot",
+  "license": "MIT",
+  "dependencies": {
+    "@hubspot/api-client": "^9.1.1"
+  }
+}

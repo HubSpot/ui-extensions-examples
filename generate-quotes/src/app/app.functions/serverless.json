@@ -1,8 +1,0 @@
-{
-  "appFunctions": {
-    "createQuote": {
-      "file": "createQuote.js",
-      "secrets": []
-    }
-  }
-}

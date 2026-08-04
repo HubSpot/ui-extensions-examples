@@ -1,0 +1,8 @@
+{
+  "uid": "getCompaniesWithDistanceBatch",
+  "type": "app-function",
+  "config": {
+    "entrypoint": "/app/functions/getCompaniesWithDistanceBatch.js",
+    "secretKeys": ["MAPBOX_ACCESS_TOKEN"]
+  }
+}

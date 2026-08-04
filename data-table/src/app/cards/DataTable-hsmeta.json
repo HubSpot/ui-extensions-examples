@@ -1,0 +1,10 @@
+{
+  "uid": "data-table-example",
+  "type": "card",
+  "config": {
+    "name": "Data Table Example",
+    "entrypoint": "/app/cards/DataTable.tsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["contacts"]
+  }
+}

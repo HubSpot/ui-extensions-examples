@@ -1,0 +1,27 @@
+{
+  "uid": "app-charts-example-public",
+  "type": "app",
+  "config": {
+    "name": "Charts example",
+    "description": "An example to demonstrate how to build a public app with developer projects.",
+    "distribution": "private",
+    "auth": {
+      "type": "oauth",
+      "requiredScopes": [
+        "crm.objects.contacts.read"
+      ],
+      "redirectUrls": ["http://localhost:3000/oauth-callback"]
+    },
+    "permittedUrls": {
+      "fetch": ["https://api.hubapi.com"],
+      "iframe": [],
+      "img": []
+    },
+    "support": {
+      "supportEmail": "support@example.com",
+      "documentationUrl": "https://example.com/docs",
+      "supportUrl": "https://example.com/support",
+      "supportPhone": "+18005555555"
+    }
+  }
+}

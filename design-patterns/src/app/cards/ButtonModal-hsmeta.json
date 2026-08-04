@@ -1,0 +1,10 @@
+{
+  "uid": "button_modal_card",
+  "type": "card",
+  "config": {
+    "name": "Button Modal Card",
+    "entrypoint": "/app/cards/ButtonModal.jsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["contacts"]
+  }
+}
