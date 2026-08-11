@@ -1,0 +1,35 @@
+{
+  "uid": "camp_referral_builder_app",
+  "type": "app",
+  "config": {
+    "description": "Referral Builder (Deal → Company → Program → Session → Referral)",
+    "name": "Camp Referral Builder",
+    "distribution": "private",
+    "auth": {
+      "type": "static",
+      "requiredScopes": [
+        "crm.objects.deals.read",
+        "crm.objects.deals.write",
+        "crm.objects.companies.read",
+        "crm.objects.custom.read",
+        "crm.objects.custom.write"
+      ],
+      "optionalScopes": [],
+      "conditionallyRequiredScopes": []
+    },
+    "permittedUrls": {
+      "fetch": [
+        "https://api.hubapi.com",
+        "https://YOUR_VERCEL_DOMAIN"
+      ],
+      "iframe": [],
+      "img": []
+    },
+    "support": {
+      "supportEmail": "support@example.com",
+      "documentationUrl": "https://example.com/docs",
+      "supportUrl": "https://example.com/support",
+      "supportPhone": "+18005555555"
+    }
+  }
+}
