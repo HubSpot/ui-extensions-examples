@@ -1,0 +1,13 @@
+{
+  "uid": "camp_referral_builder_card",
+  "type": "card",
+  "config": {
+    "name": "Referral Builder",
+    "description": "Create and update referrals for this Deal.",
+    "location": "crm.record.sidebar",
+    "entrypoint": "/app/cards/ReferralBuilderCard.tsx",
+    "objectTypes": [
+      "deals"
+    ]
+  }
+}
