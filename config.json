@@ -21,13 +21,13 @@
     {
       "name": "multi-step-flow-private",
       "label": "Build a multi-step flow with private app",
-      "path": "multi-step-flow/private",
+      "path": "multi-step-flow-private",
       "insertPath": null
     },
     {
       "name": "multi-step-flow-public",
       "label": "Build a multi-step flow with public app",
-      "path": "multi-step-flow/public",
+      "path": "multi-step-flow-public",
       "insertPath": null
     },
 
@@ -58,7 +58,7 @@
     {
       "name": "bi-directional-property-refresh",
       "label": "Bi-directional refresh of CRM properties",
-      "path": "property-refresh",
+      "path": "bi-directional-property-refresh",
       "insertPath": null
     },
     {
@@ -76,13 +76,13 @@
     {
       "name": "charts-example-private",
       "label": "Charts Example with private app",
-      "path": "charts-example/private",
+      "path": "charts-example-private",
       "insertPath": null
     },
     {
       "name": "charts-example-public",
       "label": "Charts Example with public app",
-      "path": "charts-example/public",
+      "path": "charts-example-public",
       "insertPath": null
     },
     {

@@ -1,0 +1,10 @@
+{
+  "uid": "flex_playground_card",
+  "type": "card",
+  "config": {
+    "name": "Flex playground card",
+    "entrypoint": "/app/cards/FlexPlayground.tsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["deals"]
+  }
+}

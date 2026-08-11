@@ -1,0 +1,28 @@
+{
+  "name": "@hs-example/2025-example-card",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@hubspot/ui-extensions": "workspace:*",
+    "react": "catalog:examples"
+  },
+  "devDependencies": {
+    "@eslint/js": "catalog:examples",
+    "@hubspot/eslint-config-ui-extensions": "catalog:examples",
+    "eslint": "catalog:examples",
+    "eslint-config-prettier": "catalog:examples",
+    "eslint-plugin-react": "catalog:examples",
+    "eslint-plugin-react-hooks": "catalog:examples",
+    "eslint-plugin-unused-imports": "catalog:examples",
+    "prettier": "catalog:examples",
+    "typescript": "catalog:examples",
+    "typescript-eslint": "catalog:examples"
+  },
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  }
+}

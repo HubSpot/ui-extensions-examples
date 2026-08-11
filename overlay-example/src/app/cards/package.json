@@ -1,0 +1,29 @@
+{
+  "name": "@hubspot-example/overlay-example-cards",
+  "version": "0.1.0",
+  "author": "HubSpot",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@hubspot/ui-extensions": "latest",
+    "react": "18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.3",
+    "@hubspot/eslint-config-ui-extensions": "1.0.0",
+    "eslint": "9.39.3",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "eslint-plugin-unused-imports": "4.4.1",
+    "prettier": "^3.8.1",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.56.0"
+  },
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  }
+}

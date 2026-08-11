@@ -1,0 +1,10 @@
+{
+  "uid": "charts-example-card",
+  "type": "card",
+  "config": {
+    "name": "Charts example card",
+    "entrypoint": "/app/cards/ChartsExampleCard.tsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["contacts"]
+  }
+}

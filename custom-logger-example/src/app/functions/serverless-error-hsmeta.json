@@ -1,0 +1,7 @@
+{
+  "uid": "serverless-error",
+  "type": "app-function",
+  "config": {
+    "entrypoint": "/app/functions/serverless-error.js"
+  }
+}

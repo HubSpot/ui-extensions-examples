@@ -1,0 +1,10 @@
+{
+  "uid": "form_modal_card",
+  "type": "card",
+  "config": {
+    "name": "Modal Form",
+    "entrypoint": "/app/cards/FormModal.tsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["contacts"]
+  }
+}

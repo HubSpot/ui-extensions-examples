@@ -1,0 +1,7 @@
+{
+  "uid": "restaurants",
+  "type": "app-function",
+  "config": {
+    "entrypoint": "/app/functions/restaurants.js"
+  }
+}

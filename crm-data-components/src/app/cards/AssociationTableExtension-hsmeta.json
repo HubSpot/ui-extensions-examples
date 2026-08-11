@@ -1,0 +1,10 @@
+{
+  "uid": "association_table_example",
+  "type": "card",
+  "config": {
+    "name": "CRM data: Association Table example card",
+    "entrypoint": "/app/cards/AssociationTableExtension.tsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["contacts"]
+  }
+}

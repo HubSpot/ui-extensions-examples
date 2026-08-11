@@ -1,0 +1,10 @@
+{
+  "uid": "duplicate_contact_example_card",
+  "type": "card",
+  "config": {
+    "name": "Duplicate a contact example card",
+    "entrypoint": "/app/cards/Extension.tsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["contacts"]
+  }
+}

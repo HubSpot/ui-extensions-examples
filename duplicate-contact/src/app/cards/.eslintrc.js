@@ -1,0 +1,6 @@
+module.exports = {
+  root: true,
+  extends: ['@hubspot/ui-extensions', 'plugin:@typescript-eslint/recommended'],
+  plugins: ['@typescript-eslint'],
+  ignorePatterns: ['dist'],
+};

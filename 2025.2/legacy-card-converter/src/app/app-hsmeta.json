@@ -1,0 +1,35 @@
+{
+  "uid": "legacy-card-converter-app",
+  "type": "app",
+  "config": {
+    "description": "A tool to convert legacy cards to UI Extensions while designing a new card.",
+    "name": "Legacy Card Converter App",
+    "distribution" : "private",
+    "auth": {
+      "type" : "static",
+      "requiredScopes": [
+        "oauth",
+        "crm.objects.contacts.read",
+        "crm.objects.contacts.write",
+        "crm.objects.companies.read",
+        "crm.objects.companies.write",
+        "crm.objects.deals.read",
+        "crm.objects.deals.write",
+        "tickets"
+      ],
+      "optionalScopes": [],
+      "conditionallyRequiredScopes": []
+    },
+    "permittedUrls": {
+      "fetch": ["https://example.com", "https://raw.githubusercontent.com"],
+      "iframe": [],
+      "img": []
+    },
+    "support": {
+      "supportEmail": "support@example.com",
+      "documentationUrl": "https://example.com/docs",
+      "supportUrl": "https://example.com/support",
+      "supportPhone": "+18005555555"
+    }
+  }
+}

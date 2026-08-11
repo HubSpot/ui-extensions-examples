@@ -1,0 +1,10 @@
+{
+  "uid": "iframe_modal_example_card",
+  "type": "card",
+  "config": {
+    "name": "Iframe modal example card",
+    "entrypoint": "/app/cards/DisplayIframe.jsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["contacts"]
+  }
+}

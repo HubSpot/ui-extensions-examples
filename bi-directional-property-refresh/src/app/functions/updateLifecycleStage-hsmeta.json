@@ -1,0 +1,7 @@
+{
+  "uid": "updateLifecycleStage",
+  "type": "app-function",
+  "config": {
+    "entrypoint": "/app/functions/updateLifecycleStage.js"
+  }
+}

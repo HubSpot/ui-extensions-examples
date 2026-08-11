@@ -1,0 +1,7 @@
+{
+  "uid": "get-data",
+  "type": "app-function",
+  "config": {
+    "entrypoint": "/app/functions/get-data.js"
+  }
+}

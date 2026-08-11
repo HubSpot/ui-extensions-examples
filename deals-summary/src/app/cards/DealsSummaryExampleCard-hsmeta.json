@@ -1,0 +1,10 @@
+{
+  "uid": "deals_summary_example_card",
+  "type": "card",
+  "config": {
+    "name": "Deals summary example card",
+    "entrypoint": "/app/cards/DealsSummaryExampleCard.jsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["contacts"]
+  }
+}

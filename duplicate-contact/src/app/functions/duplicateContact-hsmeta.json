@@ -1,0 +1,7 @@
+{
+  "uid": "duplicateContact",
+  "type": "app-function",
+  "config": {
+    "entrypoint": "/app/functions/duplicateContact.js"
+  }
+}

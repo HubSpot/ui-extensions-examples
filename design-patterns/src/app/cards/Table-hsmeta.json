@@ -1,0 +1,10 @@
+{
+  "uid": "table_card",
+  "type": "card",
+  "config": {
+    "name": "Table Example Card",
+    "entrypoint": "/app/cards/Table.jsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["contacts"]
+  }
+}

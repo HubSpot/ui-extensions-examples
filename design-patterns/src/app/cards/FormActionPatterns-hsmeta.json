@@ -1,0 +1,10 @@
+{
+  "uid": "form_action_patterns_card",
+  "type": "card",
+  "config": {
+    "name": "Form Action Patterns",
+    "entrypoint": "/app/cards/FormActionPatterns.tsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["contacts"]
+  }
+}

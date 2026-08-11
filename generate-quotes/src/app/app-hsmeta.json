@@ -1,0 +1,31 @@
+{
+  "uid": "app-generate-quotes",
+  "type": "app",
+  "config": {
+    "name": "Generate multiple quotes example app",
+    "description": "Generate multiple quotes example app",
+    "distribution": "private",
+    "auth": {
+      "type": "static",
+      "requiredScopes": [
+        "oauth",
+        "crm.objects.deals.read",
+        "crm.objects.deals.write",
+        "e-commerce",
+        "crm.objects.quotes.read",
+        "crm.objects.quotes.write"
+      ]
+    },
+    "permittedUrls": {
+      "fetch": ["https://api.hubapi.com"],
+      "iframe": [],
+      "img": []
+    },
+    "support": {
+      "supportEmail": "support@example.com",
+      "documentationUrl": "https://example.com/docs",
+      "supportUrl": "https://example.com/support",
+      "supportPhone": "+18005555555"
+    }
+  }
+}

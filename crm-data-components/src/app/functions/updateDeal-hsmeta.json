@@ -1,0 +1,7 @@
+{
+  "uid": "updateDeal",
+  "type": "app-function",
+  "config": {
+    "entrypoint": "/app/functions/updateDeal.js"
+  }
+}

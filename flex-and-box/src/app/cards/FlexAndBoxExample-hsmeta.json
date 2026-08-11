@@ -1,0 +1,10 @@
+{
+  "uid": "flex_and_box_example_card",
+  "type": "card",
+  "config": {
+    "name": "Flex and box example card",
+    "entrypoint": "/app/cards/FlexAndBoxExample.tsx",
+    "location": "crm.record.tab",
+    "objectTypes": ["deals"]
+  }
+}

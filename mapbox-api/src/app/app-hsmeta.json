@@ -1,0 +1,28 @@
+{
+  "uid": "app-mapbox-api",
+  "type": "app",
+  "config": {
+    "name": "View nearby companies: Mapbox API",
+    "description": "View nearby companies: Mapbox API",
+    "distribution": "private",
+    "auth": {
+      "type": "static",
+      "requiredScopes": [
+        "oauth",
+        "crm.objects.companies.write",
+        "crm.objects.companies.read"
+      ]
+    },
+    "permittedUrls": {
+      "fetch": ["https://api.hubapi.com"],
+      "iframe": [],
+      "img": []
+    },
+    "support": {
+      "supportEmail": "support@example.com",
+      "documentationUrl": "https://example.com/docs",
+      "supportUrl": "https://example.com/support",
+      "supportPhone": "+18005555555"
+    }
+  }
+}
