@@ -394,6 +394,26 @@ describe('PropertyValue', () => {
       expect(displayValue.text).toContain('Invalid property');
     });
 
+    it('renders status tag using optionType fallback for dynamic properties not in config', () => {
+      const { render, findByTestId } = createRenderer('crm.record.tab');
+      const property: CardProperty = {
+        label: 'Status',
+        dataType: 'STATUS',
+        value: 'Active',
+        optionType: 'SUCCESS',
+      };
+
+      // No name provided — simulates a property from the `properties` array that
+      // isn't defined in DEFINITION.json. The config lookup will fail; the
+      // component should fall back to optionType for the badge color and use
+      // value as the label.
+      render(<PropertyValue property={property} />);
+
+      const tag = findByTestId(Tag, getTestId(property, 'value'));
+      expect(tag.props.variant).toBe('success');
+      expect(tag.text).toBe('Active');
+    });
+
     it('renders "Invalid property" when property name is not provided and optionType is missing', () => {
       const { render, findByTestId } = createRenderer('crm.record.tab');
       const property: CardProperty = {

@@ -10,14 +10,23 @@ export interface StatusValueProps {
   testId?: string;
 }
 
-export function StatusValue({ value, name, testId }: StatusValueProps) {
+export function StatusValue({ value, name, optionType, testId }: StatusValueProps) {
   const config = useCardConfig();
   const statusPropFromConfig = config.getStatusProperty({
     parentPropertyName: name,
     statusPropertyName: value,
   });
 
-  if (!statusPropFromConfig) {
+  // For dynamic properties in the response `properties` array, a config lookup
+  // isn't possible (no matching name in DEFINITION.json). Use the optionType
+  // sent directly in the response as a fallback.
+  const variant = statusPropFromConfig
+    ? getStatusVariant(statusPropFromConfig.type)
+    : optionType
+      ? getStatusVariant(optionType)
+      : null;
+
+  if (!variant) {
     return (
       <Text variant='microcopy' inline={true} testId={testId}>
         Invalid property
@@ -25,13 +34,11 @@ export function StatusValue({ value, name, testId }: StatusValueProps) {
     );
   }
 
+  const label = statusPropFromConfig?.label ?? String(value);
+
   return (
-    <Tag
-      variant={getStatusVariant(statusPropFromConfig.type)}
-      inline={true}
-      testId={testId}
-    >
-      {statusPropFromConfig.label}
+    <Tag variant={variant} inline={true} testId={testId}>
+      {label}
     </Tag>
   );
 }
