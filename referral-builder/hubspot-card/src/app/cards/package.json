@@ -1,0 +1,8 @@
+{
+  "name": "camp-referral-builder-card",
+  "version": "1.0.0",
+  "description": "Referral Builder Card",
+  "dependencies": {
+    "@hubspot/ui-extensions": "latest"
+  }
+}
