@@ -43,9 +43,12 @@ export const fetchFromTargetUrl = async ({
 
   const contextData = getHubSpotContext(context);
   const queryParams = buildQueryParams(contextData, crmProperties);
-  const urlWithParams = `${config.dataRequestUrl}${queryParams.toString() ? `?${queryParams.toString()}` : ''}`;
+  const urlWithParams = new URL(config.dataRequestUrl);
+  queryParams.forEach((value, key) => {
+    urlWithParams.searchParams.append(key, value);
+  });
 
-  const response = await hubspot.fetch(urlWithParams, {
+  const response = await hubspot.fetch(urlWithParams.toString(), {
     method: 'GET',
     timeout: 5000,
   });

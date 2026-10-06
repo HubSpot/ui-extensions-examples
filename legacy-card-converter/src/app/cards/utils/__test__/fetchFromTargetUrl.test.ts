@@ -343,6 +343,63 @@ describe('fetchFromTargetUrl', () => {
   });
 
   describe('URL construction', () => {
+    it.each([
+      'https://example.com/api/data',
+      'https://example.com/api/data?',
+      'https://example.com/api/data?tenant=alpha',
+      'https://example.com/api/data?tenant=alpha&tag=one&tag=two',
+      'https://example.com/api/data#details?tab=card',
+      'https://example.com/api/data?tenant=alpha#details',
+    ])('appends request parameters to %s', async dataRequestUrl => {
+      const fetchCrmObjectProperties = vi.fn().mockResolvedValue({
+        email: 'john+crm@example.com',
+      });
+
+      await fetchFromTargetUrl({
+        context: createMockContext(),
+        actions: createMockActionsWithCustomFetch(fetchCrmObjectProperties),
+        config: { ...mockHubSpotCardConfig, dataRequestUrl },
+      });
+
+      const originalUrl = new URL(dataRequestUrl);
+      const requestUrl = new URL(mockHubspotFetch.mock.calls[0][0] as string);
+      expect(requestUrl.origin).toBe(originalUrl.origin);
+      expect(requestUrl.pathname).toBe(originalUrl.pathname);
+      expect(requestUrl.hash).toBe(originalUrl.hash);
+      expect([...requestUrl.searchParams.entries()]).toEqual([
+        ...originalUrl.searchParams.entries(),
+        ['userId', '12345'],
+        ['userEmail', 'test@example.com'],
+        ['associatedObjectId', '111'],
+        ['associatedObjectType', 'CONTACT'],
+        ['portalId', '67890'],
+        ['email', 'john+crm@example.com'],
+      ]);
+      expect(mockHubspotFetch).toHaveBeenCalledWith(requestUrl.toString(), {
+        method: 'GET',
+        timeout: 5000,
+      });
+    });
+
+    it.each([
+      'https://example.com/api/data?',
+      'https://example.com/api/data?tenant=alpha%20beta#details',
+    ])(
+      'preserves %s when request parameters are empty',
+      async dataRequestUrl => {
+        await fetchFromTargetUrl({
+          context: {} as CrmContext,
+          actions: createMockActions(),
+          config: { ...mockHubSpotCardConfig, dataRequestUrl },
+        });
+
+        expect(mockHubspotFetch).toHaveBeenCalledWith(dataRequestUrl, {
+          method: 'GET',
+          timeout: 5000,
+        });
+      }
+    );
+
     it('constructs URL with query parameters', async () => {
       const mockContext = createMockContext();
       const mockActions = createMockActions();
