@@ -1,6 +1,6 @@
 import { useState, useMemo, useCallback } from "react";
 import { Alert, Box, Divider, Flex, Heading, hubspot, Input, MultiSelect, Select, Text, useDebounce } from "@hubspot/ui-extensions";
-import { useCrmSearch } from "@hubspot/ui-extensions";
+import { useRecordSearch } from "@hubspot/ui-extensions";
 import { DEFAULT_OBJECT_TYPE } from "./constants/objectTypes";
 import { OBJECT_TYPES, getDefaultPropNames } from "./utils/objectTypes";
 import { toHookFilterGroups } from "./utils/filterGroups";
@@ -13,12 +13,10 @@ import { useCustomObjectTypes } from "./hooks/useCustomObjectTypes";
 import { usePropertyFetcher } from "./hooks/usePropertyFetcher";
 import { useSortState } from "./hooks/useSortState";
 
-const SEARCH_OPTIONS = {
+const SEARCH_FORMAT = {
   propertiesToFormat: "all" as const,
-  formattingOptions: {
-    currency: { addSymbol: true },
-    date: { format: 'MM/DD/YYYY' },
-  },
+  currency: { addSymbol: true },
+  date: { format: 'MM/DD/YYYY' },
 } as const;
 
 const initialDefaults = getDefaultPropNames(DEFAULT_OBJECT_TYPE);
@@ -74,12 +72,10 @@ const AppHomePage = () => {
     sorts: buildSortParam(sortState),
     query: debouncedSearchQuery,
     filterGroups: hookFilterGroups.length > 0 ? hookFilterGroups : undefined,
-  }), [objectType, propertiesToFetch, sortState, debouncedSearchQuery, hookFilterGroups]);
+    format: SEARCH_FORMAT,
+  }),[objectType, propertiesToFetch, sortState, debouncedSearchQuery, hookFilterGroups]);
 
-  const { results, isLoading, error, pagination, refetch, isRefetching } = useCrmSearch(
-    hookArgs,
-    SEARCH_OPTIONS
-  );
+  const { results, isLoading, error, pagination, refetch, isRefetching } = useRecordSearch(hookArgs);
 
   const resetAll = useCallback(() => {
     handleObjectTypeChange(DEFAULT_OBJECT_TYPE);
@@ -139,7 +135,7 @@ const AppHomePage = () => {
           </Flex>
         </Box>
       </Flex>
-      <HookUsageDisplay hookArgs={hookArgs} options={SEARCH_OPTIONS} />
+      <HookUsageDisplay hookArgs={hookArgs} />
     </Flex>
   );
 };

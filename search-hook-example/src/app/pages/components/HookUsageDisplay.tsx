@@ -3,7 +3,6 @@ import { Accordion, Flex, Text } from "@hubspot/ui-extensions";
 
 interface HookUsageDisplayProps {
   hookArgs: Record<string, unknown>;
-  options: Record<string, unknown>;
 }
 
 // @hubspot/ui-extensions has no <pre> or monospace block; non-breaking spaces
@@ -11,13 +10,12 @@ interface HookUsageDisplayProps {
 const formatJson = (obj: Record<string, unknown>) =>
   JSON.stringify(obj, null, 2).replace(/\n/g, '\n  ');
 
-const HookUsageDisplay = ({ hookArgs, options }: HookUsageDisplayProps) => {
+const HookUsageDisplay = ({ hookArgs }: HookUsageDisplayProps) => {
   const lines = useMemo(() => [
-    'useCrmSearch(',
-    `  ${formatJson(hookArgs)},`,
-    `  ${formatJson(options)}`,
+    'useRecordSearch(',
+    `  ${formatJson(hookArgs)}`,
     ')',
-  ].join('\n').split('\n').map((line) => line.replace(/ /g, '\u00A0')), [hookArgs, options]);
+  ].join('\n').split('\n').map((line) => line.replace(/ /g, '\u00A0')), [hookArgs]);
 
   return (
     <Accordion title="Hook Usage" size="sm">

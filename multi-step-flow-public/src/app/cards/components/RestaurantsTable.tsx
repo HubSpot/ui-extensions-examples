@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import { Panel, Table, TableBody, Text } from '@hubspot/ui-extensions';
 import { RestaurantRow } from './RestaurantRow';
-import type {
-  ButtonOnClickReactons,
-  Restaurant,
-  RestaurantsTableProps,
-} from '../types';
+import type { Restaurant, RestaurantsTableProps } from '../types';
 import { MenuPanelContent } from './MenuPanelContent';
 
 const PAGE_SIZE = 4;
-const MENU_PANEL_ID = 'menu-panel';
+const formatPanelId = (restaurantId: number) => `menu-panel-${restaurantId}`;
 
 export const RestaurantsTable = ({
   searchTerm,
   onAddToCartClick,
+  closeOverlay,
   restaurants,
   pageNumber,
   onPageChange,
@@ -46,34 +43,30 @@ export const RestaurantsTable = ({
           {paginatedRestaurants.map((restaurant) => (
             <RestaurantRow
               restaurant={restaurant}
-              onClick={(reactions: ButtonOnClickReactons) => {
-                setSelectedRestaurant(restaurant);
-                reactions.openPanel(MENU_PANEL_ID);
-              }}
+              overlay={
+                <Panel
+                  variant="modal"
+                  id={formatPanelId(restaurant.id)}
+                  title={restaurant.name}
+                  onOpen={() => setSelectedRestaurant(restaurant)}
+                  onClose={() => setSelectedRestaurant(null)}
+                >
+                  {selectedRestaurant?.id === restaurant.id && (
+                    <MenuPanelContent
+                      restaurant={restaurant}
+                      onAddToCartClick={onAddToCartClick}
+                      closePanel={() =>
+                        closeOverlay(formatPanelId(restaurant.id))
+                      }
+                    />
+                  )}
+                </Panel>
+              }
               key={restaurant.id}
             />
           ))}
         </TableBody>
       </Table>
-
-      {/* Render Panel wrapper */}
-      <Panel
-        variant="modal"
-        id={MENU_PANEL_ID}
-        title={selectedRestaurant ? selectedRestaurant.name : 'Menu Panel'}
-        onClose={() => setSelectedRestaurant(null)}
-      >
-        {/* Check if any restaurant is selected and conditionally render Panel content */}
-        {selectedRestaurant && (
-          <MenuPanelContent
-            restaurant={selectedRestaurant}
-            onAddToCartClick={onAddToCartClick}
-            closePanel={(reactions: ButtonOnClickReactons) =>
-              reactions.closePanel(MENU_PANEL_ID)
-            }
-          />
-        )}
-      </Panel>
     </>
   );
 };

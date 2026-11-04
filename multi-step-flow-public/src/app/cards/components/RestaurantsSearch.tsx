@@ -7,6 +7,7 @@ export const RestaurantsSearch = ({
   contactName,
   restaurants,
   onAddToCartClick,
+  closeOverlay,
 }: RestaurantsSearchProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
@@ -34,6 +35,7 @@ export const RestaurantsSearch = ({
       <RestaurantsTable
         pageNumber={pageNumber}
         onAddToCartClick={onAddToCartClick}
+        closeOverlay={closeOverlay}
         searchTerm={searchTerm}
         restaurants={searchResults}
         onPageChange={setPageNumber}

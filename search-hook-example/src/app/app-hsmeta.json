@@ -2,7 +2,7 @@
   "uid": "search_hook_app",
   "type": "app",
   "config": {
-    "description": "Demonstrates the useCrmSearch hook for searching CRM records from a HubSpot app page.",
+    "description": "Demonstrates the useRecordSearch hook for searching CRM records from a HubSpot app page.",
     "name": "search-hook-app",
     "distribution": "private",
     "auth": {

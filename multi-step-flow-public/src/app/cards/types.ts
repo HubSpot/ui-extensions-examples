@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type {
   AddAlertAction,
   Context,
@@ -36,14 +37,9 @@ export interface RatingProps {
   value: number;
 }
 
-export interface ButtonOnClickReactons {
-  openPanel: (id: string) => void;
-  closePanel: (id: string) => void;
-}
-
 export interface RestaurantRowProps {
   restaurant: Restaurant;
-  onClick: (reactions: ButtonOnClickReactons) => void;
+  overlay: ReactNode;
 }
 
 export interface RestaurantsTableProps {
@@ -51,19 +47,21 @@ export interface RestaurantsTableProps {
   onPageChange: (pageNumber: number) => void;
   searchTerm: string;
   onAddToCartClick: (cartItem: CartItem) => void;
+  closeOverlay: (id: string) => void;
   restaurants: Array<Restaurant>;
 }
 
 export interface MenuPanelContentProps {
   restaurant: Restaurant;
   onAddToCartClick: (cartItem: CartItem) => void;
-  closePanel: (reactions: ButtonOnClickReactons) => void;
+  closePanel: () => void;
 }
 
 export interface RestaurantsSearchProps {
   contactName: string;
   restaurants: Array<Restaurant>;
   onAddToCartClick: (cartItem: CartItem) => void;
+  closeOverlay: (id: string) => void;
 }
 
 export interface CartItemRowProps {
@@ -110,4 +108,5 @@ export interface OrderMealProps {
   context: Context;
   runServerless: ServerlessFuncRunner;
   sendAlert: AddAlertAction;
+  closeOverlay: (id: string) => void;
 }

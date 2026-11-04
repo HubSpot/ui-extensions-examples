@@ -1,6 +1,6 @@
 # CRM Search Hook Demo ![](https://badgen.net/badge/-/TypeScript/blue?icon=typescript&label)
 
-This example demonstrates how to use the `useCrmSearch` hook from `@hubspot/ui-extensions/experimental` to search CRM records directly from an app page. It covers the full range of the hook's capabilities:
+This example demonstrates how to use the `useRecordSearch` hook from `@hubspot/ui-extensions` to search CRM records directly from an app page. It covers the full range of the hook's capabilities:
 
 - Selecting any standard or custom object type
 - Choosing which properties to fetch and display
@@ -10,7 +10,7 @@ This example demonstrates how to use the `useCrmSearch` hook from `@hubspot/ui-e
 - Paginating through large result sets
 - Formatting property values (dates, currencies, etc.)
 
-A "Hook Usage" panel at the bottom of the page renders the exact `useCrmSearch` call matching your current selections, so you can copy it directly into your own app.
+A "Hook Usage" panel at the bottom of the page renders the exact `useRecordSearch` call matching your current selections, so you can copy it directly into your own app.
 
 TODO: Add screenshot here
 
@@ -45,4 +45,4 @@ Navigate to your app page, where the search explorer will render.
 
 ### Step 5: Experiment with the hook
 
-Use the controls on the left to change the object type, select properties, enter a search query, or add filter conditions. The results table on the right updates live, and the Hook Usage panel at the bottom always shows the exact `useCrmSearch` call for your current configuration.
+Use the controls on the left to change the object type, select properties, enter a search query, or add filter conditions. The results table on the right updates live, and the Hook Usage panel at the bottom always shows the exact `useRecordSearch` call for your current configuration.

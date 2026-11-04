@@ -150,9 +150,9 @@ export const MenuPanelContent = ({
             Back
           </Button>
           <Button
-            onClick={(event, reactions) => {
+            onClick={() => {
               handleAddClick();
-              closePanel(reactions);
+              closePanel();
             }}
             variant="primary"
             type="submit"
