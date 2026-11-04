@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Alert, Select, useDebounce } from "@hubspot/ui-extensions";
-import { useCrmSearch } from "@hubspot/ui-extensions";
+import { useRecordSearch } from "@hubspot/ui-extensions";
 import { ASSOCIATION_DISPLAY_PROPERTIES, ASSOCIATION_LABEL_CONFIG } from "../constants/associations";
 import type { CrmSearchResult } from "../types.ts";
 
@@ -43,7 +43,7 @@ const ObjectSearchSelect = ({ objectType, onSelect, selectedValue }: ObjectSearc
 
   const propertiesToFetch = useMemo(() => getPropertiesToFetch(objectType), [objectType]);
 
-  const { results, isLoading, error } = useCrmSearch({
+  const { results, isLoading, error } = useRecordSearch({
     objectType,
     properties: propertiesToFetch,
     query: debouncedSearch,

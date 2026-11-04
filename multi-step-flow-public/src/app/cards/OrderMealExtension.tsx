@@ -9,6 +9,7 @@ hubspot.extend<'crm.record.tab'>(
       context={context}
       runServerless={runServerlessFunction}
       sendAlert={actions.addAlert}
+      closeOverlay={actions.closeOverlay}
     />
   ),
 );

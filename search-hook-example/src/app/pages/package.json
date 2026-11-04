@@ -10,7 +10,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@hubspot/ui-extensions": "latest",
+    "@hubspot/ui-extensions": "^1.0.0",
     "react": "^18.2.0"
   },
   "devDependencies": {

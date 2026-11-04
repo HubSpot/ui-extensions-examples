@@ -56,7 +56,7 @@ const FlexAndBoxExample = () => {
         >
           Restore example listings
         </Button>
-        <Divider distance="xl" />
+        <Divider size="xl" />
         <Text format={{ fontWeight: 'bold' }}>Add a new property listing</Text>
         {/* Set a column to stretch the form across the width of the page. */}
         <Flex direction="column">

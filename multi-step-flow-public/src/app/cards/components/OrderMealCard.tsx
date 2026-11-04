@@ -21,6 +21,7 @@ export const OrderMealCard = ({
   context,
   runServerless,
   sendAlert,
+  closeOverlay,
 }: OrderMealProps) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -140,6 +141,7 @@ export const OrderMealCard = ({
         contactName={contactName}
         restaurants={restaurants}
         onAddToCartClick={handleAddClick}
+        closeOverlay={closeOverlay}
       />
       <Divider />
       <Cart cart={cart} onRemoveClick={handleRemoveClick} />

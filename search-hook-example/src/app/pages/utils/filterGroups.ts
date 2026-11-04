@@ -13,7 +13,7 @@ export interface HookFilterGroup {
   filters: HookFilter[];
 }
 
-// Converts internal filter state to the shape useCrmSearch expects
+// Converts internal filter state to the shape useRecordSearch expects
 export const toHookFilterGroups = (groups: CrmFilterGroup[]): HookFilterGroup[] =>
   groups
     .filter((g) => g.filters.length > 0)

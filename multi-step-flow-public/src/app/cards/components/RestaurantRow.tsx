@@ -11,7 +11,7 @@ import { Rating } from './Rating';
 
 const timeRange = (minutes: number) => `${minutes - 5}-${minutes + 5} min`;
 
-export const RestaurantRow = ({ restaurant, onClick }: RestaurantRowProps) => {
+export const RestaurantRow = ({ restaurant, overlay }:RestaurantRowProps) => {
   const { name, category, deliveryCost, deliveryInMinutes, rating } =
     restaurant;
 
@@ -29,13 +29,7 @@ export const RestaurantRow = ({ restaurant, onClick }: RestaurantRowProps) => {
         <Text>${deliveryCost} delivery</Text>
       </TableCell>
       <TableCell width="min">
-        <Button
-          onClick={(event, reactions) => {
-            onClick(reactions);
-          }}
-        >
-          Menu
-        </Button>
+        <Button overlay={overlay}>Menu</Button>
       </TableCell>
     </TableRow>
   );
